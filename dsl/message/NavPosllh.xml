@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavPosllh" id="MsgId.NavPosllh" displayName="NAV-POSLLH" order="0">
+        <ref field="itow" />
+        <ref field="lon" />
+        <ref field="lat" />
+        <ref field="height" />
+        <ref field="hMSL" />
+        <ref field="hAcc" />
+        <ref field="vAcc" />
+    </message>
+    
+    <message name="NavPosllhPoll" id="MsgId.NavPosllh" displayName="NAV-POSLLH (Poll)" order="1" />
+</schema>

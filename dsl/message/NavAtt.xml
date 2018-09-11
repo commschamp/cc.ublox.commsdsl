@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavAtt" id="MsgId.NavAtt" displayName="NAV-ATT" order="0" platforms="+ublox8">
+        <ref field="itow" />
+        <int name="version" type="uint8" />
+        <ref field="res3" name="reserved1" />
+        <int name="roll" type="int32" scaling="1/100000" units="deg" displayDecimals="5" />
+        <int name="pitch" type="int32" scaling="1/100000" units="deg" displayDecimals="5" />
+        <int name="heading" type="int32" scaling="1/100000" units="deg" displayDecimals="5" />
+        <int name="accRoll" type="uint32" scaling="1/100000" units="deg" displayDecimals="5" />
+        <int name="accPitch" type="uint32" scaling="1/100000" units="deg" displayDecimals="5" />
+        <int name="accHeading" type="uint32" scaling="1/100000" units="deg" displayDecimals="5" />
+    </message>
+    
+    <message name="NavAttPoll" id="MsgId.NavAtt" displayName="NAV-ATT (Poll)" order="1">
+        <platforms value="+ublox8" />
+    </message>
+</schema>

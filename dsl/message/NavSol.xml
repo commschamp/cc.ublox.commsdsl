@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavSol" id="MsgId.NavSol" displayName="NAV-SOL" order="0">
+        <ref field="itow" />
+        <ref field="ftow" />
+        <int name="week" type="int16" units="weeks" />
+        <ref field="gpsFix" />
+        <set name="flags" length="1">
+            <bit name="GPSfixOK" idx="0" />
+            <bit name="DiffSoln" idx="1" />
+            <bit name="WKNSET" idx="2" />
+            <bit name="TOWSET" idx="3" />
+        </set>
+        <ref field="ecefX" />
+        <ref field="ecefY" />
+        <ref field="ecefZ" />
+        <ref field="pacc" />
+        <ref field="ecefVX" />
+        <ref field="ecefVY" />
+        <ref field="ecefVZ" />
+        <int name="sAcc" type="uint32" units="cmps" />
+        <ref field="dop" name="pDOP" />
+        <ref field="res1" name="reserved1" />
+        <int name="numSV" type="uint8" />
+        <ref field="res4" name="reserved2" />
+    </message>
+    
+    <message name="NavSolPoll" id="MsgId.NavSol" displayName="NAV-SOL (Poll)" order="1" />
+</schema>

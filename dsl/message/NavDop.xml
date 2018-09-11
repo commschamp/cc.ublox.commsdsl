@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavDop" id="MsgId.NavDop" displayName="NAV-DOP" order="0">
+        <ref field="itow" />
+        <ref field="dop" name="gDOP" />
+        <ref field="dop" name="pDOP" />
+        <ref field="dop" name="tDOP" />
+        <ref field="dop" name="vDOP" />
+        <ref field="dop" name="hDOP" />
+        <ref field="dop" name="nDOP" />
+        <ref field="dop" name="eDOP" />
+    </message>
+    
+    <message name="NavDopPoll" id="MsgId.NavDop" displayName="NAV-DOP (Poll)" order="1" />
+</schema>

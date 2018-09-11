@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <fields>
+        <int name="res1" type="uint8" validValue="0" />
+        <int name="res2" type="uint16" validValue="0" />
+        <int name="res3" type="uint32" length="3" validValue="0" />
+        <int name="res4" type="uint32" validValue="0" />
+        <int name="itow" type="uint32" units="ms" validMax="604799999" displayName="iTOW"/>
+        <int name="ftow" type="int32" units="ns" validRange="[-500000, 500000]" displayName="fTOW"/>
+        <int name="ecefX" type="int32" units="cm" />
+        <int name="ecefY" reuse="ecefX" />
+        <int name="ecefZ" reuse="ecefX" />
+        <int name="ecefVX" type="int32" units="cmps" />
+        <int name="ecefVY" reuse="ecefVX" />
+        <int name="ecefVZ" reuse="ecefVX" />
+        <int name="pacc" type="uint32" units="cm" displayName="pAcc" />
+        <int name="lon" type="int32" units="deg" scaling="1/10000000" displayDecimals="7">
+            <description value="Longitude" />
+        </int>
+        <int reuse="lon" name="lat" description="Latitude" />
+        <int name="height" type="int32" units="mm" >
+            <description value="Height avove ellipsoid" />
+        </int>
+        <int name="hMSL" type="int32" units="mm">
+            <description value="Height avove mean sea level" />
+        </int>
+        <int name="hAcc" type="uint32" units="mm" />
+        <int name="vAcc" type="uint32" units="mm" />
+        <enum name="gpsFix" type="uint8" hexAssign="true">
+            <validValue name="NoFix" val="0x00" dispayName="no fix" />
+            <validValue name="DeadReckon" val="0x01" dispayName="dead reckoning" />
+            <validValue name="Fix2D" val="0x02" dispayName="2D fix" />
+            <validValue name="Fix3D" val="0x03" dispayName="3D fix" />
+            <validValue name="GpsAndDeadReckon" val="0x04" dispayName="GPS + dead reckoning" />
+            <validValue name="TimeOnlyFix" val="0x05" dispayName="time only fix" />
+        </enum>
+        <int name="dop" type="uint16" scaling="1/100" displayDecimals="2" />
+        <int name="year" type="uint16" />
+        <int name="month" type="uint8" defaultValue="1" validRange="[1, 12]" />
+        <int name="day" type="uint8" defaultValue="1" units="days" validRange="[1, 31]" />
+        <int name="hour" type="uint8" units="h" validRange="[0, 23]" />
+        <int name="min" type="uint8" units="min" validRange="[0, 59]" />
+        <int name="sec" type="uint8" units="sec" validRange="[0, 60]" />
+        <int name="vel" type="int32" units="mmps" />
+        <int name="heading" type="int32" units="deg" scaling="1/100000" displayDecimals="5" />
+        <int name="headingAcc" type="uint32" units="deg" scaling="1/100000" displayDecimals="5" />
+    </fields>
+</schema>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavPosecef" id="MsgId.NavPosecef" displayName="NAV-POSECEF" order="0">
+        <ref field="itow" />
+        <ref field="ecefX" />
+        <ref field="ecefY" />
+        <ref field="ecefZ" />
+        <ref field="pacc" />
+    </message>
+    
+    <message name="NavPosecefPoll" id="MsgId.NavPosecef" displayName="NAV-POSECEF (Poll)" order="1" />
+</schema>
