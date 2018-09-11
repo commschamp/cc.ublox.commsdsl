@@ -1,0 +1,45 @@
+image:
+    - Visual Studio 2015
+#    - Visual Studio 2017
+
+init:
+    - git config --global core.autocrlf input
+
+clone_folder: c:\projects\cc_ublox
+shallow_clone: true             
+
+matrix:
+    fast_finish: false
+
+platform:
+    - x64
+    - x86
+
+configuration:
+    - Debug
+    - Release
+
+environment:
+    matrix:
+        - CPP_STD: 11
+          QT_VER: 5.6.3
+        - CPP_STD: 14
+          QT_VER: 5.6.3
+          
+
+install:
+    - call script\appveyor_install.bat
+    - set PATH=%PATH%;%QTDIR%\bin
+
+build_script:
+    - mkdir build.%PLATFORM%.%CONFIGURATION%.%TOOLCHAIN%
+    - cd build.%PLATFORM%.%CONFIGURATION%.%TOOLCHAIN%
+    - cmake .. -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "NMake Makefiles" -DBOOST_ROOT="C:\Libraries\boost_1_65_1" -DBoost_USE_STATIC_LIBS=ON 
+    - nmake
+    - mkdir output.build
+    - cd output.build
+    - echo ------------------------- Building Output -------------------------
+    - cmake ../output -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "NMake Makefiles" -DOPT_QT_DIR=%QTDIR% -DCMAKE_CXX_STANDARD=%CPP_STD%
+    - nmake
+
+
