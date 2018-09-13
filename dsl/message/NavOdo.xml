@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavOdo" id="MsgId.NavOdo" displayName="NAV-ODO" order="0" platforms="+ublox8" >
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res3" name="reserved1" />
+        <ref field="itow" />
+        <int name="distance" type="uint32" units="m" />
+        <int name="totalDistance" type="uint32" units="m" />
+        <int name="distanceStd" type="uint32" units="m" />
+    </message>
+
+    <message name="NavOdoPoll" id="MsgId.NavOdo" displayName="NAV-ODO (Poll)" order="1" platforms="+ublox8" />
+</schema>

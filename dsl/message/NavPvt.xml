@@ -73,5 +73,5 @@
         </fields>
     </message>
     
-    <message name="NavPvtPoll" id="MsgId.NavPvt" displayName="NAV-PVT (Poll)" order="2" />
+    <message name="NavPvtPoll" id="MsgId.NavPvt" displayName="NAV-PVT (Poll)" order="2" platforms="+ublox7,ublox8"/>
 </schema>

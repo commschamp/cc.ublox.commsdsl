@@ -2,7 +2,6 @@
 <schema name="ublox"
         endian="little"
         nonUniqueMsgIdAllowed="true">
-    <platform name="ublox4" />
     <platform name="ublox5" />
     <platform name="ublox6" />
     <platform name="ublox7" />

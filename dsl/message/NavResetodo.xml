@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavResetodo" id="MsgId.NavResetodo" displayName="NAV-RESETODO" platforms="+ublox8" />
+</schema>
