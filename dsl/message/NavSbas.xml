@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <fields>
+        <enum name="sbasSys" type="int8">
+            <validValue name="Unknown" val="-1" />
+            <validValue name="WAAS" val="0" />
+            <validValue name="EGNOS" val="1" />
+            <validValue name="MSAS" val="2" />
+            <validValue name="GAGAN" val="3" />
+            <validValue name="GPS" val="16" />
+        </enum>   
+        <set name="sbasService" length="1">
+            <bit name="Ranging" idx="0" />
+            <bit name="Corrections" idx="1" />
+            <bit name="Integrity" idx="2" />
+            <bit name="Testmode" idx="3" />
+        </set>        
+    </fields>
+    <message name="NavSbas" id="MsgId.NavSbas" displayName="NAV-SBAS" order="0" sender="server">
+        <ref field="itow" />
+        <int name="geo" type="uint8" />
+        <enum name="mode" type="uint8">
+            <validValue name="Disabled" val="0" />
+            <validValue name="Integrity" val="1" displayName="Enabled Integrity" />
+            <validValue name="Testmode" val="2" displayName="Enabled Testmode" />
+        </enum>
+        <ref field="sbasSys" name="sys" />
+        <ref field="sbasService" name="service" />
+        <int name="cnt" type="uint8" displayReadOnly="true" />
+        <ref field="res3" name="reserved1" />
+        <list name="list" countPrefix="$cnt" >
+            <element>
+                <bundle name="element" displayName="_">
+                    <int name="svid" type="uint8" />
+                    <int name="flags" type="uint8" />
+                    <int name="udre" type="uint8" />
+                    <ref field="sbasSys" name="svSys" />
+                    <ref field="sbasService" name="svService" />
+                    <ref field="res1" name="reserved2" />
+                    <int name="prc" type="int16" units="cm" />
+                    <ref field="res2" name="reserved3" />
+                    <int name="ic" type="int16" units="cm" />
+                </bundle>
+            </element>
+        </list>
+    </message>
+    
+    <message name="NavSbasPoll" id="MsgId.NavSbas" displayName="NAV-SBAS (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>

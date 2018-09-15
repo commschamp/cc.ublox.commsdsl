@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavDgps" id="MsgId.NavDgps" displayName="NAV-DGPS" order="0" platforms="-ublox5" sender="server">
+        <ref field="itow" />
+        <int name="age" type="int32" units="ms" />
+        <int name="baseId" type="int16" />
+        <int name="baseHealth" type="int16" />
+        <int name="numCh" type="uint8" displayReadOnly="true" />
+        <enum name="status" type="uint8">
+            <validValue name="None" val="0" />
+            <validValue name="PR_PRR" val="1" displayName="PR + PRR correction" />
+        </enum>
+        <ref field="res2" name="reserved1" />
+        <list name="list" countPrefix="$numCh" >
+            <element>
+                <bundle name="element" displayName="_">
+                    <int name="svid" type="uint8" />
+                    <bitfield name="flags">
+                        <int name="channel" type="uint8" bitLength="4" />
+                        <set name="bits" bitLength="4" displayName="_">
+                            <bit name="dgpsUsed" idx="0" />
+                        </set>
+                    </bitfield>
+                    <int name="ageC" type="uint16" units="ms"/>
+                    <float name="prc" type="float" units="m" />
+                    <float name="prrc" type="float" units="mps" />
+                </bundle>
+            </element>
+        </list>
+    </message>
+    
+    <message name="NavDgpsPoll" id="MsgId.NavDgps" displayName="NAV-DGPS (Poll)" order="1">
+        <platforms value="-ublox5" />
+        <sender value="client" />
+    </message>
+</schema>

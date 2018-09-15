@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavTimebds" id="MsgId.NavTimebds" displayName="NAV-TIMEBDS" order="0" platforms="+ublox8" sender="server">
+        <ref field="itow" />
+        <int name="SOW" type="uint32" units="s" />
+        <int name="fSOW" type="int32" units="ns" validRange="[-500000000, 500000000]" />
+        <int name="week" type="int16" units="weeks" />
+        <int name="leapS" type="int8" units="s" />
+        <set name="valid" length="1">
+            <bit name="sowValid" idx="0" />
+            <bit name="weekValid" idx="1" />
+            <bit name="leapSValid" idx="2" />
+        </set>
+        <int name="tAcc" type="uint32" units="ns" />
+    </message>
+    
+    <message name="NavTimebdsPoll" id="MsgId.NavTimebds" displayName="NAV-TIMEBDS (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

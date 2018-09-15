@@ -29,12 +29,12 @@
         <int name="hAcc" type="uint32" units="mm" />
         <int name="vAcc" type="uint32" units="mm" />
         <enum name="gpsFix" type="uint8" hexAssign="true">
-            <validValue name="NoFix" val="0x00" dispayName="no fix" />
-            <validValue name="DeadReckon" val="0x01" dispayName="dead reckoning" />
-            <validValue name="Fix2D" val="0x02" dispayName="2D fix" />
-            <validValue name="Fix3D" val="0x03" dispayName="3D fix" />
-            <validValue name="GpsAndDeadReckon" val="0x04" dispayName="GPS + dead reckoning" />
-            <validValue name="TimeOnlyFix" val="0x05" dispayName="time only fix" />
+            <validValue name="NoFix" val="0x00" displayName="no fix" />
+            <validValue name="DeadReckon" val="0x01" displayName="dead reckoning" />
+            <validValue name="Fix2D" val="0x02" displayName="2D fix" />
+            <validValue name="Fix3D" val="0x03" displayName="3D fix" />
+            <validValue name="GpsAndDeadReckon" val="0x04" displayName="GPS + dead reckoning" />
+            <validValue name="TimeOnlyFix" val="0x05" displayName="time only fix" />
         </enum>
         <int name="dop" type="uint16" scaling="1/100" displayDecimals="2" />
         <int name="year" type="uint16" />

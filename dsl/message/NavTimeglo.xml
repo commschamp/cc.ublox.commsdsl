@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavTimeglo" id="MsgId.NavTimeglo" displayName="NAV-TIMEGLO" order="0" platforms="+ublox8" sender="server">
+        <ref field="itow" />
+        <int name="TOD" type="uint32" units="s" />
+        <int name="fTOD" type="int32" units="ns" validRange="[-500000000, 500000000]" />
+        <int name="Nt" type="uint16" units="days" />
+        <int name="N4" type="uint8" />
+        <set name="valid" length="1">
+            <bit name="todValid" idx="0" />
+            <bit name="dateValid" idx="1" />
+        </set>
+        <int name="tAcc" type="uint32" units="ns" />
+    </message>
+    
+    <message name="NavTimegloPoll" id="MsgId.NavTimeglo" displayName="NAV-TIMEGLO (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

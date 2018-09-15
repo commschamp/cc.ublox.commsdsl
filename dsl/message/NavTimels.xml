@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavTimels" id="MsgId.NavTimels" displayName="NAV-TIMELS" order="0" platforms="+ublox8" sender="server">
+        <ref field="itow" />
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res3" name="reserved1" />
+        <enum name="srcOfCurrLs" type="uint8">
+            <validValue name="Default" val="0" />
+            <validValue name="Derived" val="1" />
+            <validValue name="GPS" val="2" />
+            <validValue name="SBAS" val="3" />
+            <validValue name="BeiDou" val="4" />
+            <validValue name="Galileo" val="5" />
+            <validValue name="AidedData" val="6" displayName="Aided data" />
+            <validValue name="Configured" val="7" />
+            <validValue name="Unknown" val="255" />
+        </enum>
+        <int name="currLs" type="int8" units="s" />
+        <enum name="srcOfLsChange" type="uint8">
+            <validValue name="NoSource" val="0" displayName="No source"/>
+            <validValue name="GPS" val="2" />
+            <validValue name="SBAS" val="3" />
+            <validValue name="BeiDou" val="4" />
+            <validValue name="Galileo" val="5" />
+            <validValue name="GLONASS" val="6" />
+        </enum>
+        <int name="lsChange" type="int8" units="s" />
+        <int name="timeToLsEvent" type="int32" units="s" />
+        <int name="dateOfLsGpsWn" type="uint16" />
+        <int name="dateOfLsGpsDn" type="uint16" />
+        <ref field="res3" name="reserved2" />
+        <set name="valid" length="1">
+            <bit name="validCurrLs" idx="0" />
+            <bit name="validTimeToLsEvent" idx="1" />
+        </set>
+    </message>
+    
+    <message name="NavTimelsPoll" id="MsgId.NavTimels" displayName="NAV-TIMELS (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavSvinfo" id="MsgId.NavSvinfo" displayName="NAV-SVINFO" order="0" sender="server">
+        <ref field="itow" />
+        <int name="numCh" type="uint8" displayReadOnly="true" />
+        <bitfield name="globalFlags" >
+            <enum name="chipGen" type="uint8" bitLength="3">
+                <validValue name="Antaris" val="0" />
+                <validValue name="Ublox5" val="1" displayName="u-blox 5" />
+                <validValue name="Ublox6" val="2" displayName="u-blox 6" />
+                <validValue name="Ublox7" val="3" displayName="u-blox 7" />
+                <validValue name="Ublox8" val="4" displayName="u-blox 8" />
+            </enum>
+            <int reuse="res1" name="reserved" bitLength="5" displayHidden="true" />
+        </bitfield>
+        <ref field="res2" name="reserved1" />
+        <list name="list" countPrefix="$numCh" >
+            <element>
+                <bundle name="element" displayName="_">
+                    <int name="chn" type="uint8" />
+                    <int name="svid" type="uint8" />
+                    <set name="flags" length="1">
+                        <bit name="svUsed" idx="0" />
+                        <bit name="diffCorr" idx="1" />
+                        <bit name="orbitAvail" idx="2" />
+                        <bit name="orbitEph" idx="3" />
+                        <bit name="unhealthy" idx="4" />
+                        <bit name="orbitAlm" idx="5" />
+                        <bit name="orbitAop" idx="6" />
+                        <bit name="smoothed" idx="7" />
+                    </set>
+                    <enum name="quality" type="uint8">
+                        <validValue name="NoSignal" val="0" displayName="no signal" />
+                        <validValue name="Searching" val="1" displayName="searching signal" />
+                        <validValue name="Acquired" val="2" displayName="signal acquired" />
+                        <validValue name="DetectedUnusable" val="3" displayName="signal detected but unusable" />
+                        <validValue name="CodeLocked" val="4" displayName="code locked" />
+                        <validValue name="CodeCarrierLocked" val="5" displayName="code and carrier locked" />
+                        <validValue name="CodeCarrierLocked2" val="6" displayName="code and carrier locked" />
+                        <validValue name="CodeCarrierLocked3" val="7" displayName="code and carrier locked" />
+                    </enum>
+                    <int name="cno" type="uint8" />
+                    <int name="elev" type="int8" units="deg"/>
+                    <int name="azim" type="int16" units="deg"/>
+                    <int name="prRes" type="int32" units="cm"/>
+                </bundle>
+            </element>
+        </list>
+    </message>
+    
+    <message name="NavSvinfoPoll" id="MsgId.NavSvinfo" displayName="NAV-SVINFO (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>
