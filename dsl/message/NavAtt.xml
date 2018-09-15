@@ -14,5 +14,6 @@
     
     <message name="NavAttPoll" id="MsgId.NavAtt" displayName="NAV-ATT (Poll)" order="1">
         <platforms value="+ublox8" />
+        <sender value="client" />
     </message>
 </schema>

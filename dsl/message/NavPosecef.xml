@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="NavPosecef" id="MsgId.NavPosecef" displayName="NAV-POSECEF" order="0">
+    <message name="NavPosecef" id="MsgId.NavPosecef" displayName="NAV-POSECEF" order="0" sender="server">
         <ref field="itow" />
         <ref field="ecefX" />
         <ref field="ecefY" />
@@ -8,5 +8,7 @@
         <ref field="pacc" />
     </message>
     
-    <message name="NavPosecefPoll" id="MsgId.NavPosecef" displayName="NAV-POSECEF (Poll)" order="1" />
+    <message name="NavPosecefPoll" id="MsgId.NavPosecef" displayName="NAV-POSECEF (Poll)" order="1">
+        <sender value="client" />
+    </message>
 </schema>

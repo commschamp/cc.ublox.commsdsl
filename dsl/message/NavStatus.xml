@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="NavStatus" id="MsgId.NavStatus" displayName="NAV-STATUS" order="0">
+    <message name="NavStatus" id="MsgId.NavStatus" displayName="NAV-STATUS" order="0" sender="server">
         <ref field="itow" />
         <ref field="gpsFix" />
         <set name="flags" length="1" >
@@ -40,5 +40,7 @@
         <int name="msss" type="uint32" units="ms" />
     </message>
     
-    <message name="NavStatusPoll" id="MsgId.NavStatus" displayName="NAV-STATUS (Poll)" order="1" />
+    <message name="NavStatusPoll" id="MsgId.NavStatus" displayName="NAV-STATUS (Poll)" order="1">
+        <sender value="client" />
+    </message>
 </schema>

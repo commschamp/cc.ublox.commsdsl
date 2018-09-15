@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="NavSol" id="MsgId.NavSol" displayName="NAV-SOL" order="0">
+    <message name="NavSol" id="MsgId.NavSol" displayName="NAV-SOL" order="0" sender="server">
         <ref field="itow" />
         <ref field="ftow" />
         <int name="week" type="int16" units="weeks" />
@@ -25,5 +25,7 @@
         <ref field="res4" name="reserved2" />
     </message>
     
-    <message name="NavSolPoll" id="MsgId.NavSol" displayName="NAV-SOL (Poll)" order="1" />
+    <message name="NavSolPoll" id="MsgId.NavSol" displayName="NAV-SOL (Poll)" order="1">
+        <sender value="client" />
+    </message>
 </schema>

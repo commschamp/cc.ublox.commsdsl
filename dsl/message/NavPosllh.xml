@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="NavPosllh" id="MsgId.NavPosllh" displayName="NAV-POSLLH" order="0">
+    <message name="NavPosllh" id="MsgId.NavPosllh" displayName="NAV-POSLLH" order="0" sender="server">
         <ref field="itow" />
         <ref field="lon" />
         <ref field="lat" />
@@ -10,5 +10,7 @@
         <ref field="vAcc" />
     </message>
     
-    <message name="NavPosllhPoll" id="MsgId.NavPosllh" displayName="NAV-POSLLH (Poll)" order="1" />
+    <message name="NavPosllhPoll" id="MsgId.NavPosllh" displayName="NAV-POSLLH (Poll)" order="1">
+        <sender value="client" />
+    </message>
 </schema>

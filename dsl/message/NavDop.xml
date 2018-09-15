@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="NavDop" id="MsgId.NavDop" displayName="NAV-DOP" order="0">
+    <message name="NavDop" id="MsgId.NavDop" displayName="NAV-DOP" order="0" sender="server">
         <ref field="itow" />
         <ref field="dop" name="gDOP" />
         <ref field="dop" name="pDOP" />
@@ -11,5 +11,7 @@
         <ref field="dop" name="eDOP" />
     </message>
     
-    <message name="NavDopPoll" id="MsgId.NavDop" displayName="NAV-DOP (Poll)" order="1" />
+    <message name="NavDopPoll" id="MsgId.NavDop" displayName="NAV-DOP (Poll)" order="1">
+        <sender value="client" />
+    </message>
 </schema>

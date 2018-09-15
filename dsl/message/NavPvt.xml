@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="NavPvt" id="MsgId.NavPvt" displayName="NAV-PVT" order="1" platforms="+ublox7" >
+    <message name="NavPvt" id="MsgId.NavPvt" displayName="NAV-PVT" order="1" platforms="+ublox7" sender="server">
         <ref field="itow" />
         <ref field="year" />
         <ref field="month" />
@@ -62,7 +62,7 @@
         <ref field="res4" name="reserved3" />
     </message>
 
-    <message name="NavPvt_u8" id="MsgId.NavPvt" displayName="NAV-PVT (ublox-8)" order="0" >
+    <message name="NavPvt_u8" id="MsgId.NavPvt" displayName="NAV-PVT (ublox-8)" order="0" sender="server">
         <description value="Updated version of NAV-PVT message introduced in ublox-8" />
         <platforms value="+ublox8" />
         <copyFieldsFrom value="NavPvt" />
@@ -73,5 +73,8 @@
         </fields>
     </message>
     
-    <message name="NavPvtPoll" id="MsgId.NavPvt" displayName="NAV-PVT (Poll)" order="2" platforms="+ublox7,ublox8"/>
+    <message name="NavPvtPoll" id="MsgId.NavPvt" displayName="NAV-PVT (Poll)" order="2">
+        <platforms value="+ublox7,ublox8" />
+        <sender value="client" />
+    </message>
 </schema>
