@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavVelned" id="MsgId.NavVelned" displayName="NAV-VELNED" order="0" sender="server">
+        <ref field="itow" />
+        <int name="velN" type="int32" units="cmps"/>
+        <int name="velE" type="int32" units="cmps"/>
+        <int name="velD" type="int32" units="cmps"/>
+        <int name="speed" type="uint32" units="cmps"/>
+        <int name="gSpeed" type="uint32" units="cmps"/>
+        <ref field="heading" />
+        <ref field="sAcc" />
+        <int name="cAcc" type="uint32" units="deg" scaling="1/100000" displayDecimals="5" />
+    </message>
+    
+    <message name="NavVelnedPoll" id="MsgId.NavVelned" displayName="NAV-VELNED (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>

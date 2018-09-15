@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavVelecef" id="MsgId.NavVelecef" displayName="NAV-VELECEF" order="0" sender="server">
+        <ref field="itow" />
+        <ref field="ecefVX" />
+        <ref field="ecefVY" />
+        <ref field="ecefVZ" />
+        <ref field="sAcc" />
+    </message>
+    
+    <message name="NavVelecefPoll" id="MsgId.NavVelecef" displayName="NAV-VELECEF (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>

@@ -5,7 +5,7 @@
         <ref field="ecefX" />
         <ref field="ecefY" />
         <ref field="ecefZ" />
-        <ref field="pacc" />
+        <ref field="pAcc" />
     </message>
     
     <message name="NavPosecefPoll" id="MsgId.NavPosecef" displayName="NAV-POSECEF (Poll)" order="1">

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavHpposllh" id="MsgId.NavHpposllh" displayName="NAV-HPPOSLLH" order="0" platforms="+ublox8" sender="server">
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res3" name="reserved1" />
+        <ref field="itow" />
+        <ref field="lon" />
+        <ref field="lat" />
+        <ref field="height" />
+        <ref field="hMSL" />
+        <int name="lonHp" type="int8" units="deg" scaling="1/100000000" displayDecimals="9" validRange="[-99, 99]"/>
+        <int name="latHp" type="int8" units="deg" scaling="1/100000000" displayDecimals="9" validRange="[-99, 99]"/>
+        <int name="heigthHp" type="int8" units="mm" scaling="1/10" displayDecimals="1" validRange="[-9, 9]"/>
+        <int name="hMSLHp" type="int8" units="mm" scaling="1/10" displayDecimals="1" validRange="[-9, 9]"/>
+        <int name="hAcc" type="uint32" units="mm" scaling="1/10" displayDecimals="1"/>
+        <int name="vAcc" type="uint32" units="mm" scaling="1/10" displayDecimals="1"/>
+    </message>
+    
+    <message name="NavHpposllhPoll" id="MsgId.NavHpposllh" displayName="NAV-HPPOSLLH (Poll)" order="1" >
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

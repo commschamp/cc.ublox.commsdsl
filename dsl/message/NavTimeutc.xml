@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavTimeutc" id="MsgId.NavTimeutc" displayName="NAV-TIMEUTC" order="0" sender="server">
+        <ref field="itow" />
+        <int name="tAcc" type="uint32" units="ns" />
+        <int name="nano" type="int32" units="ns" validRange="[-1000000000, 100000000]" />
+        <ref field="year" />
+        <ref field="month" />
+        <ref field="day" />
+        <ref field="hour" />
+        <ref field="min" />
+        <ref field="sec" />
+        <bitfield name="valid">
+            <set name="bits" bitLength="4" displayName="_">
+                <bit name="validTOW" idx="0" />
+                <bit name="validWKN" idx="1" />
+                <bit name="validUTC" idx="2" />
+            </set>
+            <enum name="utcStandard" type="uint8" bitLength="4">
+                <validValue name="NotAvailable" val="0" displayName="Not Available" />
+                <validValue name="CRL" val="1" />
+                <validValue name="NIST" val="2" />
+                <validValue name="USNO" val="3" />
+                <validValue name="BIPM" val="4" />
+                <validValue name="EuLab" val="5" />
+                <validValue name="SU" val="6" />
+                <validValue name="NTSC" val="7" />
+                <validValue name="Unknown" val="15" />
+            </enum>
+        </bitfield>
+    </message>
+    
+    <message name="NavTimeutcPoll" id="MsgId.NavTimeutc" displayName="NAV-TIMEUTC (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>

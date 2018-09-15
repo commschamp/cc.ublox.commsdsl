@@ -14,11 +14,11 @@
         <ref field="ecefX" />
         <ref field="ecefY" />
         <ref field="ecefZ" />
-        <ref field="pacc" />
+        <ref field="pAcc" />
         <ref field="ecefVX" />
         <ref field="ecefVY" />
         <ref field="ecefVZ" />
-        <int name="sAcc" type="uint32" units="cmps" />
+        <ref field="sAcc" />
         <ref field="dop" name="pDOP" />
         <ref field="res1" name="reserved1" />
         <int name="numSV" type="uint8" />

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavClock" id="MsgId.NavClock" displayName="NAV-CLOCK" order="0" sender="server">
+        <ref field="itow" />
+        <int name="clkB" type="int32" units="ns" />
+        <int name="clkD" type="int32" units="ns" />
+        <int name="tAcc" type="uint32" units="ns" />
+        <int name="fAcc" type="uint32" />
+    </message>
+    
+    <message name="NavClockPoll" id="MsgId.NavClock" displayName="NAV-CLOCK (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>

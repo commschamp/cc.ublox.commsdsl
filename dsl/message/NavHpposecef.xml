@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavHpposecef" id="MsgId.NavHpposecef" displayName="NAV-HPPOSECEF" order="0" platforms="+ublox8" sender="server">
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res3" name="reserved1" />
+        <ref field="itow" />
+        <ref field="ecefX" />
+        <ref field="ecefY" />
+        <ref field="ecefZ" />
+        <ref field="ecefHP" name="ecefXHp" />
+        <ref field="ecefHP" name="ecefYHp" />
+        <ref field="ecefHP" name="ecefZHp" />
+        <ref field="res1" name="reserved2" />
+        <int name="pAcc" type="uint32" units="mm" scaling="1/10" displayDecimals="1"/>
+    </message>
+    
+    <message name="NavHpposecefPoll" id="MsgId.NavHpposecef" displayName="NAV-HPPOSECEF (Poll)" order="1" >
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

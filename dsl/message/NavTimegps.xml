@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavTimegps" id="MsgId.NavTimegps" displayName="NAV-TIMEGPS" order="0" sender="server">
+        <ref field="itow" />
+        <ref field="ftow" />
+        <int name="weeks" type="int16" units="weeks" />
+        <int name="leapS" type="int8" units="s" />
+        <set name="valid" length="1">
+            <bit name="towValid" idx="0" />
+            <bit name="weekValid" idx="1" />
+            <bit name="leapSValid" idx="2" />
+        </set>
+        <int name="tAcc" type="uint32" units="ns" />
+    </message>
+    
+    <message name="NavTimegpsPoll" id="MsgId.NavTimegps" displayName="NAV-TIMEGPS (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>
