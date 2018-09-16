@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="RxmRtcm" id="MsgId.RxmRtcm" displayName="RXM-RTCM" platforms="+ublox8" sender="server">
+        <int name="version" type="uint8" defaultValue="2" validValue="2" />
+        <set name="flags" length="1">
+            <bit name="crcFailed" idx="0" />
+        </set>
+        <ref field="res2" name="reserved1" />
+        <int name="refStation" type="uint16" />
+        <int name="msgType" type="uint16" />
+    </message>
+</schema>

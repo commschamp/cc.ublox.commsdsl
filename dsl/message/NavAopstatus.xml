@@ -13,7 +13,7 @@
         <ref field="res4" name="reserved3" />
     </message>
 
-    <message name="NavAopstatus_u8" id="MsgId.NavAopstatus" displayName="NAV-AOPSTATUS (ublox-8)" order="1" platforms="+ublox8" sender="server">
+    <message name="NavAopstatusUblox8" id="MsgId.NavAopstatus" displayName="NAV-AOPSTATUS (ublox-8)" order="1" platforms="+ublox8" sender="server">
         <ref field="itow" />
         <set name="aopCfg" length="1">
             <bit name="useAOP" idx="0" />

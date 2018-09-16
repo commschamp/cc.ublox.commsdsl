@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="RxmPmreq" id="MsgId.RxmPmreq" displayName="RXM-PMREQ" order="1" platforms="+ublox6,ublox7" sender="client">
+        <int name="duration" type="uint32" units="ms" />
+        <set name="flags" length="4">
+            <bit name="backup" idx="1" />
+        </set>
+    </message>
+
+    <message name="RxmPmreqV0" id="MsgId.RxmPmreq" displayName="RXM-PMREQ (v0)" order="0" platforms="+ublox8" sender="client">
+        <int name="version" type="uint8" validValue="0" failOnInvalid="true" />
+        <ref field="res3" name="reserved1" />
+        <int name="duration" type="uint32" units="ms" />
+        <set name="flags" length="4">
+            <bit name="backup" idx="1" />
+            <bit name="force" idx="2" />
+        </set>
+        <set name="wakeupSources" length="4">
+            <bit name="uartrx" idx="3" />
+            <bit name="extint0" idx="5" />
+            <bit name="extint1" idx="6" />
+            <bit name="spics" idx="7" />
+        </set>        
+    </message>    
+</schema>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="RxmEph" id="MsgId.RxmEph" displayName="RXM-EPH" order="0" platforms="+ublox6,ublox7" sender="server">
+        <int name="svid" type="uint32" />
+        <int name="how" type="uint32" />
+        <optional name="sfd" cond="$how != 0" displayName="_">
+            <bundle name="lists" displayName="_">
+                <list name="sf1d" count="8">
+                    <element>
+                        <int name="element" type="uint32" />
+                    </element>
+                </list>
+                <list name="sf2d" count="8">
+                    <element>
+                        <int name="element" type="uint32" />
+                    </element>
+                </list>     
+                <list name="sf3d" count="8">
+                    <element>
+                        <int name="element" type="uint32" />
+                    </element>
+                </list>                           
+            </bundle>
+        </optional>
+    </message>
+
+    <message name="RxmEphPollSv" id="MsgId.RxmEph" displayName="RXM-EPH (Poll SV)" order="1">
+        <platforms value="+ublox6,ublox7" />
+        <sender value="client" />
+        <fields>
+            <int name="svid" type="uint8" />
+        </fields>
+    </message>       
+
+    <message name="RxmEphPoll" id="MsgId.RxmEph" displayName="RXM-EPH (Poll)" order="2">
+        <platforms value="+ublox6,ublox7" />
+        <sender value="client" />
+    </message>    
+</schema>

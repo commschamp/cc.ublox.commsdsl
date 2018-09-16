@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="RxmRlmShort" id="MsgId.RxmRlm" displayName="RXM-RLM (Short)" order="1" platforms="+ublox8" sender="server">
+        <int name="version" type="uint8" validValue="0" />
+        <int name="type" type="uint8" defaultValue="1" validValue="1" failOnInvalid="true" displayReadOnly="true"/>
+        <int name="svid" type="uint8" />
+        <ref field="res1" name="reserved1" />
+        <data name="beacon" length="8" />
+        <int name="message" type="uint8" />
+        <data name="params" length="2" />
+        <ref field="res1" name="reserved2" />
+    </message>
+
+    <message name="RxmRlmLong" id="MsgId.RxmRlm" displayName="RXM-RLM (Long)" order="0" platforms="+ublox8" sender="server">
+        <int name="version" type="uint8" validValue="0" />
+        <int name="type" type="uint8" defaultValue="2" validValue="2" failOnInvalid="true" displayReadOnly="true"/>
+        <int name="svid" type="uint8" />
+        <ref field="res1" name="reserved1" />
+        <data name="beacon" length="8" />
+        <int name="message" type="uint8" />
+        <data name="params" length="12" />
+        <ref field="res3" name="reserved2" />
+    </message>
+</schema>
