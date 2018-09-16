@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavEoe" id="MsgId.NavEoe" displayName="NAV-EOE" platforms="+ublox8" sender="server">
+        <ref field="itow" />
+    </message>
+</schema>

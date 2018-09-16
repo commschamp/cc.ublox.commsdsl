@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavOrb" id="MsgId.NavOrb" displayName="NAV-ORB" order="0" platforms="+ublox8" sender="server">
+        <ref field="itow" />
+        <int name="version" type="uint8" defaultValue="1" validValue="1" />
+        <int name="numSv" type="uint8" displayReadOnly="true" />
+        <ref field="res2" name="reserved1" />
+        <list name="list" countPrefix="$numSv" >
+            <element>
+                <bundle name="element" displayName="_">
+                    <ref field="gnssId" />
+                    <int name="svid" type="uint8" />
+                    <bitfield name="svFlag">
+                        <enum name="health" type="uint8" bitLength="2">
+                            <validValue name="Unknown" val="0" />
+                            <validValue name="Healthy" val="1" />
+                            <validValue name="NotHealthy" val="2" displayName="Not healty"/>
+                        </enum>
+                        <enum name="visibility" type="uint8" bitLength="2">
+                            <validValue name="Unknown" val="0" />
+                            <validValue name="BelowHorizon" val="1" displayName="Below horizon"/>
+                            <validValue name="AboveHorizon" val="2" displayName="Above horizon"/>
+                            <validValue name="AboveElevMask" val="3" displayName="Above elevation mask"/>
+                        </enum>                        
+                        <int reuse="res1" name="reserved" bitLength="4" displayHidden="true" />
+                    </bitfield>
+                    <bitfield name="eph">
+                        <int name="ephUsability" type="uint8" bitLength="5" />
+                        <enum name="ephSource" type="uint8" bitLength="3">
+                            <validValue name="NotAvailable" val="0" displayName="Not available" />
+                            <validValue name="GNSS" val="1" displayName="GNSS transmission" />
+                            <validValue name="ExternalAiding" val="2" displayName="External aiding" />
+                        </enum>
+                    </bitfield>
+                    <bitfield name="alm">
+                        <int name="almUsability" type="uint8" bitLength="5" />
+                        <enum name="almSource" type="uint8" bitLength="3">
+                            <validValue name="NotAvailable" val="0" displayName="Not available" />
+                            <validValue name="GNSS" val="1" displayName="GNSS transmission" />
+                            <validValue name="ExternalAiding" val="2" displayName="External aiding" />
+                        </enum>
+                    </bitfield>     
+                    <bitfield name="otherOrb">
+                        <int name="anoAopUsability" type="uint8" bitLength="5" />
+                        <enum name="type" type="uint8" bitLength="3">
+                            <validValue name="NotAvailable" val="0" displayName="Not available" />
+                            <validValue name="OfflineData" val="1" displayName="Offline data" />
+                            <validValue name="AutonomousData" val="2" displayName="Autonomous data" />
+                        </enum>
+                    </bitfield>                                      
+                </bundle>
+            </element>
+        </list>
+    </message>
+    
+    <message name="NavOrbPoll" id="MsgId.NavOrb" displayName="NAV-ORB (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

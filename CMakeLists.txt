@@ -69,6 +69,13 @@ set (schema_files
     dsl/message/NavSvinfo.xml
     dsl/message/NavDgps.xml
     dsl/message/NavSbas.xml
+    dsl/message/NavOrb.xml
+    dsl/message/NavSat.xml
+    dsl/message/NavGeofence.xml
+    dsl/message/NavSvin.xml
+    dsl/message/NavRelposned.xml
+    dsl/message/NavAopstatus.xml
+    dsl/message/NavEoe.xml
 )
 
 string(REPLACE ";" "\n" schema_files_str "${schema_files}")

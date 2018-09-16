@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavRelposned" id="MsgId.NavRelposned" displayName="NAV-RELPOSNED" order="0" platforms="+ublox8" sender="server">
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res1" name="reserved1" />
+        <int name="refStationId" type="uint16" validRange="[0, 4095]" />
+        <ref field="itow" />
+        <int name="relPosN" type="int32" units="cm" />
+        <int name="relPosE" type="int32" units="cm" />
+        <int name="relPosD" type="int32" units="cm" />
+        <int name="relPosHPN" type="int8" units="mm" scaling="1/10" displayDecimals="1" validRange="[-99, 99]"/>
+        <int name="relPosHPE" type="int8" units="mm" scaling="1/10" displayDecimals="1" validRange="[-99, 99]"/>
+        <int name="relPosHPD" type="int8" units="mm" scaling="1/10" displayDecimals="1" validRange="[-99, 99]"/>
+        <ref field="res1" name="reserved2" />
+        <int name="accN" type="uint32" units="mm" scaling="1/10" displayDecimals="1" />
+        <int name="accE" type="uint32" units="mm" scaling="1/10" displayDecimals="1" />
+        <int name="accD" type="uint32" units="mm" scaling="1/10" displayDecimals="1" />
+        <bitfield name="flags">
+            <set name="bitsLow" bitLength="3" displayName="_">
+                <bit name="gnssFixOK" idx="0" />
+                <bit name="diffSoln" idx="1" />
+                <bit name="relPosValid" idx="2" />
+            </set>
+            <enum name="carrSoln" type="uint8" bitLength="2">
+                <validValue name="NoCarrier" val="0" displayName="No carrier" />
+                <validValue name="FloatSolution" val="1" displayName="Float solution" />
+                <validValue name="FixedSolution" val="2" displayName="Fixed solution" />
+            </enum>
+            <set name="bitsHigh" bitLength="27" displayName="_">
+                <bit name="isMoving" idx="0" />
+                <bit name="refPosMiss" idx="1" />
+                <bit name="refObsMiss" idx="2" />
+            </set>            
+        </bitfield>
+    </message>
+    
+    <message name="NavRelposnedPoll" id="MsgId.NavRelposned" displayName="NAV-RELPOSNED (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

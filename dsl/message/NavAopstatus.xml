@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavAopstatus" id="MsgId.NavAopstatus" displayName="NAV-AOPSTATUS" order="0" platforms="+ublox6,ublox7" sender="server">
+        <ref field="itow" />
+        <set name="aopCfg" length="1">
+            <bit name="useAOP" idx="0" />
+        </set>
+        <int name="status" type="uint8" />
+        <ref field="res1" name="reserved0" />
+        <ref field="res1" name="reserved1" />
+        <int name="availGPS" type="uint32" />
+        <ref field="res4" name="reserved2" />
+        <ref field="res4" name="reserved3" />
+    </message>
+
+    <message name="NavAopstatus_u8" id="MsgId.NavAopstatus" displayName="NAV-AOPSTATUS (ublox-8)" order="1" platforms="+ublox8" sender="server">
+        <ref field="itow" />
+        <set name="aopCfg" length="1">
+            <bit name="useAOP" idx="0" />
+        </set>
+        <int name="status" type="uint8" />
+        <ref field="res2" name="reserved1" />
+        <ref field="res4" name="reserved2" />
+        <ref field="res4" name="reserved3" />
+    </message>    
+    
+    <message name="NavAopstatusPoll" id="MsgId.NavAopstatus" displayName="NAV-AOPSTATUS (Poll)" order="2">
+        <platforms value="-ublox5" />
+        <sender value="client" />
+    </message>
+</schema>

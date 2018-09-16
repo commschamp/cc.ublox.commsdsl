@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavSvin" id="MsgId.NavSvin" displayName="NAV-SVIN" order="0" platforms="+ublox8" sender="server">
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res3" name="reserved1" />
+        <ref field="itow" />
+        <int name="dur" type="uint32" units="s" />
+        <int name="meanX" type="int32" units="cm" />
+        <int name="meanY" type="int32" units="cm" />
+        <int name="meanZ" type="int32" units="cm" />
+        <int name="meanXHP" type="int8" units="mm" scaling="1/10" displayDecimals="1" validRange="[-99, 99]"/>
+        <int name="meanYHP" type="int8" units="mm" scaling="1/10" displayDecimals="1" validRange="[-99, 99]"/>
+        <int name="meanZHP" type="int8" units="mm" scaling="1/10" displayDecimals="1" validRange="[-99, 99]"/>
+        <ref field="res1" name="reserved2" />
+        <int name="meanAcc" type="uint32" units="mm" scaling="1/10" displayDecimals="1" />
+        <int name="obs" type="uint32" />
+        <int name="valid" type="uint8" />
+        <int name="active" type="uint8" />
+        <ref field="res2" name="reserved3" />
+    </message>
+    
+    <message name="NavSvinPoll" id="MsgId.NavSvin" displayName="NAV-SVIN (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

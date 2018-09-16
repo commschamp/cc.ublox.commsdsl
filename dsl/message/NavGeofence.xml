@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <fields>
+        <enum name="GeofenceState" type="uint8">
+            <validValue name="Unknown" val="0" />
+            <validValue name="Inside" val="1" />
+            <validValue name="Outside" val="2" />
+        </enum>
+    </fields>
+    <message name="NavGeofence" id="MsgId.NavGeofence" displayName="NAV-GEOFENCE" order="0" platforms="+ublox8" sender="server">
+        <ref field="itow" />
+        <int name="version" type="uint8" validValue="0" />
+        <enum name="status" type="uint8">
+            <validValue name="NotAvailable" val="0" displayName="Not available" />
+            <validValue name="Active" val="1" />
+        </enum>
+        <int name="numFences" type="uint8" displayReadOnly="true" />
+        <ref field="GeofenceState" name="combState" />
+        <list name="list" countPrefix="$numFences" >
+            <element>
+                <bundle name="element" displayName="_">
+                    <ref field="GeofenceState" name="state"/>
+                    <ref field="res1" name="reserved1" />
+                </bundle>
+            </element>
+        </list>
+    </message>
+    
+    <message name="NavGeofencePoll" id="MsgId.NavGeofence" displayName="NAV-GEOFENCE (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

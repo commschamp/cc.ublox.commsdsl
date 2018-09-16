@@ -46,5 +46,14 @@
         <int name="vel" type="int32" units="mmps" />
         <int name="heading" type="int32" units="deg" scaling="1/100000" displayDecimals="5" />
         <int name="headingAcc" type="uint32" units="deg" scaling="1/100000" displayDecimals="5" />
+        <enum name="gnssId" type="uint8">
+            <validValue name="GPS" val="0" />
+            <validValue name="SBAS" val="1" />
+            <validValue name="Galileo" val="2" />
+            <validValue name="BeiDou" val="3" />
+            <validValue name="IMES" val="4" />
+            <validValue name="QZSS" val="5" />
+            <validValue name="GLONASS" val="6" />
+        </enum>
     </fields>
 </schema>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavSat" id="MsgId.NavSat" displayName="NAV-SAT" order="0" platforms="+ublox8" sender="server">
+        <ref field="itow" />
+        <int name="version" type="uint8" defaultValue="1" validValue="1" />
+        <int name="numSvs" type="uint8" displayReadOnly="true" />
+        <ref field="res2" name="reserved1" />
+        <list name="list" countPrefix="$numSvs" >
+            <element>
+                <bundle name="element" displayName="_">
+                    <ref field="gnssId" />
+                    <int name="svid" type="uint8" />
+                    <int name="cno" type="uint8" />
+                    <int name="elev" type="int8" units="deg" validRange="[-90, 90]" />
+                    <int name="azim" type="int16" units="deg" validRange="[0, 360]" />
+                    <int name="prRes" type="int16" units="m" scaling="1/10" displayDecimals="1" />
+                    <bitfield name="flags">
+                        <enum name="qualityInd" type="uint8" bitLength="3">
+                            <validValue name="NoSignal" val="0" displayName="no signal"/>
+                            <validValue name="Searching" val="1" displayName="searching"/>
+                            <validValue name="Acquired" val="2" displayName="signal acquired"/>
+                            <validValue name="Unusable" val="3" displayName="detected but unsable"/>
+                            <validValue name="CodeLocked" val="4" displayName="code locked"/>
+                            <validValue name="CodeCarrierLocked" val="5" displayName="code and carrier locked"/>
+                            <validValue name="CodeCarrierLocked2" val="6" displayName="code and carrier locked"/>
+                            <validValue name="CodeCarrierLocked3" val="7" displayName="code and carrier locked"/>
+                        </enum>
+                        <set name="bitsLow" bitLength="1" displayName="_">
+                            <bit name="svUsed" idx="0" />
+                        </set>
+                        <enum name="health" type="uint8" bitLength="2">
+                            <validValue name="Unknown" val="0" />
+                            <validValue name="Healthy" val="1" />
+                            <validValue name="Unhealthy" val="2" />
+                        </enum>
+                        <set name="bitsMid" bitLength="2" displayName="_">
+                            <bit name="diffCorr" idx="0" />
+                            <bit name="smoothed" idx="1" />
+                        </set>
+                        <enum name="orbitSource" type="uint8" bitLength="3">
+                            <validValue name="NoOrbit" val="0" displayName="No orbit"/>
+                            <validValue name="Ephemeris" val="1"/>
+                            <validValue name="Almanac" val="2"/>
+                            <validValue name="AssistNowOffline" val="3" displayName="AssistNow Offline"/>
+                            <validValue name="AssistNowAutonomous" val="4" displayName="AssistNow Autonomous"/>
+                        </enum>                        
+                        <set name="bitsHigh" bitLength="21" displayName="_">
+                            <bit name="ephAvail" idx="0" />
+                            <bit name="almAvail" idx="1" />
+                            <bit name="anoAvail" idx="2" />
+                            <bit name="aopAvail" idx="3" />
+                            <bit name="sbasCorrUsed" idx="5" />
+                            <bit name="rtcmCorrUsed" idx="6" />
+                            <bit name="prCorrUsed" idx="9" />
+                            <bit name="crCorrUsed" idx="10" />
+                            <bit name="doCorrUsed" idx="11" />
+                        </set>
+                    </bitfield>
+                </bundle>
+            </element>
+        </list>
+    </message>
+    
+    <message name="NavSatPoll" id="MsgId.NavSat" displayName="NAV-SAT (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>
