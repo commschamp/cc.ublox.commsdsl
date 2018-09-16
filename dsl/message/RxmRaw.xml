@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="RxmRaw" id="MsgId.RxmRaw" displayName="RXM-RAW" order="0" platforms="+ublox6,ublox7" sender="server">
+        <int name="rcvTow" type="int32" units="ms" />
+        <int name="week" type="int16" units="weeks" />
+        <int name="numSV" type="uint8" displayReadOnly="true" />
+        <ref field="res1" name="reserved1" />
+        <list name="list" countPrefix="$numSV" >
+            <element>
+                <bundle name="element" displayName="_">
+                    <float name="cpMes" type="double" />
+                    <float name="prMes" type="double" units="m"/>
+                    <float name="doMes" type="float" units="hz"/>
+                    <int name="sv" type="uint8" />
+                    <int name="mesQI" type="int8" />
+                    <int name="cno" type="int8" />
+                    <int name="lli" type="uint8" />
+                </bundle>
+            </element>
+        </list>
+    </message>
+    
+    <message name="RxmRawPoll" id="MsgId.RxmRaw" displayName="RXM-RAW (Poll)" order="1">
+        <platforms value="+ublox6,ublox7" />
+        <sender value="client" />
+    </message>
+</schema>

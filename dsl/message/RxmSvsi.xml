@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="RxmSvsi" id="MsgId.RxmSvsi" displayName="RXM-SVSI" order="0" sender="server">
+        <ref field="itow" />
+        <int name="week" type="int16" units="weeks" />
+        <int name="numVis" type="uint8" />
+        <int name="numSV" type="uint8" displayReadOnly="true" />
+        <list name="list" countPrefix="$numSV">
+            <element>
+                <bundle name="element" displayName="_">
+                    <int name="svid" type="uint8" />
+                    <bitfield name="svFlag">
+                        <int name="ura" type="uint8" bitLength="4" />
+                        <set name="bits" bitLength="4" displayName="_">
+                            <bit name="healthy" idx="0" />
+                            <bit name="ephVal" idx="1" />
+                            <bit name="almVal" idx="2" />
+                            <bit name="notAvail" idx="3" />
+                        </set>
+                    </bitfield>
+                    <int name="azim" type="int16" />
+                    <int name="elev" type="int8" />
+                    <bitfield name="age">
+                        <int name="almAge" type="uint8" bitLength="4" />
+                        <int name="ephAge" type="uint8" bitLength="4" />
+                    </bitfield>
+                </bundle>
+            </element>
+        </list>
+    </message>
+
+    <message name="RxmSvsiPoll" id="MsgId.RxmSvsi" displayName="RXM-SVSI (Poll)" order="1">
+        <sender value="client" />
+    </message>    
+</schema>

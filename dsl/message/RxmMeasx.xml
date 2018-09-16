@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="RxmMeasx" id="MsgId.RxmMeasx" displayName="RXM-MEASX" platforms="+ublox8" sender="server">
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res3" name="reserved1" />
+        <int name="gpsTOW" type="uint32" units="ms" />
+        <int name="gloTOW" type="uint32" units="ms" />
+        <int name="bdsTOW" type="uint32" units="ms" />
+        <ref field="res4" name="reserved2" />
+        <int name="qzssTOW" type="uint32" units="ms" />
+        <int name="gpsTOWacc" type="uint16" units="ms" scaling="1/0x10" displayDecimals="2" />
+        <int name="gloTOWacc" type="uint16" units="ms" scaling="1/0x10" displayDecimals="2" />
+        <int name="bdsTOWacc" type="uint16" units="ms" scaling="1/0x10" displayDecimals="2" />
+        <ref field="res2" name="reserved3" />
+        <int name="qzssTOWacc" type="uint16" units="ms" scaling="1/0x10" displayDecimals="2" />
+        <int name="numSV" type="uint8" displayReadOnly="true" />
+        <bitfield name="flags">
+            <enum name="towSet" type="uint8" bitLength="2">
+                <validValue name="No" val="0" />
+                <validValue name="Yes" val="1" />
+                <validValue name="Yes2" val="2" />
+            </enum>
+            <int name="reserved" type="uint8" bitLength="6" displayHidden="true" />
+        </bitfield>
+        <ref field="res8" name="reserved4" />
+        <list name="list" countPrefix="$numSV">
+            <element>
+                <bundle name="element" displayName="_">
+                    <ref field="gnssId" />
+                    <int name="svid" type="uint8" />
+                    <int name="cNo" type="uint8" validRange="[0, 63]"/>
+                    <enum name="mpathIndic" type="uint8">
+                        <validValue name="NotMeasured" val="0" displayName="Not measured" />
+                        <validValue name="Low" val="1" />
+                        <validValue name="Medium" val="2" />
+                        <validValue name="High" val="3" />
+                    </enum>
+                    <int name="dopplerMS" type="int32" units="mps" scaling="4/100" displayDecimals="2" />
+                    <int name="dopplerHz" type="int32" units="hz" scaling="2/100" displayDecimals="2" />
+                    <int name="wholeChips" type="uint16" validRange="[0, 1022]" />
+                    <int name="fracChips" type="uint16" validRange="[0, 1023]" />
+                    <int name="codePhase" type="uint32" units="ms" scaling="1/0x200000" displayDecimals="9" />
+                    <int name="intCodePhase" type="uint8" units="ms" />
+                    <int name="pseuRangeRMSErr" type="uint8" validRange="[0, 63]" />
+                    <ref field="res2" name="reserved5" />
+                </bundle>
+            </element>
+        </list>
+    </message>
+</schema>

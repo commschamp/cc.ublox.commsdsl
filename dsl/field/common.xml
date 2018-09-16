@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
     <fields>
-        <int name="res1" type="uint8" validValue="0" />
-        <int name="res2" type="uint16" validValue="0" />
-        <int name="res3" type="uint32" length="3" validValue="0" />
-        <int name="res4" type="uint32" validValue="0" />
+        <int name="res1" type="uint8" validValue="0">
+            <description>Reserved field with 1 byte length</description>
+        </int>
+        <int name="res2" type="uint16" validValue="0">
+            <description>Reserved field with 2 bytes length</description>
+        </int>
+        <int name="res3" type="uint32" length="3" validValue="0">
+            <description>Reserved field with 3 bytes length</description>
+        </int>
+        <int name="res4" type="uint32" validValue="0">
+            <description>Reserved field with 4 bytes length</description>
+        </int>
+        <int name="res8" type="uint64" validValue="0">
+            <description>Reserved field with 8 bytes length</description>
+        </int>
         <int name="itow" type="uint32" units="ms" validMax="604799999" displayName="iTOW"/>
         <int name="ftow" type="int32" units="ns" validRange="[-500000, 500000]" displayName="fTOW"/>
         <int name="ecefX" type="int32" units="cm" />

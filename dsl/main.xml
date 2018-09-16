@@ -40,8 +40,19 @@
             <validValue name="NavEkfstatus" val="0x0140" displayName="NAV-EKFSTATUS" />
             <validValue name="NavAopstatus" val="0x0160" displayName="NAV-AOPSTATUS" />
             <validValue name="NavEoe" val="0x0161" displayName="NAV-EOE" />
+            <validValue name="RxmRaw" val="0x0210" displayName="RXM-RAW" />
+            <validValue name="RxmSfrb" val="0x0211" displayName="RXM-SFRB" />
+            <validValue name="RxmSfrbx" val="0x0213" displayName="RXM-SFRBX" />
+            <validValue name="RxmMeasx" val="0x0214" displayName="RXM-MEASX" />
+            <validValue name="RxmRawx" val="0x0215" displayName="RXM-RAWX" />
+            <validValue name="RxmSvsi" val="0x0220" displayName="RXM-SVSI" />
+            <validValue name="RxmAlm" val="0x0230" displayName="RXM-ALM" />
+            <validValue name="RxmEph" val="0x0231" displayName="RXM-EPH" />
+            <validValue name="RxmRtcm" val="0x0232" displayName="RXM-RTCM" />
+            <validValue name="RxmPmreq" val="0x0241" displayName="RXM-PMREQ" />
+            <validValue name="RxmRlm" val="0x0259" displayName="RXM-RLM" />
+            <validValue name="RxmImes" val="0x0261" displayName="RXM-IMES" />
         </enum>
-
     </fields>
     
     <frame name="UbloxFrame">
