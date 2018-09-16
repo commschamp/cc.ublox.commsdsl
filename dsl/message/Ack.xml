@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="AckNak" id="MsgId.AckNak" displayName="ACK-NAK" sender="server">
+        <ref field="MsgId" />
+    </message>
+
+    <message name="AckAck" id="MsgId.AckAck" displayName="ACK-ACK" sender="server">
+        <ref field="MsgId" />
+    </message>
+
+</schema>

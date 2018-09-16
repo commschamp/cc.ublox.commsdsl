@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="InfError" id="MsgId.InfError" displayName="INF-ERROR" sender="server">
+        <string name="str" />
+    </message>
+
+    <message name="InfWarning" id="MsgId.InfWarning" displayName="INF-WARNING" sender="server">
+        <string name="str" />
+    </message>
+
+    <message name="InfNotice" id="MsgId.InfNotice" displayName="INF-NOTICE" sender="server">
+        <string name="str" />
+    </message>
+
+    <message name="InfTest" id="MsgId.InfTest" displayName="INF-TEST" sender="server">
+        <string name="str" />
+    </message>
+
+    <message name="InfDebug" id="MsgId.InfDebug" displayName="INF-DEBUG" sender="server">
+        <string name="str" />
+    </message>
+</schema>

@@ -52,6 +52,13 @@
             <validValue name="RxmPmreq" val="0x0241" displayName="RXM-PMREQ" />
             <validValue name="RxmRlm" val="0x0259" displayName="RXM-RLM" />
             <validValue name="RxmImes" val="0x0261" displayName="RXM-IMES" />
+            <validValue name="InfError" val="0x0400" displayName="INF-ERROR" />
+            <validValue name="InfWarning" val="0x0401" displayName="INF-WARNING" />
+            <validValue name="InfNotice" val="0x0402" displayName="INF-NOTICE" />
+            <validValue name="InfTest" val="0x0403" displayName="INF-TEST" />
+            <validValue name="InfDebug" val="0x0404" displayName="INF-DEBUG" />
+            <validValue name="AckNak" val="0x0500" displayName="ACK-NAK" />
+            <validValue name="AckAck" val="0x0501" displayName="ACK-ACK" />
         </enum>
     </fields>
     
