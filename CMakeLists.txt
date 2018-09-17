@@ -90,6 +90,8 @@ set (schema_files
     dsl/message/RxmImes.xml
     dsl/message/Inf.xml
     dsl/message/Ack.xml
+    dsl/message/CfgPrt.xml
+    dsl/message/CfgMsg.xml
 )
 
 string(REPLACE ";" "\n" schema_files_str "${schema_files}")

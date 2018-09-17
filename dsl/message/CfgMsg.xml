@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+
+    <message name="CfgMsg" id="MsgId.CfgMsg" displayName="CFG-MSG" order="0">
+        <ref field="MsgId" />
+        <list name="rates" count="6">
+            <element>
+                <int name="element" type="uint8" />
+            </element>
+        </list>
+    </message>
+
+    <message name="CfgMsgCurrent" id="MsgId.CfgMsg" displayName="CFG-MSG (Current)" order="1">
+        <ref field="MsgId" />
+        <int name="rate" type="uint8" />
+    </message>    
+
+    <message name="CfgMsgPoll" id="MsgId.CfgMsg" displayName="CFG-MSG (Poll)" order="2" sender="client">
+        <ref field="MsgId" />
+    </message>
+</schema>

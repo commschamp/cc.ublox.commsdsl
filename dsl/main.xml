@@ -59,6 +59,48 @@
             <validValue name="InfDebug" val="0x0404" displayName="INF-DEBUG" />
             <validValue name="AckNak" val="0x0500" displayName="ACK-NAK" />
             <validValue name="AckAck" val="0x0501" displayName="ACK-ACK" />
+            <validValue name="CfgPrt" val="0x0600" displayName="CFG-PRT" />
+            <validValue name="CfgMsg" val="0x0601" displayName="CFG-MSG" />
+            <validValue name="CfgInf" val="0x0602" displayName="CFG-INF" />
+            <validValue name="CfgRst" val="0x0604" displayName="CFG-RST" />
+            <validValue name="CfgDat" val="0x0606" displayName="CFG-DAT" />
+            <validValue name="CfgTp" val="0x0607" displayName="CFG-TP" />
+            <validValue name="CfgRate" val="0x0608" displayName="CFG-RATE" />
+            <validValue name="CfgCfg" val="0x0609" displayName="CFG-CFG" />
+            <validValue name="CfgFxn" val="0x060E" displayName="CFG-FXN" />
+            <validValue name="CfgRxm" val="0x0611" displayName="CFG-RXM" />
+            <validValue name="CfgEkf" val="0x0612" displayName="CFG-EKF" />
+            <validValue name="CfgAnt" val="0x0613" displayName="CFG-ANT" />
+            <validValue name="CfgSbas" val="0x0616" displayName="CFG-SBAS" />
+            <validValue name="CfgNmea" val="0x0617" displayName="CFG-NMEA" />
+            <validValue name="CfgUsb" val="0x061b" displayName="CFG-USB" />
+            <validValue name="CfgTmode" val="0x061d" displayName="CFG-TMODE" />
+            <validValue name="CfgOdo" val="0x061e" displayName="CFG-ODO" />
+            <validValue name="CfgNvs" val="0x0622" displayName="CFG-NVS" />
+            <validValue name="CfgNavx5" val="0x0623" displayName="CFG-NAVX5" />
+            <validValue name="CfgNav5" val="0x0624" displayName="CFG-NAV5" />
+            <validValue name="CfgEsfgwt" val="0x0629" displayName="CFG-ESFGWT" />
+            <validValue name="CfgTp5" val="0x0631" displayName="CFG-TP5" />
+            <validValue name="CfgPm" val="0x0632" displayName="CFG-PM" />
+            <validValue name="CfgRinv" val="0x0634" displayName="CFG-RINV" />
+            <validValue name="CfgItfm" val="0x0639" displayName="CFG-ITFM" />
+            <validValue name="CfgPm2" val="0x063b" displayName="CFG-PM2" />
+            <validValue name="CfgTmode2" val="0x063d" displayName="CFG-TMODE2" />
+            <validValue name="CfgGnss" val="0x063e" displayName="CFG-GNSS" />
+            <validValue name="CfgLogfilter" val="0x0647" displayName="CFG-LOGFILTER" />
+            <validValue name="CfgTxslot" val="0x0653" displayName="CFG-TXSLOT" />
+            <validValue name="CfgPwr" val="0x0657" displayName="CFG-PWR" />
+            <validValue name="CfgHnr" val="0x065C" displayName="CFG-HNR" />
+            <validValue name="CfgEsrc" val="0x0660" displayName="CFG-ESRC" />
+            <validValue name="CfgDosc" val="0x0661" displayName="CFG-DOSC" />
+            <validValue name="CfgSmgr" val="0x0662" displayName="CFG-SMGR" />
+            <validValue name="CfgGeofence" val="0x0669" displayName="CFG-GEOFENCE" />
+            <validValue name="CfgDgnss" val="0x0670" displayName="CFG-DGNSS" />
+            <validValue name="CfgTmode3" val="0x0671" displayName="CFG-TMODE3" />
+            <validValue name="CfgFixseed" val="0x0684" displayName="CFG-FIXSEED" />
+            <validValue name="CfgDynseed" val="0x0685" displayName="CFG-DYNSEED" />
+            <validValue name="CfgPms" val="0x0686" displayName="CFG-PMS" />
+            <validValue name="UpdSos" val="0x0914" displayName="UPD-SOS" />
         </enum>
     </fields>
     
