@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgTp" id="MsgId.CfgTp" displayName="CFG-TP" order="0" platforms="+ublox5,ublox6">
+        <int name="interval" type="uint32" units="us" />
+        <int name="length" type="uint32" units="us" />
+        <enum name="status" type="int8">
+            <validValue name="Positive" val="1" />
+            <validValue name="Off" val="0" />
+            <validValue name="Negative" val="-1" />
+        </enum>
+        <enum name="timeRef" type="uint8">
+            <validValue name="UTC" val="0" />
+            <validValue name="GPS" val="1" />
+            <validValue name="Local" val="2" />
+        </enum>
+        <set name="flags" length="1">
+            <bit name="syncMode" idx="0" />
+        </set>
+        <ref field="res1" name="res" />
+        <int name="antennaCableDelay" type="int16" units="ns" />
+        <int name="rfGroupDelay" type="int16" units="ns" />
+        <int name="userDelay" type="int32" units="ns" />
+    </message>
+
+    <message name="CfgTpPoll" id="MsgId.CfgTp" displayName="CFG-TP (Poll)" order="1">
+        <platforms value="+ublox5,ublox6" />
+        <sender value="client" />
+    </message>
+</schema>

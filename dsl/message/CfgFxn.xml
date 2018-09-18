@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgFxn" id="MsgId.CfgFxn" displayName="CFG-FXN" order="0" platforms="+ublox6">
+        <set name="flags" length="4">
+            <bit name="sleep" idx="1" />
+            <bit name="absAlign" idx="3" />
+            <bit name="onOff" idx="4" />
+        </set>
+        <int name="tReacq" type="uint32" units="ms" />
+        <int name="tAcq" type="uint32" units="ms" />
+        <int name="tReacqOff" type="uint32" units="ms" />
+        <int name="tAcqOff" type="uint32" units="ms" />
+        <int name="tOn" type="uint32" units="ms" />
+        <int name="tOff" type="uint32" units="ms" />
+        <ref field="res4" name="res" />
+        <int name="baseTow" type="uint32" units="ms" />
+    </message>
+
+    <message name="CfgFxnPoll" id="MsgId.CfgFxn" displayName="CFG-FXN (Poll)" order="1">
+        <platforms value="+ublox6" />
+        <sender value="client" />
+    </message>
+</schema>

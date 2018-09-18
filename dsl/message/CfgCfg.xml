@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <fields>
+        <set name="cfgCfgMask" length="4">
+            <bit name="ioPort" idx="0" />
+            <bit name="msgConf" idx="1" />
+            <bit name="infMsg" idx="2" />
+            <bit name="navConf" idx="3" />
+            <bit name="rxmConf" idx="4" />
+            <bit name="senConf" idx="8" />
+            <bit name="rinvConf" idx="9" />
+            <bit name="antConf" idx="10" />
+            <bit name="logConf" idx="11" />
+            <bit name="ftsConf" idx="12" />
+        </set>
+    </fields>
+    <message name="CfgCfg" id="MsgId.CfgCfg" displayName="CFG-CFG" sender="client">
+        <ref field="cfgCfgMask" name="clearMask" />
+        <ref field="cfgCfgMask" name="saveMask" />
+        <ref field="cfgCfgMask" name="loadMask" />
+        <optional name="deviceMask">
+            <set name="deviceMask" length="1">
+                <bit name="devBBR" idx="0" />
+                <bit name="devFlash" idx="1" />
+                <bit name="devEEPROM" idx="2" />
+                <bit name="devSpiFlash" idx="4" />
+            </set>
+        </optional>
+    </message>
+</schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgRxm" id="MsgId.CfgRxm" displayName="CFG-RXM" order="0">
+        <ref field="res1" name="reserved1" />
+        <enum name="lpMode" type="uint8">
+            <validValue name="Continuous" val="0" />
+            <validValue name="PowerSave" val="1" displayName="Power Save"/>
+            <validValue name="Continuous2" val="4" displayName="Continuous (2)"/>
+        </enum>
+    </message>
+
+    <message name="CfgRxmPoll" id="MsgId.CfgRxm" displayName="CFG-RXM (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>

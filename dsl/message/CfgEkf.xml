@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgEkf" id="MsgId.CfgEkf" displayName="CFG-EKF" order="0" platforms="+ublox6">
+        <enum name="disableEkf" type="uint8">
+            <validValue name="Enabled" val="0" />
+            <validValue name="Disabled" val="1" />
+        </enum>
+        <set name="actionFlags" length="1">
+            <bit name="clTab" idx="1" />
+            <bit name="clCalib" idx="2" />
+            <bit name="nomTacho" idx="4" />
+            <bit name="nomGyro" idx="5" />
+            <bit name="setTemp" idx="6" />
+            <bit name="dir" idx="7" />
+        </set>
+        <set name="configFlags" length="1">
+            <bit name="pulsesPerM" idx="0" />
+            <bit name="useSerWt" idx="1" />
+        </set>
+        <set name="inverseFlags" length="1">
+            <bit name="invDir" idx="0" />
+            <bit name="invGyro" idx="1" />
+        </set>
+        <ref field="res4" name="reserved2" />
+        <int name="nomPPDist" type="uint16" />
+        <int name="nomZero" type="uint16" />
+        <int name="nomSens" type="uint8" validRange="[20, 40]"/>
+        <int name="rmsTemp" type="uint8" validRange="[1, 10]" scaling="1/10" displayDecimals="1"/>
+        <int name="tempUpdate" type="uint16" validMin="9" />
+    </message>
+
+    <message name="CfgEkfPoll" id="MsgId.CfgEkf" displayName="CFG-EKF (Poll)" order="1">
+        <platforms value="+ublox6" />
+        <sender value="client" />
+    </message>
+</schema>

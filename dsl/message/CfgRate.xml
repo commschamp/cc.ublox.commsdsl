@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgRate" id="MsgId.CfgRate" displayName="CFG-RATE" order="0">
+        <int name="measRate" type="uint16" units="ms" />
+        <int name="navRate" type="uint16" />
+        <enum name="timeRef" type="uint16">
+            <validValue name="UTC" val="0" />
+            <validValue name="GPS" val="1" />
+            <validValue name="GLONASS" val="2" />
+            <validValue name="BeiDou" val="3" />
+            <validValue name="Galileo" val="4" />
+        </enum>
+    </message>
+
+    <message name="CfgRatePoll" id="MsgId.CfgRate" displayName="CFG-RATE (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>

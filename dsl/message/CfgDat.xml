@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <fields>
+        <enum name="cfgDatDatumNum" type="uint16">
+            <validValue name="WGS84" val="0" />
+            <validValue name="User" val="0xffff" />
+        </enum>
+
+        <float name="cfgDatMajA" type="double" units="m" validRange="[6300000.0, 6500000.0]" />
+        <float name="cfgDatFlat" type="double" validRange="[0.0, 500.0]" />
+        <float name="cfgDatD" type="float" units="m" validRange="[-500.0, 500.0]" />
+        <float name="cfgDatRot" type="float" validRange="[-20.0, 20.0]" />
+        <float name="cfgDatScale" type="float" validRange="[0.0, 50.0]" />
+    </fields>
+    <message name="CfgDat" id="MsgId.CfgDat" displayName="CFG-DAT" order="0" sender="server">
+        <ref field="cfgDatDatumNum" name="datumNum" />
+        <string name="datumName" length="6" />
+        <ref field="cfgDatMajA" name="majA" />
+        <ref field="cfgDatFlat" name="flat" />
+        <ref field="cfgDatD" name="dX" />
+        <ref field="cfgDatD" name="dY" />
+        <ref field="cfgDatD" name="dZ" />
+        <ref field="cfgDatRot" name="rotX" />
+        <ref field="cfgDatRot" name="rotY" />
+        <ref field="cfgDatRot" name="rotZ" />
+        <ref field="cfgDatScale" name="scale" />
+    </message>
+
+    <message name="CfgDatUser" id="MsgId.CfgDat" displayName="CFG-DAT (User)" order="1" sender="client">
+        <ref field="cfgDatMajA" name="majA" />
+        <ref field="cfgDatFlat" name="flat" />
+        <ref field="cfgDatD" name="dX" />
+        <ref field="cfgDatD" name="dY" />
+        <ref field="cfgDatD" name="dZ" />
+        <ref field="cfgDatRot" name="rotX" />
+        <ref field="cfgDatRot" name="rotY" />
+        <ref field="cfgDatRot" name="rotZ" />
+        <ref field="cfgDatScale" name="scale" />
+    </message>
+
+    <message name="CfgDatStandard" id="MsgId.CfgDat" displayName="CFG-DAT (Standard)" order="2" platforms="+ublox5,ublox6" sender="client">
+        <ref field="cfgDatDatumNum" name="datumNum" />
+    </message>
+
+    <message name="CfgDatPoll" id="MsgId.CfgDat" displayName="CFG-DAT (Poll)" order="3">
+        <sender value="client" />
+    </message>
+
+</schema>

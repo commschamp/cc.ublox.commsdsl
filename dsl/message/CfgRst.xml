@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgRst" id="MsgId.CfgRst" displayName="CFG-RST" sender="client">
+        <set name="navBbrMask" length="2">
+            <bit name="eph" idx="0" />
+            <bit name="alm" idx="1" />
+            <bit name="health" idx="2" />
+            <bit name="klob" idx="3" />
+            <bit name="pos" idx="4" />
+            <bit name="clkd" idx="5" />
+            <bit name="osc" idx="6" />
+            <bit name="utc" idx="7" />
+            <bit name="rtc" idx="8" />
+            <bit name="aop" idx="15" />
+        </set>
+        <enum name="resetMode" type="uint8">
+            <validValue name="Hardware" val="0" />
+            <validValue name="Software" val="1" />
+            <validValue name="SoftwareGnssOnly" val="2" displayName="Software (GNSS only)"/>
+            <validValue name="HardwareAfterShutdown" val="4" displayName="Hardware (after shutdown)"/>
+            <validValue name="GnssStop" val="8" displayName="GNSS stop"/>
+            <validValue name="GnssStart" val="9" displayName="GNSS start"/>
+        </enum>
+        <ref field="res1" name="reserved1" />
+    </message>
+</schema>
