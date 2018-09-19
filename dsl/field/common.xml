@@ -13,6 +13,9 @@
         <int name="res4" type="uint32" validValue="0">
             <description>Reserved field with 4 bytes length</description>
         </int>
+        <int name="res6" type="uint64" length="6" validValue="0">
+            <description>Reserved field with 6 bytes length</description>
+        </int>
         <int name="res8" type="uint64" validValue="0">
             <description>Reserved field with 8 bytes length</description>
         </int>

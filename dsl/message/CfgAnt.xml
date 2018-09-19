@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgAnt" id="MsgId.CfgAnt" displayName="CFG-ANT" order="0">
+        <set name="flags" length="2">
+            <bit name="svcs" idx="0" />
+            <bit name="scd" idx="1" />
+            <bit name="ocd" idx="2" />
+            <bit name="pdwnOnSCD" idx="3" />
+            <bit name="recovery" idx="4" />
+        </set>
+        <bitfield name="pins">
+            <int name="pinSwitch" type="uint8" bitLength="5" />
+            <int name="pinSCD" type="uint8" bitLength="5" />
+            <int name="pinOCD" type="uint8" bitLength="5" />
+            <set name="bits" bitLength="1" displayName="_">
+                <bit name="reconfig" idx="0" />
+            </set>
+        </bitfield>
+    </message>
+
+    <message name="CfgAntPoll" id="MsgId.CfgAnt" displayName="CFG-ANT (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgSbas" id="MsgId.CfgSbas" displayName="CFG-SBAS" order="0">
+        <set name="mode" length="1">
+            <bit name="enabled" idx="0" />
+            <bit name="test" idx="1" />
+        </set>
+        <set name="usage" length="1">
+            <bit name="range" idx="0" />
+            <bit name="diffCorr" idx="1" />
+            <bit name="integrity" idx="2" />
+        </set>
+        <int name="maxSBAS" type="uint8" validRange="[0, 3]" />
+        <set name="scanmode2" length="1">
+            <bit name="PRN152" idx="0" />
+            <bit name="PRN153" idx="1" />
+            <bit name="PRN154" idx="2" />
+            <bit name="PRN155" idx="3" />
+            <bit name="PRN156" idx="4" />
+            <bit name="PRN157" idx="5" />
+            <bit name="PRN158" idx="6" />
+        </set>
+        <set name="scanmode1" length="4">
+            <bit name="PRN120" idx="0" />
+            <bit name="PRN121" idx="1" />
+            <bit name="PRN122" idx="2" />
+            <bit name="PRN123" idx="3" />
+            <bit name="PRN124" idx="4" />
+            <bit name="PRN125" idx="5" />
+            <bit name="PRN126" idx="6" />
+            <bit name="PRN127" idx="7" />
+            <bit name="PRN128" idx="8" />
+            <bit name="PRN129" idx="9" />
+            <bit name="PRN130" idx="10" />
+            <bit name="PRN131" idx="11" />
+            <bit name="PRN132" idx="12" />
+            <bit name="PRN133" idx="13" />
+            <bit name="PRN134" idx="14" />
+            <bit name="PRN135" idx="15" />
+            <bit name="PRN136" idx="16" />
+            <bit name="PRN137" idx="17" />
+            <bit name="PRN138" idx="18" />
+            <bit name="PRN139" idx="19" />
+            <bit name="PRN140" idx="20" />
+            <bit name="PRN141" idx="21" />
+            <bit name="PRN142" idx="22" />
+            <bit name="PRN143" idx="23" />
+            <bit name="PRN144" idx="24" />
+            <bit name="PRN145" idx="25" />
+            <bit name="PRN146" idx="26" />
+            <bit name="PRN147" idx="27" />
+            <bit name="PRN148" idx="28" />
+            <bit name="PRN149" idx="29" />
+            <bit name="PRN150" idx="30" />
+            <bit name="PRN151" idx="31" />
+        </set>
+    </message>
+
+    <message name="CfgSbasPoll" id="MsgId.CfgSbas" displayName="CFG-SBAS (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>
