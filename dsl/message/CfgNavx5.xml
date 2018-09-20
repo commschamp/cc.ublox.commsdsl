@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <fields>
+        <set name="CfgNavx5Mask1" length="2" displayName="mask1">
+            <bit name="minMax" idx="2" />
+            <bit name="minCno" idx="3" />
+            <bit name="initial3dfix" idx="6" />
+            <bit name="wknRoll" idx="9" />
+            <bit name="ackAid" idx="10" />
+            <bit name="ppp" idx="13" />
+            <bit name="aop" idx="14" />
+        </set>   
+        <set name="CfgNavx5Mask2" length="4" displayName="mask2">
+            <bit name="adr" idx="6" />
+            <bit name="sigAttenComp" idx="7" />
+        </set>
+        <int name="CfgNavx5SigAttenCompMode" type="uint8" displayName="sigAttenCompMode">
+            <special name="Disabled" val="0" />
+            <special name="Automatic" val="255" />
+        </int>    
+        <set name="CfgNavx5AopCfg" length="1" displayName="aopCfg">
+            <bit name="useAOP" idx="0" />
+        </set>
+        <int name="CfgNavx5AopOrbMaxErr" type="uint16" units="m" validRange="[5, 1000]" displayName="aopOrbMaxErr">
+            <special name="Reset" val="0" />
+        </int>        
+    </fields>
+    <message name="CfgNavx5V3" id="MsgId.CfgNavx5" displayName="CFG-NAVX5" order="0" platforms="+ublox8">
+        <int name="version" type="uint16" defaultValue="3" validValue="3" failOnInvalid="true" />
+        <ref field="CfgNavx5Mask1" name="mask1" />
+        <ref field="CfgNavx5Mask2" name="mask2" />
+        <ref field="res2" name="reserved1" />
+        <int name="minSVs" type="uint8" />
+        <int name="maxSVs" type="uint8" />
+        <int name="minCNO" type="uint8" />
+        <ref field="res1" name="reserved2" />
+        <int name="iniFix3D" type="uint8" />
+        <ref field="res2" name="reserved3" />
+        <int name="ackAiding" type="uint8" />
+        <int name="wknRollover" type="uint16" />
+        <ref field="CfgNavx5SigAttenCompMode" name="sigAttenCompMode" />
+        <ref field="res1" name="reserved4" />
+        <ref field="res2" name="reserved5" />
+        <ref field="res2" name="reserved6" />
+        <int name="usePPP" type="uint8" />
+        <ref field="CfgNavx5AopCfg" name="aopCfg" />
+        <ref field="res2" name="reserved7" />
+        <ref field="CfgNavx5AopOrbMaxErr" name="aopOrbMaxErr" />
+        <ref field="res4" name="reserved8" />
+        <ref field="res3" name="reserved9" />
+        <int name="useAdr" type="uint8" />
+        <ref field="res2" name="reserved10" />
+        <ref field="res2" name="reserved11" />
+    </message>
+
+    <message name="CfgNavx5V2" id="MsgId.CfgNavx5" displayName="CFG-NAVX5" order="1" platforms="+ublox8">
+        <int name="version" type="uint16" defaultValue="2" validValue="2" failOnInvalid="true" />
+        <ref field="CfgNavx5Mask1" name="mask1" />
+        <ref field="CfgNavx5Mask2" name="mask2" />
+        <ref field="res2" name="reserved1" />
+        <int name="minSVs" type="uint8" />
+        <int name="maxSVs" type="uint8" />
+        <int name="minCNO" type="uint8" />
+        <ref field="res1" name="reserved2" />
+        <int name="iniFix3D" type="uint8" />
+        <ref field="res2" name="reserved3" /> 
+        <int name="ackAiding" type="uint8" />
+        <int name="wknRollover" type="uint16" />       
+        <ref field="CfgNavx5SigAttenCompMode" name="sigAttenCompMode" />     
+        <ref field="res1" name="reserved4" />
+        <ref field="res2" name="reserved5" />
+        <ref field="res2" name="reserved6" />
+        <int name="usePPP" type="uint8" />
+        <ref field="CfgNavx5AopCfg" name="aopCfg" />
+        <ref field="res2" name="reserved7" />
+        <ref field="CfgNavx5AopOrbMaxErr" name="aopOrbMaxErr" />
+        <ref field="res4" name="reserved8" />
+        <ref field="res3" name="reserved9" />
+        <int name="useAdr" type="uint8" />                 
+    </message>
+
+    <message name="CfgNavx5" id="MsgId.CfgNavx5" displayName="CFG-NAVX5" order="2">
+        <int name="version" type="uint16" defaultValue="0" validValue="0" failOnInvalid="true" />
+        <ref field="CfgNavx5Mask1" name="mask1" />
+        <ref field="CfgNavx5Mask2" name="mask2" />
+        <ref field="res2" name="reserved1" />
+        <int name="minSVs" type="uint8" />
+        <int name="maxSVs" type="uint8" />
+        <int name="minCNO" type="uint8" />
+        <ref field="res1" name="reserved2" />
+        <int name="iniFix3D" type="uint8" />
+        <ref field="res2" name="reserved3" />
+        <int name="ackAiding" type="uint8" />
+        <int name="wknRollover" type="uint16" />
+        <ref field="res6" name="reserved4" />
+        <int name="usePPP" type="uint8" />
+        <ref field="CfgNavx5AopCfg" name="aopCfg" />
+        <ref field="res2" name="reserved5" />
+        <ref field="CfgNavx5AopOrbMaxErr" name="aopOrbMaxErr" />
+        <ref field="res4" name="reserved6" />
+        <ref field="res3" name="reserved7" />
+        <int name="useAdr" type="uint8" />
+    </message>
+
+    <message name="CfgNavx5Poll" id="MsgId.CfgNavx5" displayName="CFG-NAVX5 (Poll)" order="3">
+        <sender value="client" />
+    </message>
+</schema>

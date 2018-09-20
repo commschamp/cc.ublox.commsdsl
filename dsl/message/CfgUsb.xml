@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgUsb" id="MsgId.CfgUsb" displayName="CFG-USB" order="0">
+        <int name="vendorId" type="uint16" />
+        <int name="productId" type="uint16" />
+        <ref field="res2" name="reserved1" />
+        <ref field="res2" name="reserved2" />
+        <int name="powerConsumption" type="uint16" units="milliamp" />
+        <set name="flags" length="2">
+            <bit name="reEnum" idx="0" />
+            <bit name="powerMode" idx="1" />
+        </set>
+        <string name="vendorString" length="32" />
+        <string name="productString" length="32" />
+        <string name="serialNumber" length="32" /> 
+    </message>
+
+    <message name="CfgUsbPoll" id="MsgId.CfgUsb" displayName="CFG-USB (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>

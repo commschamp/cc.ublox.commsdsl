@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgTmode" id="MsgId.CfgTmode" displayName="CFG-TMODE" order="0" platforms="+ublox5,ublox6">
+        <enum name="timeMode" type="uint32" >
+            <validValue name="Disabled" val="0" />
+            <validValue name="SurveyIn" val="1" displayName="Survey In"/>
+            <validValue name="FixedMode" val="2" displayName="Fixed Mode"/>
+        </enum>
+        <int name="fixedPosX" type="int32" units="cm" />
+        <int name="fixedPosY" type="int32" units="cm" />
+        <int name="fixedPosZ" type="int32" units="cm" />
+        <int name="fixedPosVar" type="uint32" />
+        <int name="svinMinDur" type="uint32" units="s" />
+        <int name="svinVarLimit" type="uint32" />
+    </message>
+
+    <message name="CfgTmodePoll" id="MsgId.CfgTmode" displayName="CFG-TMODE (Poll)" order="1">
+        <platforms value="+ublox5,ublox6" />
+        <sender value="client" />
+    </message>
+</schema>

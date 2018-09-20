@@ -104,6 +104,11 @@ set (schema_files
     dsl/message/CfgAnt.xml
     dsl/message/CfgSbas.xml
     dsl/message/CfgNmea.xml
+    dsl/message/CfgUsb.xml
+    dsl/message/CfgTmode.xml
+    dsl/message/CfgOdo.xml
+    dsl/message/CfgNvs.xml
+    dsl/message/CfgNavx5.xml
 )
 
 string(REPLACE ";" "\n" schema_files_str "${schema_files}")
