@@ -65,7 +65,7 @@ matrix:
             - g++-4.9 
             - g++-5   
       env: _CC=gcc-4.9 _CXX=g++-4.9 _DLS_CC=gcc-5 _DSL_CXX=g++-5 _BUILD="-DCMAKE_BUILD_TYPE=MinSizeRel"
-      - os: linux
+    - os: linux
       addons:
         apt:
           sources:
@@ -73,7 +73,7 @@ matrix:
           packages:
             - g++-5    
       env: _CC=gcc-5 _CXX=g++-5  _DLS_CC=gcc-5 _DSL_CXX=g++-5
-      - os: linux
+    - os: linux
       addons:
         apt:
           sources:
@@ -81,7 +81,7 @@ matrix:
           packages:
             - g++-5    
       env: _CC=gcc-5 _CXX=g++-5  _DLS_CC=gcc-5 _DSL_CXX=g++-5 _BUILD="-DCMAKE_BUILD_TYPE=Release"
-      - os: linux
+    - os: linux
       addons:
         apt:
           sources:
