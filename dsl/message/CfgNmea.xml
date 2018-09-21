@@ -57,7 +57,7 @@
         <ref field="cfgNmeaSvNumbering" name="svNumbering" />
         <ref field="cfgMainTalkerId" name="mainTalkerId" />
         <ref field="cfgNmeaGsvTalkerId" name="gsvTalkerId" />
-        <int name="version" type="uint8" defaultValue="1" validValue="1" failOnInvalid="true"/>
+        <int name="version" type="uint8" defaultValue="1" validValue="1" failOnInvalid="true" displayReadOnly="true"/>
         <data name="bdsTalkerId" length="2" />
         <ref field="res6" name="reserved1" />
     </message>
@@ -71,7 +71,7 @@
         <ref field="cfgNmeaSvNumbering" name="svNumbering" />
         <ref field="cfgMainTalkerId" name="mainTalkerId" />
         <ref field="cfgNmeaGsvTalkerId" name="gsvTalkerId" />
-        <int name="version" type="uint8" validValue="0" failOnInvalid="true"/>
+        <int name="version" type="uint8" validValue="0" failOnInvalid="true" displayReadOnly="true"/>
     </message>
 
     <message name="CfgNmea" id="MsgId.CfgNmea" displayName="CFG-NMEA" order="2">    

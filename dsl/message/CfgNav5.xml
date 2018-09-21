@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgNav5" id="MsgId.CfgNav5" displayName="CFG-NAV5" order="0">
+        <set name="mask" length="2">
+            <bit name="dyn" idx="0" />
+            <bit name="minEl" idx="1" />
+            <bit name="posFixMode" idx="2" />
+            <bit name="drLim" idx="3" />
+            <bit name="posMask" idx="4" />
+            <bit name="timeMask" idx="5" />
+            <bit name="staticHoldMask" idx="6" />
+            <bit name="dgpsMask" idx="7" />
+            <bit name="cnoThreshold" idx="8" />
+            <bit name="utc" idx="10" />
+        </set>
+        <enum name="dynModel" type="uint8">
+            <validValue name="Portable" val="0" />
+            <validValue name="Stationary" val="2" />
+            <validValue name="Pedestrian" val="3" />
+            <validValue name="Automotive" val="4" />
+            <validValue name="Sea" val="5" />
+            <validValue name="Airborne1G" val="6" displayName="Airborne &lt;1g accel" />
+            <validValue name="Airborne2G" val="7" displayName="Airborne &lt;2g accel" />
+            <validValue name="Airborne4G" val="8" displayName="Airborne &lt;4g accel" />
+            <validValue name="WristWatch" val="9" displayName="Wrist watch"/>
+        </enum>
+        <enum name="fixMode" type="uint8">
+            <validValue name="Only2D" val="1" displayName="2D Only" />
+            <validValue name="Only3D" val="2" displayName="2D Only" />
+            <validValue name="Auto" val="3" displayName="Auto 2D/3D" />
+        </enum>
+        <int name="fixedAlt" type="int32" units="m" scaling="1/100" displayDecimals="2" />
+        <int name="fixedAltVar" type="uint32" scaling="1/10000" displayDecimals="4" />
+        <int name="minElev" type="int8" units="deg" />
+        <int name="drLimit" type="uint8" units="s" />
+        <int name="pDop" type="uint16" scaling="1/10" displayDecimals="1" />
+        <int name="tDop" type="uint16" scaling="1/10" displayDecimals="1" />
+        <int name="pAcc" type="uint16" units="m" />
+        <int name="tAcc" type="uint16" units="m" />
+        <int name="staticHoldThresh" type="uint8" units="cmps" />
+        <int name="dgnssTimeout" type="uint8" units="s" />
+        <int name="cnoThreshNumSVs" type="uint8" />
+        <int name="cnoThresh" type="uint8" />
+        <ref field="res2" name="reserved1" />
+        <int name="staticHoldMaxDist" type="uint16" units="m" />
+        <enum name="utcStandard" type="uint8">
+            <validValue name="Automatic" val="0" />
+            <validValue name="GPS" val="3" />
+            <validValue name="GLONASS" val="6" />
+            <validValue name="BeiDou" val="7" />
+        </enum>
+        <ref field="res5" name="reserved2" />
+    </message>
+
+    <message name="CfgNav5Poll" id="MsgId.CfgNav5" displayName="CFG-NAV5 (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>

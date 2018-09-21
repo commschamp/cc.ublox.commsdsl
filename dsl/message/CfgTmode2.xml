@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgTmode2" id="MsgId.CfgTmode2" displayName="CFG-TMODE2" order="0" platforms="+ublox6,ublox8">
+        <enum name="timeMode" type="uint32" >
+            <validValue name="Disabled" val="0" />
+            <validValue name="SurveyIn" val="1" displayName="Survey In"/>
+            <validValue name="FixedMode" val="2" displayName="Fixed Mode"/>
+        </enum>
+        <ref field="res1" name="reserved1" />
+        <set name="flags" length="2">
+            <bit name="lla" idx="0" />
+            <bit name="altInv" idx="1" />
+        </set>
+        <optional name="ecefX" defaultMode="exist" externalModeCtrl="true" cond="!$flags.lla">
+            <int name="ecefX" type="int32" units="cm" />
+        </optional>
+        <optional name="lat" defaultMode="missing" externalModeCtrl="true" cond="$flags.lla">
+            <int name="lat" type="int32" units="deg" scaling="1/10000000" displayDecimals="7"/>
+        </optional>
+        <optional name="ecefY" defaultMode="exist" externalModeCtrl="true" cond="!$flags.lla">
+            <int name="ecefY" type="int32" units="cm" />
+        </optional>
+        <optional name="lon" defaultMode="missing" externalModeCtrl="true" cond="$flags.lla">
+            <int name="lon" type="int32" units="deg" scaling="1/10000000" displayDecimals="7"/>
+        </optional>
+        <optional name="ecefZ" defaultMode="exist" externalModeCtrl="true" cond="!$flags.lla">
+            <int name="ecefZ" type="int32" units="cm" />
+        </optional>
+        <optional name="alt" defaultMode="missing" externalModeCtrl="true" cond="$flags.lla">
+            <int name="lon" type="int32" units="cm"/>
+        </optional>
+        <int name="fixedPosAcc" type="uint32" units="mm" />
+        <int name="svinMinDur" type="uint32" units="s" />
+        <int name="svinVarLimit" type="uint32" units="mm"/>
+    </message>
+
+    <message name="CfgTmode2Poll" id="MsgId.CfgTmode2" displayName="CFG-TMODE2 (Poll)" order="1">
+        <platforms value="+ublox6,ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

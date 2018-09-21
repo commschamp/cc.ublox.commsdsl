@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgEsfgwt" id="MsgId.CfgEsfgwt" displayName="CFG-ESFGWT" order="0" platforms="+ublox6">
+        <set name="flags" length="2">
+            <bit name="setVehicle" idx="12" />
+            <bit name="setTime" idx="13" />
+            <bit name="setWt" idx="14" />
+        </set>
+        <int name="id" type="uint16" />
+        <int name="wtFactor" type="uint32" scaling="1/1000000" displayDecimals="6" />
+        <ref field="res4" name="reserved1" />
+        <int name="wtQuantError" type="uint32" units="m" scaling="1/1000000" displayDecimals="6" />
+        <int name="timeTagFactor" type="uint32" scaling="1/1000000" displayDecimals="6" />
+        <int name="wtCountMax" type="uint32" />
+        <int name="timeTagMax" type="uint32" />
+        <int name="wtLatency" type="uint16" units="ms"/>
+        <ref field="res2" name="reserved2" />
+        <int name="wtFrequency" type="uint8" units="hz"/>
+        <ref field="res1" name="reserved3" />
+        <int name="speedDeadBand" type="uint16" units="cmps"/>
+        <ref field="res4" name="reserved4" />
+        <ref field="res4" name="reserved5" />
+    </message>
+
+    <message name="CfgEsfgwtPoll" id="MsgId.CfgEsfgwt" displayName="CFG-ESFGWT (Poll)" order="1">
+        <platforms value="+ublox6" />
+        <sender value="client" />
+    </message>
+</schema>

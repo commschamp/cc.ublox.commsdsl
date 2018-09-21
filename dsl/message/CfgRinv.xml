@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgRinv" id="MsgId.CfgRinv" displayName="CFG-RINV" order="0" platforms="-ublox5">
+        <set name="flags" length="1">
+            <bit name="dump" idx="0" />
+            <bit name="binary" idx="1" />
+        </set>
+        <data name="data" />
+    </message>
+
+    <message name="CfgRinvPoll" id="MsgId.CfgRinv" displayName="CFG-RINV (Poll)" order="1">
+        <platforms value="-ublox5" />
+        <sender value="client" />
+    </message>
+</schema>

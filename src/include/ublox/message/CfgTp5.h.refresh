@@ -1,0 +1,10 @@
+/// @brief Custom refresh functionality
+bool doRefresh()
+{
+    bool updated = Base::doRefresh();
+    updated = refresh_freqPeriod(false) || updated;
+    updated = refresh_freqPeriodLock(false) || updated;
+    updated = refresh_pulseLenRatio(false) || updated;
+    updated = refresh_pulseLenRatioLock(false) || updated;
+    return updated;
+}

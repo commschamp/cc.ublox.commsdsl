@@ -1,0 +1,50 @@
+template <typename TFirst, typename TSecond>
+static bool refreshFields(TFirst& first, TSecond& second, bool enableFirst, bool updateValue)
+{
+    if ((first.doesExist() == enableFirst) &&
+        (second.isMissing() == enableFirst)) {
+        return false;
+    }
+
+    auto firstMode = comms::field::OptionalMode::Exists;
+    auto secondMode = comms::field::OptionalMode::Missing;
+    if (!enableFirst) {
+        std::swap(firstMode, secondMode);
+    }
+
+    first.setMode(firstMode);
+    second.setMode(secondMode);
+
+    if (!updateValue) {
+        return true;
+    }
+
+    if (enableFirst) {
+        first.field().value() = second.field().value();
+    }
+    else {
+        second.field().value() = first.field().value();
+    }
+
+    return true;
+}
+
+bool refresh_freqPeriod(bool updateValue)
+{
+    return refreshFields(field_freq(), field_period(), field_flags().field_bits().getBitValue_isFreq(), updateValue);
+}
+
+bool refresh_freqPeriodLock(bool updateValue)
+{
+    return refreshFields(field_freqLock(), field_periodLock(), field_flags().field_bits().getBitValue_isFreq(), updateValue);
+} 
+
+bool refresh_pulseLenRatio(bool updateValue)
+{
+    return refreshFields(field_pulseLen(), field_ratio(), field_flags().field_bits().getBitValue_isLength(), updateValue);
+}   
+
+bool refresh_pulseLenRatioLock(bool updateValue)
+{
+    return refreshFields(field_pulseLenLock(), field_ratioLock(), field_flags().field_bits().getBitValue_isLength(), updateValue);
+}       

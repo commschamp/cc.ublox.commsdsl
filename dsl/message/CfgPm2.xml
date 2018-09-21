@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <fields>
+        <bitfield name="cfgPm2Flags" displayName="flags">
+            <set name="bitsLow" bitLength="8" displayName="_">
+                <bit name="extintSel" idx="4" />
+                <bit name="extintWake" idx="5" />
+                <bit name="extintBackup" idx="6" />
+                <bit name="extintInactive" idx="7" />
+            </set>
+            <enum name="limitPeakCurr" type="uint8" bitLength="2">
+                <validValue name="Desabled" val="0" />
+                <validValue name="Enabled" val="1" />
+            </enum>
+            <set name="bitsMid" bitLength="7" displayName="_">
+                <bit name="waitTimeFix" idx="0" />
+                <bit name="updateRTC" idx="1" />
+                <bit name="updateEPH" idx="2" />
+                <bit name="doNotEnterOff" idx="6" />
+            </set>
+            <enum name="mode" type="uint8" bitLength="2">
+                <validValue name="OnOff" val="0" displayName="ON/OFF" />
+                <validValue name="Cyclic" val="1" />
+            </enum>
+            <int reuse="res2" name="reserved" bitLength="13" displayHidden="true" />
+        </bitfield>
+    </fields>
+    <message name="CfgPm2V2" id="MsgId.CfgPm2" displayName="CFG-PM2 (V2)" order="0" platforms="+ublox8">
+        <int name="version" type="uint8" validValue="2" defaultValue="2" failOnInvalid="true"  displayReadOnly="true"/>
+        <ref field="res1" name="reserved1" />
+        <int name="maxStartupStateDur" type="uint8" units="s" />
+        <ref field="res1" name="reserved2" />
+        <ref field="cfgPm2Flags" name="flags" />
+        <int name="updatePeriod" type="uint32" units="ms" />
+        <int name="searchPeriod" type="uint32" units="ms" />
+        <int name="gridOffset" type="uint32" units="ms" />
+        <int name="onTime" type="uint16" units="ms" />
+        <int name="minAcqTime" type="uint16" units="ms" />
+        <list name="reserved3" count="5">
+            <element>
+                <ref field="res4" name="reserved3" displayName="_" />
+            </element>
+        </list>
+        <int name="extintInactivityMs" type="uint32" units="ms" />
+    </message>
+
+    <message name="CfgPm2" id="MsgId.CfgPm2" displayName="CFG-PM2" order="1" platforms="-ublox5">
+        <int name="version" type="uint8" validValue="1" defaultValue="1" failOnInvalid="true" displayReadOnly="true" />
+        <ref field="res1" name="reserved1" />
+        <int name="maxStartupStateDur" type="uint8" units="s" />
+        <ref field="res1" name="reserved2" />
+        <ref field="cfgPm2Flags" name="flags" />
+        <int name="updatePeriod" type="uint32" units="ms" />
+        <int name="searchPeriod" type="uint32" units="ms" />
+        <int name="gridOffset" type="uint32" units="ms" />
+        <int name="onTime" type="uint16" units="ms" />
+        <int name="minAcqTime" type="uint16" units="ms" />
+        <list name="reserved3" count="5">
+            <element>
+                <ref field="res4" name="reserved3" displayName="_" />
+            </element>
+        </list>
+    </message>
+
+    <message name="CfgPm2Poll" id="MsgId.CfgPm2" displayName="CFG-PM2 (Poll)" order="3">
+        <platforms value="-ublox5" />
+        <sender value="client" />
+    </message>
+</schema>

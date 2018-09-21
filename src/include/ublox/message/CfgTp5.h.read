@@ -1,0 +1,15 @@
+/// @brief Custom read functionality
+template <typename TIter>
+comms::ErrorStatus doRead(TIter& iter, std::size_t len)
+{
+    auto es = Base::doRead(iter, len);
+    if (es != comms::ErrorStatus::Success) {
+        return es;
+    }
+
+    refresh_freqPeriod(true);
+    refresh_freqPeriodLock(true);
+    refresh_pulseLenRatio(true);
+    refresh_pulseLenRatioLock(true);
+    return comms::ErrorStatus::Success;
+}

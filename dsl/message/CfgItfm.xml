@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgItfm" id="MsgId.CfgItfm" displayName="CFG-ITFM" order="0" platforms="-ublox5">
+        <bitfield name="config">
+            <int name="bbThreshold" type="uint8" bitLength="4" />
+            <int name="cwThreshold" type="uint8" bitLength="5" />
+            <int name="algorithmBits" type="uint32" bitLength="22" defaultValue="0x16B156" validValue="0x16B156" />
+            <set name="bits" bitLength="1">
+                <bit name="enable" idx="0" />
+            </set>
+        </bitfield>
+        <bitfield name="config2">
+            <int name="generalBits" type="uint16" bitLength="12" defaultValue="0x31E" validValue="0x31E" />
+            <enum name="antSetting" type="uint8" bitLength="2">
+                <validValue name="Unknown" val="0" />
+                <validValue name="Passive" val="1" />
+                <validValue name="Active" val="2" />
+            </enum>
+            <set name="bitsHigh" bitLength="18">
+                <bit name="enable2" idx="0" />
+            </set>
+        </bitfield>
+    </message>
+
+    <message name="CfgItfmPoll" id="MsgId.CfgItfm" displayName="CFG-ITFM (Poll)" order="1">
+        <platforms value="-ublox5" />
+        <sender value="client" />
+    </message>
+</schema>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgPm" id="MsgId.CfgPm" displayName="CFG-PM" order="0" platforms="+ublox6">
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res1" name="res1" />
+        <ref field="res1" name="res2" />
+        <ref field="res1" name="res3" />
+        <bitfield name="flags">
+            <int reuse="res1" bitLength="2" />
+            <int name="internal" type="uint8" bitLength="2" defaultValue="1" validValue="1" />
+            <set name="bitsMid" bitLength="4">
+                <bit name="extintSelect" idx="0" />
+                <bit name="extintWake" idx="1" />
+                <bit name="extintBackup" idx="2" />
+            </set>
+            <enum name="limitPeakCurr" type="uint8" bitLength="2">
+                <validValue name="Disabled" val="0" />
+                <validValue name="Enabled" val="1" />
+            </enum>
+            <set name="bitsHigh" bitLength="22">
+                <bit name="WaitTimeFix" idx="0" />
+                <bit name="updateRTC" idx="1" />
+                <bit name="updateEPH" idx="2" />
+            </set>
+        </bitfield>
+        <int name="updatePeriod" type="uint32" units="ms" />
+        <int name="searchPeriod" type="uint32" units="ms" />
+        <int name="gridOffset" type="uint32" units="ms" />
+        <int name="onTime" type="uint16" units="s" />
+        <int name="minAcqTime" type="uint16" units="s" />
+    </message>
+
+    <message name="CfgPmPoll" id="MsgId.CfgPm" displayName="CFG-PM (Poll)" order="1">
+        <platforms value="+ublox6" />
+        <sender value="client" />
+    </message>
+</schema>
