@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgLogfilter" id="MsgId.CfgLogfilter" displayName="CFG-LOGFILTER" order="0" platforms="+ublox7,ublox8">
+        <int name="version" type="uint8" defaultValue="1" validValue="1" />
+        <set name="flags" length="1">
+            <bit name="recordEnabled" idx="0" />
+            <bit name="psmOncePerWakupEnabled" idx="1" />
+            <bit name="applyAllFilterSettings" idx="2" />
+        </set>
+        <int name="minInterval" type="uint16" units="s" />
+        <int name="timeThreshold" type="uint16" units="s" />
+        <int name="speedThreshold" type="uint16" units="mps" />
+        <int name="positionThres" type="uint32" units="m" />
+    </message>
+
+    <message name="CfgLogfilterPoll" id="MsgId.CfgLogfilter" displayName="CFG-LOGFILTER (Poll)" order="1">
+        <platforms value="+ublox7,ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

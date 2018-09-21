@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgTxslot" id="MsgId.CfgTxslot" displayName="CFG-TXSLOT" order="0" platforms="+ublox8">
+        <int name="version" type="uint8" validValue="0" />
+        <set name="enable" length="1">
+            <bit name="DDC" idx="0" />
+            <bit name="UART1" idx="1" />
+            <bit name="UART2" idx="2" />
+            <bit name="USB" idx="3" />
+            <bit name="SPI" idx="4" />
+        </set>
+        <enum name="refTp" type="uint8">
+            <validValue name="Timepulse" val="0" />
+            <validValue name="Timepulse2" val="1" />
+        </enum>
+        <ref field="res1" name="reserved1" />
+        <list name="end" count="3">
+            <element>
+                <int name="element" type="uint32" displayName="_"/>
+            </element>
+        </list>
+    </message>
+
+    <message name="CfgTxslotPoll" id="MsgId.CfgTxslot" displayName="CFG-TXSLOT (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>
