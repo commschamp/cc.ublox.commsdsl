@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgSmgr" id="MsgId.CfgSmgr" displayName="CFG-SMGR" order="0" platforms="+ublox8">
+        <int name="version" type="uint8" validValue="0" />
+        <int name="minGNSSFix" type="uint8" />
+        <int name="maxFreqChangeRate" type="uint16" />
+        <int name="maxPhaseCorrRate" type="uint16" units="ns"/>
+        <ref field="res2" name="reserved1" />
+        <int name="freqTolerance" type="uint16" />
+        <int name="timeTolerance" type="uint16" units="ns"/>
+        <set name="messageCfg" length="2">
+            <bit name="measInternal" idx="0" />
+            <bit name="measGNSS" idx="1" />
+            <bit name="measEXTINT0" idx="2" />
+            <bit name="measEXTINT1" idx="3" />
+        </set>
+        <int name="maxSlewRate" type="uint16" units="us"/>
+        <bitfield name="flags">
+            <set name="bitsLow" bitLength="14" displayName="_">
+                <bit name="disableInternal" idx="0" />
+                <bit name="disableExternal" idx="1" />
+                <bit name="preferenceMode" idx="2" />
+                <bit name="enableGNSS" idx="3" />
+                <bit name="enableEXTINT0" idx="4" />
+                <bit name="enableEXTINT1" idx="5" />
+                <bit name="enableHostMeasInt" idx="6" />
+                <bit name="enableHostMeasExt" idx="7" />
+                <bit name="useAnyFix" idx="10" />
+                <bit name="disableMaxSlewRate" idx="11" />
+                <bit name="issueFreqWarning" idx="12" />
+                <bit name="issueTimeWarning" idx="13" />
+            </set>
+            <enum name="TPCoherent" type="uint8" bitLength="2">
+                <validValue name="Coherent" val="0" />
+                <validValue name="NonCoherent" val="1" />
+                <validValue name="PostInitCoherent" val="2" />
+            </enum>
+            <set name="bitsHigh" bitLength="16" displayName="_">
+                <bit name="disableOffset" idx="0" />
+            </set>            
+        </bitfield>
+    </message>
+
+    <message name="CfgSmgrPoll" id="MsgId.CfgSmgr" displayName="CFG-SMGR (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

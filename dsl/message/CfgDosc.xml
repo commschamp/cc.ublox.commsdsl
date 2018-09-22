@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgDosc" id="MsgId.CfgDosc" displayName="CFG-DOSC" order="0" platforms="+ublox8">
+        <int name="version" type="uint8" validValue="0" />
+        <int name="numOsc" type="uint8" displayReadOnly="true"/>
+        <ref field="res2" name="reserved1" />
+        <list name="list" countPrefix="$numOsc">
+            <element>
+                <bundle name="element" displayName="_">
+                    <enum name="oscId" type="uint8">
+                        <validValue name="Internal" val="0" />
+                        <validValue name="External" val="1" />
+                    </enum>
+                    <ref field="res1" name="reserved2" />
+                    <bitfield name="flags">
+                        <set name="bits" bitLength="1" displayName="_">
+                            <bit name="isCalibrated" idx="0" />
+                        </set>
+                        <enum name="controlIf" type="uint8" bitLength="4">
+                            <validValue name="Custom" val="0" />
+                            <validValue name="Microchip" val="1" />
+                            <validValue name="TI" val="2" />
+                            <validValue name="DAC_12bit" val="13" />
+                            <validValue name="DAC_14bit" val="14" />
+                            <validValue name="DAC_16bit" val="15" />
+                        </enum>
+                        <int reuse="res2" name="reserved" bitLength="11" />
+                    </bitfield>
+                    <int name="freq" type="uint32" units="hz" scaling="1/0x4" displayDecimals="2" />
+                    <int name="phaseOffset" type="int32" />
+                    <int name="withTemp" type="uint32" scaling="1/0x100" displayDecimals="8" />
+                    <int name="withAge" type="uint32" scaling="1/0x100" displayDecimals="8" />
+                    <int name="timeToTemp" type="uint16" units="s" />
+                    <ref field="res2" name="reserved3" />
+                    <int name="gainVco" type="int32" scaling="1/0x10000" displayDecimals="9" />
+                    <int name="gainUncertainty" type="uint8" scaling="1/0x100" displayDecimals="8"/>
+                    <ref field="res3" name="reserved4" />
+                </bundle>
+            </element>
+        </list>
+    </message>
+
+    <message name="CfgDoscPoll" id="MsgId.CfgDosc" displayName="CFG-DOSC (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

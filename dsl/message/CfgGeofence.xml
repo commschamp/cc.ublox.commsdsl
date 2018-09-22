@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgGeofence" id="MsgId.CfgGeofence" displayName="CFG-GEOFENCE" order="0" platforms="+ublox8">
+        <int name="version" type="uint8" validValue="0" />
+        <int name="numFences" type="uint8" displayReadOnly="true"/>
+        <int name="confLvl" type="uint8" />
+        <ref field="res1" name="reserved1" />
+        <enum name="pioEnabled" type="uint8" >
+            <validValue name="Disable" val="0" />
+            <validValue name="Enable" val="1" />
+        </enum>
+        <enum name="pinPolarity" type="uint8" >
+            <validValue name="LowInside" val="0" />
+            <validValue name="LowOutside" val="1" />
+        </enum>
+        <int name="pin" type="uint8" />
+        <ref field="res1" name="reserved2" />
+        <list name="list" countPrefix="$numFences">
+            <element>
+                <bundle name="element" displayName="_">
+                    <ref field="lat" />
+                    <ref field="lon" />
+                    <int name="radius" type="uint32" units="m" scaling="100" displayDecimals="2" />
+                </bundle>
+            </element>
+        </list>
+    </message>
+
+    <message name="CfgGeofencePoll" id="MsgId.CfgGeofence" displayName="CFG-GEOFENCE (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

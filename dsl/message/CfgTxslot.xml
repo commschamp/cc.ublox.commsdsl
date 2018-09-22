@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="CfgTxslot" id="MsgId.CfgTxslot" displayName="CFG-TXSLOT" order="0" platforms="+ublox8">
+    <message name="CfgTxslot" id="MsgId.CfgTxslot" displayName="CFG-TXSLOT" platforms="+ublox8" sender="client">
         <int name="version" type="uint8" validValue="0" />
         <set name="enable" length="1">
             <bit name="DDC" idx="0" />
@@ -19,10 +19,5 @@
                 <int name="element" type="uint32" displayName="_"/>
             </element>
         </list>
-    </message>
-
-    <message name="CfgTxslotPoll" id="MsgId.CfgTxslot" displayName="CFG-TXSLOT (Poll)" order="1">
-        <platforms value="+ublox8" />
-        <sender value="client" />
     </message>
 </schema>

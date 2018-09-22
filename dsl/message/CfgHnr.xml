@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgHnr" id="MsgId.CfgHnr" displayName="CFG-HNR" order="0" platforms="+ublox8">
+        <int name="highNavRate" type="uint8" units="hz" />
+        <ref field="res3" name="reserved1" />
+    </message>
+
+    <message name="CfgHnrPoll" id="MsgId.CfgHnr" displayName="CFG-HNR (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>
