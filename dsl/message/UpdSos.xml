@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <fields>
+        <enum name="updSosCmd" type="uint8" displayName="cmd">
+            <validValue name="Create" val="0" />
+            <validValue name="Clear" val="1" />
+            <validValue name="Ack" val="2" />
+            <validValue name="Restored" val="3" />
+        </enum>
+    </fields>
+
+    <message name="UpdSosRestored" id="MsgId.UpdSos" displayName="UPD-SOS (Restored)" order="0" platforms="+ublox8" sender="server">
+        <int name="cmd" type="uint8" defaultValue="updSosCmd.Restored" validValue="updSosCmd.Restored" failOnInvalid="true" displayReadOnly="true"/>
+        <ref field="res3" name="reserved1" />
+        <enum name="response" type="uint8">
+            <validValue name="Unknown" val="0" />
+            <validValue name="Failed" val="1" />
+            <validValue name="Restored" val="2" />
+            <validValue name="NotRestored" val="3" />
+        </enum>
+        <ref field="res3" name="reserved2" />
+    </message>
+
+    <message name="UpdSosAck" id="MsgId.UpdSos" displayName="UPD-SOS (Ack)" order="1" platforms="+ublox8" sender="server">
+        <int name="cmd" type="uint8" defaultValue="updSosCmd.Ack" validValue="updSosCmd.Ack" failOnInvalid="true" displayReadOnly="true" />
+        <ref field="res3" name="reserved1" />
+        <enum name="response" type="uint8">
+            <validValue name="NotAcknowledged" val="0" />
+            <validValue name="Acknowledged" val="1" />
+        </enum>
+        <ref field="res3" name="reserved2" />
+    </message>  
+
+    <message name="UpdSosClear" id="MsgId.UpdSos" displayName="UPD-SOS (Clear)" order="2" platforms="+ublox8" sender="client">
+        <int name="cmd" type="uint8" defaultValue="updSosCmd.Clear" validValue="updSosCmd.Clear" failOnInvalid="true" displayReadOnly="true"/>
+        <ref field="res3" name="reserved1" />
+    </message> 
+
+    <message name="UpdSosCreate" id="MsgId.UpdSos" displayName="UPD-SOS (Create)" order="3" platforms="+ublox8" sender="client">
+        <int name="cmd" type="uint8" defaultValue="updSosCmd.Create" validValue="updSosCmd.Create" failOnInvalid="true" displayReadOnly="true"/>
+        <ref field="res3" name="reserved1" />
+    </message>              
+
+    <message name="UpdSosPoll" id="MsgId.UpdSos" displayName="UPD-SOS (Poll)" order="4">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

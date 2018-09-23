@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgPms" id="MsgId.CfgPms" displayName="CFG-PMS" order="0" platforms="+ublox8">
+        <int name="version" type="uint8" validValue="0" />
+        <enum name="powerSetupValue" type="uint8">
+            <validValue name="FullPower" val="0" displayName="Full power"/>
+            <validValue name="Balanced" val="1" />
+            <validValue name="Interval" val="2" />
+            <validValue name="Agressive1Hz" val="3" displayName="Aggressive with 1Hz"/>
+            <validValue name="Agressive2Hz" val="4" displayName="Aggressive with 2Hz"/>
+            <validValue name="Agressive4Hz" val="5" displayName="Aggressive with 4Hz"/>
+            <validValue name="Invalid" val="0xff" />
+        </enum>
+        <int name="period" type="uint16" units="s" />
+        <int name="onTime" type="uint16" units="s" />
+        <ref field="res2" name="reserved1" />
+    </message>
+
+    <message name="CfgPmsPoll" id="MsgId.CfgPms" displayName="CFG-PMS (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

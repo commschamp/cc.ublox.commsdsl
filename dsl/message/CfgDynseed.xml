@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgDynseed" id="MsgId.CfgDynseed" displayName="CFG-DYNSEED" platforms="+ublox8" sender="client">
+        <int name="version" type="uint8" defaultValue="2" validValue="2" />
+        <ref field="res3" name="reserved1" />
+        <int name="seedHi" type="uint32" />
+        <int name="seedLo" type="uint32" />
+    </message>
+</schema>

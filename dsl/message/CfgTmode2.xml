@@ -27,7 +27,7 @@
             <int name="ecefZ" type="int32" units="cm" />
         </optional>
         <optional name="alt" defaultMode="missing" externalModeCtrl="true" cond="$flags.lla">
-            <int name="lon" type="int32" units="cm"/>
+            <int name="alt" type="int32" units="cm"/>
         </optional>
         <int name="fixedPosAcc" type="uint32" units="mm" />
         <int name="svinMinDur" type="uint32" units="s" />

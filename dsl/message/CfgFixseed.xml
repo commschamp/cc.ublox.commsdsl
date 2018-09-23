@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgFixseed" id="MsgId.CfgFixseed" displayName="CFG-FIXSEED" platforms="+ublox8" sender="client">
+        <int name="version" type="uint8" defaultValue="2" validValue="2" />
+        <int name="length" type="uint8" displayReadOnly="true" validRange="[1, 10]" />
+        <ref field="res2" name="reserved1" />
+        <int name="seedHi" type="uint32" />
+        <int name="seedLo" type="uint32" />
+        <list name="list" countPrefix="$length" element="MsgId" />
+    </message>
+</schema>

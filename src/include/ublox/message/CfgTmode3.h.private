@@ -1,0 +1,22 @@
+bool refresh_optionals()
+{
+    bool updated = false;
+    auto ecefMode = comms::field::OptionalMode::Exists;
+    auto llaMode = comms::field::OptionalMode::Missing;    
+    if (field_flags().field_bits().getBitValue_lla()) {
+        std::swap(ecefMode, llaMode);
+    }
+    
+    if (field_ecef().getMode() != ecefMode) {
+        field_ecef().setMode(ecefMode);
+        updated = true;
+    }
+    
+    if (field_lla().getMode() != llaMode) {
+        field_lla().setMode(llaMode);
+        updated = true;
+    }    
+    
+    return updated;
+}
+    
