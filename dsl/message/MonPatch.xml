@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="MonPatch" id="MsgId.MonPatch" displayName="MON-PATCH" order="0" platforms="+ublox8" sender="server">
+        <int name="version" type="uint16" defaultValue="1" validValue="1"/>
+        <int name="nEntries" type="uint16" displayReadOnly="true" />
+        <list name="list" countPrefix="$nEntries">
+            <element>
+                <bundle name="element" displayName="_">
+                    <bitfield name="patchInfo">
+                        <set name="bits" bitLength="1" displayName="_">
+                            <bit name="activated" idx="0" />
+                        </set>
+                        <enum name="location" type="uint8" bitLength="2">
+                            <validValue name="eFuse" val="0" />
+                            <validValue name="ROM" val="1" />
+                            <validValue name="BBR" val="2" />
+                            <validValue name="FileSystem" val="3" />
+                        </enum>
+                        <int reuse="res4" bitLength="29" displayHidden="true"/>
+                    </bitfield>
+                    <int name="comparatorNumber" type="uint32" />
+                    <int name="patchAddress" type="uint32" />
+                    <int name="patchData" type="uint32" />
+                </bundle>
+            </element>
+        </list>
+    </message>
+    
+    <message name="MonPatchPoll" id="MsgId.MonPatch" displayName="MON-PATCH (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

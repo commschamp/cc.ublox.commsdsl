@@ -130,6 +130,17 @@ set (schema_files
     dsl/message/CfgFixseed.xml
     dsl/message/CfgPms.xml
     dsl/message/UpdSos.xml
+    dsl/message/MonIo.xml
+    dsl/message/MonVer.xml
+    dsl/message/MonMsgpp.xml
+    dsl/message/MonRxbuf.xml
+    dsl/message/MonTxbuf.xml
+    dsl/message/MonHw.xml
+    dsl/message/MonHw2.xml
+    dsl/message/MonRxr.xml
+    dsl/message/MonPatch.xml
+    dsl/message/MonGnss.xml
+    dsl/message/MonSmgr.xml
 )
 
 string(REPLACE ";" "\n" schema_files_str "${schema_files}")

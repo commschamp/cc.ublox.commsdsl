@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="MonTxbuf" id="MsgId.MonTxbuf" displayName="MON-TXBUF" order="0" sender="server">
+        <list name="pending" count="6">
+            <element>
+                <int name="element" type="uint16" displayName="_"/>
+            </element>
+        </list>
+        <list name="usage" count="6">
+            <element>
+                <int name="element" type="uint8" displayName="_"/>
+            </element>
+        </list>
+        <list name="peakUsage" count="6">
+            <element>
+                <int name="element" type="uint8" displayName="_"/>
+            </element>
+        </list>
+        <int name="tUsage" type="uint8" />
+        <int name="tPeakusage" type="uint8" />
+        <bitfield name="errors">
+            <int name="limit" type="uint8" bitLength="6" />
+            <set name="bits" bitLength="2" displayName="_">
+                <bit name="mem" idx="0" />
+                <bit name="alloc" idx="1" />
+            </set>
+        </bitfield>
+        <ref field="res1" name="reserved1" />
+    </message>
+    
+    <message name="MonTxbufPoll" id="MsgId.MonTxbuf" displayName="MON-TXBUF (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>

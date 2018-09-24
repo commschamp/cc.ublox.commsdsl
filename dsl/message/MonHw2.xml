@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="MonHw2" id="MsgId.MonHw2" displayName="MON-HW2" order="0" platforms="-ublox5" sender="server">
+        <int name="ofsI" type="int8" />
+        <int name="magI" type="uint8" />
+        <int name="ofsQ" type="int8" />
+        <int name="magQ" type="uint8" />
+        <enum name="cfgSource" type="uint8">
+            <validValue name="ROM" val="114" />
+            <validValue name="OTP" val="111" />
+            <validValue name="ConfigPins" val="112" />
+            <validValue name="FlashImage" val="102" />
+        </enum>
+        <ref field="res3" name="reserved1" />
+        <int name="lowLevCfg" type="uint32" />
+        <ref field="res8" name="reserved2" />
+        <int name="postStatus" type="uint32" />
+        <ref field="res4" name="reserved3" />
+    </message>
+    
+    <message name="MonHw2Poll" id="MsgId.MonHw2" displayName="MON-HW2 (Poll)" order="1">
+        <platforms value="-ublox5" />
+        <sender value="client" />
+    </message>
+</schema>

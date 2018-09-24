@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="MonVer" id="MsgId.MonVer" displayName="MON-VER" order="0" sender="server">
+        <string name="swVersion" length="30" />
+        <string name="hwVersion" length="10" />
+        <list name="list">
+            <element>
+                <string name="extension" length="30" />
+            </element>
+        </list>
+    </message>
+    
+    <message name="MonVerPoll" id="MsgId.MonVer" displayName="MON-VER (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>

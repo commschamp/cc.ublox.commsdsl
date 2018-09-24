@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <fields>
+        <int name="monMsgppCount" type="uint16" displayName="_" />
+    </fields>
+    <message name="MonMsgpp" id="MsgId.MonMsgpp" displayName="MON-MSGPP" order="0" sender="server">
+        <list name="msg1" element="monMsgppCount" count="8" />
+        <list name="msg2" element="monMsgppCount" count="8" />
+        <list name="msg3" element="monMsgppCount" count="8" />
+        <list name="msg4" element="monMsgppCount" count="8" />
+        <list name="msg5" element="monMsgppCount" count="8" />
+        <list name="msg6" element="monMsgppCount" count="8" />
+        <list name="skipped" count="6">
+            <element>
+                <int name="element" type="uint32" displayName="_"/>
+            </element>
+        </list>
+    </message>
+    
+    <message name="MonMsgppPoll" id="MsgId.MonMsgpp" displayName="MON-MSGPP (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>

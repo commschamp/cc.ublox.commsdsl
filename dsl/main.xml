@@ -101,6 +101,62 @@
             <validValue name="CfgDynseed" val="0x0685" displayName="CFG-DYNSEED" />
             <validValue name="CfgPms" val="0x0686" displayName="CFG-PMS" />
             <validValue name="UpdSos" val="0x0914" displayName="UPD-SOS" />
+            <validValue name="MonIo" val="0x0a02" displayName="MON-IO" />
+            <validValue name="MonVer" val="0x0a04" displayName="MON-VER" />
+            <validValue name="MonMsgpp" val="0x0a06" displayName="MON-MSGPP" />
+            <validValue name="MonRxbuf" val="0x0a07" displayName="MON-RXBUF" />
+            <validValue name="MonTxbuf" val="0x0a08" displayName="MON-TXBUF" />
+            <validValue name="MonHw" val="0x0a09" displayName="MON-HW" />
+            <validValue name="MonHw2" val="0x0a0b" displayName="MON-HW2" />
+            <validValue name="MonRxr" val="0x0a21" displayName="MON-RXR" />
+            <validValue name="MonPatch" val="0x0a27" displayName="MON-PATCH" />
+            <validValue name="MonGnss" val="0x0a28" displayName="MON-GNSS" />
+            <validValue name="MonSmgr" val="0x0a2e" displayName="MON-SMGR" />
+            <validValue name="MonReq" val="0x0b00" displayName="MON-REQ" />
+            <validValue name="AidIni" val="0x0b01" displayName="AID-INI" />
+            <validValue name="AidHui" val="0x0b02" displayName="AID-HUI" />
+            <validValue name="AidData" val="0x0b10" displayName="AID-DATA" />
+            <validValue name="AidAlm" val="0x0b30" displayName="AID-ALM" />
+            <validValue name="AidEph" val="0x0b31" displayName="AID-EPH" />
+            <validValue name="AidAlpsrv" val="0x0b32" displayName="AID-ALPSRV" />
+            <validValue name="AidAop" val="0x0b33" displayName="AID-AOP" />
+            <validValue name="AidAlp" val="0x0b50" displayName="AID-ALP" />
+            <validValue name="TimTp" val="0x0d01" displayName="TIM-TP" />
+            <validValue name="TimTm2" val="0x0d03" displayName="TIM-TM2" />
+            <validValue name="TimSvin" val="0x0d06" displayName="TIM-SVIN" />
+            <validValue name="TimVrfy" val="0x0d04" displayName="TIM-VRFY" />
+            <validValue name="TimDosc" val="0x0d11" displayName="TIM-DOSC" />
+            <validValue name="TimTos" val="0x0d12" displayName="TIM-TOS" />
+            <validValue name="TimSmeas" val="0x0d13" displayName="TIM-SMEAS" />
+            <validValue name="TimVcocal" val="0x0d15" displayName="TIM-VCOCAL" />
+            <validValue name="TimFchg" val="0x0d16" displayName="TIM-FCHG" />
+            <validValue name="TimHoc" val="0x0d17" displayName="TIM-HOC" />
+            <validValue name="EsfMeas" val="0x1002" displayName="ESF-MEAS" />
+            <validValue name="EsfRaw" val="0x1003" displayName="ESF-RAW" />
+            <validValue name="EsfStatus" val="0x1010" displayName="ESF-STATUS" />
+            <validValue name="EsfIns" val="0x1015" displayName="ESF-INS" />
+            <validValue name="MgaGps" val="0x1300" displayName="MGA-GPS" />
+            <validValue name="MgaGal" val="0x1302" displayName="MGA-GAL" />
+            <validValue name="MgaBds" val="0x1303" displayName="MGA-BDS" />
+            <validValue name="MgaQzss" val="0x1305" displayName="MGA-QZSS" />
+            <validValue name="MgaGlo" val="0x1306" displayName="MGA-GLO" />
+            <validValue name="MgaAno" val="0x1320" displayName="MGA-ANO" />
+            <validValue name="MgaFlash" val="0x1321" displayName="MGA-FLASH" />
+            <validValue name="MgaIni" val="0x1340" displayName="MGA-INI" />
+            <validValue name="MgaAck" val="0x1360" displayName="MGA-ACK" />
+            <validValue name="MgaDbd" val="0x1380" displayName="MGA-DBD" />
+            <validValue name="LogErase" val="0x2103" displayName="LOG-ERASE" />
+            <validValue name="LogString" val="0x2104" displayName="LOG-STRING" />
+            <validValue name="LogCreate" val="0x2107" displayName="LOG-CREATE" />
+            <validValue name="LogInfo" val="0x2108" displayName="LOG-INFO" />
+            <validValue name="LogRetrieve" val="0x2109" displayName="LOG-RETRIEVE" />
+            <validValue name="LogRetrievepos" val="0x210b" displayName="LOG-RETRIEVEPOS" />
+            <validValue name="LogRetrievestring" val="0x210d" displayName="LOG-RETRIEVESTRING" />
+            <validValue name="LogFindtime" val="0x210e" displayName="LOG-FINDTIME" />
+            <validValue name="LogRetrieveposextra" val="0x210f" displayName="LOG-RETRIEVEPOSEXTRA" />
+            <validValue name="SecSign" val="0x2701" displayName="SEC-SIGN" />
+            <validValue name="SecUniqid" val="0x2703" displayName="SEC-UNIQID" />
+            <validValue name="HnrPvt" val="0x2800" displayName="HNR-PVT" />
         </enum>
     </fields>
     

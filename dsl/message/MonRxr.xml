@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="MonRxr" id="MsgId.MonRxr" displayName="MON-RXR" platforms="-ublox5" sender="server">
+        <set name="flags" length="1">
+            <bit name="awake" idx="0" />
+        </set>
+    </message>
+</schema>

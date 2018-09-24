@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <fields>
+        <enum name="monSmgrOscState" type="uint8">
+            <validValue name="Autonomous" val="0" />
+            <validValue name="Ongoing" val="1" />
+            <validValue name="Steered" val="2" />
+            <validValue name="Idle" val="4" />
+        </enum>        
+    </fields>
+    <message name="MonSmgr" id="MsgId.MonSmgr" displayName="MON-SMGR" order="0" platforms="+ublox8" sender="server">
+        <int name="version" type="uint8" validValue="0"/>
+        <ref field="res3" name="reserved1" />
+        <ref field="itow" />
+        <bitfield name="intOsc">
+            <enum reuse="monSmgrOscState" name="intOscState" bitLength="4" />
+            <set name="bits" bitLength="12" displayName="_">
+                <bit name="intOscCalib" idx="0" />
+                <bit name="intOscDisc" idx="1" />
+            </set>
+        </bitfield>
+        <bitfield name="extOsc">
+            <enum reuse="monSmgrOscState" name="extOscState" bitLength="4" />
+            <set name="bits" bitLength="12" displayName="_">
+                <bit name="extOscCalib" idx="0" />
+                <bit name="extOscDisc" idx="1" />
+            </set>
+        </bitfield>
+        <enum name="discSrc" type="uint8">
+            <validValue name="Internal" val="0" />
+            <validValue name="GNSS" val="1" />
+            <validValue name="EXTINT0" val="2" />
+            <validValue name="EXTINT1" val="3" />
+            <validValue name="HostInternal" val="4" />
+            <validValue name="HostExternal" val="5" />
+        </enum>
+        <set name="gnss" length="1">
+            <bit name="gnssAvail" idx="0" />
+        </set>
+        <set name="extInt0" length="1">
+            <bit name="extInt0Avail" idx="0" />
+            <bit name="extInt0Type" idx="1" />
+            <bit name="extInt0FeedBack" idx="2" />
+        </set>
+        <set name="extInt1" length="1">
+            <bit name="extInt1Avail" idx="0" />
+            <bit name="extInt1Type" idx="1" />
+            <bit name="extInt1FeedBack" idx="2" />
+        </set>
+    </message>
+    
+    <message name="MonSmgrPoll" id="MsgId.MonSmgr" displayName="MON-SMGR (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

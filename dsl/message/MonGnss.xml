@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="MonGnss" id="MsgId.MonGnss" displayName="MON-GNSS" order="0" platforms="+ublox8" sender="server">
+        <int name="version" type="uint8" defaultValue="1" validValue="1"/>
+        <set name="supported" length="1">
+            <bit name="GPSSup" idx="0" />
+            <bit name="GlonassSup" idx="1" />
+            <bit name="BeidouSup" idx="2" />
+            <bit name="GalileoSup" idx="3" />
+        </set>
+        <set name="defaultGnss" length="1">
+            <bit name="GPSDef" idx="0" />
+            <bit name="GlonassDef" idx="1" />
+            <bit name="BeidouDef" idx="2" />
+            <bit name="GalileoDef" idx="3" />
+        </set>
+        <set name="enabled" length="1">
+            <bit name="GPSEna" idx="0" />
+            <bit name="GlonassEna" idx="1" />
+            <bit name="BeidouEna" idx="2" />
+            <bit name="GalileoEna" idx="3" />
+        </set>
+        <int name="simultaneous" type="uint8" />
+        <ref field="res3" name="reserved1" />
+    </message>
+    
+    <message name="MonGnssPoll" id="MsgId.MonGnss" displayName="MON-GNSS (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

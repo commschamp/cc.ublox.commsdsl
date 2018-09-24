@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="MonHw" id="MsgId.MonHw" displayName="MON-HW" order="0" sender="server">
+        <int name="pinSel" type="uint32" />
+        <int name="pinBank" type="uint32" />
+        <int name="pinDir" type="uint32" />
+        <int name="pinVal" type="uint32" />
+        <int name="noisePerMS" type="uint16" />
+        <int name="agcCnt" type="uint16" />
+        <enum name="aStatus" type="uint8">
+            <validValue name="INIT" val="0" />
+            <validValue name="DONTKNOW" val="1" />
+            <validValue name="OK" val="2" />
+            <validValue name="SHORT" val="3" />
+            <validValue name="OPEN" val="4" />
+        </enum>
+        <enum name="aPower" type="uint8">
+            <validValue name="OFF" val="0" />
+            <validValue name="ON" val="1" />
+            <validValue name="DONTKNOW" val="2" />
+        </enum>
+        <bitfield name="flags">
+            <set name="bitsLow" bitLength="2" displayName="_">
+                <bit name="rtcCalib" idx="0" />
+                <bit name="safeBoot" idx="1" />
+            </set>
+            <enum name="jammingState" type="uint8" bitLength="2">
+                <validValue name="Unknown" val="0" />
+                <validValue name="Ok" val="1" />
+                <validValue name="Warning" val="2" />
+                <validValue name="Critical" val="3" />
+            </enum>
+            <set name="bitsHigh" bitLength="4" displayName="_">
+                <bit name="xtalAbsent" idx="0" />
+            </set>
+        </bitfield>
+        <ref field="res1" name="reserved1" />
+        <int name="usedMask" type="uint32" />
+        <data name="VP" length="17" />
+        <int name="jamInd" type="uint8" />
+        <ref field="res2" name="reserved2" />
+        <int name="pinIrq" type="uint32" />
+        <int name="pullH" type="uint32" />
+        <int name="pullL" type="uint32" />
+    </message>
+    
+    <message name="MonHwPoll" id="MsgId.MonHw" displayName="MON-HW (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>

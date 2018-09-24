@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="MonRxbuf" id="MsgId.MonRxbuf" displayName="MON-RXBUF" order="0" sender="server">
+        <list name="pending" count="6">
+            <element>
+                <int name="element" type="uint16" displayName="_"/>
+            </element>
+        </list>
+        <list name="usage" count="6">
+            <element>
+                <int name="element" type="uint8" displayName="_"/>
+            </element>
+        </list>
+        <list name="peakUsage" count="6">
+            <element>
+                <int name="element" type="uint8" displayName="_"/>
+            </element>
+        </list>
+
+    </message>
+    
+    <message name="MonRxbufPoll" id="MsgId.MonRxbuf" displayName="MON-RXBUF (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>
