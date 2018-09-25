@@ -1,0 +1,13 @@
+/// @brief Custom refresh functionality
+bool doRefresh()
+{
+    bool updated = Base::doRefresh();
+    updated = refresh_ecefXLat(false) || updated;
+    updated = refresh_ecefYLon(false) || updated;
+    updated = refresh_ecefZAlt(false) || updated;
+    updated = refresh_wnoDate(false) || updated;
+    updated = refresh_towTime(false) || updated;
+    updated = refresh_clkDFreq(false) || updated;    
+    updated = refresh_clkDFreqAcc(false) || updated;    
+    return updated;
+}

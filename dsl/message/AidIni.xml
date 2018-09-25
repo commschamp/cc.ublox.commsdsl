@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="AidIni" id="MsgId.AidIni" displayName="AID-INI" order="0">
+        <optional name="ecefX" defaultMode="exist" externalModeCtrl="true">
+            <int name="ecefX" type="int32" units="cm" />
+        </optional>
+        <optional name="lat" defaultMode="missing" externalModeCtrl="true">        
+            <int name="lat" type="int32" units="deg" scaling="1/10000000" displayDecimals="7"/>
+        </optional>
+        <optional name="ecefY" defaultMode="exist" externalModeCtrl="true">
+            <int name="ecefY" type="int32" units="cm" />
+        </optional>
+        <optional name="lon" defaultMode="missing" externalModeCtrl="true">        
+            <int name="lon" type="int32" units="deg" scaling="1/10000000" displayDecimals="7"/>
+        </optional>
+        <optional name="ecefZ" defaultMode="exist" externalModeCtrl="true">
+            <int name="ecefZ" type="int32" units="cm" />
+        </optional>
+        <optional name="alt" defaultMode="missing" externalModeCtrl="true">        
+            <int name="alt" type="int32" units="cm"/>
+        </optional>
+        <int name="posAcc" type="uint32" units="cm" />
+        <set name="tmCfg" length="2">
+            <bit name="fEdge" idx="1" />
+            <bit name="tm1" idx="4" />
+            <bit name="f1" idx="6" />
+        </set>
+        <optional name="wno" defaultMode="exist" externalModeCtrl="true">
+            <int name="wno" type="uint16" units="weeks" />
+        </optional>
+        <optional name="date" defaultMode="missing" externalModeCtrl="true">
+            <bundle name="dateBundle" displayName="_">
+                <int name="year" type="int16" length="1" serOffset="-2000" defaultValue="2000" validRange="[2000, 2255]"/>
+                <int name="month" type="uint8" />
+            </bundle>
+        </optional>
+        <optional name="tow" defaultMode="exist" externalModeCtrl="true">
+            <int name="tow" type="uint32" units="ms" />
+        </optional>
+        <optional name="time" defaultMode="missing" externalModeCtrl="true">
+            <bundle name="timeBundle" displayName="_">
+                <int name="day" type="uint8" units="days"/>
+                <int name="hour" type="uint8" units="hours"/>
+                <int name="min" type="uint8" units="min"/>
+                <int name="sec" type="uint8" units="sec"/>
+            </bundle>
+        </optional>
+        <int name="towNs" type="int32" units="ns" />
+        <int name="tAccMs" type="uint32" units="ms" />
+        <int name="tAccNs" type="uint32" units="ns" />
+        <optional name="clkD" defaultMode="exist" externalModeCtrl="true">
+            <int name="clkD" type="int32" units="ns" />
+        </optional>
+        <optional name="freq" defaultMode="missing" externalModeCtrl="true">
+            <int name="freq" type="int32" units="hz" scaling="1/100" displayDecimals="2" />
+        </optional>
+        <optional name="clkDAcc" defaultMode="exist" externalModeCtrl="true">
+            <int name="clkDAcc" type="uint32" units="ns" />
+        </optional>
+        <optional name="freqAcc" defaultMode="missing" externalModeCtrl="true">
+            <int name="freqAcc" type="uint32" />
+        </optional>
+        <set name="flags" length="4">
+            <bit name="pos" idx="0" />
+            <bit name="time" idx="1" />
+            <bit name="clockD" idx="2" />
+            <bit name="tp" idx="3" />
+            <bit name="clockF" idx="4" />
+            <bit name="lla" idx="5" />
+            <bit name="altInv" idx="6" />
+            <bit name="prevTm" idx="7" />
+            <bit name="utc" idx="10" />
+        </set>
+    </message>
+
+    <message name="AidIniPoll" id="MsgId.AidIni" displayName="AID-INI (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>

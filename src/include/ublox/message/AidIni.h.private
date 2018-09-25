@@ -1,0 +1,69 @@
+template <typename TFirst, typename TSecond>
+static bool refreshFields(TFirst& first, TSecond& second, bool enableSecond, bool updateValue)
+{
+    if ((first.isMissing() == enableSecond) &&
+        (second.doesExist() == enableSecond)) {
+        return false;
+    }
+
+    auto firstMode = comms::field::OptionalMode::Missing;
+    auto secondMode = comms::field::OptionalMode::Exists;
+    if (!enableSecond) {
+        std::swap(firstMode, secondMode);
+    }
+
+    first.setMode(firstMode);
+    second.setMode(secondMode);
+
+    if (!updateValue) {
+        return true;
+    }
+
+    if (enableSecond) {
+        second.field() = 
+            comms::field_cast<typename std::decay<decltype(second.field())>::type>(
+                first.field());
+    }
+    else {
+        first.field() = 
+            comms::field_cast<typename std::decay<decltype(first.field())>::type>(
+                second.field());
+    }
+
+    return true;
+}
+
+bool refresh_ecefXLat(bool updateValue)
+{
+    return refreshFields(field_ecefX(), field_lat(), field_flags().getBitValue_lla(), updateValue);
+}
+
+bool refresh_ecefYLon(bool updateValue)
+{
+    return refreshFields(field_ecefY(), field_lon(), field_flags().getBitValue_lla(), updateValue);
+} 
+
+bool refresh_ecefZAlt(bool updateValue)
+{
+    return refreshFields(field_ecefZ(), field_alt(), field_flags().getBitValue_lla(), updateValue);
+}   
+
+bool refresh_wnoDate(bool upadteValue)
+{
+    return refreshFields(field_wno(), field_date(), field_flags().getBitValue_utc(), upadteValue);
+}
+
+bool refresh_towTime(bool upadteValue)
+{
+    return refreshFields(field_tow(), field_time(), field_flags().getBitValue_utc(), upadteValue);
+}
+
+bool refresh_clkDFreq(bool updateValue)
+{
+    return refreshFields(field_clkD(), field_freq(), field_flags().getBitValue_clockF(), updateValue);
+}
+
+bool refresh_clkDFreqAcc(bool updateValue)
+{
+    return refreshFields(field_clkDAcc(), field_freqAcc(), field_flags().getBitValue_clockF(), updateValue);
+}

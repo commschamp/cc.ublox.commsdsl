@@ -112,7 +112,7 @@
             <validValue name="MonPatch" val="0x0a27" displayName="MON-PATCH" />
             <validValue name="MonGnss" val="0x0a28" displayName="MON-GNSS" />
             <validValue name="MonSmgr" val="0x0a2e" displayName="MON-SMGR" />
-            <validValue name="MonReq" val="0x0b00" displayName="MON-REQ" />
+            <validValue name="AidReq" val="0x0b00" displayName="AID-REQ" />
             <validValue name="AidIni" val="0x0b01" displayName="AID-INI" />
             <validValue name="AidHui" val="0x0b02" displayName="AID-HUI" />
             <validValue name="AidData" val="0x0b10" displayName="AID-DATA" />

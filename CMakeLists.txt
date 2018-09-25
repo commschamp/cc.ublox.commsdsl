@@ -141,6 +141,8 @@ set (schema_files
     dsl/message/MonPatch.xml
     dsl/message/MonGnss.xml
     dsl/message/MonSmgr.xml
+    dsl/message/AidReq.xml
+    dsl/message/AidIni.xml
 )
 
 string(REPLACE ";" "\n" schema_files_str "${schema_files}")

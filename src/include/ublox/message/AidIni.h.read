@@ -1,0 +1,19 @@
+/// @brief Custom read functionality
+template <typename TIter>
+comms::ErrorStatus doRead(TIter& iter, std::size_t len)
+{
+    auto es = Base::doRead(iter, len);
+    if (es != comms::ErrorStatus::Success) {
+        return es;
+    }
+
+    refresh_ecefXLat(true);
+    refresh_ecefYLon(true);
+    refresh_ecefZAlt(true);
+    refresh_wnoDate(true);
+    refresh_towTime(true);
+    refresh_clkDFreq(true);
+    refresh_clkDFreqAcc(true);
+    
+    return comms::ErrorStatus::Success;
+}
