@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="AidAlm" id="MsgId.AidAlm" displayName="AID-ALM" order="0" sender="server">
+        <copyFieldsFrom value="RxmAlm" />
+    </message>
+
+    <message name="AidAlmPollSv" id="MsgId.AidAlm" displayName="AID-ALM (Poll SV)" order="1" sender="client">
+        <copyFieldsFrom value="RxmAlmPollSv" />
+    </message>       
+
+    <message name="AidAlmPoll" id="MsgId.AidAlm" displayName="AID-ALM (Poll)" order="2">
+        <sender value="client" />
+    </message>    
+</schema>

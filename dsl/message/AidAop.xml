@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="AidAopU8" id="MsgId.AidAop" displayName="AID-AOP (ublox-8)" order="0" platforms="+ublox8">
+        <ref field="gnssId" />
+        <int name="svid" type="uint8" />
+        <ref field="res2" name="reserved1" />
+        <data name="data" length="64" />
+    </message>
+
+    <message name="AidAop" id="MsgId.AidAop" displayName="AID-AOP" order="1" platforms="+ublox6,ublox7">
+        <int name="svid" type="uint8" />
+        <data name="data" length="59" />
+        <optional name="optionals">
+            <bundle name="optionalsWrap" displayName="_">
+                <data name="optional0" length="48" />
+                <data name="optional1" length="48" />
+                <data name="optional2" length="48" />
+            </bundle>
+        </optional>
+    </message>
+</schema>

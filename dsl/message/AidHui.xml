@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="AidHui" id="MsgId.AidHui" displayName="AID-HUI" order="0">
+        <int name="health" type="uint32" />
+        <float name="utcA0" type="double" />
+        <float name="utcA1" type="double" />
+        <int name="utcTOW" type="int32" />
+        <int name="utcWNT" type="int16" />
+        <int name="utcLS" type="int16" />
+        <int name="utcWNF" type="int16" />
+        <int name="utcDN" type="int16" />
+        <int name="utcLSF" type="int16" />
+        <int name="utcSpare" type="int16" />
+        <float name="klobA0" type="float" units="s" />
+        <float name="klobA1" type="float" units="s" />
+        <float name="klobA2" type="float" units="s" />
+        <float name="klobA3" type="float" units="s" />
+        <float name="klobB0" type="float" units="s" />
+        <float name="klobB1" type="float" units="s" />
+        <float name="klobB2" type="float" units="s" />
+        <float name="klobB3" type="float" units="s" />
+        <set name="flags" length="4">
+            <bit name="healthValid" idx="0" />
+            <bit name="utcValid" idx="1" />
+            <bit name="klobValid" idx="2" />
+        </set>
+    </message>
+
+    <message name="AidHuiPoll" id="MsgId.AidHui" displayName="AID-HUI (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>

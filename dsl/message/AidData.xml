@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="AidData" id="MsgId.AidData" displayName="AID-DATA" platforms="-ublox8" sender="client" />
+</schema>
