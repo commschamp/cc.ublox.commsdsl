@@ -1,0 +1,28 @@
+/// @brief Custom read functionality
+template <typename TIter>
+comms::ErrorStatus doRead(TIter& iter, std::size_t len)
+{
+    auto es = Base::template doReadUntilAndUpdateLen<FieldIdx_list>(iter, len);
+    if (es != comms::ErrorStatus::Success) {
+        return es;
+    }
+
+    refresh_calibTtag();
+    if (field_calibTtag().isMissing()) {
+        return Base::template doReadFrom<FieldIdx_list>(iter, len);
+    }
+
+    std::size_t calibTtagLen = field_calibTtag().field().maxLength();
+    if (len < calibTtagLen) {
+        return comms::ErrorStatus::NotEnoughData;
+    }
+
+    len -= calibTtagLen;
+    es = Base::template doReadFromUntilAndUpdateLen<FieldIdx_list, FieldIdx_calibTtag>(iter, len);
+    if (es != comms::ErrorStatus::Success) {
+        return es;
+    }
+
+    len += calibTtagLen; 
+    return Base::template doReadFrom<FieldIdx_calibTtag>(iter, calibTtagLen);
+}

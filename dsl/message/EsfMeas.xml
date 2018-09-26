@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="EsfMeas" id="MsgId.EsfMeas" displayName="ESF-MEAS" order="0" platforms="+ublox8">
+        <int name="timeTag" type="uint32" />
+        <bitfield name="flags">
+            <enum name="timeMarkSent" type="uint8" bitLength="2">
+                <validValue name="None" val="0" />
+                <validValue name="Ext0" val="1" />
+                <validValue name="Ext1" val="2" />
+            </enum>
+            <set name="bits" bitLength="14" displayName="_">
+                <bit name="timeMarkEdge" idx="0" />
+                <bit name="calibTtagValid" idx="1" />
+            </set>
+        </bitfield>
+        <int name="id" type="uint16" />
+        <list name="list">
+            <element>
+                <bitfield name="element" displayName="_">
+                    <int name="dataField" type="uint32" bitLength="24" />
+                    <int name="dataType" type="uint8" bitLength="6" />
+                    <int reuse="res1" name="reserved" bitLength="2" displayHidden="true" />
+                </bitfield>
+            </element>
+        </list>
+        <optional name="calibTtag" externalModeCtrl="true">
+            <int name="calibTtag" type="uint32" units="ms" />
+        </optional>
+    </message>
+
+    <message name="EsfMeasPoll" id="MsgId.EsfMeas" displayName="ESF-MEAS (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="TimVcocal" id="MsgId.TimVcocal" displayName="TIM-VCOCAL" order="0" platforms="+ublox8" sender="server">
+        <int name="type" type="uint8" defaultValue="3" validValue="3" failOnInvalid="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <enum name="oscId" type="uint8">
+            <validValue name="Internal" val="0" />
+            <validValue name="External" val="1" />
+        </enum>
+        <ref field="res3" name="reserved1" />
+        <int name="gainUncertainty" type="uint16" scaling="1/0x10000" displayDecimals="9" />
+        <int name="gainVco" type="int32" scaling="1/0x10000" displayDecimals="9" />
+    </message>
+
+    <message name="TimVcocalExt" id="MsgId.TimVcocal" displayName="TIM-VCOCAL (Extended)" order="1" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="2" validValue="2" failOnInvalid="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <enum name="oscId" type="uint8">
+            <validValue name="Internal" val="0" />
+            <validValue name="External" val="1" />
+        </enum>
+        <enum name="srcId" type="uint8">
+            <validValue name="Internal" val="0" />
+            <validValue name="GNSS" val="1" />
+            <validValue name="EXTINT0" val="2" />
+            <validValue name="EXTINT1" val="3" />
+        </enum>
+        <ref field="res2" name="reserved1" />
+        <int name="raw0" type="uint16" />
+        <int name="raw1" type="uint16" />
+        <int name="maxStepSize" type="uint16" />
+    </message>   
+
+    <message name="TimVcocalStop" id="MsgId.TimVcocal" displayName="TIM-VCOCAL (Stop)" order="2" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" validValue="0" failOnInvalid="true" />
+    </message>        
+
+    <message name="TimVcocalPoll" id="MsgId.TimVcocal" displayName="TIM-VCOCAL (Poll)" order="3" platforms="+ublox8" sender="client" />
+
+</schema>

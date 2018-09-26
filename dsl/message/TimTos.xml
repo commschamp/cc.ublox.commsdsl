@@ -47,9 +47,9 @@
         <int name="TOW" type="uint32" units="s" />
         <int name="gnssOffset" type="int32" units="ns" />
         <int name="gnssUncertainy" type="uint32" units="ns" />
-        <int name="intOscOffset" type="int32" scaling="1/0x10" displayDecimals="8" />
-        <int name="intOscUncertainty" type="uint32" scaling="1/0x10" displayDecimals="8" />
-        <int name="extOscOffset" type="int32" scaling="1/0x10" displayDecimals="8" />
-        <int name="extOscUncertainty" type="uint32" scaling="1/0x10" displayDecimals="8" />
+        <int name="intOscOffset" type="int32" scaling="1/0x100" displayDecimals="8" />
+        <int name="intOscUncertainty" type="uint32" scaling="1/0x100" displayDecimals="8" />
+        <int name="extOscOffset" type="int32" scaling="1/0x100" displayDecimals="8" />
+        <int name="extOscUncertainty" type="uint32" scaling="1/0x100" displayDecimals="8" />
     </message>
 </schema>

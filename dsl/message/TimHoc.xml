@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="TimHoc" id="MsgId.TimFchg" displayName="TIM-HOC" platforms="+ublox8" sender="client">
+        <int name="version" type="int8" validValue="0" />
+        <enum name="oscId" type="uint8">
+            <validValue name="Internal" val="0" />
+            <validValue name="External" val="1" />
+        </enum>
+        <set name="flags">
+            <bit name="raw" idx="0" />
+            <bit name="difference" idx="1" />
+        </set>
+        <ref field="res1" name="reserved1" />
+        <int name="value" type="int32" scaling="1/0x100" displayDecimals="8" />
+    </message>
+
+</schema>

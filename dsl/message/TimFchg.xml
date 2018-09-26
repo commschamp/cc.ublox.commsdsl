@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="TimFchg" id="MsgId.TimFchg" displayName="TIM-FCHG" order="0" platforms="+ublox8" sender="server">
+        <int name="version" type="int8" validValue="0" />
+        <ref field="res3" name="reserved1" />
+        <ref field="itow" />
+        <int name="intDeltaFreq" type="int32" scaling="1/0x100" displayDecimals="8" />
+        <int name="intDeltaFreqUnc" type="uint32" scaling="1/0x100" displayDecimals="8" />
+        <int name="intRaw" type="uint32" />
+        <int name="extDeltaFreq" type="int32" scaling="1/0x100" displayDecimals="8" />
+        <int name="extDeltaFreqUnc" type="uint32" scaling="1/0x100" displayDecimals="8" />
+        <int name="extRaw" type="uint32" />
+    </message>
+
+    <message name="TimFchgPoll" id="MsgId.TimFchg" displayName="TIM-FCHG (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

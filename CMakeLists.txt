@@ -157,6 +157,9 @@ set (schema_files
     dsl/message/TimDosc.xml
     dsl/message/TimTos.xml
     dsl/message/TimSmeas.xml
+    dsl/message/TimVcocal.xml
+    dsl/message/TimFchg.xml
+    dsl/message/EsfMeas.xml
 )
 
 string(REPLACE ";" "\n" schema_files_str "${schema_files}")
