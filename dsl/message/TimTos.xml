@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="TimTos" id="MsgId.TimTos" displayName="TIM-TOS" platforms="+ublox8" sender="server">
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="gnssId" />
+        <ref field="res2" name="reserved1" />
+        <bitfield name="flags">
+            <set name="bitsLow" bitLength="8" displayName="_">
+                <bit name="leapNow" idx="0" />
+                <bit name="leapSoon" idx="1" />
+                <bit name="leapPositive" idx="2" />
+                <bit name="timeInLimit" idx="3" />
+                <bit name="intOscInLimit" idx="4" />
+                <bit name="extOscInLimit" idx="5" />
+                <bit name="gnssTimeValid" idx="6" />
+                <bit name="UTCTimeValid" idx="7" />
+            </set>
+            <enum name="DiscSrc" type="uint8" bitLength="3">
+                <validValue name="Internal" val="0" />
+                <validValue name="GNSS" val="1" />
+                <validValue name="EXTINT0" val="2" />
+                <validValue name="EXTINT1" val="3" />
+                <validValue name="HostInternal" val="4" />
+                <validValue name="HostExternal" val="5" />
+            </enum>
+            <set name="bitsHigh" bitLength="21" displayName="_">
+                <bit name="raim" idx="0" />
+                <bit name="cohPulse" idx="1" />
+                <bit name="lockedPulse" idx="2" />
+            </set>            
+        </bitfield>
+        <ref field="year" />
+        <ref field="month" />
+        <ref field="day" />
+        <ref field="hour" />
+        <ref field="min" />
+        <ref field="sec" />
+        <enum name="utcStandard" type="uint8">
+            <validValue name="Unknown" val="0" />
+            <validValue name="USNO" val="3" />
+            <validValue name="SU" val="6" />
+            <validValue name="NTSC" val="7" />
+        </enum>
+        <int name="utcOffset" type="int32" units="ns" />
+        <int name="utcUncertainty" type="uint32" units="ns" />
+        <int name="week" type="uint32" units="weeks" />
+        <int name="TOW" type="uint32" units="s" />
+        <int name="gnssOffset" type="int32" units="ns" />
+        <int name="gnssUncertainy" type="uint32" units="ns" />
+        <int name="intOscOffset" type="int32" scaling="1/0x10" displayDecimals="8" />
+        <int name="intOscUncertainty" type="uint32" scaling="1/0x10" displayDecimals="8" />
+        <int name="extOscOffset" type="int32" scaling="1/0x10" displayDecimals="8" />
+        <int name="extOscUncertainty" type="uint32" scaling="1/0x10" displayDecimals="8" />
+    </message>
+</schema>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="TimVrfy" id="MsgId.TimVrfy" displayName="TIM-VRFY" order="0" platforms="-ublox5" sender="server">
+        <ref field="itow" />
+        <int name="frac" type="int32" units="ns" />
+        <int name="deltaMs" type="int32" units="ms" />
+        <int name="deltaNs" type="int32" units="ns" />
+        <int name="wno" type="uint16" units="weeks" />
+        <bitfield name="flags">
+            <enum name="src" type="uint8" bitLength="3">
+                <validValue name="NoAiding" val="0" />
+                <validValue name="RTC" val="1" />
+                <validValue name="AidIni" val="2" />
+            </enum>
+            <int reuse="res1" bitLength="5" name="reserved" displayHidden="true" />
+        </bitfield>
+        <ref field="res1" name="reserved1" />
+    </message>
+
+    <message name="TimVrfyPoll" id="MsgId.TimVrfy" displayName="TIM-VRFY (Poll)" order="1">
+        <platforms value="-ublox5" />
+        <sender value="client" />
+    </message>
+</schema>

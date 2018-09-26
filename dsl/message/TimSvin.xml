@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="TimSvin" id="MsgId.TimSvin" displayName="TIM-SVIN" order="0" platforms="-ublox7" sender="server">
+        <int name="dur" type="uint32" units="s" />
+        <int name="meanX" type="int32" units="cm" />
+        <int name="meanY" type="int32" units="cm" />
+        <int name="meanZ" type="int32" units="cm" />
+        <int name="meanV" type="uint32" />
+        <int name="obs" type="uint32" />
+        <int name="valid" type="uint8" />
+        <int name="active" type="uint8" />
+        <ref field="res2" name="reserved1" />
+    </message>
+
+    <message name="TimSvinPoll" id="MsgId.TimSvin" displayName="TIM-SVIN (Poll)" order="1">
+        <platforms value="-ublox7" />
+        <sender value="client" />
+    </message>
+</schema>

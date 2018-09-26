@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="TimTp" id="MsgId.TimTp" displayName="TIM-TP" order="0" sender="server">
+        <int name="towMS" type="uint32" units="ms" />
+        <int name="towSubMS" type="uint32" units="ms" scaling="1/0x100000000" />
+        <int name="qErr" type="int32" />
+        <int name="week" type="uint16" units="weeks" />
+        <bitfield name="flags">
+            <set name="bits" bitLength="2" displayName="_">
+                <bit name="timeBase" idx="0" />
+                <bit name="utc" idx="1" />
+            </set>
+            <enum name="raim" type="uint8" bitLength="2">
+                <validValue name="NotAvailable" val="0" />
+                <validValue name="NotActive" val="1" />
+                <validValue name="Active" val="2" />
+            </enum>
+            <int reuse="res1" bitLength="4" name="reserved" displayHidden="true" />
+        </bitfield>
+        <bitfield name="refInfo">
+            <enum name="timeRefGnss" type="uint8" bitLength="4">
+                <validValue name="GPS" val="0" />
+                <validValue name="GLONASS" val="1" />
+                <validValue name="BeiDou" val="2" />
+                <validValue name="Unknown" val="15" />
+            </enum>
+            <enum name="utcStandard" type="uint8" bitLength="4">
+                <validValue name="NotAvailable" val="0" />
+                <validValue name="CRL" val="1" />
+                <validValue name="NIST" val="2" />
+                <validValue name="USNO" val="3" />
+                <validValue name="BIMP" val="4" />
+                <validValue name="EuLab" val="5" />
+                <validValue name="SU" val="6" />
+                <validValue name="Unknown" val="15" />
+            </enum>
+        </bitfield>
+    </message>
+
+    <message name="TimTpPoll" id="MsgId.TimTp" displayName="TIM-TP (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="TimDosc" id="MsgId.TimDosc" displayName="TIM-DOSC" platforms="+ublox8" sender="server">
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res3" name="reserved1" />
+        <int name="value" type="uint32" />
+    </message>
+</schema>

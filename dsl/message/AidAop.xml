@@ -18,4 +18,13 @@
             </bundle>
         </optional>
     </message>
+
+    <message name="AidAopPollSv" id="MsgId.AidAop" displayName="AID-AOP (Poll SV)" order="2" platforms="-ublox5" sender="client">
+        <int name="svid" type="uint8" />
+    </message>
+
+    <message name="AidAopPoll" id="MsgId.AidAop" displayName="AID-AOP (Poll)" order="3">
+        <platforms value="-ublox5" />
+        <sender value="client" />
+    </message>
 </schema>

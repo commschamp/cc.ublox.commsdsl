@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="TimTm2" id="MsgId.TimTm2" displayName="TIM-TM2" order="0" sender="server">
+        <int name="ch" type="uint8" />
+        <bitfield name="flags">
+            <set name="bitsLow" bitLength="3" displayName="_">
+                <bit name="mode" idx="0" />
+                <bit name="run" idx="1" />
+                <bit name="newFallingEdge" idx="2" />
+            </set>
+            <enum name="timeBase" type="uint8" bitLength="2">
+                <validValue name="Receiver" val="0" />
+                <validValue name="GNSS" val="1" />
+                <validValue name="UTC" val="2" />
+            </enum>
+            <set name="bitsHigh" bitLength="3" displayName="_">
+                <bit name="utc" idx="0" />
+                <bit name="time" idx="1" />
+                <bit name="newRisingEdge" idx="2" />
+            </set>            
+        </bitfield>
+        <int name="count" type="uint16" />
+        <int name="wnR" type="uint16" />
+        <int name="wnF" type="uint16" />
+        <int name="towMsR" type="uint32" units="ms"/>
+        <int name="towSubMsR" type="uint32" units="ns"/>
+        <int name="towMsF" type="uint32" units="ms"/>
+        <int name="towSubMsF" type="uint32" units="ns"/>
+        <int name="accEst" type="uint32" units="ns"/>
+    </message>
+
+    <message name="TimTm2Poll" id="MsgId.TimTm2" displayName="TIM-TM2 (Poll)" order="1">
+        <sender value="client" />
+    </message>
+</schema>
