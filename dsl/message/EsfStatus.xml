@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="EsfStatus" id="MsgId.EsfStatus" displayName="ESF-STATUS" order="0" platforms="+ublox6,ublox8" sender="server">
+        <ref field="itow" />
+        <int name="version" type="uint8" defaultValue="2" validRange="[0, 2]" />
+        <ref field="res7" name="reserved1" />
+        <enum name="fusionMode" type="uint8">
+            <validValue name="Initialization" val="0" />
+            <validValue name="Fusion" val="1" />
+            <validValue name="Suspended" val="2" />
+            <validValue name="Disabled" val="3" />
+        </enum>
+        <ref field="res2" name="reserved2" />
+        <int name="numSens" type="uint8" displayReadOnly="true" />
+        <list name="list" countPrefix="$numSens">
+            <element>
+                <bundle name="element" displayName="_">
+                    <bitfield name="sensStatus1">
+                        <int name="type" type="uint8" bitLength="6" />
+                        <set name="bits" bitLength="2" displayName="_">
+                            <bit name="used" idx="0" />
+                            <bit name="ready" idx="1" />
+                        </set>
+                    </bitfield>
+                    <bitfield name="sensStatus2">
+                        <enum name="calibStatus" type="uint8" bitLength="2">
+                            <validValue name="NotCalibrated" val="0" />
+                            <validValue name="Calibrating" val="1" />
+                            <validValue name="Calibrated" val="2" />
+                            <validValue name="Calibrated2" val="3" />
+                        </enum>
+                        <enum name="timeStatus" type="uint8" bitLength="2">
+                            <validValue name="NoData" val="0" />
+                            <validValue name="FirstByte" val="1" />
+                            <validValue name="EventInput" val="2" />
+                            <validValue name="TimeTag" val="3" />
+                        </enum>
+                        <int reuse="res1" bitLength="4" name="reserved" displayHidden="true" />
+                    </bitfield>
+                    <int name="freq" type="uint8" units="hz" />
+                    <set name="faults" type="uint8">
+                        <bit name="badMeas" idx="0" />
+                        <bit name="badTTag" idx="1" />
+                        <bit name="missingMeas" idx="2" />
+                        <bit name="noisyMeas" idx="3" />
+                    </set>
+                </bundle>
+            </element>
+        </list>
+    </message>
+
+    <message name="EsfStatusPoll" id="MsgId.EsfStatus" displayName="ESF-STATUS (Poll)" order="1">
+        <platforms value="+ublox6,ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

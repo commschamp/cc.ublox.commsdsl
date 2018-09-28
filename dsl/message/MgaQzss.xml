@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="MgaQzssEph" id="MsgId.MgaQzss" displayName="MGA-QZSS-EPH" order="0" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="1" validValue="1" failOnInvalid="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <int name="svid" type="uint8" />
+        <ref field="res1" name="reserved1" />
+        <int name="fitInterval" type="uint8" />
+        <int name="uraIndex" type="uint8" />
+        <int name="svHealth" type="uint8" />
+        <int name="tgd" type="int8" units="s" scaling="1/0x80000000" />
+        <int name="iodc" type="uint16" />
+        <int name="toc" type="uint16" units="s" scaling="0x10/1" />
+        <ref field="res1" name="reserved2" />
+        <int name="af2" type="int8" scaling="1/0x80000000000000" />
+        <int name="af1" type="int16" scaling="1/0x80000000000" />
+        <int name="af0" type="int32" units="s" scaling="1/0x80000000" />
+        <int name="crs" type="int16" units="m" scaling="1/0x20" />
+        <int name="deltaN" type="int16" scaling="1/0x80000000000" />
+        <int name="m0" type="int32" scaling="1/0x80000000" />
+        <int name="cuc" type="int16" units="rad" scaling="1/0x20000000" />
+        <int name="cus" type="int16" units="rad" scaling="1/0x20000000" />
+        <int name="e" type="uint32" scaling="1/0x200000000" />
+        <int name="sqrtA" type="uint32" scaling="1/0x80000" />
+        <int name="toe" type="uint16" scaling="0x10" />
+        <int name="cic" type="int16" units="rad" scaling="1/0x20000000" />
+        <int name="omega0" type="int32" scaling="1/0x80000000" />
+        <int name="cis" type="int16" units="rad" scaling="1/0x20000000" />
+        <int name="crc" type="int16" units="m" scaling="1/0x20" />
+        <int name="i0" type="int32" scaling="1/0x80000000" />
+        <int name="omega" type="int32" scaling="1/0x80000000" />
+        <int name="omegaDot" type="int32" scaling="1/0x80000000000" />
+        <int name="idot" type="int16" scaling="1/0x80000000000" />
+        <ref field="res2" name="reserved3" />
+    </message>
+
+    <message name="MgaQzssAlm" id="MsgId.MgaQzss" displayName="MGA-QZSS-ALM" order="1" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="2" validValue="2" failOnInvalid="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <int name="svid" type="uint8" />
+        <ref field="res1" name="reserved1" />
+    </message>
+
+    <message name="MgaQzssHealth" id="MsgId.MgaQzss" displayName="MGA-QZSS-HEALTH" order="2" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="4" validValue="4" failOnInvalid="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res2" name="reserved1" />
+    </message>
+</schema>

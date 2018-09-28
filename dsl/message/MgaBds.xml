@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="MgaBdsEph" id="MsgId.MgaBds" displayName="MGA-BDS-EPH" order="0" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="1" validValue="1" failOnInvalid="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <int name="svid" type="uint8" />
+        <ref field="res1" name="reserved1" />
+        <int name="SatH1" type="uint8" />
+        <int name="IODC" type="uint8" />
+        <int name="a2" type="int16" />
+        <int name="a1" type="int32" scaling="1/0x4000000000000"/>
+        <int name="a0" type="int32" units="s" scaling="1/0x200000000"/>
+        <int name="toc" type="uint32" scaling="8/1" />
+        <int name="TGD1" type="int16" units="ns" scaling="1/10" displayDecimals="1" />
+        <int name="URAI" type="uint8" />
+        <int name="IODE" type="uint8" />
+        <int name="toe" type="uint32" scaling="8/1" />
+        <int name="sqrtA" type="uint32" scaling="1/0x80000" />
+        <int name="e" type="uint32" scaling="1/0x200000000" />
+        <int name="omega" type="int32" scaling="1/0x80000000" />
+        <int name="Deltan" type="int16" scaling="1/0x80000000000" />
+        <int name="IDOT" type="int16" scaling="1/0x80000000000" />
+        <int name="M0" type="int32" scaling="1/0x80000000" />
+        <int name="Omega0" type="int32" scaling="1/0x80000000" />
+        <int name="OmegaDot" type="int32" scaling="1/0x80000000000" />
+        <int name="i0" type="int32" scaling="1/0x80000000" />
+        <int name="Cuc" type="int32" scaling="1/0x80000000" />
+        <int name="Cus" type="int32" scaling="1/0x80000000" />
+        <int name="Crc" type="int32" units="m" scaling="1/0x40" />
+        <int name="Crs" type="int32" units="m" scaling="1/0x40" />
+        <int name="Cic" type="int32" scaling="1/0x80000000" />
+        <int name="Cis" type="int32" scaling="1/0x80000000" />
+        <ref field="res4" name="reserved2" />
+    </message>
+
+    <message name="MgaBdsAlm" id="MsgId.MgaBds" displayName="MGA-BDS-ALM" order="1" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="2" validValue="2" failOnInvalid="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <int name="svid" type="uint8" />
+        <ref field="res1" name="reserved1" />
+        <int name="Wna" type="uint8" units="weeks" />
+        <int name="toa" type="uint8" units="s" scaling="0x1000/1"/>
+        <int name="deltaI" type="int16" scaling="1/0x80000"/>
+        <int name="sqrtA" type="uint32" scaling="1/0x800"/>
+        <int name="e" type="uint32" scaling="1/0x200000"/>
+        <int name="omega" type="int32" scaling="1/0x800000"/>
+        <int name="M0" type="int32" scaling="1/0x800000"/>
+        <int name="Omega0" type="int32" scaling="1/0x800000"/>
+        <int name="omegaDot" type="int32" scaling="1/0x4000000000"/>
+        <int name="a0" type="int16" units="s" scaling="1/0x100000"/>
+        <int name="a1" type="int16" scaling="1/0x4000000000"/>
+        <ref field="res4" name="reserved2" />
+    </message>
+
+    <message name="MgaBdsHealth" id="MsgId.MgaBds" displayName="MGA-BDS-HEALTH" order="2" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="4" validValue="4" failOnInvalid="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res2" name="reserved1" />
+        <list name="healthCode" count="30">
+            <element>
+                <int name="element" type="uint16" displayName="_" /> 
+            </element>
+        </list>
+        <ref field="res4" name="reserved2" />
+    </message>
+
+    <message name="MgaBdsUtc" id="MsgId.MgaBds" displayName="MGA-BDS-UTC" order="3" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="5" validValue="5" failOnInvalid="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res2" name="reserved1" />
+        <int name="a0UTC" type="int32" units="s" scaling="1/0x40000000" />
+        <int name="a1UTC" type="int32" scaling="1/0x4000000000000" />
+        <int name="dtLS" type="int8" units="s" />
+        <ref field="res1" name="reserved2" />
+        <int name="wnRec" type="uint8" units="weeks" />
+        <int name="wnLSF" type="uint8" units="weeks" />
+        <int name="dN" type="uint8" units="d" />
+        <int name="dtLSF" type="int8" units="s" />
+        <ref field="res2" name="reserved3"/>
+    </message>
+
+    <message name="MgaBdsIono" id="MsgId.MgaBds" displayName="MGA-BDS-IONO" order="4" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="6" validValue="6" failOnInvalid="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res2" name="reserved1" />
+        <int name="alpha0" type="int8" units="s" scaling="1/0x40000000" />
+        <int name="alpha1" type="int8" scaling="1/0x8000000" />
+        <int name="alpha2" type="int8" scaling="1/0x1000000" />
+        <int name="alpha3" type="int8" scaling="1/0x1000000" />
+        <int name="beta0" type="int8" units="s" scaling="0x800/1" />
+        <int name="beta1" type="int8" scaling="0x4000/1" />
+        <int name="beta2" type="int8" scaling="0x10000/1" />
+        <int name="beta3" type="int8" scaling="0x10000/1" />
+        <ref field="res4" name="reserved2" />
+    </message>
+
+</schema>

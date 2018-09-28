@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="EsfIns" id="MsgId.EsfIns" displayName="ESF-INS" order="0" platforms="+ublox8" sender="server">
+        <bitfield name="bitfield0">
+            <int name="version" type="uint8" defaultValue="1" validValue="1" />
+            <set name="bits" length="3" displayName="_">
+                <bit name="xAngRateValid" idx="0" />
+                <bit name="yAngRateValid" idx="1" />
+                <bit name="zAngRateValid" idx="2" />
+                <bit name="xAccelValid" idx="3" />
+                <bit name="yAccelValid" idx="4" />
+                <bit name="zAccelValid" idx="5" />
+            </set>
+        </bitfield>
+        <ref field="res4" name="reserved1"/>
+        <ref field="itow" />
+        <int name="xAngRate" type="int32" units="deg" scaling="1/1000" displayDecimals="3" />
+        <int name="yAngRate" type="int32" units="deg" scaling="1/1000" displayDecimals="3" />
+        <int name="zAngRate" type="int32" units="deg" scaling="1/1000" displayDecimals="3" />
+        <int name="xAccel" type="int32" />
+        <int name="yAccel" type="int32" />
+        <int name="zAccel" type="int32" />
+    </message>
+
+    <message name="EsfInsPoll" id="MsgId.EsfIns" displayName="ESF-INS (Poll)" order="1">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

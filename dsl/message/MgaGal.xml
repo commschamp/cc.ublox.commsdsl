@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="MgaGalEph" id="MsgId.MgaGal" displayName="MGA-GAL-EPH" order="0" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="1" validValue="1" failOnInvalid="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <int name="svid" type="uint8" />
+        <ref field="res1" name="reserved1" />
+        <int name="iodNav" type="uint16" />
+        <int name="deltaN" type="int16" scaling="1/0x80000000000" />
+        <int name="m0" type="int32" scaling="1/0x80000000" />
+        <int name="e" type="uint32" scaling="1/0x200000000" />
+        <int name="sqrtA" type="uint32" scaling="1/0x80000" />
+        <int name="omega0" type="int32" scaling="1/0x80000000" />
+        <int name="i0" type="int32" scaling="1/0x80000000" />
+        <int name="omega" type="int32" scaling="1/0x80000000" />
+        <int name="omegaDot" type="int32" scaling="1/0x80000000000" />
+        <int name="iDot" type="int16" scaling="1/0x80000000000" />
+        <int name="cuc" type="int16" units="rad" scaling="1/0x20000000" />
+        <int name="cus" type="int16" units="rad" scaling="1/0x20000000" />
+        <int name="crc" type="int16" units="rad" scaling="1/0x20" />
+        <int name="crs" type="int16" units="rad" scaling="1/0x20" />
+        <int name="cic" type="int16" units="rad" scaling="1/0x20000000" />
+        <int name="cis" type="int16" units="rad" scaling="1/0x20000000" />
+        <int name="toe" type="uint16" units="s" scaling="60/1" />
+        <int name="af0" type="int32" units="s" scaling="1/0x400000000" />
+        <int name="af1" type="int32" scaling="1/0x400000000000" />
+        <int name="af2" type="int8" scaling="1/0x800000000000000" />
+        <int name="sisaIndexE1E5b" type="uint8" />
+        <int name="toc" type="uint16" units="s" scaling="60/1" />
+        <int name="bgdE1E5b" type="int16" />
+        <ref field="res2" name="reserved2" />
+        <int name="healthE1B" type="uint8" />
+        <int name="dataValidityE1B" type="uint8" />
+        <int name="healthE5b" type="uint8" />
+        <int name="dataValidityE5b" type="uint8" />
+        <ref field="res4" name="reserved3" />
+    </message>
+
+    <message name="MgaGalAlm" id="MsgId.MgaGal" displayName="MGA-GAL-ALM" order="1" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="2" validValue="2" failOnInvalid="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <int name="svid" type="uint8" />
+        <ref field="res1" name="reserved1" />
+        <int name="ioda" type="uint8" />
+        <int name="almWNa" type="uint8" />
+        <int name="toa" type="uint16" units="s" scaling="600/1" />
+        <int name="deltaSqrtA" type="int16" scaling="1/0x200" />
+        <int name="e" type="uint16" scaling="1/0x10000" />
+        <int name="deltaI" type="int16" scaling="1/0x4000" />
+        <int name="omega0" type="int16" scaling="1/0x8000" />
+        <int name="omegaDot" type="int16" scaling="1/0x200000000" />
+        <int name="omega" type="int16" scaling="1/0x8000" />
+        <int name="m0" type="int16" scaling="1/0x8000" />
+        <int name="af0" type="int16" units="s" scaling="1/0x80000" />
+        <int name="af1" type="int16" scaling="1/0x4000000000" />
+        <int name="healthE1B" type="uint8"  />
+        <int name="healthE5b" type="uint8"  />
+        <ref field="res4" name="reserved2" />
+
+    </message>
+
+    <message name="MgaGalTimeoffset" id="MsgId.MgaGal" displayName="MGA-GAL-TIMEOFFSET" order="2" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="3" validValue="3" failOnInvalid="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res2" name="reserved1" />
+        <int name="a0G" type="int16" units="s" scaling="1/0x800000000" />
+        <int name="a1G" type="int16" scaling="1/0x8000000000000" />
+        <int name="t0G" type="uint8" units="s" scaling="3600/1" />
+        <int name="wn0G" type="uint8" units="weeks" />
+        <ref field="res2" name="reserved2" />
+    </message>
+
+    <message name="MgaGalUtc" id="MsgId.MgaGal" displayName="MGA-GAL-UTC" order="3" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="5" validValue="5" failOnInvalid="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res2" name="reserved1" />
+        <int name="a0" type="int32" units="s" scaling="1/0x40000000" />
+        <int name="a1" type="int32" scaling="1/0x4000000000000" />
+        <int name="dtLS" type="int8" units="s" />
+        <int name="tot" type="uint8" units="s" scaling="3600/1" />
+        <int name="wnt" type="uint8" units="weeks" />
+        <int name="wnLSF" type="uint8" units="weeks" />
+        <int name="dN" type="uint8" units="d" />
+        <int name="dTLSF" type="int8" units="s" />
+        <ref field="res2" name="reserved2" />
+    </message>
+
+</schema>

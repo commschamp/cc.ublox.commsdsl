@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="EsfMeas" id="MsgId.EsfMeas" displayName="ESF-MEAS" order="0" platforms="+ublox8">
+    <message name="EsfMeas" id="MsgId.EsfMeas" displayName="ESF-MEAS" order="0" platforms="+ublox6,ublox8">
         <int name="timeTag" type="uint32" />
         <bitfield name="flags">
             <enum name="timeMarkSent" type="uint8" bitLength="2">
@@ -29,7 +29,7 @@
     </message>
 
     <message name="EsfMeasPoll" id="MsgId.EsfMeas" displayName="ESF-MEAS (Poll)" order="1">
-        <platforms value="+ublox8" />
+        <platforms value="+ublox6,ublox8" />
         <sender value="client" />
     </message>
 </schema>

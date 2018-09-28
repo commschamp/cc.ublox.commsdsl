@@ -160,6 +160,13 @@ set (schema_files
     dsl/message/TimVcocal.xml
     dsl/message/TimFchg.xml
     dsl/message/EsfMeas.xml
+    dsl/message/EsfRaw.xml
+    dsl/message/EsfStatus.xml
+    dsl/message/EsfIns.xml
+    dsl/message/MgaGps.xml
+    dsl/message/MgaGal.xml
+    dsl/message/MgaBds.xml
+    dsl/message/MgaQzss.xml
 )
 
 string(REPLACE ";" "\n" schema_files_str "${schema_files}")

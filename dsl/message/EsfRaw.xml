@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="EsfRaw" id="MsgId.EsfRaw" displayName="ESF-RAW" platforms="+ublox8" sender="server">
+        <ref field="res4" name="reserved1" />
+        <list name="data">
+            <element>
+                <bundle name="element" displayName="_">
+                    <int name="dataField" type="uint32" length="3" />
+                    <int name="dataType" type="uint8" />
+                    <int name="sTtag" type="uint32" />
+                </bundle>
+            </element>
+        </list>
+    </message>
+</schema>
