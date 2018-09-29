@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
     <message name="MgaQzssEph" id="MsgId.MgaQzss" displayName="MGA-QZSS-EPH" order="0" platforms="+ublox8" sender="client">
-        <int name="type" type="uint8" defaultValue="1" validValue="1" failOnInvalid="true" />
+        <int name="type" type="uint8" defaultValue="1" validValue="1" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
         <int name="svid" type="uint8" />
         <ref field="res1" name="reserved1" />
@@ -35,15 +35,29 @@
     </message>
 
     <message name="MgaQzssAlm" id="MsgId.MgaQzss" displayName="MGA-QZSS-ALM" order="1" platforms="+ublox8" sender="client">
-        <int name="type" type="uint8" defaultValue="2" validValue="2" failOnInvalid="true" />
+        <int name="type" type="uint8" defaultValue="2" validValue="2" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
         <int name="svid" type="uint8" />
-        <ref field="res1" name="reserved1" />
+        <int name="svHealth" type="uint8" />
+        <int name="e" type="uint16" scaling="1/0x200000" />
+        <int name="almWNa" type="uint8" units="weeks" />
+        <int name="toa" type="uint8" units="s" scaling="0x1000" />
+        <int name="deltaI" type="int16" scaling="1/0x80000" />
+        <int name="omegaDot" type="int16" scaling="1/0x4000000000" />
+        <int name="sqrtA" type="uint32" scaling="1/0x800" />
+        <int name="omega0" type="int32" scaling="1/0x800000" />
+        <int name="omega" type="int32" scaling="1/0x800000" />
+        <int name="m0" type="int32" scaling="1/0x800000" />
+        <int name="af0" type="int16" units="s" scaling="1/0x100000" />
+        <int name="af1" type="int16" scaling="1/0x4000000000" />
+        <ref field="res4" name="reserve1" />
     </message>
 
     <message name="MgaQzssHealth" id="MsgId.MgaQzss" displayName="MGA-QZSS-HEALTH" order="2" platforms="+ublox8" sender="client">
-        <int name="type" type="uint8" defaultValue="4" validValue="4" failOnInvalid="true" />
+        <int name="type" type="uint8" defaultValue="4" validValue="4" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
         <ref field="res2" name="reserved1" />
+        <data name="healthCode" length="5" />
+        <ref field="res3" name="reserved2" />
     </message>
 </schema>

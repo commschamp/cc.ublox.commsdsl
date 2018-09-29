@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="MgaIniPosXyz" id="MsgId.MgaIni" displayName="MGA-BDS-POS_XYZ" order="0" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="0" validValue="0" failOnInvalid="true" displayReadOnly="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res2" name="reserved1" />
+        <ref field="ecefX" />
+        <ref field="ecefY" />
+        <ref field="ecefZ" />
+        <int name="posAcc" type="uint32" units="cm" />
+    </message>
+
+    <message name="MgaIniPosLlh" id="MsgId.MgaIni" displayName="MGA-BDS-POS_LLH" order="1" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="1" validValue="1" failOnInvalid="true" displayReadOnly="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res2" name="reserved1" />
+        <ref field="lat" />
+        <ref field="lon" />
+        <int name="alt" type="int32" units="cm" />
+        <int name="posAcc" type="uint32" units="cm" />
+    </message>
+
+    <message name="MgaIniTimeUtc" id="MsgId.MgaIni" displayName="MGA-BDS-TIME_UTC" order="2" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="0x10" validValue="0x10" failOnInvalid="true" displayReadOnly="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <bitfield name="ref">
+            <enum name="source" type="uint8" bitLength="4">
+                <validValue name="None" val="0" />
+                <validValue name="EXTINT0" val="1" />
+                <validValue name="EXTINT1" val="2" />
+            </enum>
+            <set name="bits" bitLength="4" displayName="_">
+                <bit name="fall" idx="0" />
+                <bit name="last" idx="1" />
+            </set>
+        </bitfield>
+        <int name="leapSecs" type="uint8" units="s" />
+        <ref field="year" />
+        <ref field="month" />
+        <ref field="day" />
+        <ref field="hour" />
+        <ref field="min" name="minute" />
+        <ref field="sec" name="second" />
+        <ref field="res1" name="reserved1" />
+        <int name="ns" type="uint32" units="ns" />
+        <int name="tAccS" type="uint16" units="s" />
+        <ref field="res2" name="reserved2" />
+        <int name="tAccNs" type="uint32" units="ns" />
+    </message>    
+
+    <message name="MgaIniTimeGnss" id="MsgId.MgaIni" displayName="MGA-BDS-TIME_GNSS" order="3" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="0x11" validValue="0x11" failOnInvalid="true" displayReadOnly="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <bitfield name="ref">
+            <enum name="source" type="uint8" bitLength="4">
+                <validValue name="None" val="0" />
+                <validValue name="EXTINT0" val="1" />
+                <validValue name="EXTINT1" val="2" />
+            </enum>
+            <set name="bits" bitLength="4" displayName="_">
+                <bit name="fall" idx="0" />
+                <bit name="last" idx="1" />
+            </set>
+        </bitfield>
+        <ref field="gnssId" />
+        <ref field="res2" name="reserved1" />
+        <int name="week" type="uint16" />
+        <ref field="itow" name="tow" />
+        <int name="ns" type="uint32" units="ns" />
+        <int name="tAccS" type="uint16" units="s" />
+        <ref field="res2" name="reserved2" />
+        <int name="tAccNs" type="uint32" units="ns" />
+    </message>      
+
+    <message name="MgaIniClkd" id="MsgId.MgaIni" displayName="MGA-BDS-CLKD" order="4" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="0x20" validValue="0x20" failOnInvalid="true" displayReadOnly="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res2" name="reserved1" />
+        <int name="clkD" type="int32" />
+        <int name="clkDAcc" type="uint32" />
+    </message>   
+
+    <message name="MgaIniFreq" id="MsgId.MgaIni" displayName="MGA-BDS-FREQ" order="5" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="0x21" validValue="0x21" failOnInvalid="true" displayReadOnly="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res1" name="reserved1" />
+        <bitfield name="flags">
+            <enum name="source" type="uint8" bitLength="4">
+                <validValue name="EXTINT0" val="0" />
+                <validValue name="EXTINT1" val="1" />
+            </enum>
+            <set name="bits" bitLength="4" displayName="_">
+                <bit name="fall" idx="0" />
+            </set>
+        </bitfield>    
+        <int name="freq" type="int32" units="hz" scaling="1/100" />
+        <int name="freqAcc" type="uint32" />    
+    </message>     
+
+    <message name="MgaIniEop" id="MsgId.MgaIni" displayName="MGA-BDS-EOP" order="6" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="0x30" validValue="0x30" failOnInvalid="true" displayReadOnly="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res2" name="reserved1" />
+        <int name="d2kRef" type="uint16" units="d" />
+        <int name="d2kMax" type="uint16" units="d" />
+        <int name="xpP0" type="int32" scaling="1/0x40000000" />
+        <int name="xpP1" type="int32" scaling="1/0x40000000" />
+        <int name="ypP0" type="int32" scaling="1/0x40000000" />
+        <int name="ypP1" type="int32" scaling="1/0x40000000" />        
+        <int name="dUT1" type="int32" units="s" scaling="1/0x2000000" />        
+        <int name="ddUT1" type="int32" scaling="1/0x40000000" />        
+        <list name="reserved2" count="10">
+            <element>
+                <ref field="res4" name="element" displayName="_" />
+            </element>
+        </list>
+    </message>               
+
+</schema>

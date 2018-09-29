@@ -167,6 +167,10 @@ set (schema_files
     dsl/message/MgaGal.xml
     dsl/message/MgaBds.xml
     dsl/message/MgaQzss.xml
+    dsl/message/MgaGlo.xml
+    dsl/message/MgaAno.xml
+    dsl/message/MgaFlash.xml
+    dsl/message/MgaIni.xml
 )
 
 string(REPLACE ";" "\n" schema_files_str "${schema_files}")

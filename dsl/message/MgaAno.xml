@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="MgaAno" id="MsgId.MgaAno" displayName="MGA-GLO" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" validValue="0" />
+        <int name="version" type="uint8" validValue="0" />
+        <int name="svid" type="uint8" />
+        <ref field="gnssId" />
+        <int name="year" type="int16" defaultValue="2000" serOffset="-2000" length="1"/>
+        <ref field="month" />
+        <ref field="day" />
+        <ref field="res1" name="reserved1" />
+        <data name="data" length="64" />
+        <ref field="res4" name="reserved2" />
+    </message>
+
+</schema>

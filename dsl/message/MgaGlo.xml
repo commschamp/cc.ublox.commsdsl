@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="MgaGloEph" id="MsgId.MgaGlo" displayName="MGA-GLO-EPH" order="0" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="1" validValue="1" failOnInvalid="true" displayReadOnly="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <int name="svid" type="uint8" />
+        <ref field="res1" name="reserved1" />
+        <int name="FT" type="uint8" />
+        <int name="B" type="uint8" />
+        <int name="M" type="uint8" />
+        <int name="H" type="int8" />
+        <int name="x" type="int32" units="km" scaling="1/0x800" />
+        <int name="y" type="int32" units="km" scaling="1/0x800" />
+        <int name="z" type="int32" units="km" scaling="1/0x800" />
+        <int name="dx" type="int32" units="kmps" scaling="1/0x100000" />
+        <int name="dy" type="int32" units="kmps" scaling="1/0x100000" />
+        <int name="dz" type="int32" units="kmps" scaling="1/0x100000" />
+        <int name="ddx" type="int8" scaling="1/0x40000000" />
+        <int name="ddy" type="int8" scaling="1/0x40000000" />
+        <int name="ddz" type="int8" scaling="1/0x40000000" />
+        <int name="tb" type="uint8" units="min" scaling="15" />
+        <int name="gamma" type="int16" scaling="1/0x10000000000" />
+        <int name="E" type="uint8" units="days" />
+        <int name="deltaTau" type="int8" units="s" scaling="1/0x40000000" />
+        <int name="tau" type="int32" units="s" scaling="1/0x40000000" />
+        <ref field="res4" name="reserved2" />
+    </message>
+
+    <message name="MgaGloAlm" id="MsgId.MgaGlo" displayName="MGA-GLO-ALM" order="1" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="2" validValue="2" failOnInvalid="true" displayReadOnly="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <int name="svid" type="uint8" />
+        <ref field="res1" name="reserved1" />
+        <int name="N" type="uint16" units="days" />
+        <int name="M" type="uint8" />
+        <int name="C" type="uint8" />
+        <int name="tau" type="int16" units="s" scaling="1/0x40000" />
+        <int name="epsilon" type="uint16" scaling="1/0x100000" />
+        <int name="lambda" type="int32" scaling="1/0x100000" />
+        <int name="deltaI" type="int32" scaling="1/0x100000" />
+        <int name="tLambda" type="uint32" units="s" scaling="1/0x20" />
+        <int name="deltaT" type="int32" scaling="1/0x200" />
+        <int name="deltaDT" type="int8" scaling="1/0x4000" />
+        <int name="H" type="int8" />
+        <int name="omega" type="int16" />
+        <ref field="res4" name="reserved2" />
+    </message>
+
+    <message name="MgaGloTimeoffset" id="MsgId.MgaGlo" displayName="MGA-GLO-TIMEOFFSET" order="2" platforms="+ublox8" sender="client">
+        <int name="type" type="uint8" defaultValue="3" validValue="3" failOnInvalid="true" displayReadOnly="true" />
+        <int name="version" type="uint8" validValue="0" />
+        <int name="N" type="uint16" units="days" />
+        <int name="tauC" type="int32" units="s" scaling="1/0x8000000" />
+        <int name="tauGps" type="int32" units="s" scaling="1/0x80000000" />
+        <int name="B1" type="int16" units="s" scaling="1/0x400" />
+        <int name="B2" type="int16" scaling="1/0x10000" />
+        <ref field="res4" name="reserved1" />
+    </message>
+</schema>

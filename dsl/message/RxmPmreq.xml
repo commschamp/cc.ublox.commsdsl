@@ -8,7 +8,7 @@
     </message>
 
     <message name="RxmPmreqV0" id="MsgId.RxmPmreq" displayName="RXM-PMREQ (v0)" order="0" platforms="+ublox8" sender="client">
-        <int name="version" type="uint8" validValue="0" failOnInvalid="true" />
+        <int name="version" type="uint8" validValue="0" failOnInvalid="true" displayReadOnly="true" />
         <ref field="res3" name="reserved1" />
         <int name="duration" type="uint32" units="ms" />
         <set name="flags" length="4">
