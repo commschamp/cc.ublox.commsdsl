@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="LogInfo" id="MsgId.LogInfo" displayName="LOG-INFO" order="0" platforms="+ublox7,ublox8" sender="server">
+        <int name="version" type="uint8" defaultValue="1" validValue="1" />
+        <ref field="res3" name="reserved1" />
+        <int name="filestoreCapacity" type="uint32" />
+        <ref field="res8" name="reserved2" />
+        <int name="currentMaxLogSize" type="uint32" />
+        <int name="currentLogSize" type="uint32" />
+        <int name="entryCount" type="uint32" />
+        <ref field="year" name="oldestYear" />
+        <ref field="month" name="oldestMonth" />
+        <ref field="day" name="oldestDay" />
+        <ref field="hour" name="oldestHour" />
+        <ref field="min" name="oldestMinute" />
+        <ref field="sec" name="oldestSecond" />
+        <ref field="res1" name="reserved3" />
+        <ref field="year" name="newestYear" />
+        <ref field="month" name="newestMonth" />
+        <ref field="day" name="newestDay" />
+        <ref field="hour" name="newestHour" />
+        <ref field="min" name="newestMinute" />
+        <ref field="sec" name="newestSecond" />
+        <ref field="res1" name="reserved4" />
+        <set name="status" length="1">
+            <bit name="recording" idx="3" />
+            <bit name="inactive" idx="4" />
+            <bit name="circular" idx="5" />
+        </set>
+        <ref field="res3" name="reserved5" />
+    </message>
+
+    <message name="LogInfoPoll" id="MsgId.LogInfo" displayName="LOG-INFO (Poll)" order="1">
+        <platforms value="+ublox7,ublox8" />
+        <sender value="client" />
+    </message>
+
+</schema>

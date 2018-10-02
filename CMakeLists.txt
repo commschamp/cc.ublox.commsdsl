@@ -171,6 +171,20 @@ set (schema_files
     dsl/message/MgaAno.xml
     dsl/message/MgaFlash.xml
     dsl/message/MgaIni.xml
+    dsl/message/MgaAck.xml
+    dsl/message/MgaDbd.xml
+    dsl/message/LogErase.xml
+    dsl/message/LogString.xml
+    dsl/message/LogCreate.xml
+    dsl/message/LogInfo.xml
+    dsl/message/LogRetrieve.xml
+    dsl/message/LogRetrievepos.xml
+    dsl/message/LogRetrievestring.xml
+    dsl/message/LogFindtime.xml
+    dsl/message/LogRetrieveposextra.xml
+    dsl/message/SecSign.xml
+    dsl/message/SecUniqid.xml
+    dsl/message/HnrPvt.xml
 )
 
 string(REPLACE ";" "\n" schema_files_str "${schema_files}")

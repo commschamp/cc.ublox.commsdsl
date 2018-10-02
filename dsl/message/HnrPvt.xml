@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="HnrPvt" id="MsgId.HnrPvt" displayName="HNR-PVT" order="0" platforms="+ublox8" sender="server">
+        <ref field="itow" />
+        <ref field="year" />
+        <ref field="month" />
+        <ref field="day" />
+        <ref field="hour" />
+        <ref field="min" />
+        <ref field="sec" />
+        <set name="valid" length="1">
+            <bit name="validDate" idx="0" />
+            <bit name="validTime" idx="1" />
+            <bit name="fullyResolved" idx="2" />
+        </set>
+        <int name="nano" type="int32" units="ns" />
+        <ref field="gpsFix" name="fixType" />
+        <set name="flags" length="1">
+            <bit name="GPSfixOK" idx="0" />
+            <bit name="DiffSoln" idx="1" />
+            <bit name="WKNSET" idx="2" />
+            <bit name="TOWSET" idx="3" />
+            <bit name="headVehValid" idx="4" />
+        </set>
+        <ref field="res2" name="reserved1" />
+        <ref field="lon" />
+        <ref field="lat" />
+        <ref field="height" />
+        <ref field="hMSL" />
+        <int name="gSpeed" type="int32" units="mm/s" />
+        <int name="speed" type="int32" units="mm/s" />
+        <ref field="heading" name="headMot" />
+        <ref field="heading" name="headVeh" />
+        <ref field="hAcc" />
+        <ref field="vAcc" />
+        <int name="sAcc" type="uint32" units="mm/s" />
+        <ref field="headingAcc" name="headAcc"/>
+        <ref field="res4" name="reserved2" />
+    </message>
+
+    <message name="HnrPvtPoll" id="MsgId.HnrPvt" displayName="HNR-PVT (Poll)" order="2">
+        <platforms value="+ublox8" />
+        <sender value="client" />
+    </message>
+</schema>

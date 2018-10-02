@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="LogRetrieve" id="MsgId.LogRetrieve" displayName="LOG-RETRIEVE" platforms="+ublox7,ublox8" sender="client">
+        <int name="startNumber" type="uint32" />
+        <int name="entryCount" type="uint32" />
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res3" name="reserved1" />
+    </message>
+</schema>

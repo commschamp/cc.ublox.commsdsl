@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="LogRetrievestring" id="MsgId.LogRetrievestring" displayName="LOG-RETRIEVESTRING" platforms="+ublox7,ublox8" sender="server">
+        <int name="entryIndex" type="uint32" />
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res1" name="reserved1" />
+        <ref field="year" />
+        <ref field="month" />
+        <ref field="day" />
+        <ref field="hour" />
+        <ref field="min" name="minute" />
+        <ref field="sec" name="second" />
+        <ref field="res1" name="reserved2" />
+        <int name="byteCount" type="uint16" />
+        <string name="bytes" lengthPrefix="$byteCount" />
+    </message>
+</schema>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="SecSign" id="MsgId.SecSign" displayName="SEC-SIGN" platforms="+ublox8" sender="server">
+        <int name="version" type="uint8" defaultValue="1" validValue="1" />
+        <ref field="res3" name="reserved1" />
+        <ref field="MsgId" name="msgId" />
+        <int name="checksum" type="uint16" />
+        <data name="hash" length="32" />
+    </message>
+</schema>

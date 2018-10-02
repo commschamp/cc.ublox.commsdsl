@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="MgaAck" id="MsgId.MgaAck" displayName="MGA-ACK" platforms="+ublox8" sender="server">
+        <enum name="type" type="uint8">
+            <validValue name="NotUsed" val="0" />
+            <validValue name="Accepted" val="1" />
+        </enum>
+        <int name="version" type="uint8" validValue="0" />
+        <enum name="infoCode" type="uint8">
+            <validValue name="Accepted" val="0" />
+            <validValue name="TimeNotKnown" val="1" />
+            <validValue name="BadVersion" val="2" />
+            <validValue name="BadSize" val="3" />
+            <validValue name="StorageError" val="4" />
+            <validValue name="NotReady" val="5" />
+            <validValue name="UnknownType" val="6" />
+        </enum>
+        <int name="msgId" type="uint8" />
+        <data name="msgPayloadStart" length="4" />
+    </message>
+
+</schema>

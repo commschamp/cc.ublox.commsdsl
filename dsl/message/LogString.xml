@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="LogString" id="MsgId.LogString" displayName="LOG-STRING" platforms="+ublox7,ublox8" sender="client">
+        <data name="bytes" />
+    </message>
+</schema>

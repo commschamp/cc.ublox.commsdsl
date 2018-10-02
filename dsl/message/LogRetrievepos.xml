@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="LogRetrievepos" id="MsgId.LogRetrievepos" displayName="LOG-RETRIEVEPOS" platforms="+ublox7,ublox8" sender="server">
+        <int name="entryIndex" type="uint32" />
+        <ref field="lon" />
+        <ref field="lat" />
+        <ref field="hMSL" />
+        <ref field="hAcc" />
+        <int name="gSpeed" type="uint32" units="mm/s" />
+        <ref field="heading" />
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="gpsFix" name="fixType" />
+        <ref field="year" />
+        <ref field="month" />
+        <ref field="day" />
+        <ref field="hour" />
+        <ref field="min" name="minute" />
+        <ref field="sec" name="second" />
+        <ref field="res1" name="reserved1" />
+        <int name="numSV" type="uint8" />
+        <ref field="res1" name="reserved2" />
+    </message>
+</schema>

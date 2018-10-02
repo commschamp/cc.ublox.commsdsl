@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="LogErase" id="MsgId.LogErase" displayName="LOG-ERASE" platforms="+ublox7,ublox8" sender="client" />
+</schema>

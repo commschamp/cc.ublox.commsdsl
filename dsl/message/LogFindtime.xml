@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="LogFindtime" id="MsgId.LogFindtime" displayName="LOG-FINDTIME" order="0" platforms="+ublox7,ublox8" sender="client">
+        <int name="version" type="uint8" validValue="0" />
+        <int name="type" type="uint8" validValue="0" failOnInvalid="true" displayReadOnly="true" />
+        <ref field="res2" name="reserved1" />
+        <ref field="year" />
+        <ref field="month" />
+        <ref field="day" />
+        <ref field="hour" />
+        <ref field="min" name="minute" />
+        <ref field="sec" name="second" />
+        <ref field="res1" name="reserved2" />
+    </message>
+
+    <message name="LogFindtimeResp" id="MsgId.LogFindtime" displayName="LOG-FINDTIME (Response)" order="1" platforms="+ublox7,ublox8" sender="server">
+        <int name="version" type="uint8" defaultValue="1" validValue="1" />
+        <int name="type" type="uint8" defaultValue="1" validValue="1" failOnInvalid="true" displayReadOnly="true" />
+        <ref field="res2" name="reserved1" />
+        <int name="entryNumber" type="uint32" />
+    </message>
+
+</schema>

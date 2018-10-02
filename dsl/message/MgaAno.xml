@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="MgaAno" id="MsgId.MgaAno" displayName="MGA-GLO" platforms="+ublox8" sender="client">
+    <message name="MgaAno" id="MsgId.MgaAno" displayName="MGA-ANO" platforms="+ublox8" sender="client">
         <int name="type" type="uint8" validValue="0" />
         <int name="version" type="uint8" validValue="0" />
         <int name="svid" type="uint8" />
