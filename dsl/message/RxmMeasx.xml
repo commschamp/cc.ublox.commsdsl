@@ -35,7 +35,7 @@
                         <validValue name="Medium" val="2" />
                         <validValue name="High" val="3" />
                     </enum>
-                    <int name="dopplerMS" type="int32" units="mps" scaling="4/100" displayDecimals="2" />
+                    <int name="dopplerMS" type="int32" units="m/s" scaling="4/100" displayDecimals="2" />
                     <int name="dopplerHz" type="int32" units="hz" scaling="2/100" displayDecimals="2" />
                     <int name="wholeChips" type="uint16" validRange="[0, 1022]" />
                     <int name="fracChips" type="uint16" validRange="[0, 1023]" />

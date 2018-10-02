@@ -17,7 +17,7 @@
         <ref field="res2" name="reserved2" />
         <int name="wtFrequency" type="uint8" units="hz"/>
         <ref field="res1" name="reserved3" />
-        <int name="speedDeadBand" type="uint16" units="cmps"/>
+        <int name="speedDeadBand" type="uint16" units="cm/s"/>
         <ref field="res4" name="reserved4" />
         <ref field="res4" name="reserved5" />
     </message>

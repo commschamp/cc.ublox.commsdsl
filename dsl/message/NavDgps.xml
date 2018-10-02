@@ -23,7 +23,7 @@
                     </bitfield>
                     <int name="ageC" type="uint16" units="ms"/>
                     <float name="prc" type="float" units="m" />
-                    <float name="prrc" type="float" units="mps" />
+                    <float name="prrc" type="float" units="m/s" />
                 </bundle>
             </element>
         </list>

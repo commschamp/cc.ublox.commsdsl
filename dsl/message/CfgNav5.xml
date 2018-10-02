@@ -37,7 +37,7 @@
         <int name="tDop" type="uint16" scaling="1/10" displayDecimals="1" />
         <int name="pAcc" type="uint16" units="m" />
         <int name="tAcc" type="uint16" units="m" />
-        <int name="staticHoldThresh" type="uint8" units="cmps" />
+        <int name="staticHoldThresh" type="uint8" units="cm/s" />
         <int name="dgnssTimeout" type="uint8" units="s" />
         <int name="cnoThreshNumSVs" type="uint8" />
         <int name="cnoThresh" type="uint8" />

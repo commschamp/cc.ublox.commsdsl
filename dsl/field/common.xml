@@ -31,11 +31,11 @@
         <int name="ecefY" reuse="ecefX" />
         <int name="ecefZ" reuse="ecefX" />
         <int name="ecefHP" type="int8" units="mm" scaling="1/10" displayDecimals="1" validRange="[-99, 99]"/>
-        <int name="ecefVX" type="int32" units="cmps" />
+        <int name="ecefVX" type="int32" units="cm/s" />
         <int name="ecefVY" reuse="ecefVX" />
         <int name="ecefVZ" reuse="ecefVX" />
         <int name="pAcc" type="uint32" units="cm" />
-        <int name="sAcc" type="uint32" units="cmps" />
+        <int name="sAcc" type="uint32" units="cm/s" />
         <int name="lon" type="int32" units="deg" scaling="1/10000000" displayDecimals="7">
             <description value="Longitude" />
         </int>
@@ -63,7 +63,7 @@
         <int name="hour" type="uint8" units="h" validRange="[0, 23]" />
         <int name="min" type="uint8" units="min" validRange="[0, 59]" />
         <int name="sec" type="uint8" units="sec" validRange="[0, 60]" />
-        <int name="vel" type="int32" units="mmps" />
+        <int name="vel" type="int32" units="mm/s" />
         <int name="heading" type="int32" units="deg" scaling="1/100000" displayDecimals="5" />
         <int name="headingAcc" type="uint32" units="deg" scaling="1/100000" displayDecimals="5" />
         <enum name="gnssId" type="uint8">

@@ -55,7 +55,7 @@
         <ref field="vel" name="velD" />
         <ref field="vel" name="gSpeed" />
         <ref field="heading" />
-        <int name="sAcc" type="uint32" units="mmps" />
+        <int name="sAcc" type="uint32" units="mm/s" />
         <ref field="headingAcc" />
         <ref field="dop" name="pDop" />
         <ref field="res2" name="reserved2" />

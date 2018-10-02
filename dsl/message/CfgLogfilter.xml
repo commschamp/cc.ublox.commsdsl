@@ -9,7 +9,7 @@
         </set>
         <int name="minInterval" type="uint16" units="s" />
         <int name="timeThreshold" type="uint16" units="s" />
-        <int name="speedThreshold" type="uint16" units="mps" />
+        <int name="speedThreshold" type="uint16" units="m/s" />
         <int name="positionThres" type="uint32" units="m" />
     </message>
 

@@ -12,9 +12,9 @@
         <int name="x" type="int32" units="km" scaling="1/0x800" />
         <int name="y" type="int32" units="km" scaling="1/0x800" />
         <int name="z" type="int32" units="km" scaling="1/0x800" />
-        <int name="dx" type="int32" units="kmps" scaling="1/0x100000" />
-        <int name="dy" type="int32" units="kmps" scaling="1/0x100000" />
-        <int name="dz" type="int32" units="kmps" scaling="1/0x100000" />
+        <int name="dx" type="int32" units="km/s" scaling="1/0x100000" />
+        <int name="dy" type="int32" units="km/s" scaling="1/0x100000" />
+        <int name="dz" type="int32" units="km/s" scaling="1/0x100000" />
         <int name="ddx" type="int8" scaling="1/0x40000000" />
         <int name="ddy" type="int8" scaling="1/0x40000000" />
         <int name="ddz" type="int8" scaling="1/0x40000000" />

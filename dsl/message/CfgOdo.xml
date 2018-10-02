@@ -20,7 +20,7 @@
             <int reuse="res1" bitLength="5" name="reserved" displayHidden="true" />
         </bitfield>
         <ref field="res6" name="reserved2" />
-        <int name="cogMaxSpeed" type="uint8" units="mps" scaling="1/10" displayDecimals="1" />
+        <int name="cogMaxSpeed" type="uint8" units="m/s" scaling="1/10" displayDecimals="1" />
         <int name="cogMaxPosAcc" type="uint8" units="m" />
         <ref field="res2" name="reserved3" />
         <int name="velLpGain" type="uint8" />
