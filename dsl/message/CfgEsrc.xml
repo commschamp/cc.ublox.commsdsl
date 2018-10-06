@@ -5,33 +5,31 @@
         <int name="numSources" type="uint8" displayReadOnly="true"/>
         <ref field="res2" name="reserved1" />
         <list name="list" countPrefix="$numSources">
-            <element>
-                <bundle name="element" displayName="_">
-                    <enum name="extInt" type="uint8">
-                        <validValue name="EXTINT0" val="0" />
-                        <validValue name="EXTINT1" val="1" />
-                    </enum>
-                    <enum name="sourceType" type="uint8">
-                        <validValue name="None" val="0" />
-                        <validValue name="Frequency" val="1" />
-                        <validValue name="Time" val="2" />
-                        <validValue name="ExternalOsc" val="3" />
-                    </enum>
-                    <set name="flags" length="2">
-                        <bit name="polarity" idx="0" />
-                        <bit name="gnssUtc" idx="1" />
-                    </set>
-                    <int name="freq" type="uint32" units="hz" scaling="1/0x4" displayDecimals="2" />
-                    <ref field="res4" name="reserved2" />
-                    <int name="withTemp" type="uint32" scaling="1/0x100" displayDecimals="8" />
-                    <int name="withAge" type="uint32" scaling="1/0x100" displayDecimals="8" />
-                    <int name="timeToTemp" type="uint16" units="s" />
-                    <int name="maxDevLifeTime" type="uint16" />
-                    <int name="offset" type="int32" units="ns"/>
-                    <int name="offsetUncertainty" type="uint32" units="ns"/>
-                    <int name="jitter" type="uint32" units="ns"/>
-                </bundle>
-            </element>
+            <bundle name="element" displayName="_">
+                <enum name="extInt" type="uint8">
+                    <validValue name="EXTINT0" val="0" />
+                    <validValue name="EXTINT1" val="1" />
+                </enum>
+                <enum name="sourceType" type="uint8">
+                    <validValue name="None" val="0" />
+                    <validValue name="Frequency" val="1" />
+                    <validValue name="Time" val="2" />
+                    <validValue name="ExternalOsc" val="3" />
+                </enum>
+                <set name="flags" length="2">
+                    <bit name="polarity" idx="0" />
+                    <bit name="gnssUtc" idx="1" />
+                </set>
+                <int name="freq" type="uint32" units="hz" scaling="1/0x4" displayDecimals="2" />
+                <ref field="res4" name="reserved2" />
+                <int name="withTemp" type="uint32" scaling="1/0x100" displayDecimals="8" />
+                <int name="withAge" type="uint32" scaling="1/0x100" displayDecimals="8" />
+                <int name="timeToTemp" type="uint16" units="s" />
+                <int name="maxDevLifeTime" type="uint16" />
+                <int name="offset" type="int32" units="ns"/>
+                <int name="offsetUncertainty" type="uint32" units="ns"/>
+                <int name="jitter" type="uint32" units="ns"/>
+            </bundle>
         </list>
     </message>
 

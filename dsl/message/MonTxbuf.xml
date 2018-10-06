@@ -2,19 +2,13 @@
 <schema name="ublox">
     <message name="MonTxbuf" id="MsgId.MonTxbuf" displayName="MON-TXBUF" order="0" sender="server">
         <list name="pending" count="6">
-            <element>
-                <int name="element" type="uint16" displayName="_"/>
-            </element>
+            <int name="element" type="uint16" displayName="_"/>
         </list>
         <list name="usage" count="6">
-            <element>
-                <int name="element" type="uint8" displayName="_"/>
-            </element>
+            <int name="element" type="uint8" displayName="_"/>
         </list>
         <list name="peakUsage" count="6">
-            <element>
-                <int name="element" type="uint8" displayName="_"/>
-            </element>
+            <int name="element" type="uint8" displayName="_"/>
         </list>
         <int name="tUsage" type="uint8" />
         <int name="tPeakusage" type="uint8" />

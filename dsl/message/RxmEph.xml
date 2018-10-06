@@ -6,19 +6,13 @@
         <optional name="sfd" cond="$how != 0" displayName="_">
             <bundle name="lists" displayName="_">
                 <list name="sf1d" count="8">
-                    <element>
-                        <int name="element" type="uint32" />
-                    </element>
+                    <int name="element" type="uint32" />
                 </list>
                 <list name="sf2d" count="8">
-                    <element>
-                        <int name="element" type="uint32" />
-                    </element>
+                    <int name="element" type="uint32" />
                 </list>     
                 <list name="sf3d" count="8">
-                    <element>
-                        <int name="element" type="uint32" />
-                    </element>
+                    <int name="element" type="uint32" />
                 </list>                           
             </bundle>
         </optional>

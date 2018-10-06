@@ -110,9 +110,7 @@
         <int name="dUT1" type="int32" units="s" scaling="1/0x2000000" />        
         <int name="ddUT1" type="int32" scaling="1/0x40000000" />        
         <list name="reserved2" count="10">
-            <element>
-                <ref field="res4" name="element" displayName="_" />
-            </element>
+            <ref field="res4" name="element" displayName="_" />
         </list>
     </message>               
 

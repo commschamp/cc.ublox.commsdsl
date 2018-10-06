@@ -4,9 +4,7 @@
         <int name="cno" type="uint8" />
         <int name="svid" type="uint8" />
         <list name="dwrd" count="10">
-            <element>
-                <int name="element" type="uint32" />
-            </element>
+            <int name="element" type="uint32" />
         </list>
     </message>
 </schema>

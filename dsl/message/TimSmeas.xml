@@ -7,22 +7,20 @@
         <ref field="itow" />
         <ref field="res4" name="reserved2" />
         <list name="list" countPrefix="$numMeas">
-            <element>
-                <bundle name="element" displayName="_">
-                    <int name="sourceId" type="uint8" />
-                    <set name="flags" length="1">
-                        <bit name="freqValid" idx="0" />
-                        <bit name="phaseValid" idx="1" />
-                    </set>
-                    <int name="phaseOffsetFrac" type="int8" units="ns" scaling="1/0x100" displayDecimals="8" />
-                    <int name="phaseUncFrac" type="uint8" units="ns" scaling="1/0x100" displayDecimals="8" />
-                    <int name="phaseOffset" type="int32" units="ns" />
-                    <int name="phaseUnc" type="uint32" units="ns" />
-                    <ref field="res4" name="reserved3" />
-                    <int name="freqOffset" type="int32" scaling="1/0x100" displayDecimals="8" />
-                    <int name="freqUnc" type="uint32" scaling="1/0x100" displayDecimals="8" />
-                </bundle>
-            </element>
+            <bundle name="element" displayName="_">
+                <int name="sourceId" type="uint8" />
+                <set name="flags" length="1">
+                    <bit name="freqValid" idx="0" />
+                    <bit name="phaseValid" idx="1" />
+                </set>
+                <int name="phaseOffsetFrac" type="int8" units="ns" scaling="1/0x100" displayDecimals="8" />
+                <int name="phaseUncFrac" type="uint8" units="ns" scaling="1/0x100" displayDecimals="8" />
+                <int name="phaseOffset" type="int32" units="ns" />
+                <int name="phaseUnc" type="uint32" units="ns" />
+                <ref field="res4" name="reserved3" />
+                <int name="freqOffset" type="int32" scaling="1/0x100" displayDecimals="8" />
+                <int name="freqUnc" type="uint32" scaling="1/0x100" displayDecimals="8" />
+            </bundle>
         </list>
     </message>
 </schema>

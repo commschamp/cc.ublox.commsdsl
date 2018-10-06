@@ -16,13 +16,11 @@
         <int name="pin" type="uint8" />
         <ref field="res1" name="reserved2" />
         <list name="list" countPrefix="$numFences">
-            <element>
-                <bundle name="element" displayName="_">
-                    <ref field="lat" />
-                    <ref field="lon" />
-                    <int name="radius" type="uint32" units="m" scaling="100" displayDecimals="2" />
-                </bundle>
-            </element>
+            <bundle name="element" displayName="_">
+                <ref field="lat" />
+                <ref field="lon" />
+                <int name="radius" type="uint32" units="m" scaling="100" displayDecimals="2" />
+            </bundle>
         </list>
     </message>
 

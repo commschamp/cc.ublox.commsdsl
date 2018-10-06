@@ -5,55 +5,53 @@
         <int name="version" type="uint8" defaultValue="1" validValue="1" />
         <ref field="res2" name="reserved1" />
         <list name="list" countPrefix="$numTx">
-            <element>
-                <bundle name="element" displayName="_">
-                    <ref field="res1" name="reserved2" />
-                    <int name="txId" type="uint8" />
-                    <ref field="res3" name="reserved3" />
-                    <int name="cno" type="uint8" />
-                    <ref field="res2" name="reserved4" />
-                    <int name="doppler" type="int32" units="hz" scaling="1/0x1000" displayDecimals="9" />
-                    <bitfield name="position1_1">
-                        <int name="pos1Floor" type="int8" bitLength="8" />
-                        <int name="pos1Lat" type="int32" bitLength="23" scaling="180/0x800000" />
-                        <int name="reserved" type="uint8" bitLength="1" displayHidden="true" />
-                    </bitfield>
-                    <bitfield name="position1_2">
-                        <int name="pos1Lon" type="int32" bitLength="24" scaling="360/0x1000000" />
-                        <set name="flags" bitLength="8">
-                            <bit name="pos1Valid" idx="0" />
-                        </set>
-                    </bitfield>         
-                    <bitfield name="position2_1">
-                        <int name="pos2Floor" type="int16" bitLength="9" />
-                        <int name="pos2Alt" type="int16" bitLength="12" />
-                        <enum name="pos2Acc" type="uint8" bitLength="2">
-                            <validValue name="Undef" val="0" />
-                            <validValue name="LessThan7" val="1" displayName="&lt;7m" />
-                            <validValue name="LessThan15" val="2" displayName="&lt;15m" />
-                            <validValue name="GreaterThan15" val="3" displayName=">15m" />
-                        </enum>
-                        <set name="bits" bitLength="9" displayName="_">
-                            <bit name="pos2Valid" idx="0" />
-                        </set>
-                    </bitfield> 
-                    <int name="lat" type="int32" units="deg" scaling="180/0x1000000" />
-                    <int name="lon" type="int32" units="deg" scaling="360/0x2000000" />
-                    <bitfield name="shortIdFrame">
-                        <int name="shortId" type="uint16" bitLength="12" />
-                        <set name="bits" bitLength="20" displayName="_">
-                            <bit name="shortValid" idx="0" />
-                            <bit name="shortBoundary" idx="1" />
-                        </set>
-                    </bitfield>
-                    <int name="mediumIdLSB" type="uint32" />
-                    <set name="mediumId_2" length="4">
-                        <bit name="mediumIdMSB" idx="0" />
-                        <bit name="mediumValid" idx="1" />
-                        <bit name="mediumboundary" idx="2" />
+            <bundle name="element" displayName="_">
+                <ref field="res1" name="reserved2" />
+                <int name="txId" type="uint8" />
+                <ref field="res3" name="reserved3" />
+                <int name="cno" type="uint8" />
+                <ref field="res2" name="reserved4" />
+                <int name="doppler" type="int32" units="hz" scaling="1/0x1000" displayDecimals="9" />
+                <bitfield name="position1_1">
+                    <int name="pos1Floor" type="int8" bitLength="8" />
+                    <int name="pos1Lat" type="int32" bitLength="23" scaling="180/0x800000" />
+                    <int name="reserved" type="uint8" bitLength="1" displayHidden="true" />
+                </bitfield>
+                <bitfield name="position1_2">
+                    <int name="pos1Lon" type="int32" bitLength="24" scaling="360/0x1000000" />
+                    <set name="flags" bitLength="8">
+                        <bit name="pos1Valid" idx="0" />
                     </set>
-                </bundle>
-            </element>
+                </bitfield>         
+                <bitfield name="position2_1">
+                    <int name="pos2Floor" type="int16" bitLength="9" />
+                    <int name="pos2Alt" type="int16" bitLength="12" />
+                    <enum name="pos2Acc" type="uint8" bitLength="2">
+                        <validValue name="Undef" val="0" />
+                        <validValue name="LessThan7" val="1" displayName="&lt;7m" />
+                        <validValue name="LessThan15" val="2" displayName="&lt;15m" />
+                        <validValue name="GreaterThan15" val="3" displayName=">15m" />
+                    </enum>
+                    <set name="bits" bitLength="9" displayName="_">
+                        <bit name="pos2Valid" idx="0" />
+                    </set>
+                </bitfield> 
+                <int name="lat" type="int32" units="deg" scaling="180/0x1000000" />
+                <int name="lon" type="int32" units="deg" scaling="360/0x2000000" />
+                <bitfield name="shortIdFrame">
+                    <int name="shortId" type="uint16" bitLength="12" />
+                    <set name="bits" bitLength="20" displayName="_">
+                        <bit name="shortValid" idx="0" />
+                        <bit name="shortBoundary" idx="1" />
+                    </set>
+                </bitfield>
+                <int name="mediumIdLSB" type="uint32" />
+                <set name="mediumId_2" length="4">
+                    <bit name="mediumIdMSB" idx="0" />
+                    <bit name="mediumValid" idx="1" />
+                    <bit name="mediumboundary" idx="2" />
+                </set>
+            </bundle>
         </list>
     </message>
 

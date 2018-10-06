@@ -17,12 +17,10 @@
         <int name="numFences" type="uint8" displayReadOnly="true" />
         <ref field="GeofenceState" name="combState" />
         <list name="list" countPrefix="$numFences" >
-            <element>
-                <bundle name="element" displayName="_">
-                    <ref field="GeofenceState" name="state"/>
-                    <ref field="res1" name="reserved1" />
-                </bundle>
-            </element>
+            <bundle name="element" displayName="_">
+                <ref field="GeofenceState" name="state"/>
+                <ref field="res1" name="reserved1" />
+            </bundle>
         </list>
     </message>
     

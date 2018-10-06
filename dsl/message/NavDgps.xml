@@ -12,20 +12,18 @@
         </enum>
         <ref field="res2" name="reserved1" />
         <list name="list" countPrefix="$numCh" >
-            <element>
-                <bundle name="element" displayName="_">
-                    <int name="svid" type="uint8" />
-                    <bitfield name="flags">
-                        <int name="channel" type="uint8" bitLength="4" />
-                        <set name="bits" bitLength="4" displayName="_">
-                            <bit name="dgpsUsed" idx="0" />
-                        </set>
-                    </bitfield>
-                    <int name="ageC" type="uint16" units="ms"/>
-                    <float name="prc" type="float" units="m" />
-                    <float name="prrc" type="float" units="m/s" />
-                </bundle>
-            </element>
+            <bundle name="element" displayName="_">
+                <int name="svid" type="uint8" />
+                <bitfield name="flags">
+                    <int name="channel" type="uint8" bitLength="4" />
+                    <set name="bits" bitLength="4" displayName="_">
+                        <bit name="dgpsUsed" idx="0" />
+                    </set>
+                </bitfield>
+                <int name="ageC" type="uint16" units="ms"/>
+                <float name="prc" type="float" units="m" />
+                <float name="prrc" type="float" units="m/s" />
+            </bundle>
         </list>
     </message>
     

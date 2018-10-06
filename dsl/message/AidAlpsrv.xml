@@ -20,9 +20,7 @@
         <int name="size" type="uint16" displayReadOnly="true" />
         <int name="fileId" type="uint16" />
         <list name="data" countPrefix="$size">
-            <element>
-                <int name="element" type="uint16" displayName="_" />
-            </element>
+            <int name="element" type="uint16" displayName="_" />
         </list>
     </message>       
 </schema>

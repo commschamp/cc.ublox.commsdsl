@@ -12,29 +12,27 @@
         <int name="version" type="uint8" validRange="[0, 1]" />
         <ref field="res2" name="reserved1" />
         <list name="list" countPrefix="$numMeas">
-            <element>
-                <bundle name="element" displayName="_">
-                    <float name="prMes" type="double" units="m" />
-                    <float name="cpMes" type="double" />
-                    <float name="doMes" type="float" units="hz"/>
-                    <ref field="gnssId" />
-                    <int name="svid" type="uint8" />
-                    <ref field="res1" name="reserved2" />
-                    <int name="freqId" type="uint8" validRange="[0, 13]" />
-                    <int name="locktime" type="uint16" units="ms" validMax="64500" />
-                    <int name="cno" type="uint8" />
-                    <int name="prStdev" type="uint8" units="m" />
-                    <int name="cpStdev" type="uint8" scaling="4/1000" displayDecimals="3"/>
-                    <int name="doStdev" type="uint8" units="hz" />
-                    <set name="trkStat" length="1">
-                        <bit name="prValid" idx="0" />
-                        <bit name="cpValid" idx="1" />
-                        <bit name="halfCyc" idx="2" />
-                        <bit name="subHalfCyc" idx="3" />
-                    </set>
-                    <ref field="res1" name="reserved3" />
-                </bundle>
-            </element>
+            <bundle name="element" displayName="_">
+                <float name="prMes" type="double" units="m" />
+                <float name="cpMes" type="double" />
+                <float name="doMes" type="float" units="hz"/>
+                <ref field="gnssId" />
+                <int name="svid" type="uint8" />
+                <ref field="res1" name="reserved2" />
+                <int name="freqId" type="uint8" validRange="[0, 13]" />
+                <int name="locktime" type="uint16" units="ms" validMax="64500" />
+                <int name="cno" type="uint8" />
+                <int name="prStdev" type="uint8" units="m" />
+                <int name="cpStdev" type="uint8" scaling="4/1000" displayDecimals="3"/>
+                <int name="doStdev" type="uint8" units="hz" />
+                <set name="trkStat" length="1">
+                    <bit name="prValid" idx="0" />
+                    <bit name="cpValid" idx="1" />
+                    <bit name="halfCyc" idx="2" />
+                    <bit name="subHalfCyc" idx="3" />
+                </set>
+                <ref field="res1" name="reserved3" />
+            </bundle>
         </list>
     </message>
 

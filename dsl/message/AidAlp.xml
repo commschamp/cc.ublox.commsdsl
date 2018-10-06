@@ -22,9 +22,7 @@
 
     <message name="AidAlpData" id="MsgId.AidAlp" displayName="AID-ALP (Data)" order="3" platforms="-ublox8" sender="client">
         <list name="alpData">
-            <element>
-                <int name="element" type="uint16" displayName="_" />
-            </element>
+            <int name="element" type="uint16" displayName="_" />
         </list>
     </message>
 </schema>

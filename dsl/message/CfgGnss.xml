@@ -6,21 +6,19 @@
         <int name="numTrkChUse" type="uint8" />
         <int name="numConfigBlocks" type="uint8" displayReadOnly="true" />
         <list name="list" countPrefix="$numConfigBlocks">
-            <element>
-                <bundle name="element" displayName="_">
-                    <ref field="gnssId" />
-                    <int name="resTrkCh" type="uint8" />
-                    <int name="maxTrkCh" type="uint8" />
-                    <ref field="res1" name="reserved1" />
-                    <bitfield name="flags">
-                        <set name="bitsLow" bitLength="16" displayName="_">
-                            <bit name="enable" idx="0" />
-                        </set>
-                        <int name="sigCfgMask" type="uint8" />
-                        <int reuse="res1" name="reserved" displayHidden="true"/>
-                    </bitfield>
-                </bundle>
-            </element>
+            <bundle name="element" displayName="_">
+                <ref field="gnssId" />
+                <int name="resTrkCh" type="uint8" />
+                <int name="maxTrkCh" type="uint8" />
+                <ref field="res1" name="reserved1" />
+                <bitfield name="flags">
+                    <set name="bitsLow" bitLength="16" displayName="_">
+                        <bit name="enable" idx="0" />
+                    </set>
+                    <int name="sigCfgMask" type="uint8" />
+                    <int reuse="res1" name="reserved" displayHidden="true"/>
+                </bitfield>
+            </bundle>
         </list>
     </message>
 

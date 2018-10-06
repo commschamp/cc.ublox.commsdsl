@@ -6,17 +6,15 @@
         <int name="numSV" type="uint8" displayReadOnly="true" />
         <ref field="res1" name="reserved1" />
         <list name="list" countPrefix="$numSV" >
-            <element>
-                <bundle name="element" displayName="_">
-                    <float name="cpMes" type="double" />
-                    <float name="prMes" type="double" units="m"/>
-                    <float name="doMes" type="float" units="hz"/>
-                    <int name="sv" type="uint8" />
-                    <int name="mesQI" type="int8" />
-                    <int name="cno" type="int8" />
-                    <int name="lli" type="uint8" />
-                </bundle>
-            </element>
+            <bundle name="element" displayName="_">
+                <float name="cpMes" type="double" />
+                <float name="prMes" type="double" units="m"/>
+                <float name="doMes" type="float" units="hz"/>
+                <int name="sv" type="uint8" />
+                <int name="mesQI" type="int8" />
+                <int name="cno" type="int8" />
+                <int name="lli" type="uint8" />
+            </bundle>
         </list>
     </message>
     

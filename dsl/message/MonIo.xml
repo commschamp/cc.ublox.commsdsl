@@ -2,19 +2,17 @@
 <schema name="ublox">
     <message name="MonIo" id="MsgId.MonIo" displayName="MON-IO" order="0" sender="server">
         <list name="list">
-            <element>
-                <bundle name="element" displayName="_">
-                    <int name="rxBytes" type="uint32" />
-                    <int name="txBytes" type="uint32" />
-                    <int name="parityErrs" type="uint16" />
-                    <int name="framingErrs" type="uint16" />
-                    <int name="overrunErrs" type="uint16" />
-                    <int name="breakCond" type="uint16" />
-                    <int name="rxBusy" type="uint8" />
-                    <int name="txBusy" type="uint8" />
-                    <ref field="res2" name="reserved1" />
-                </bundle>
-            </element>
+            <bundle name="element" displayName="_">
+                <int name="rxBytes" type="uint32" />
+                <int name="txBytes" type="uint32" />
+                <int name="parityErrs" type="uint16" />
+                <int name="framingErrs" type="uint16" />
+                <int name="overrunErrs" type="uint16" />
+                <int name="breakCond" type="uint16" />
+                <int name="rxBusy" type="uint8" />
+                <int name="txBusy" type="uint8" />
+                <ref field="res2" name="reserved1" />
+            </bundle>
         </list>
     </message>
     

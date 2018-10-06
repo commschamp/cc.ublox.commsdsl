@@ -15,9 +15,7 @@
         </enum>
         <ref field="res1" name="reserved1" />
         <list name="end" count="3">
-            <element>
-                <int name="element" type="uint32" displayName="_"/>
-            </element>
+            <int name="element" type="uint32" displayName="_"/>
         </list>
     </message>
 </schema>

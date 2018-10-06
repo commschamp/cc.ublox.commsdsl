@@ -15,36 +15,34 @@
         </bitfield>
         <ref field="res2" name="reserved1" />
         <list name="list" countPrefix="$numCh" >
-            <element>
-                <bundle name="element" displayName="_">
-                    <int name="chn" type="uint8" />
-                    <int name="svid" type="uint8" />
-                    <set name="flags" length="1">
-                        <bit name="svUsed" idx="0" />
-                        <bit name="diffCorr" idx="1" />
-                        <bit name="orbitAvail" idx="2" />
-                        <bit name="orbitEph" idx="3" />
-                        <bit name="unhealthy" idx="4" />
-                        <bit name="orbitAlm" idx="5" />
-                        <bit name="orbitAop" idx="6" />
-                        <bit name="smoothed" idx="7" />
-                    </set>
-                    <enum name="quality" type="uint8">
-                        <validValue name="NoSignal" val="0" displayName="no signal" />
-                        <validValue name="Searching" val="1" displayName="searching signal" />
-                        <validValue name="Acquired" val="2" displayName="signal acquired" />
-                        <validValue name="DetectedUnusable" val="3" displayName="signal detected but unusable" />
-                        <validValue name="CodeLocked" val="4" displayName="code locked" />
-                        <validValue name="CodeCarrierLocked" val="5" displayName="code and carrier locked" />
-                        <validValue name="CodeCarrierLocked2" val="6" displayName="code and carrier locked" />
-                        <validValue name="CodeCarrierLocked3" val="7" displayName="code and carrier locked" />
-                    </enum>
-                    <int name="cno" type="uint8" />
-                    <int name="elev" type="int8" units="deg"/>
-                    <int name="azim" type="int16" units="deg"/>
-                    <int name="prRes" type="int32" units="cm"/>
-                </bundle>
-            </element>
+            <bundle name="element" displayName="_">
+                <int name="chn" type="uint8" />
+                <int name="svid" type="uint8" />
+                <set name="flags" length="1">
+                    <bit name="svUsed" idx="0" />
+                    <bit name="diffCorr" idx="1" />
+                    <bit name="orbitAvail" idx="2" />
+                    <bit name="orbitEph" idx="3" />
+                    <bit name="unhealthy" idx="4" />
+                    <bit name="orbitAlm" idx="5" />
+                    <bit name="orbitAop" idx="6" />
+                    <bit name="smoothed" idx="7" />
+                </set>
+                <enum name="quality" type="uint8">
+                    <validValue name="NoSignal" val="0" displayName="no signal" />
+                    <validValue name="Searching" val="1" displayName="searching signal" />
+                    <validValue name="Acquired" val="2" displayName="signal acquired" />
+                    <validValue name="DetectedUnusable" val="3" displayName="signal detected but unusable" />
+                    <validValue name="CodeLocked" val="4" displayName="code locked" />
+                    <validValue name="CodeCarrierLocked" val="5" displayName="code and carrier locked" />
+                    <validValue name="CodeCarrierLocked2" val="6" displayName="code and carrier locked" />
+                    <validValue name="CodeCarrierLocked3" val="7" displayName="code and carrier locked" />
+                </enum>
+                <int name="cno" type="uint8" />
+                <int name="elev" type="int8" units="deg"/>
+                <int name="azim" type="int16" units="deg"/>
+                <int name="prRes" type="int32" units="cm"/>
+            </bundle>
         </list>
     </message>
     

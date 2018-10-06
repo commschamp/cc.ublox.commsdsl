@@ -4,9 +4,7 @@
         <string name="swVersion" length="30" />
         <string name="hwVersion" length="10" />
         <list name="list">
-            <element>
-                <string name="extension" length="30" />
-            </element>
+            <string name="extension" length="30" />
         </list>
     </message>
     

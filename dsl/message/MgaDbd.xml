@@ -2,9 +2,7 @@
 <schema name="ublox">
     <message name="MgaDbd" id="MsgId.MgaDbd" displayName="MGA-DBD" order="0"  platforms="+ublox8">
         <list name="reserved1" count="12">
-            <element>
-                <ref field="res1" name="element" displayName="_" />
-            </element>
+            <ref field="res1" name="element" displayName="_" />
         </list>
         <data name="data" />
     </message>

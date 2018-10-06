@@ -24,27 +24,25 @@
         </bitfield>
         <ref field="res8" name="reserved4" />
         <list name="list" countPrefix="$numSV">
-            <element>
-                <bundle name="element" displayName="_">
-                    <ref field="gnssId" />
-                    <int name="svid" type="uint8" />
-                    <int name="cNo" type="uint8" validRange="[0, 63]"/>
-                    <enum name="mpathIndic" type="uint8">
-                        <validValue name="NotMeasured" val="0" displayName="Not measured" />
-                        <validValue name="Low" val="1" />
-                        <validValue name="Medium" val="2" />
-                        <validValue name="High" val="3" />
-                    </enum>
-                    <int name="dopplerMS" type="int32" units="m/s" scaling="4/100" displayDecimals="2" />
-                    <int name="dopplerHz" type="int32" units="hz" scaling="2/100" displayDecimals="2" />
-                    <int name="wholeChips" type="uint16" validRange="[0, 1022]" />
-                    <int name="fracChips" type="uint16" validRange="[0, 1023]" />
-                    <int name="codePhase" type="uint32" units="ms" scaling="1/0x200000" displayDecimals="9" />
-                    <int name="intCodePhase" type="uint8" units="ms" />
-                    <int name="pseuRangeRMSErr" type="uint8" validRange="[0, 63]" />
-                    <ref field="res2" name="reserved5" />
-                </bundle>
-            </element>
+            <bundle name="element" displayName="_">
+                <ref field="gnssId" />
+                <int name="svid" type="uint8" />
+                <int name="cNo" type="uint8" validRange="[0, 63]"/>
+                <enum name="mpathIndic" type="uint8">
+                    <validValue name="NotMeasured" val="0" displayName="Not measured" />
+                    <validValue name="Low" val="1" />
+                    <validValue name="Medium" val="2" />
+                    <validValue name="High" val="3" />
+                </enum>
+                <int name="dopplerMS" type="int32" units="m/s" scaling="4/100" displayDecimals="2" />
+                <int name="dopplerHz" type="int32" units="hz" scaling="2/100" displayDecimals="2" />
+                <int name="wholeChips" type="uint16" validRange="[0, 1022]" />
+                <int name="fracChips" type="uint16" validRange="[0, 1023]" />
+                <int name="codePhase" type="uint32" units="ms" scaling="1/0x200000" displayDecimals="9" />
+                <int name="intCodePhase" type="uint8" units="ms" />
+                <int name="pseuRangeRMSErr" type="uint8" validRange="[0, 63]" />
+                <ref field="res2" name="reserved5" />
+            </bundle>
         </list>
     </message>
 </schema>

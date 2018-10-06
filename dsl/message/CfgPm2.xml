@@ -37,9 +37,7 @@
         <int name="onTime" type="uint16" units="ms" />
         <int name="minAcqTime" type="uint16" units="ms" />
         <list name="reserved3" count="5">
-            <element>
-                <ref field="res4" name="reserved3" displayName="_" />
-            </element>
+            <ref field="res4" name="reserved3" displayName="_" />
         </list>
         <int name="extintInactivityMs" type="uint32" units="ms" />
     </message>
@@ -56,9 +54,7 @@
         <int name="onTime" type="uint16" units="ms" />
         <int name="minAcqTime" type="uint16" units="ms" />
         <list name="reserved3" count="5">
-            <element>
-                <ref field="res4" name="reserved3" displayName="_" />
-            </element>
+            <ref field="res4" name="reserved3" displayName="_" />
         </list>
     </message>
 

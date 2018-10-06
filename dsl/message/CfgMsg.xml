@@ -4,9 +4,7 @@
     <message name="CfgMsg" id="MsgId.CfgMsg" displayName="CFG-MSG" order="0">
         <ref field="MsgId" />
         <list name="rates" count="6">
-            <element>
-                <int name="element" type="uint8" />
-            </element>
+            <int name="element" type="uint8" />
         </list>
     </message>
 

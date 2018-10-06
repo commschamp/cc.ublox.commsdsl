@@ -29,19 +29,17 @@
         <int name="cnt" type="uint8" displayReadOnly="true" />
         <ref field="res3" name="reserved1" />
         <list name="list" countPrefix="$cnt" >
-            <element>
-                <bundle name="element" displayName="_">
-                    <int name="svid" type="uint8" />
-                    <int name="flags" type="uint8" />
-                    <int name="udre" type="uint8" />
-                    <ref field="sbasSys" name="svSys" />
-                    <ref field="sbasService" name="svService" />
-                    <ref field="res1" name="reserved2" />
-                    <int name="prc" type="int16" units="cm" />
-                    <ref field="res2" name="reserved3" />
-                    <int name="ic" type="int16" units="cm" />
-                </bundle>
-            </element>
+            <bundle name="element" displayName="_">
+                <int name="svid" type="uint8" />
+                <int name="flags" type="uint8" />
+                <int name="udre" type="uint8" />
+                <ref field="sbasSys" name="svSys" />
+                <ref field="sbasService" name="svService" />
+                <ref field="res1" name="reserved2" />
+                <int name="prc" type="int16" units="cm" />
+                <ref field="res2" name="reserved3" />
+                <int name="ic" type="int16" units="cm" />
+            </bundle>
         </list>
     </message>
     

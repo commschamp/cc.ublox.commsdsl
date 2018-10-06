@@ -5,9 +5,7 @@
         <int name="week" type="uint32" units="weeks" />
         <optional name="dwrd" cond="$week != 0">
             <list name="list" count="8" displayName="dwrd">
-                <element>
-                    <int name="element" type="uint32" />
-                </element>
+                <int name="element" type="uint32" />
             </list>
         </optional>
     </message>

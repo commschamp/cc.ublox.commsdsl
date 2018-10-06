@@ -11,9 +11,7 @@
         <list name="msg5" element="monMsgppCount" count="8" />
         <list name="msg6" element="monMsgppCount" count="8" />
         <list name="skipped" count="6">
-            <element>
-                <int name="element" type="uint32" displayName="_"/>
-            </element>
+            <int name="element" type="uint32" displayName="_"/>
         </list>
     </message>
     

@@ -15,13 +15,11 @@
         </bitfield>
         <int name="id" type="uint16" />
         <list name="list">
-            <element>
-                <bitfield name="element" displayName="_">
-                    <int name="dataField" type="uint32" bitLength="24" />
-                    <int name="dataType" type="uint8" bitLength="6" />
-                    <int reuse="res1" name="reserved" bitLength="2" displayHidden="true" />
-                </bitfield>
-            </element>
+            <bitfield name="element" displayName="_">
+                <int name="dataField" type="uint32" bitLength="24" />
+                <int name="dataType" type="uint8" bitLength="6" />
+                <int reuse="res1" name="reserved" bitLength="2" displayHidden="true" />
+            </bitfield>
         </list>
         <optional name="calibTtag" externalModeCtrl="true">
             <int name="calibTtag" type="uint32" units="ms" />

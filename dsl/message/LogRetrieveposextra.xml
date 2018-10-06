@@ -13,9 +13,7 @@
         <ref field="res3" name="reserved2" />
         <int name="distance" type="uint32" />
         <list name="reserved3" count="12">
-            <element>
-                <ref field="res1" name="element" displayName="_" />
-            </element>
+            <ref field="res1" name="element" displayName="_" />
         </list>
     </message>
 </schema>
