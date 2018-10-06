@@ -213,8 +213,8 @@ add_custom_target("rm_tmp_tgt"
 add_custom_command(
     OUTPUT ${tmp_dir}
     DEPENDS ${schema_files} ${src_files} ${schema_files_list_file} ${extra_dep} "rm_tmp_tgt"
-    COMMAND ${COMMSDSL2COMMS} ${COMMSDSL2COMMS_EXTRA_ARGS} --warn-as-err -o ${tmp_dir} 
-        -c ${code_input_dir} -p ${CMAKE_SOURCE_DIR} -i ${schema_files_list_file}
+    COMMAND ${COMMSDSL2COMMS} --warn-as-err -o ${tmp_dir} 
+        -c ${code_input_dir} -p ${CMAKE_SOURCE_DIR} -i ${schema_files_list_file} ${COMMSDSL2COMMS_EXTRA_ARGS} 
 )
 
 set (output_tgt ${name}_output_tgt)
