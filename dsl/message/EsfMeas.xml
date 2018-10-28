@@ -21,7 +21,7 @@
                 <int reuse="res1" name="reserved" bitLength="2" displayHidden="true" />
             </bitfield>
         </list>
-        <optional name="calibTtag" externalModeCtrl="true">
+        <optional name="calibTtag" displayExtModeCtrl="true">
             <int name="calibTtag" type="uint32" units="ms" />
         </optional>
     </message>

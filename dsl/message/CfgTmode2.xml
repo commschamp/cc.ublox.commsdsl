@@ -11,22 +11,22 @@
             <bit name="lla" idx="0" />
             <bit name="altInv" idx="1" />
         </set>
-        <optional name="ecefX" defaultMode="exist" externalModeCtrl="true" cond="!$flags.lla">
+        <optional name="ecefX" defaultMode="exist" displayExtModeCtrl="true" cond="!$flags.lla">
             <int name="ecefX" type="int32" units="cm" />
         </optional>
-        <optional name="lat" defaultMode="missing" externalModeCtrl="true" cond="$flags.lla">
+        <optional name="lat" defaultMode="missing" displayExtModeCtrl="true" cond="$flags.lla">
             <int name="lat" type="int32" units="deg" scaling="1/10000000" displayDecimals="7"/>
         </optional>
-        <optional name="ecefY" defaultMode="exist" externalModeCtrl="true" cond="!$flags.lla">
+        <optional name="ecefY" defaultMode="exist" displayExtModeCtrl="true" cond="!$flags.lla">
             <int name="ecefY" type="int32" units="cm" />
         </optional>
-        <optional name="lon" defaultMode="missing" externalModeCtrl="true" cond="$flags.lla">
+        <optional name="lon" defaultMode="missing" displayExtModeCtrl="true" cond="$flags.lla">
             <int name="lon" type="int32" units="deg" scaling="1/10000000" displayDecimals="7"/>
         </optional>
-        <optional name="ecefZ" defaultMode="exist" externalModeCtrl="true" cond="!$flags.lla">
+        <optional name="ecefZ" defaultMode="exist" displayExtModeCtrl="true" cond="!$flags.lla">
             <int name="ecefZ" type="int32" units="cm" />
         </optional>
-        <optional name="alt" defaultMode="missing" externalModeCtrl="true" cond="$flags.lla">
+        <optional name="alt" defaultMode="missing" displayExtModeCtrl="true" cond="$flags.lla">
             <int name="alt" type="int32" units="cm"/>
         </optional>
         <int name="fixedPosAcc" type="uint32" units="mm" />

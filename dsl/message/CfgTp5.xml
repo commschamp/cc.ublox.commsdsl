@@ -13,28 +13,28 @@
         <ref field="res2" name="reserved1" />
         <int name="antCableDelay" type="int16" units="ns" />
         <int name="rfGroupDelay" type="int16" units="ns" />
-        <optional name="freq" defaultMode="missing" externalModeCtrl="true">
+        <optional name="freq" defaultMode="missing" displayExtModeCtrl="true">
             <int name="freq" type="uint32" units="hz" />
         </optional>
-        <optional name="period" defaultMode="exist" externalModeCtrl="true">
+        <optional name="period" defaultMode="exist" displayExtModeCtrl="true">
             <int name="period" type="uint32" units="us" />
         </optional>
-        <optional name="freqLock" defaultMode="missing" externalModeCtrl="true">
+        <optional name="freqLock" defaultMode="missing" displayExtModeCtrl="true">
             <int name="freqLock" type="uint32" units="hz" />
         </optional>
-        <optional name="periodLock" defaultMode="exist" externalModeCtrl="true">
+        <optional name="periodLock" defaultMode="exist" displayExtModeCtrl="true">
             <int name="periodLock" type="uint32" units="us" />
         </optional>        
-        <optional name="pulseLen" defaultMode="missing" externalModeCtrl="true">
+        <optional name="pulseLen" defaultMode="missing" displayExtModeCtrl="true">
             <int name="pulseLen" type="uint32" units="us" />
         </optional>
-        <optional name="ratio" defaultMode="exist" externalModeCtrl="true">
+        <optional name="ratio" defaultMode="exist" displayExtModeCtrl="true">
             <int name="ratio" type="uint32" scaling="1/0x100000000" />
         </optional> 
-        <optional name="pulseLenLock" defaultMode="missing" externalModeCtrl="true">
+        <optional name="pulseLenLock" defaultMode="missing" displayExtModeCtrl="true">
             <int name="pulseLenLock" type="uint32" units="us" />
         </optional>
-        <optional name="ratioLock" defaultMode="exist" externalModeCtrl="true">
+        <optional name="ratioLock" defaultMode="exist" displayExtModeCtrl="true">
             <int name="ratioLock" type="uint32" scaling="1/0x100000000" />
         </optional>             
         <int name="userConfigDelay" type="int32" units="ns" />    

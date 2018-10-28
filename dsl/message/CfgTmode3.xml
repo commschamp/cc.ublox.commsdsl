@@ -13,7 +13,7 @@
                 <bit name="lla" idx="0" />
             </set>
         </bitfield>
-        <optional name="ecef" defaultMode="exist" externalModeCtrl="true">
+        <optional name="ecef" defaultMode="exist" displayExtModeCtrl="true">
             <bundle name="ecefWrap" displayName="_">
                 <int name="ecefX" type="int32" units="cm" />
                 <int name="ecefY" type="int32" units="cm" />
@@ -23,7 +23,7 @@
                 <int name="ecefZHP" type="int8" units="mm" scaling="1/10" displayDecimals="1" />    
             </bundle>
         </optional>
-        <optional name="lla" defaultMode="missing" externalModeCtrl="true">
+        <optional name="lla" defaultMode="missing" displayExtModeCtrl="true">
             <bundle name="llaWrap" displayName="_">
                 <int name="lat" type="int32" units="deg" scaling="1/10000000" displayDecimals="7"/>
                 <int name="lon" type="int32" units="deg" scaling="1/10000000" displayDecimals="7"/>
