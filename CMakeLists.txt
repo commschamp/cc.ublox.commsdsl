@@ -1,11 +1,18 @@
 cmake_minimum_required (VERSION 3.5)
 project ("cc.ublox.commsdsl")
 
+option (UBLOX_NO_EXAMPLES "Disable examples compilation." OFF)
+option (UBLOX_NO_WARN_AS_ERR "Don't treat compilation warnings as errors." OFF)
+
 # Additional variables to be used if needed
 # ---------------------------
 # OUTPUT_DIR - Path to output directory. If not provided <build_dir>/output one is used.
 # COMMSDSL2COMMS - Path to "commsdsl2comms" binary.
 # COMMSDSL2COMMS_EXTRA_ARGS - Extra arguments to pass to "commsdsl2comms"
+# COMMS_INSTALL_DIR - Directory where external COMMS library installed. If not specified
+#    it will be checked out automatically. Required for examples.
+# COMMS_TAG - Tag of the COMMS library to checkout (defaults to "master").
+
 
 set (COMMSDSL_TGT "commsdsl_tgt")
 if ("${COMMSDSL2COMMS}" STREQUAL "")
@@ -225,3 +232,8 @@ add_custom_target(${PROJECT_NAME} ALL
     DEPENDS ${tmp_dir} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files} ${src_files})
 
 
+if (UBLOX_NO_EXAMPLES)
+    return ()
+endif ()
+
+add_subdirectory (examples)
