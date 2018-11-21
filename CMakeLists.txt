@@ -224,12 +224,19 @@ add_custom_command(
         -c ${code_input_dir} -p ${CMAKE_SOURCE_DIR} -i ${schema_files_list_file} ${COMMSDSL2COMMS_EXTRA_ARGS} 
 )
 
+set (readme_file "${tmp_dir}/README.md")
+add_custom_command(
+    OUTPUT ${readme_file}
+    DEPENDS ${tmp_dir} 
+    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/readme.generated ${readme_file}
+)
+
 set (output_tgt ${name}_output_tgt)
 add_custom_target(${PROJECT_NAME} ALL
     COMMAND ${CMAKE_COMMAND}
         -DGENERATED="${tmp_dir}" -DOUTPUT="${OUTPUT_DIR}"
         -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"
-    DEPENDS ${tmp_dir} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files} ${src_files})
+    DEPENDS ${tmp_dir} ${readme_file} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files} ${src_files})
 
 
 if (UBLOX_NO_EXAMPLES)
