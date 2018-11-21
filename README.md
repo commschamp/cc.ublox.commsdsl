@@ -18,6 +18,10 @@ The [examples](examples) directory contains following example applications:
 USB serial link and polls for **NAV-POSLLH** messages. When latter is received,
 the position is printed to standard output.
 
+# License
+Please read [License](https://github.com/arobenko/commsdsl#license)
+section from [commsdsl](https://github.com/arobenko/commsdsl) project.
+
 # How to Build
 This project uses CMake as its build system. Please open main
 [CMakeLists.txt](CMakeLists.txt) file and review available options as well as
