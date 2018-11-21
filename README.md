@@ -12,6 +12,9 @@ project is used to generate CMake project with proper C++ classes that
 implement protocol itself as well as protocol plugin for the
 [CommsChampion Tools](https://github.com/arobenko/comms_champion#commschampion-tools).
 
+The generated CMake project of this protocol definition is hosted and can be
+viewed at [cc.ublox.generated](https://github.com/arobenko/cc.ublox.generated)
+
 # Examples
 The [examples](examples) directory contains following example applications:
 - simple_pos - simple application that communicates to u-blox receiver over
