@@ -15,7 +15,7 @@ namespace checksum
 
 /// @brief Checksum calculator.
 /// @details Provided to @b comms::protocol::ChecksumLayer
-///     when defining protocol stack (@ref ublox::frame::UbloxFrame).
+///     when defining transport framing (@ref ublox::frame::UbloxFrame).
 struct UbloxChecksum
 {
     template <typename TIter>
