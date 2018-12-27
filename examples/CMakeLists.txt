@@ -32,8 +32,6 @@ if ((CMAKE_COMPILER_IS_GNUCC) OR ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"))
     
 elseif (MSVC)
 
-    add_definitions("/wd4503" "/wd4309" "/wd4267" "-D_SCL_SECURE_NO_WARNINGS")
-
     if (NOT UBLOX_NO_WARN_AS_ERR)
         add_definitions("/WX")
     endif ()
@@ -47,32 +45,56 @@ set (CMAKE_CXX_STANDARD 14)
 set (COMMS_TGT "comms_tgt")
 if ("${COMMS_INSTALL_DIR}" STREQUAL "")
     include(ExternalProject)
-    if ("${COMMS_TAG}" STREQUAL "")
-        set(COMMS_TAG "develop")
-    endif ()
 
     set (cc_main_dir "${CMAKE_BINARY_DIR}/comms_champion")
     set (cc_src_dir "${cc_main_dir}/src")
     set (cc_bin_dir "${cc_main_dir}/build")
     set (cc_install_dir "${cc_bin_dir}/install")
 
+    find_package (Git REQUIRED)
+    if (EXISTS "${cc_src_dir}/.git")
+        execute_process (
+            COMMAND ${GIT_EXECUTABLE} fetch --depth 1
+            WORKING_DIRECTORY ${cc_src_dir}
+        )
+
+        execute_process (
+            COMMAND ${GIT_EXECUTABLE} checkout ${COMMS_TAG}
+            WORKING_DIRECTORY ${cc_src_dir}
+        )
+    else ()
+        execute_process (
+            COMMAND ${CMAKE_COMMAND} -E remove_directory "${cc_src_dir}"
+        )
+
+        execute_process (
+            COMMAND 
+                ${GIT_EXECUTABLE} clone -b ${COMMS_TAG} --depth 1 https://github.com/arobenko/comms_champion.git
+                    ${cc_src_dir}
+            RESULT_VARIABLE git_result
+        )
+
+        if (NOT "${git_result}" STREQUAL "0")
+            message (WARNING "git clone/checkout failed")
+        endif ()
+    endif ()
+
+    set (EXT_CC_INSTALL_DIR ${cc_install_dir})
+    include (${cc_src_dir}/cmake/DefineExternalProjectTargets.cmake)    
 
     ExternalProject_Add(
         "${COMMS_TGT}"
-        PREFIX "${cc_bin_dir}"
-        STAMP_DIR "${cc_bin_dir}"
-        GIT_REPOSITORY "https://github.com/arobenko/comms_champion.git"
-        GIT_TAG "${COMMS_TAG}"
-        SOURCE_DIR "${cc_src_dir}"
+        PREFIX "${cc_main_dir}"
+        SOURCE_DIR ${cc_src_dir}
+        BINARY_DIR "${cc_bin_dir}"
+        INSTALL_DIR ${cc_install_dir}
         CMAKE_ARGS
             -DCC_COMMS_LIB_ONLY=ON -DCC_NO_UNIT_TESTS=ON
             -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
             -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} 
             -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
-        BINARY_DIR "${cc_bin_dir}"
+            -DCMAKE_INSTALL_PREFIX=${cc_install_dir}
     )
-
-    include_directories(${cc_install_dir}/include)
 else ()
     list (APPEND CMAKE_PREFIX_PATH "${COMMS_INSTALL_DIR}")
 
@@ -82,8 +104,6 @@ else ()
         message (Warning "Cannot compile example application due to missing COMMS libraries")
         return ()
     endif ()
-
-    include_directories(${CC_INCLUDE_DIRS})
 endif ()
 
 find_package(Boost)

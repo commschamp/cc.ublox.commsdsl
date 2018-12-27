@@ -63,7 +63,7 @@ $> make install
 To build the generated project continue with
 ```
 $> cd output && mkdir build && cd build
-$> cmake -DCMAKE_BUILD_TYPE=Release ..
+$> cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$PWD/install ..
 $> make install
 ```
 
@@ -83,8 +83,12 @@ $> cd output
 $> mkdir build 
 $> cd build
 $> cmake -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release \
-    -DCC_QT_DIR=C:\Qt\5.6.3\msvc2015 ..
+    -DCC_QT_DIR=C:\Qt\5.6.3\msvc2015 -DCMAKE_INSTALL_PREFIX=%cd%/install ..
 $> nmake install
+```
+To deploy Qt5 libraries into the installation directory continue with
+```
+$> nmake deploy_qt
 ```
 
 # How to Use Generated Code
