@@ -11,13 +11,22 @@ option (UBLOX_NO_WARN_AS_ERR "Don't treat compilation warnings as errors." OFF)
 # COMMSDSL2COMMS_EXTRA_ARGS - Extra arguments to pass to "commsdsl2comms"
 # COMMS_INSTALL_DIR - Directory where external COMMS library installed. If not specified
 #    it will be checked out automatically. Required for examples.
-# COMMS_TAG - Tag of the COMMS library to checkout (defaults to "master").
+# COMMSDSL_TAG - Tag of the commsdsl project to checkout if COMMSDSL2COMMS
+#     is not provided.
+# COMMS_TAG - Tag of the COMMS library to checkout if COMMS_INSTALL_DIR
+#     is not provided and examples are not disabled.
 
+if ("${COMMSDSL_TAG}" STREQUAL "")
+    set(COMMSDSL_TAG "v1.1")
+endif ()
+
+if ("${COMMS_TAG}" STREQUAL "")
+    set(COMMS_TAG "v1.0")
+endif ()
 
 set (COMMSDSL_TGT "commsdsl_tgt")
 if ("${COMMSDSL2COMMS}" STREQUAL "")
         include(ExternalProject)
-        set (commsdsl2comms_tag "v1.0")
         set (commsdsl2comms_main_dir "${CMAKE_BINARY_DIR}/commsdsl")
         set (commsdsl2comms_src_dir "${commsdsl2comms_main_dir}/src")
         set (commsdsl2comms_bin_dir "${commsdsl2comms_main_dir}/build")
@@ -33,7 +42,7 @@ if ("${COMMSDSL2COMMS}" STREQUAL "")
             PREFIX "${commsdsl2comms_bin_dir}"
             STAMP_DIR "${commsdsl2comms_bin_dir}"
             GIT_REPOSITORY "https://github.com/arobenko/commsdsl.git"
-            GIT_TAG "${commsdsl2comms_tag}"
+            GIT_TAG "${COMMSDSL_TAG}"
             SOURCE_DIR "${commsdsl2comms_src_dir}"
             CMAKE_ARGS
                 -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${commsdsl2comms_install_dir}
