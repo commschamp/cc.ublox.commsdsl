@@ -57,7 +57,7 @@ If code generation output directory is not provided, it defaults to
 ```
 $> cd /source/of/this/project
 $> mkdir build && cd build
-$> cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$PWD/install 
+$> cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$PWD/install ..
 $> make install
 ```
 To build the generated project continue with
