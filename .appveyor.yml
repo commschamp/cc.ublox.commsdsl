@@ -42,7 +42,7 @@ build_script:
     - cd output.build
     - echo ------------------------- Building Output -------------------------
     - cmake ../output -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "NMake Makefiles" -DOPT_QT_DIR=%QTDIR% -DCMAKE_CXX_STANDARD=%CPP_STD% -DOPT_FULL_SOLUTION=ON -DCMAKE_INSTALL_PREFIX=install
-    - nmake install
-    - IF "%CONFIGURATION%"=="Release" ( nmake deploy_qt )
+    - nmake all_messages
+    
 
 

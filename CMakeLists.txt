@@ -17,11 +17,11 @@ option (UBLOX_NO_WARN_AS_ERR "Don't treat compilation warnings as errors." OFF)
 #     is not provided and examples are not disabled.
 
 if ("${COMMSDSL_TAG}" STREQUAL "")
-    set(COMMSDSL_TAG "v1.2")
+    set(COMMSDSL_TAG "v1.3.1")
 endif ()
 
 if ("${COMMS_TAG}" STREQUAL "")
-    set(COMMS_TAG "v1.1")
+    set(COMMS_TAG "v1.2.1")
 endif ()
 
 set (COMMSDSL_TGT "commsdsl_tgt")
@@ -229,7 +229,8 @@ add_custom_target("rm_tmp_tgt"
 add_custom_command(
     OUTPUT ${tmp_dir}
     DEPENDS ${schema_files} ${src_files} ${schema_files_list_file} ${extra_dep} "rm_tmp_tgt"
-    COMMAND ${COMMSDSL2COMMS} --warn-as-err -o ${tmp_dir} 
+    COMMAND ${COMMSDSL2COMMS} --warn-as-err 
+        --cc-tag ${COMMS_TAG} -o ${tmp_dir} 
         -c ${code_input_dir} -p ${CMAKE_SOURCE_DIR} -i ${schema_files_list_file} ${COMMSDSL2COMMS_EXTRA_ARGS} 
 )
 
