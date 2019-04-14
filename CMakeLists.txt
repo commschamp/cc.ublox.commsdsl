@@ -17,11 +17,11 @@ option (UBLOX_NO_WARN_AS_ERR "Don't treat compilation warnings as errors." OFF)
 #     is not provided and examples are not disabled.
 
 if ("${COMMSDSL_TAG}" STREQUAL "")
-    set(COMMSDSL_TAG "v1.3.1")
+    set(COMMSDSL_TAG "develop")
 endif ()
 
 if ("${COMMS_TAG}" STREQUAL "")
-    set(COMMS_TAG "v1.2.1")
+    set(COMMS_TAG "develop")
 endif ()
 
 set (COMMSDSL_TGT "commsdsl_tgt")
