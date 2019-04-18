@@ -231,7 +231,8 @@ add_custom_command(
     DEPENDS ${schema_files} ${src_files} ${schema_files_list_file} ${extra_dep} "rm_tmp_tgt"
     COMMAND ${COMMSDSL2COMMS} --warn-as-err 
         --cc-tag ${COMMS_TAG} -o ${tmp_dir} 
-        -c ${code_input_dir} -p ${CMAKE_SOURCE_DIR} -i ${schema_files_list_file} ${COMMSDSL2COMMS_EXTRA_ARGS} 
+        -c ${code_input_dir} -p ${CMAKE_SOURCE_DIR} -i ${schema_files_list_file} 
+        --no-tests-build-by-default ${COMMSDSL2COMMS_EXTRA_ARGS} 
 )
 
 set (readme_file "${tmp_dir}/README.md")
