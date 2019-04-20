@@ -24,6 +24,8 @@ if ("${COMMS_TAG}" STREQUAL "")
     set(COMMS_TAG "develop")
 endif ()
 
+set (VERSION "0.6")
+
 set (COMMSDSL_TGT "commsdsl_tgt")
 if ("${COMMSDSL2COMMS}" STREQUAL "")
         include(ExternalProject)
@@ -229,7 +231,7 @@ add_custom_target("rm_tmp_tgt"
 add_custom_command(
     OUTPUT ${tmp_dir}
     DEPENDS ${schema_files} ${src_files} ${schema_files_list_file} ${extra_dep} "rm_tmp_tgt"
-    COMMAND ${COMMSDSL2COMMS} --warn-as-err 
+    COMMAND ${COMMSDSL2COMMS} --warn-as-err -V ${VERSION}
         --cc-tag ${COMMS_TAG} -o ${tmp_dir} 
         -c ${code_input_dir} -p ${CMAKE_SOURCE_DIR} -i ${schema_files_list_file} 
         --no-tests-build-by-default ${COMMSDSL2COMMS_EXTRA_ARGS} 
