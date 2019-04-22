@@ -8,11 +8,9 @@ the messages as well as wrapping transport framing used by
 The protocol is defined in multiple [schema](dsl)
 files using [CommsDSL](https://github.com/arobenko/CommsDSL-Specification).
 The **commsds2comms** code generator from [commsdsl](https://github.com/arobenko/commsdsl)
-project is used to generate CMake project with proper C++ classes that
-implement protocol itself as well as protocol plugin for the
-[CommsChampion Tools](https://github.com/arobenko/comms_champion#commschampion-tools).
+project is used to generate C++11 code of the protocol implementation.
 
-The generated CMake project of this protocol definition is hosted and can be
+The **generated** CMake project of this protocol definition is hosted and can be
 viewed at [cc.ublox.generated](https://github.com/arobenko/cc.ublox.generated)
 
 # Examples
@@ -60,40 +58,25 @@ $> mkdir build && cd build
 $> cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$PWD/install ..
 $> make install
 ```
-To build the generated project continue with
-```
-$> cd output && mkdir build && cd build
-$> cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$PWD/install ..
-$> make install
-```
 
 ### Windows Build
 ```
 $> cd C:\source\of\this\project
-$> mkdir build
-$> cd build
+$> mkdir build && cd build
 $> cmake -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release \ 
     -DCMAKE_INSTALL_PREFIX=%cd%/install \
     -DBOOST_ROOT="C:\Libraries\boost_1_65_1" -DBoost_USE_STATIC_LIBS=ON ..
 $> nmake install
 ```
-To build the generated project continue with
-```
-$> cd output 
-$> mkdir build 
-$> cd build
-$> cmake -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release \
-    -DCC_QT_DIR=C:\Qt\5.6.3\msvc2015 -DCMAKE_INSTALL_PREFIX=%cd%/install ..
-$> nmake install
-```
-To deploy Qt5 libraries into the installation directory continue with
-```
-$> nmake deploy_qt
-```
 
-# How to Use Generated Code
-Please read [How to Use Generated Code](https://github.com/arobenko/commsdsl#how-to-use-generated-code)
-guidelines from [commsdsl](https://github.com/arobenko/commsdsl) project.
+# Supported Compilers
+Please read [Supported Compilers](https://github.com/arobenko/commsdsl#supported-compilers)
+info from [commsdsl](https://github.com/arobenko/commsdsl) project.
+
+# How to Build and Use Generated Code
+Please read the
+[Generated CMake Project Walkthrough](https://github.com/arobenko/commsdsl/wiki/Generated-CMake-Project-Walkthrough)
+wiki page for details on the generated project internals.
 
 The [release](https://github.com/arobenko/cc.ublox.commsdsl/releases)
 artifacts contain doxygen generated documentation of the protocol definition.
