@@ -6,6 +6,7 @@
 #include "ublox/message/CfgPrtUsb.h"
 #include "ublox/message/NavPosllhPoll.h"
 #include "comms/units.h"
+#include "comms/process.h"
 
 namespace ublox
 {
@@ -81,39 +82,10 @@ void Session::performRead()
 
 void Session::processInputData()
 {
-    std::size_t consumed = 0U;
-    while (consumed < m_inData.size()) {
-        // Smart pointer to the message object.
-        Frame::MsgPtr msgPtr;
-
-        // Type of the message interface class
-        using MsgType = Frame::MsgPtr::element_type;
-
-        // Get the iterator for reading
-        auto begIter = comms::readIteratorFor<MsgType>(&m_inData[0] + consumed);
-        auto iter = begIter;
-
-        // Do the read
-        auto es = m_frame.read(msgPtr, iter, m_inData.size() - consumed);
-        if (es == comms::ErrorStatus::NotEnoughData) {
-            break; // Not enough data in the buffer, stop processing
-        }
-
-        if (es == comms::ErrorStatus::ProtocolError) {
-            // Something is not right with the data, remove one character and try again
-            ++consumed;
-            continue;
-        }
-        if (es == comms::ErrorStatus::Success) {
-            assert(msgPtr); // If read is successful, msgPtr is expected to hold a valid pointer
-            msgPtr->dispatch(*this); // Dispatch message for handling
-        }
-
-        // The iterator for reading has been advanced, update the difference
-        consumed += std::distance(begIter, iter);
-    }
-
-    m_inData.erase(m_inData.begin(), m_inData.begin() + consumed);    
+    if (!m_inData.empty()) {
+        auto consumed = comms::processAllWithDispatch(&m_inData[0], m_inData.size(), m_frame, *this);
+        m_inData.erase(m_inData.begin(), m_inData.begin() + consumed);
+    }    
 }
 
 void Session::sendPosPoll()
