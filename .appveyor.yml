@@ -36,7 +36,7 @@ build_script:
     - if exist %BUILD_DIR% rmdir /S /Q %BUILD_DIR%
     - mkdir %BUILD_DIR%
     - cd %BUILD_DIR%
-    - cmake .. -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "NMake Makefiles" -DBOOST_ROOT="C:\Libraries\boost_1_65_1" -DBoost_USE_STATIC_LIBS=ON 
+    - cmake .. -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "NMake Makefiles" -DBOOST_ROOT="C:/Libraries/boost_1_65_1" -DBoost_USE_STATIC_LIBS=ON 
     - nmake
     - mkdir output.build
     - cd output.build

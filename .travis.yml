@@ -699,6 +699,7 @@ script:
   - mkdir build.output
   - cd build.output
   - CC=${_CC} CXX=${_CXX} cmake ../output -DOPT_BUILD_TEST=ON -DOPT_TEST_INPUT_MESSAGES=ublox::input::Ublox5Messages -DOPT_BUILD_PLUGIN=ON -DCMAKE_INSTALL_PREFIX=install ${_BUILD}
-  - make install
+  - make cc_plugin_Ublox
+  - travis_wait make install
 
 
