@@ -66,6 +66,7 @@ endif ()
 set (schema_files
     dsl/main.xml
     dsl/field/common.xml
+	dsl/field/common-cfg.xml
     dsl/message/NavPosecef.xml
     dsl/message/NavPosllh.xml
     dsl/message/NavStatus.xml
@@ -149,6 +150,9 @@ set (schema_files
     dsl/message/CfgTmode3.xml
     dsl/message/CfgFixseed.xml
     dsl/message/CfgPms.xml
+	dsl/message/CfgValdel.xml
+	dsl/message/CfgValset.xml
+	dsl/message/CfgValget.xml
     dsl/message/UpdSos.xml
     dsl/message/MonIo.xml
     dsl/message/MonVer.xml

@@ -3,32 +3,32 @@
   <fields>
     <int name="CfgKey" type="uint32" failOnInvalid="true" displayReadOnly="true" />
     <bundle name="CfgGeofenceConflvl">
-      <int reuse="Key" defaultValue="0x20240011" validValue="0x20240011" />
+      <int reuse="CfgKey" defaultValue="0x20240011" validValue="0x20240011" />
       <int name="Value" type="uint8" defaultValue="0" displayName="GEOFENCE-CONFLVL"/>
     </bundle>
     <bundle name="CfgGeofenceUsePIO">
-      <int reuse="Key" defaultValue="0x10240012" validValue="0x10240012" />
-      <ref field="boolean" name="Value" defaultValue="0" displayName="GEOFENCE-USE_PIO"/>
+      <int reuse="CfgKey" defaultValue="0x10240012" validValue="0x10240012" />
+      <ref field="boolean" name="Value" displayName="GEOFENCE-USE_PIO"/>
     </bundle>
     <bundle name="CfgGeofencePinpol">
-      <int reuse="Key" defaultValue="0x20240013" validValue="0x20240013" />
+      <int reuse="CfgKey" defaultValue="0x20240013" validValue="0x20240013" />
       <int name="Value" type="uint8" defaultValue="0" displayName="GEOFENCE-PINPOL"/>
     </bundle>
     <bundle name="CfgGeofencePin">
-      <int reuse="Key" defaultValue="0x20240014" validValue="0x20240014" />
+      <int reuse="CfgKey" defaultValue="0x20240014" validValue="0x20240014" />
       <int name="Value" type="uint8" defaultValue="3" displayName="GEOFENCE-PIN "/>
     </bundle>
     <bundle name="CfgGeofenceUseFence1">
-      <int reuse="Key" defaultValue="0x10240020" validValue="0x10240020" />
-      <ref field="boolean" name="Value" defaultValue="0" displayName="GEOFENCE-USE_FENCE1"/>
+      <int reuse="CfgKey" defaultValue="0x10240020" validValue="0x10240020" />
+      <ref field="boolean" name="Value" displayName="GEOFENCE-USE_FENCE1"/>
     </bundle>
     <bundle name="CfgGeofenceFence1Lat">
-      <int reuse="Key" defaultValue="0x40240021" validValue="0x40240021" />
-      <ref field="lat" name="Value" defaultValue="0" displayName="GEOFENCE-FENCE1_LAT"/>
+      <int reuse="CfgKey" defaultValue="0x40240021" validValue="0x40240021" />
+      <ref field="lat" name="Value" displayName="GEOFENCE-FENCE1_LAT"/>
     </bundle>
     <bundle name="CfgGeofenceFence1Lon">
-      <int reuse="Key" defaultValue="0x40240022" validValue="0x40240022" />
-      <ref field="lon" name="Value" defaultValue="0" displayName="GEOFENCE-FENCE1_LON"/>
+      <int reuse="CfgKey" defaultValue="0x40240022" validValue="0x40240022" />
+      <ref field="lon" name="Value" displayName="GEOFENCE-FENCE1_LON"/>
     </bundle>
   </fields>
 </schema>
