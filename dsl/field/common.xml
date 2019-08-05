@@ -75,5 +75,14 @@
             <validValue name="QZSS" val="5" />
             <validValue name="GLONASS" val="6" />
         </enum>
+        <set name="layers" length="1">
+          <bit name="ram" idx="0" />
+          <bit name="bbr" idx="1" />
+          <bit name="flash" idx="2" />
+        </set>
+        <int name="boolean" type="uint8">
+          <validValue value="0" />
+          <validValue value="1" />
+        </int>
     </fields>
 </schema>

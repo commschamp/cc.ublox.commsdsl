@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgValdel" id="MsgId.CfgValdel" displayName="CFG-VALDEL">
+    </message>
+</schema>

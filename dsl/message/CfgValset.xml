@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+  <message name="CfgMsg" id="MsgId.CfgValset" displayName="CFG-VALSET">
+    <int name="version" type="uint8" defaultValue="1" />
+    <ref field="layers"/>
+    <int name="reserved" type="uint8" />
+
+    <variant name="cfgData">
+      <ref field="CfgGeofenceConflvl"/>
+    </variant>
+
+    <list name="cfgDataList" element="cfgData" />
+  </message>
+</schema>

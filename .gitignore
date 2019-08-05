@@ -1,2 +1,23 @@
 build*
+.vs
 .vscode
+*.sln
+out*
+CMakeCache.txt
+CMakeFiles*
+*.cmake
+*.vcxproj*
+schema_files.txt
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+Win32/

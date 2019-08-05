@@ -6,6 +6,7 @@
     <platform name="ublox6" />
     <platform name="ublox7" />
     <platform name="ublox8" />
+    <platform name="ublox9" />
     
     <fields>
         <enum name="MsgId" type="uint16" semanticType="messageId" hexAssign="true" endian="big">
@@ -100,6 +101,9 @@
             <validValue name="CfgFixseed" val="0x0684" displayName="CFG-FIXSEED" />
             <validValue name="CfgDynseed" val="0x0685" displayName="CFG-DYNSEED" />
             <validValue name="CfgPms" val="0x0686" displayName="CFG-PMS" />
+            <validValue name="CfgValset" val="0x068A" displayName="CFG-VALSET" />
+            <validValue name="CfgValget" val="0x068B" displayName="CFG-VALGET" />
+            <validValue name="CfgValdel" val="0x068C" displayName="CFG-VALDEL" />
             <validValue name="UpdSos" val="0x0914" displayName="UPD-SOS" />
             <validValue name="MonIo" val="0x0a02" displayName="MON-IO" />
             <validValue name="MonVer" val="0x0a04" displayName="MON-VER" />
