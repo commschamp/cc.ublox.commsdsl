@@ -4,10 +4,24 @@
     <variant name="cfgData">
       <members>
         <ref field="CfgGeofenceConflvl"/>
+        <ref field="CfgMsgOutRTCM3xType1005_I2C"/>
+        <ref field="CfgMsgOutRTCM3xType1005_USB"/>
+        <ref field="CfgMsgOutRTCM3xType1074_USB"/>
+        <ref field="CfgMsgOutRTCM3xType1077_USB"/>
+        <ref field="CfgMsgOutRTCM3xType1084_USB"/>
+        <ref field="CfgMsgOutRTCM3xType1087_USB"/>
+        <ref field="CfgMsgOutRTCM3xType1094_USB"/>
+        <ref field="CfgMsgOutRTCM3xType1097_USB"/>
+        <ref field="CfgMsgOutRTCM3xType1124_USB"/>
+        <ref field="CfgMsgOutRTCM3xType1127_USB"/>
+        <ref field="CfgMsgOutRTCM3xType1230_USB"/>
+        <ref field="CfgMsgOutRTCM3xType4072_0_USB"/>
+        <ref field="CfgMsgOutRTCM3xType4072_1_USB"/>
       </members>
     </variant>
   </fields>
   <message name="CfgValset" id="MsgId.CfgValset" displayName="CFG-VALSET">
+    <sender value="client" />
     <fields>
       <int name="version" type="uint8" defaultValue="1" />
       <ref field="layers"/>
