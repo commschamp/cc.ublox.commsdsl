@@ -2,6 +2,8 @@
 <schema name="ublox">
   <fields>
     <enum name="CfgKeyIds" type="uint32" hexAssign="true">
+      <!-- https://www.u-blox.com/sites/default/files/u-blox_ZED-F9P_InterfaceDescription_%28UBX-18010854%29.pdf#page=257&zoom=100,0,124 -->
+      <!-- CFG-GEOFENCE-* Configuration Items -->
       <validValue name="GeofenceConflvl" val="0x20240011" displayName="GEOFENCE-CONFLVL" />
       <validValue name="CfgGeofenceUsePIO" val="0x10240012" displayName="GEOFENCE-USE_PIO" />
       <validValue name="CfgGeofencePinpol" val="0x20240013" displayName="GEOFENCE-PINPOL" />
@@ -22,6 +24,59 @@
       <validValue name="CfgGeofenceFence4Lat" val="0x40240051" displayName="GEOFENCE-FENCE4_LAT" />
       <validValue name="CfgGeofenceFence4Lon" val="0x40240052" displayName="GEOFENCE-FENCE4_LON" />
       <validValue name="CfgGeofenceFence4Rad" val="0x40240053" displayName="GEOFENCE-FENCE4_RAD" />
+      <!-- CFG-HW-* Configuration Items -->
+      <validValue name="CfgHwAntCfgVoltctrl" val="0x10a3002e" displayName="HW-ANT_CFG_VOLTCTRL" />
+      <validValue name="CfgHwAntCfgShortdet" val="0x10a3002f" displayName="HW-ANT_CFG_SHORTDET" />
+      <validValue name="CfgHwAntCfgShortdetPol" val="0x10a30030" displayName="HW-ANT_CFG_SHORTDET_POL" />
+      <validValue name="CfgHwAntCfgOpendet" val="0x10a30031" displayName="HW-ANT_CFG_OPENDET" />
+      <validValue name="CfgHwAntCfgOpendetPol" val="0x10a30032" displayName="HW-ANT_CFG_OPENDET_POL" />
+      <validValue name="CfgHwAntCfgPwrdown" val="0x10a30033" displayName="HW-ANT_CFG_PWRDOWN" />
+      <validValue name="CfgHwAntCfgPwrdownPol" val="0x10a30034" displayName="HW-ANT_CFG_PWRDOWN_POL" />
+      <validValue name="CfgHwAntCfgRecover" val="0x10a30035" displayName="HW-ANT_CFG_RECOVER" />
+      <validValue name="CfgHwAntSupSwitchPin" val="0x20a30036" displayName="HW-ANT_SUP_SWITCH_PIN" />
+      <validValue name="CfgHwAntSupShortPin" val="0x20a30037" displayName="HW-ANT_SUP_SHORT_PIN" />
+      <validValue name="CfgHwAntSupOpenPin" val="0x20a30038" displayName="HW-ANT_SUP_OPEN_PIN" />
+      <!-- CFG-I2C-* Configuration Items -->
+      <validValue name="CfgI2cAddress" val="0x20510001"    displayName="I2C-ADDRESS" />
+      <validValue name="CfgI2cExtTimeout" val="0x10510002" displayName="I2C-EXTENDEDTIMEOUT" />
+      <validValue name="CfgI2cEnabled" val="0x10510003"    displayName="I2C-ENABLED" />
+      <!-- CFG-I2CINPROT-* Configuration Items -->
+      <validValue name="CfgI2cInprotUbx" val="0x10710001" displayName="I2CINPROT-UBX" />
+      <validValue name="CfgI2cInprotNmea" val="0x10710002" displayName="I2CINPROT-NMEA" />
+      <validValue name="CfgI2cInprotRtcm3x" val="0x10710004" displayName="I2CINPROT-RTCM3X" />
+      <!-- CFG-I2COUTPROT-* Configuration Items -->
+      <validValue name="CfgI2cOutprotUbx" val="0x10720001" displayName="I2COUTPROT-UBX" />
+      <validValue name="CfgI2cOutprotNmea" val="0x10720002" displayName="I2COUTPROT-NMEA" />
+      <validValue name="CfgI2cOutprotRtcm3x" val="0x10720004" displayName="I2COUTPROT-RTCM3X" />
+      <!-- CFG-INFMSG-* Configuration Items -->
+      <validValue name="CfgI2cInfmsgUbxI2c" val="0x20920001" displayName="INFMSG-UBX_I2C" />
+      <validValue name="CfgI2cInfmsgUbxUart1" val="0x20920002" displayName="INFMSG-UBX_UART1 " />
+      <validValue name="CfgI2cInfmsgUbxUart2" val="0x20920003" displayName="INFMSG-UBX_UART2" />
+      <validValue name="CfgI2cInfmsgUbxUsb" val="0x20920004" displayName="INFMSG-UBX_USB" />
+      <validValue name="CfgI2cInfmsgUbxSpi" val="0x20920005" displayName="INFMSG-UBX_SPI" />
+      <validValue name="CfgI2cInfmsgNmeaI2c" val="0x20920006" displayName="INFMSG-NMEA_I2C" />
+      <validValue name="CfgI2cInfmsgNmeaUart1" val="0x20920007" displayName="INFMSG-NMEA_UART1" />
+      <validValue name="CfgI2cInfmsgNmeaUart2" val="0x20920008" displayName="INFMSG-NMEA_UART2" />
+      <validValue name="CfgI2cInfmsgNmeaUsb" val="0x20920009" displayName="INFMSG-NMEA_USB" />
+      <validValue name="CfgI2cInfmsgNmeaSpi" val="0x2092000a" displayName="INFMSG-NMEA_SPI" />
+      <!-- CFG-ITFM-* Configuration Items -->
+      <validValue name="CfgItfmBBThreshold" val="0x20410001" displayName="ITFM-BBTHRESHOLD" />
+      <validValue name="CfgItfmCWThreshold" val="0x20410002" displayName="ITFM-CWTHRESHOLD" />
+      <validValue name="CfgItfmEnable" val="0x1041000d" displayName="ITFM-ENABLE" />
+      <validValue name="CfgItfmAntSetting" val="0x20410010" displayName="ITFM-ANTSETTING" />
+      <validValue name="CfgItfmAux" val="0x10410013" displayName="ITFM-ENABLE_AUX" />
+      <!-- CFG-LOGFILTER-* Configuration Items -->
+      <validValue name="CfgLogfilterRecordEna" val="0x10de0002" displayName="LOGFILTER-RECORD_ENA" />
+      <validValue name="CfgLogfilterOnceWakeUpEna" val="0x10de0003" displayName="LOGFILTER-ONCE_PER_WAKE_UP_ENA" />
+      <validValue name="CfgLogfilterAllFilters" val="0x10de0004" displayName="LOGFILTER-APPLY_ALL_FILTERS" />
+      <validValue name="CfgLogfilterMinIntv" val="0x30de0005" displayName="LOGFILTER-MIN_INTERVAL" />
+      <validValue name="CfgLogfilterTimeThrs" val="0x30de0006" displayName="LOGFILTER-TIME_THRS" />
+      <validValue name="CfgLogfilterSpeedThrs" val="0x30de0007" displayName="LOGFILTER-SPEED_THRS" />
+      <validValue name="CfgLogfilterPosThrs" val="0x40de0008" displayName="LOGFILTER-POSITION_THRS" />
+      <!-- CFG-MOT-* Configuration Items -->
+      <validValue name="CfgMotGnssSpeedThrs" val="0x20250038" displayName="MOT-GNSSSPEED_THRS" />
+      <validValue name="CfgMotGnssDistThrs" val="0x3025003b" displayName="MOT-GNSSDIST_THRS" />
+      <!-- CFG-MSGOUT-* Configuration Items -->
       <validValue name="CfgMsgOutRTCM3xType1005_I2C" val="0x209102bd" displayName="MSGOUT-RTCM_3X_TYPE1005_I2C" />
       <validValue name="CfgMsgOutRTCM3xType1005_USB" val="0x209102c0" displayName="MSGOUT-RTCM_3X_TYPE1005_USB" />
       <validValue name="CfgMsgOutRTCM3xType1074_USB" val="0x20910361" displayName="MSGOUT-RTCM_3X_TYPE1074_USB" />
@@ -35,6 +90,28 @@
       <validValue name="CfgMsgOutRTCM3xType1230_USB" val="0x20910306" displayName="MSGOUT-RTCM_3X_TYPE1230_USB" />
       <validValue name="CfgMsgOutRTCM3xType4072_0_USB" val="0x20910301" displayName="MSGOUT-RTCM_3X_TYPE4072_0_USB" />
       <validValue name="CfgMsgOutRTCM3xType4072_1_USB" val="0x20910384" displayName="MSGOUT-RTCM_3X_TYPE4072_1_USB" />
+      <!-- CFG-NAVHPG-* Configuration Items -->
+      <!-- CFG-NAVSPG-* Configuration Items -->
+      <!-- CFG-NMEA-* Configuration Items -->
+      <!-- CFG-ODO-* Configuration Items -->
+      <!-- CFG-RATE-* Configuration Items -->
+      <!-- CFG-RINV-* Configuration Items -->
+      <!-- CFG-SIGNAL-* Configuration Items -->
+      <!-- CFG-SPI-* Configuration Items -->
+      <!-- CFG-SPIINPROT-* Configuration Items -->
+      <!-- CFG-SPIOUTPROT-* Configuration Items -->
+      <!-- CFG-TMODE-* Configuration Items -->
+      <!-- CFG-TP-* Configuration Items -->
+      <!-- CFG-TXREADY-* Configuration Items -->
+      <!-- CFG-UART1-* Configuration Items -->
+      <!-- CFG-UART1INPROT-* Configuration Items -->
+      <!-- CFG-UART1OUTPROT-* Configuration Items -->
+      <!-- CFG-UART2-* Configuration Items -->
+      <!-- CFG-UART2INPROT-* Configuration Items -->
+      <!-- CFG-UART2OUTPROT-* Configuration Items -->
+      <!-- CFG-USB-* Configuration Items -->
+      <!-- CFG-USBINPROT-* Configuration Items -->
+      <!-- CFG-USBOUTPROT-* Configuration Items -->
     </enum>
     <int name="CfgKey" type="uint32" failOnInvalid="true" displayReadOnly="true" />
     <enum name="cfgGeofenceConflvlConstants" type="uint8">
@@ -44,6 +121,18 @@
       <validValue name="L997" val="3" description="99.7%" />
       <validValue name="L9999" val="4" description="99.99%" />
       <validValue name="L999999" val="5" description="99.9999%" />
+    </enum>
+    <enum name="CfgInfmsgConstants" type="uint8">
+      <validValue name="ERROR" val="0x01" description="Enable ERROR information messages" />
+      <validValue name="WARNING" val="0x02" description="Enable WARNING information messages" />
+      <validValue name="NOTICE" val="0x04" description="Enable NOTICE information messages" />
+      <validValue name="TEST" val="0x08" description="Enable TEST information messages" />
+      <validValue name="DEBUG" val="0x10" description="Enable DEBUG information messages" />
+    </enum>
+    <enum name="CfgItfmAntConstants" type="uint8">
+      <validValue name="UNKNOWN" val="0" description="Unknown" />
+      <validValue name="PASSIVE" val="1" description="Passive" />
+      <validValue name="ACTIVE" val="2" description="Active" />
     </enum>
     <variant name="cfgData">
       <members>
