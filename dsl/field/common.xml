@@ -84,5 +84,6 @@
           <validValue value="0" />
           <validValue value="1" />
         </int>
+      <int name="radius" type="int32" units="m" scaling="1/100" description="Radius in m" />
     </fields>
 </schema>
