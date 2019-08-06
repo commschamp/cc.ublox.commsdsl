@@ -2,102 +2,105 @@
 <schema name="ublox">
   <fields>
     <int name="CfgKey" type="uint32" failOnInvalid="true" displayReadOnly="true" />
-    
-    
-    <bundle name="CfgGeofenceConflvl">
-      <int reuse="CfgKey" defaultValue="0x20240011" validValue="0x20240011" />
-      <int name="Value" type="uint8" defaultValue="0" displayName="GEOFENCE-CONFLVL"/>
-    </bundle>
-    <bundle name="CfgGeofenceUsePIO">
-      <int reuse="CfgKey" defaultValue="0x10240012" validValue="0x10240012" />
-      <ref field="boolean" name="Value" displayName="GEOFENCE-USE_PIO"/>
-    </bundle>
-    <bundle name="CfgGeofencePinpol">
-      <int reuse="CfgKey" defaultValue="0x20240013" validValue="0x20240013" />
-      <int name="Value" type="uint8" defaultValue="0" displayName="GEOFENCE-PINPOL"/>
-    </bundle>
-    <bundle name="CfgGeofencePin">
-      <int reuse="CfgKey" defaultValue="0x20240014" validValue="0x20240014" />
-      <int name="Value" type="uint8" defaultValue="3" displayName="GEOFENCE-PIN "/>
-    </bundle>
-    <bundle name="CfgGeofenceUseFence1">
-      <int reuse="CfgKey" defaultValue="0x10240020" validValue="0x10240020" />
-      <ref field="boolean" name="Value" displayName="GEOFENCE-USE_FENCE1"/>
-    </bundle>
-    <bundle name="CfgGeofenceFence1Lat">
-      <int reuse="CfgKey" defaultValue="0x40240021" validValue="0x40240021" />
-      <ref field="lat" name="Value" displayName="GEOFENCE-FENCE1_LAT"/>
-    </bundle>
-    <bundle name="CfgGeofenceFence1Lon">
-      <int reuse="CfgKey" defaultValue="0x40240022" validValue="0x40240022" />
-      <ref field="lon" name="Value" displayName="GEOFENCE-FENCE1_LON"/>
-    </bundle>
+
+    <variant name="cfgData">
+      <members>
+        <bundle name="CfgGeofenceConflvl">
+          <int reuse="CfgKey" defaultValue="0x20240011" validValue="0x20240011" />
+          <int name="Value" type="uint8" defaultValue="0" displayName="GEOFENCE-CONFLVL"/>
+        </bundle>
+        <bundle name="CfgGeofenceUsePIO">
+          <int reuse="CfgKey" defaultValue="0x10240012" validValue="0x10240012" />
+          <ref field="boolean" name="Value" displayName="GEOFENCE-USE_PIO"/>
+        </bundle>
+        <bundle name="CfgGeofencePinpol">
+          <int reuse="CfgKey" defaultValue="0x20240013" validValue="0x20240013" />
+          <int name="Value" type="uint8" defaultValue="0" displayName="GEOFENCE-PINPOL"/>
+        </bundle>
+        <bundle name="CfgGeofencePin">
+          <int reuse="CfgKey" defaultValue="0x20240014" validValue="0x20240014" />
+          <int name="Value" type="uint8" defaultValue="3" displayName="GEOFENCE-PIN "/>
+        </bundle>
+        <bundle name="CfgGeofenceUseFence1">
+          <int reuse="CfgKey" defaultValue="0x10240020" validValue="0x10240020" />
+          <ref field="boolean" name="Value" displayName="GEOFENCE-USE_FENCE1"/>
+        </bundle>
+        <bundle name="CfgGeofenceFence1Lat">
+          <int reuse="CfgKey" defaultValue="0x40240021" validValue="0x40240021" />
+          <ref field="lat" name="Value" displayName="GEOFENCE-FENCE1_LAT"/>
+        </bundle>
+        <bundle name="CfgGeofenceFence1Lon">
+          <int reuse="CfgKey" defaultValue="0x40240022" validValue="0x40240022" />
+          <ref field="lon" name="Value" displayName="GEOFENCE-FENCE1_LON"/>
+        </bundle>
 
 
 
-    <bundle name="CfgMsgOutRTCM3xType1005_I2C">
-      <int reuse="CfgKey" defaultValue="0x209102bd" validValue="0x209102bd" />
-      <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1005_I2C"/>
-    </bundle>
+        <bundle name="CfgMsgOutRTCM3xType1005_I2C">
+          <int reuse="CfgKey" defaultValue="0x209102bd" validValue="0x209102bd" />
+          <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1005_I2C"/>
+        </bundle>
 
-    <bundle name="CfgMsgOutRTCM3xType1005_USB">
-      <int reuse="CfgKey" defaultValue="0x209102c0" validValue="0x209102c0" />
-      <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1005_USB"/>
-    </bundle>
+        <bundle name="CfgMsgOutRTCM3xType1005_USB">
+          <int reuse="CfgKey" defaultValue="0x209102c0" validValue="0x209102c0" />
+          <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1005_USB"/>
+        </bundle>
 
-    <bundle name="CfgMsgOutRTCM3xType1074_USB">
-      <int reuse="CfgKey" defaultValue="0x20910361" validValue="0x20910361" />
-      <int name="Value" type="uint8" defaultValue="0" displayName="-MSGOUT-RTCM_3X_TYPE1074_USB"/>
-    </bundle>
+        <bundle name="CfgMsgOutRTCM3xType1074_USB">
+          <int reuse="CfgKey" defaultValue="0x20910361" validValue="0x20910361" />
+          <int name="Value" type="uint8" defaultValue="0" displayName="-MSGOUT-RTCM_3X_TYPE1074_USB"/>
+        </bundle>
 
-    <bundle name="CfgMsgOutRTCM3xType1077_USB">
-      <int reuse="CfgKey" defaultValue="0x209102cf" validValue="0x209102cf" />
-      <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1077_USB"/>
-    </bundle>
+        <bundle name="CfgMsgOutRTCM3xType1077_USB">
+          <int reuse="CfgKey" defaultValue="0x209102cf" validValue="0x209102cf" />
+          <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1077_USB"/>
+        </bundle>
 
-    <bundle name="CfgMsgOutRTCM3xType1084_USB">
-      <int reuse="CfgKey" defaultValue="0x20910366" validValue="0x20910366" />
-      <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1084_USB"/>
-    </bundle>
+        <bundle name="CfgMsgOutRTCM3xType1084_USB">
+          <int reuse="CfgKey" defaultValue="0x20910366" validValue="0x20910366" />
+          <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1084_USB"/>
+        </bundle>
 
-    <bundle name="CfgMsgOutRTCM3xType1087_USB">
-      <int reuse="CfgKey" defaultValue="0x209102d4" validValue="0x209102d4" />
-      <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1087_USB"/>
-    </bundle>
+        <bundle name="CfgMsgOutRTCM3xType1087_USB">
+          <int reuse="CfgKey" defaultValue="0x209102d4" validValue="0x209102d4" />
+          <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1087_USB"/>
+        </bundle>
 
-    <bundle name="CfgMsgOutRTCM3xType1094_USB">
-      <int reuse="CfgKey" defaultValue="0x2091036b" validValue="0x2091036b" />
-      <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1094_USB"/>
-    </bundle>
+        <bundle name="CfgMsgOutRTCM3xType1094_USB">
+          <int reuse="CfgKey" defaultValue="0x2091036b" validValue="0x2091036b" />
+          <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1094_USB"/>
+        </bundle>
 
-    <bundle name="CfgMsgOutRTCM3xType1097_USB">
-      <int reuse="CfgKey" defaultValue="0x2091031b" validValue="0x2091031b" />
-      <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1097_USB"/>
-    </bundle>
+        <bundle name="CfgMsgOutRTCM3xType1097_USB">
+          <int reuse="CfgKey" defaultValue="0x2091031b" validValue="0x2091031b" />
+          <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1097_USB"/>
+        </bundle>
 
-    <bundle name="CfgMsgOutRTCM3xType1124_USB">
-      <int reuse="CfgKey" defaultValue="0x20910370" validValue="0x20910370" />
-      <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1124_USB"/>
-    </bundle>
+        <bundle name="CfgMsgOutRTCM3xType1124_USB">
+          <int reuse="CfgKey" defaultValue="0x20910370" validValue="0x20910370" />
+          <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1124_USB"/>
+        </bundle>
 
-    <bundle name="CfgMsgOutRTCM3xType1127_USB">
-      <int reuse="CfgKey" defaultValue="0x209102d9" validValue="0x209102d9" />
-      <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1127_USB"/>
-    </bundle>
+        <bundle name="CfgMsgOutRTCM3xType1127_USB">
+          <int reuse="CfgKey" defaultValue="0x209102d9" validValue="0x209102d9" />
+          <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1127_USB"/>
+        </bundle>
 
-    <bundle name="CfgMsgOutRTCM3xType1230_USB">
-      <int reuse="CfgKey" defaultValue="0x20910306" validValue="0x20910306" />
-      <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1230_USB"/>
-    </bundle>
+        <bundle name="CfgMsgOutRTCM3xType1230_USB">
+          <int reuse="CfgKey" defaultValue="0x20910306" validValue="0x20910306" />
+          <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE1230_USB"/>
+        </bundle>
 
-    <bundle name="CfgMsgOutRTCM3xType4072_0_USB">
-      <int reuse="CfgKey" defaultValue="0x20910301" validValue="0x20910301" />
-      <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE4072_0_USB"/>
-    </bundle>
+        <bundle name="CfgMsgOutRTCM3xType4072_0_USB">
+          <int reuse="CfgKey" defaultValue="0x20910301" validValue="0x20910301" />
+          <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE4072_0_USB"/>
+        </bundle>
 
-    <bundle name="CfgMsgOutRTCM3xType4072_1_USB">
-      <int reuse="CfgKey" defaultValue="0x20910384" validValue="0x20910384" />
-      <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE4072_1_USB"/>
-    </bundle>
+        <bundle name="CfgMsgOutRTCM3xType4072_1_USB">
+          <int reuse="CfgKey" defaultValue="0x20910384" validValue="0x20910384" />
+          <int name="Value" type="uint8" defaultValue="0" displayName="MSGOUT-RTCM_3X_TYPE4072_1_USB"/>
+        </bundle>
+      </members>
+    </variant>
   </fields>
 </schema>

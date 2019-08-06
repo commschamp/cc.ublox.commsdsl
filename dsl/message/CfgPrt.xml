@@ -94,10 +94,9 @@
         </int>
         <ref field="res1" name="reserved1" />
         <ref field="cfgPrtTxReady" name="txReady" />
-        <ref field="res4" name="reserved2" />
+        <ref field="res8" name="reserved2" />
         <ref field="cfgPrtInProtoMask" name="inProtoMask" />
         <ref field="cfgPrtOutProtoMask" name="outProtoMask" />
-        <ref field="cfgPrtFlags" />
         <ref field="res2" name="reserved3" />
         <ref field="res2" name="reserved4" />
     </message>

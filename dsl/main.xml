@@ -161,6 +161,19 @@
             <validValue name="SecSign" val="0x2701" displayName="SEC-SIGN" />
             <validValue name="SecUniqid" val="0x2703" displayName="SEC-UNIQID" />
             <validValue name="HnrPvt" val="0x2800" displayName="HNR-PVT" />
+
+            <validValue name="CfgRtcm1005" val="0xF505" displayName="CFG-RTCM-1005" />
+            <validValue name="CfgRtcm1074" val="0xF54A" displayName="CFG-RTCM-1074" />
+            <validValue name="CfgRtcm1077" val="0xF54D" displayName="CFG-RTCM-1077" />
+            <validValue name="CfgRtcm1084" val="0xF554" displayName="CFG-RTCM-1084" />
+            <validValue name="CfgRtcm1087" val="0xF557" displayName="CFG-RTCM-1087" />
+            <validValue name="CfgRtcm1094" val="0xF55E" displayName="CFG-RTCM-1094" />
+            <validValue name="CfgRtcm1097" val="0xF561" displayName="CFG-RTCM-1097" />
+            <validValue name="CfgRtcm1124" val="0xF57C" displayName="CFG-RTCM-1124" />
+            <validValue name="CfgRtcm1127" val="0xF57F" displayName="CFG-RTCM-1127" />
+            <validValue name="CfgRtcm1230" val="0xF5E6" displayName="CFG-RTCM-1230" />
+            <validValue name="CfgRtcm4072_0" val="0xF5FE" displayName="CFG-RTCM-4072.0" />
+            <validValue name="CfgRtcm4072_1" val="0xF5FD" displayName="CFG-RTCM-4072.1" />
         </enum>
     </fields>
     

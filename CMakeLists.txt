@@ -27,7 +27,7 @@ endif ()
 set (VERSION "0.8")
 set(COMMSDSL2COMMS "C:/Users/mathi/source/libs/commsdsl/out/install/x86-Release/bin/commsdsl2comms.exe")
 set(COMMS_INSTALL_DIR "C:/Users/mathi/source/libs/commsdsl/out/install/x86-Release/lib/")
-
+set(CommsChampion_DIR "C:/Users/mathi/source/libs/comms_champion/out/install/x86_x64-Release/bin/")
 set (COMMSDSL_TGT "commsdsl_tgt")
 if ("${COMMSDSL2COMMS}" STREQUAL "")
         include(ExternalProject)
