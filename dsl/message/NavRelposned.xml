@@ -34,7 +34,7 @@
         </bitfield>
     </message>
 
-  <message name="NavRelposned_u9" id="MsgId.NavRelposned" displayName="NAV-RELPOSNED" order="1" platforms="+ublox8" sender="server">
+  <message name="NavRelposned_u9" id="MsgId.NavRelposned" displayName="NAV-RELPOSNED" order="1" platforms="+ublox9" sender="server">
     <int name="version" type="uint8" validValue="0" />
     <ref field="res1" name="reserved1" />
     <int name="refStationId" type="uint16" validRange="[0, 4095]" />
