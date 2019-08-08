@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="NavPvt" id="MsgId.NavPvt" displayName="NAV-PVT" order="1" platforms="+ublox7" sender="server">
+    <message name="NavPvt" id="MsgId.NavPvt" displayName="NAV-PVT" order="2" platforms="+ublox7" sender="server">
         <ref field="itow" />
         <ref field="year" />
         <ref field="month" />
@@ -62,7 +62,7 @@
         <ref field="res4" name="reserved3" />
     </message>
 
-    <message name="NavPvt_u8" id="MsgId.NavPvt" displayName="NAV-PVT (ublox-8)" order="0" sender="server">
+    <message name="NavPvt_u8" id="MsgId.NavPvt" displayName="NAV-PVT (ublox-8)" order="1" sender="server">
         <description value="Updated version of NAV-PVT message introduced in ublox-8" />
         <platforms value="+ublox8" />
         <copyFieldsFrom value="NavPvt" />
@@ -72,8 +72,79 @@
             <int name="magAcc" type="uint16" units="deg" scaling="1/100" displayDecimals="2" />
         </fields>
     </message>
+
+    <message name="NavPvt_u9" id="MsgId.NavPvt" displayName="NAV-PVT (ublox-9)" order="0" sender="server">
+      <description value="Updated version of NAV-PVT message introduced in ublox-9" />
+      <platforms value="+ublox9" />
+      <fields>
+        <ref field="itow" />
+        <ref field="year" />
+        <ref field="month" />
+        <ref field="day" />
+        <ref field="hour" />
+        <ref field="min" />
+        <ref field="sec" />
+        <set name="valid" length="1">
+          <bit name="validDate" idx="0" />
+          <bit name="validTime" idx="1" />
+          <bit name="fullyResolved" idx="2" />
+        </set>
+        <int name="tAcc" type="uint32" units="ns" />
+        <int name="nano" type="int32" units="ns" />
+        <ref field="gpsFix" name="fixType" />
+        <bitfield name="flags">
+          <set name="lowBits" bitLength="2" displayName="_">
+            <bit name="gnssFixOK" idx="0" />
+            <bit name="diffSoln" idx="1" />
+          </set>
+          <enum name="psmState" type="uint8" bitLength="3">
+            <validValue name="NotAvailable" val="0" displayName="N/A" />
+            <validValue name="Enabled" val="1" displayName="ENABLED" />
+            <validValue name="Acquisition" val="2" displayName="ACQUISITION" />
+            <validValue name="Tracking" val="3" displayName="TRACKING" />
+            <validValue name="PowerOptTracking" val="4" displayName="POWER OPTIMIZED TRACKING" />
+            <validValue name="Inactive" val="5" displayName="INACTIVE" />
+          </enum>
+          <set name="midBits" bitLength="1" displayName="_">
+            <bit name="headVehValid" idx="0" />
+          </set>
+          <enum name="carrSoln" type="uint8" bitLength="2">
+            <validValue name="NoCarrier" val="0" displayName="No carrier" />
+            <validValue name="Float" val="1" displayName="Float solution" />
+            <validValue name="Fixed" val="2" displayName="Fixed solution" />
+          </enum>
+        </bitfield>
+        <set name="flags2" length="1">
+          <bit name="confirmedAvai" idx="5" />
+          <bit name="confirmedDate" idx="6" />
+          <bit name="confirmedTime" idx="7" />
+        </set>
+        <int name="numSV" type="uint8" />
+        <ref field="lon" />
+        <ref field="lat" />
+        <ref field="height" />
+        <ref field="hMSL" />
+        <ref field="hAcc" />
+        <ref field="vAcc" />
+        <ref field="vel" name="velN" />
+        <ref field="vel" name="velE" />
+        <ref field="vel" name="velD" />
+        <ref field="vel" name="gSpeed" />
+        <ref field="heading" />
+        <int name="sAcc" type="uint32" units="mm/s" />
+        <ref field="headingAcc" />
+        <ref field="dop" name="pDop" />
+        <set name="flags3" length="1">
+          <bit name="invalidLlh" idx="0" />
+        </set>
+        <ref field="res5" name="reserved1" />
+        <int name="headVeh" type="int32" units="deg" scaling="1/100000" displayDecimals="5" />
+        <int name="magDec" type="int16" units="deg" scaling="1/100" displayDecimals="2" />
+        <int name="magAcc" type="uint16" units="deg" scaling="1/100" displayDecimals="2" />
+      </fields>
+    </message>
     
-    <message name="NavPvtPoll" id="MsgId.NavPvt" displayName="NAV-PVT (Poll)" order="2">
+    <message name="NavPvtPoll" id="MsgId.NavPvt" displayName="NAV-PVT (Poll)" order="3">
         <platforms value="+ublox7,ublox8" />
         <sender value="client" />
     </message>
