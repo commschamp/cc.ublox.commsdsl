@@ -24,7 +24,7 @@ if ("${COMMS_TAG}" STREQUAL "")
     set(COMMS_TAG "v2.3.1")
 endif ()
 
-set (VERSION "0.15")
+set (VERSION "0.16")
 
 set (COMMSDSL_TGT "commsdsl_tgt")
 if ("${COMMSDSL2COMMS}" STREQUAL "")
