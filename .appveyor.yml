@@ -1,15 +1,13 @@
 image:
     - Visual Studio 2015
     - Visual Studio 2017
+    - Visual Studio 2019    
 
 init:
     - git config --global core.autocrlf input
 
 clone_folder: c:\projects\cc.ublox.commsdsl
 shallow_clone: true             
-
-matrix:
-    fast_finish: false
 
 platform:
     - x64
@@ -22,11 +20,20 @@ configuration:
 environment:
     matrix:
         - CPP_STD: 11
-          QT_VER: 5.6.3
         - CPP_STD: 14
-          QT_VER: 5.6.3
-          
+        - CPP_STD: 17
+        - CPP_STD: 20
 
+matrix:
+    fast_finish: false
+    exclude:
+        - image: Visual Studio 2015
+          CPP_STD: 17 
+        - image: Visual Studio 2015
+          CPP_STD: 20    
+        - image: Visual Studio 2017
+          CPP_STD: 20                           
+        
 install:
     - call script\appveyor_install.bat
     - set PATH=%PATH%;%QTDIR%\bin
@@ -36,7 +43,7 @@ build_script:
     - if exist %BUILD_DIR% rmdir /S /Q %BUILD_DIR%
     - mkdir %BUILD_DIR%
     - cd %BUILD_DIR%
-    - cmake .. -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "NMake Makefiles" -DBOOST_ROOT="C:/Libraries/boost_1_65_1" -DBoost_USE_STATIC_LIBS=ON 
+    - cmake .. -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "NMake Makefiles" -DBOOST_ROOT="%BOOST_DIR%" -DBoost_USE_STATIC_LIBS=ON 
     - nmake
     - mkdir output.build
     - cd output.build
