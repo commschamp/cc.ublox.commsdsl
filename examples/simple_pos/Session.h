@@ -4,8 +4,9 @@
 #include <vector>
 #include <string>
 
-#include <boost/asio.hpp>
 #include <boost/array.hpp>
+
+#include "common/boost_wrap.h"
 
 #include "ublox/Message.h"
 #include "ublox/message/NavPosllh.h"
@@ -36,7 +37,7 @@ class Session
     using InNavPosllh = ublox::message::NavPosllh<InMessage>;
 
 public:
-    Session(boost::asio::io_service& io, const std::string& dev);
+    Session(common::boost_wrap::io& io, const std::string& dev);
     ~Session();
 
     bool start();
@@ -62,6 +63,7 @@ private:
     void sendMessage(const OutMessage& msg);
     void configureUbxOutput();
 
+    common::boost_wrap::io& m_io;
     SerialPort m_serial;
     boost::asio::deadline_timer m_pollTimer;
     std::string m_device;
