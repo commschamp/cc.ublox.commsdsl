@@ -5,4 +5,6 @@
         <ref field="res3" name="reserved1" />
         <data name="uniqueId" length="5" />
     </message>
+
+    <message name="SecUniqidPoll" id="MsgId.SecUniqid" displayName="SEC-UNIQID (Poll)" platforms="+ublox8" sender="client" order="1" />
 </schema>

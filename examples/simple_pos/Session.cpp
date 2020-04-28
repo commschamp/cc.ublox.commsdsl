@@ -14,8 +14,9 @@ namespace ublox
 namespace simple_pos    
 {
 
-Session::Session(boost::asio::io_service& io, const std::string& dev)
-  : m_serial(io),
+Session::Session(common::boost_wrap::io& io, const std::string& dev)
+  : m_io(io),
+    m_serial(io),
     m_pollTimer(io),
     m_device(dev)
 {
@@ -68,7 +69,7 @@ void Session::performRead()
 
             if (ec) {
                 std::cerr << "ERROR: read failed with message: " << ec.message() << std::endl;
-                m_serial.get_io_service().stop();
+                m_io.stop();
                 return;
             }
 
@@ -123,7 +124,7 @@ void Session::sendMessage(const OutMessage& msg)
 
         if (ec) {
             std::cerr << "ERROR: write failed with message: " << ec.message() << std::endl;
-            m_serial.get_io_service().stop();
+            m_io.stop();
             return;
         }
 
