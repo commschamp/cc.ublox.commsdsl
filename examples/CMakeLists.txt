@@ -44,59 +44,38 @@ set (CMAKE_CXX_STANDARD 14)
 
 set (COMMS_TGT "comms_tgt")
 if ("${COMMS_INSTALL_DIR}" STREQUAL "")
-    include(ExternalProject)
+    execute_process (
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${EXTERNALS_DIR}"
+    ) 
 
-    set (cc_repo "https://github.com/arobenko/comms_champion.git")
-    set (cc_main_dir "${CMAKE_BINARY_DIR}/comms_champion")
-    set (cc_src_dir "${cc_main_dir}/src")
-    set (cc_bin_dir "${cc_main_dir}/build")
-    set (cc_install_dir "${cc_bin_dir}/install")
+    set (cc_src_dir ${EXTERNALS_DIR}/comms_champion)
+    set (cc_bin_dir ${PROJECT_BINARY_DIR}/comms_champion)
+    set (COMMS_INSTALL_DIR ${cc_bin_dir}/install)
 
-    find_package (Git REQUIRED)
-    if (NOT EXISTS "${cc_src_dir}/cmake/DefineExternalProjectTargets.cmake")
-        execute_process (
-            COMMAND ${CMAKE_COMMAND} -E remove_directory "${cc_src_dir}"
-        )
-
-        execute_process (
-            COMMAND 
-                ${GIT_EXECUTABLE} clone --depth 1 ${cc_repo} ${cc_src_dir}
-            RESULT_VARIABLE git_result
-        )
-
-        if (NOT "${git_result}" STREQUAL "0")
-            message (FATAL_ERROR "git clone/checkout failed")
-        endif ()
-    endif ()
-
-    set (EXT_CC_INSTALL_DIR ${cc_install_dir})
-    include (${cc_src_dir}/cmake/DefineExternalProjectTargets.cmake)    
-
-    ExternalProject_Add(
-        "${COMMS_TGT}"
-        PREFIX "${cc_main_dir}"
-        STAMP_DIR "${cc_bin_dir}"
-        GIT_REPOSITORY ${cc_repo}
-        GIT_TAG ${COMMS_TAG}
-        SOURCE_DIR ${cc_src_dir}
-        BINARY_DIR "${cc_bin_dir}"
-        INSTALL_DIR ${cc_install_dir}
+    include (${PROJECT_SOURCE_DIR}/cmake/CC_Prefetch.cmake)
+    cc_prefetch(SRC_DIR ${cc_src_dir} TAG ${COMMS_TAG})
+    include (${cc_src_dir}/cmake/CC_External.cmake)
+    cc_build_during_config(
+        SRC_DIR ${cc_src_dir}
+        BUILD_DIR ${cc_bin_dir}
+        TAG ${COMMS_TAG}
         CMAKE_ARGS
             -DCC_COMMS_LIB_ONLY=ON -DCC_NO_UNIT_TESTS=ON
             -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
             -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} 
             -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
-            -DCMAKE_INSTALL_PREFIX=${cc_install_dir}
+            -DCMAKE_INSTALL_PREFIX=${COMMS_INSTALL_DIR}        
     )
-else ()
-    list (APPEND CMAKE_PREFIX_PATH "${COMMS_INSTALL_DIR}")
+    
+endif ()
 
-    find_package(CommsChampion NO_MODULE)
+list (APPEND CMAKE_PREFIX_PATH "${COMMS_INSTALL_DIR}")
 
-    if (NOT CC_COMMS_FOUND)
-        message (Warning "Cannot compile example application due to missing COMMS libraries")
-        return ()
-    endif ()
+find_package(LibComms NO_MODULE)
+
+if (NOT TARGET cc::comms)
+    message (Warning "Cannot compile example application due to missing COMMS libraries")
+    return ()
 endif ()
 
 find_package(Boost)

@@ -17,20 +17,26 @@ option (UBLOX_NO_WARN_AS_ERR "Don't treat compilation warnings as errors." OFF)
 #     is not provided and examples are not disabled.
 
 if ("${COMMSDSL_TAG}" STREQUAL "")
-    set(COMMSDSL_TAG "v3.4.2")
+    set(COMMSDSL_TAG "v3.5")
 endif ()
 
 if ("${COMMS_TAG}" STREQUAL "")
-    set(COMMS_TAG "v2.4.1")
+    set(COMMS_TAG "v3.0")
 endif ()
 
-set (VERSION "0.17")
+set (VERSION "0.18")
+
+set (EXTERNALS_DIR "${PROJECT_SOURCE_DIR}/externals")
 
 set (COMMSDSL_TGT "commsdsl_tgt")
 if ("${COMMSDSL2COMMS}" STREQUAL "")
+        execute_process (
+            COMMAND ${CMAKE_COMMAND} -E make_directory "${EXTERNALS_DIR}"
+        )   
+        
         include(ExternalProject)
-        set (commsdsl2comms_main_dir "${CMAKE_BINARY_DIR}/commsdsl")
-        set (commsdsl2comms_src_dir "${commsdsl2comms_main_dir}/src")
+        set (commsdsl2comms_main_dir "${PROJECT_BINARY_DIR}/commsdsl")
+        set (commsdsl2comms_src_dir "${EXTERNALS_DIR}/commsdsl")
         set (commsdsl2comms_bin_dir "${commsdsl2comms_main_dir}/build")
         set (commsdsl2comms_install_dir "${commsdsl2comms_main_dir}/install")
         
@@ -224,14 +230,19 @@ if (TARGET ${COMMSDSL_TGT})
     set (extra_dep ${COMMSDSL_TGT})
 endif ()
 
-add_custom_target("rm_tmp_tgt"
+set (warn_as_error "--warn-as-err")
+if (UBLOX_NO_WARN_AS_ERR)
+    set (warn_as_error)
+endif ()
+
+add_custom_target(rm_tmp_tgt
     COMMAND ${CMAKE_COMMAND} -E remove_directory ${tmp_dir}
 )
 
 add_custom_command(
     OUTPUT ${tmp_dir}
     DEPENDS ${schema_files} ${src_files} ${schema_files_list_file} ${extra_dep} "rm_tmp_tgt"
-    COMMAND ${COMMSDSL2COMMS} --warn-as-err -V ${VERSION}
+    COMMAND ${COMMSDSL2COMMS} ${warn_as_error} -V ${VERSION}
         --cc-tag ${COMMS_TAG} -o ${tmp_dir} 
         -c ${code_input_dir} -p ${CMAKE_SOURCE_DIR} -i ${schema_files_list_file} 
         ${COMMSDSL2COMMS_EXTRA_ARGS} 
