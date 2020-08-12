@@ -75,8 +75,8 @@ info from [commsdsl](https://github.com/arobenko/commsdsl) project.
 
 # How to Build and Use Generated Code
 Please read the
-[Generated CMake Project Walkthrough](https://github.com/arobenko/commsdsl/wiki/Generated-CMake-Project-Walkthrough)
-wiki page for details on the generated project internals.
+[Generated CMake Project Walkthrough](https://github.com/arobenko/commsdsl/blob/master/doc/GeneratedProjectWalkthrough.md)
+documentation page for details on the generated project internals.
 
 The [release](https://github.com/arobenko/cc.ublox.commsdsl/releases)
 artifacts contain doxygen generated documentation of the protocol definition.
