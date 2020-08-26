@@ -6,12 +6,12 @@ the messages as well as wrapping transport framing used by
 **u-blox 5/6/7/8** devices.
 
 The protocol is defined in multiple [schema](dsl)
-files using [CommsDSL](https://github.com/arobenko/CommsDSL-Specification).
-The **commsds2comms** code generator from [commsdsl](https://github.com/arobenko/commsdsl)
+files using [CommsDSL](https://github.com/commschamp/CommsDSL-Specification).
+The **commsds2comms** code generator from [commsdsl](https://github.com/commschamp/commsdsl)
 project is used to generate C++11 code of the protocol implementation.
 
 The **generated** CMake project of this protocol definition is hosted and can be
-viewed at [cc.ublox.generated](https://github.com/arobenko/cc.ublox.generated)
+viewed at [cc.ublox.generated](https://github.com/commschamp/cc.ublox.generated)
 
 # Examples
 The [examples](examples) directory contains following example applications:
@@ -20,8 +20,8 @@ USB serial link and polls for **NAV-POSLLH** messages. When latter is received,
 the position is printed to standard output.
 
 # License
-Please read [License](https://github.com/arobenko/commsdsl#license)
-section from [commsdsl](https://github.com/arobenko/commsdsl) project.
+Please read [License](https://github.com/commschamp/commsdsl#license)
+section from [commsdsl](https://github.com/commschamp/commsdsl) project.
 
 # How to Build
 This project uses CMake as its build system. Please open main
@@ -29,7 +29,7 @@ This project uses CMake as its build system. Please open main
 mentioned available parameters, which can be used in addition to standard 
 ones provided by CMake itself, to modify the default build. 
 
-The **commsdsl2comms** application from [commsdsl](https://github.com/arobenko/commsdsl)
+The **commsdsl2comms** application from [commsdsl](https://github.com/commschamp/commsdsl)
 project is used to generate appropriate C++ code. If path to externally
 built **commsdsl2comms** is not provided, then this project will build the
 latter itself.
@@ -70,15 +70,15 @@ $> nmake install
 ```
 
 # Supported Compilers
-Please read [Supported Compilers](https://github.com/arobenko/commsdsl#supported-compilers)
-info from [commsdsl](https://github.com/arobenko/commsdsl) project.
+Please read [Supported Compilers](https://github.com/commschamp/commsdsl#supported-compilers)
+info from [commsdsl](https://github.com/commschamp/commsdsl) project.
 
 # How to Build and Use Generated Code
 Please read the
-[Generated CMake Project Walkthrough](https://github.com/arobenko/commsdsl/blob/master/doc/GeneratedProjectWalkthrough.md)
+[Generated CMake Project Walkthrough](https://github.com/commschamp/commsdsl/blob/master/doc/GeneratedProjectWalkthrough.md)
 documentation page for details on the generated project internals.
 
-The [release](https://github.com/arobenko/cc.ublox.commsdsl/releases)
+The [release](https://github.com/commschamp/cc.ublox.commsdsl/releases)
 artifacts contain doxygen generated documentation of the protocol definition.
 
 # Contact Information
