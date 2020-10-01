@@ -56,7 +56,7 @@ if ("${COMMSDSL2COMMS}" STREQUAL "")
                 -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${commsdsl2comms_install_dir}
                 -DCOMMSDSL_NO_TESTS=ON -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} 
                 -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER} -DBOOST_ROOT=${BOOST_ROOT}
-                ${boost_static_libs_param}
+                -DCOMMSDSL_EXTERNALS_DIR=${EXTERNALS_DIR} ${boost_static_libs_param}
             BINARY_DIR "${commsdsl2comms_bin_dir}"
         )
         
