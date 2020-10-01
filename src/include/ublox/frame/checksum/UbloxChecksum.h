@@ -30,8 +30,9 @@ struct UbloxChecksum
         }
 
         return
-            (static_cast<std::uint16_t>(ckB) << std::numeric_limits<std::uint8_t>::digits) |
-            ckA;
+            static_cast<std::uint16_t>(
+                (static_cast<std::uint16_t>(ckB) << std::numeric_limits<std::uint8_t>::digits) |
+                    ckA);
     }
 };
 

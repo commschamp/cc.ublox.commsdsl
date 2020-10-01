@@ -3,6 +3,7 @@ project ("cc.ublox.commsdsl")
 
 option (UBLOX_NO_EXAMPLES "Disable examples compilation." OFF)
 option (UBLOX_NO_WARN_AS_ERR "Don't treat compilation warnings as errors." OFF)
+option (UBLOX_USE_CCACHE "Use ccache on UNIX." ON)
 
 # Additional variables to be used if needed
 # ---------------------------
@@ -17,11 +18,11 @@ option (UBLOX_NO_WARN_AS_ERR "Don't treat compilation warnings as errors." OFF)
 #     is not provided and examples are not disabled.
 
 if ("${COMMSDSL_TAG}" STREQUAL "")
-    set(COMMSDSL_TAG "v3.5.1")
+    set(COMMSDSL_TAG "develop")
 endif ()
 
 if ("${COMMS_TAG}" STREQUAL "")
-    set(COMMS_TAG "v3.0.1")
+    set(COMMS_TAG "develop")
 endif ()
 
 set (VERSION "0.18.2")
