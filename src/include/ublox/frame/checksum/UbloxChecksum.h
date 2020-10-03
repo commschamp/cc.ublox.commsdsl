@@ -4,6 +4,8 @@
 #include <cstdint>
 #include <limits>
 
+#include "comms/cast.h"
+
 namespace ublox
 {
 
@@ -24,8 +26,8 @@ struct UbloxChecksum
         std::uint8_t ckA = 0;
         std::uint8_t ckB = 0;
         for (auto idx = 0U; idx < len; ++idx) {
-            ckA += *iter;
-            ckB += ckA;
+            comms::cast_assign(ckA) = ckA + *iter;
+            comms::cast_assign(ckB) = ckB + ckA;
             ++iter;
         }
 
