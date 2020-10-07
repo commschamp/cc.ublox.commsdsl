@@ -3,6 +3,7 @@ project ("cc.ublox.commsdsl")
 
 option (UBLOX_NO_EXAMPLES "Disable examples compilation." OFF)
 option (UBLOX_NO_WARN_AS_ERR "Don't treat compilation warnings as errors." OFF)
+option (UBLOX_USE_CCACHE "Use ccache on UNIX." ON)
 
 # Additional variables to be used if needed
 # ---------------------------
@@ -17,14 +18,14 @@ option (UBLOX_NO_WARN_AS_ERR "Don't treat compilation warnings as errors." OFF)
 #     is not provided and examples are not disabled.
 
 if ("${COMMSDSL_TAG}" STREQUAL "")
-    set(COMMSDSL_TAG "v3.5.1")
+    set(COMMSDSL_TAG "v3.5.2")
 endif ()
 
 if ("${COMMS_TAG}" STREQUAL "")
-    set(COMMS_TAG "v3.0.1")
+    set(COMMS_TAG "v3.1")
 endif ()
 
-set (VERSION "0.18.1")
+set (VERSION "0.19")
 
 set (EXTERNALS_DIR "${PROJECT_SOURCE_DIR}/externals")
 
@@ -56,7 +57,7 @@ if ("${COMMSDSL2COMMS}" STREQUAL "")
                 -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${commsdsl2comms_install_dir}
                 -DCOMMSDSL_NO_TESTS=ON -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} 
                 -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER} -DBOOST_ROOT=${BOOST_ROOT}
-                ${boost_static_libs_param}
+                -DCOMMSDSL_EXTERNALS_DIR=${EXTERNALS_DIR} ${boost_static_libs_param}
             BINARY_DIR "${commsdsl2comms_bin_dir}"
         )
         
