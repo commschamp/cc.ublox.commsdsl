@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="NavSvinfo" id="MsgId.NavSvinfo" displayName="NAV-SVINFO" order="0" sender="server">
+    <message name="NavSvinfo" id="MsgId.NavSvinfo" displayName="NAV-SVINFO" order="0" platforms="-ublox9" sender="server">
         <ref field="itow" />
         <int name="numCh" type="uint8" displayReadOnly="true" />
         <bitfield name="globalFlags" >
@@ -47,6 +47,7 @@
     </message>
     
     <message name="NavSvinfoPoll" id="MsgId.NavSvinfo" displayName="NAV-SVINFO (Poll)" order="1">
+        <platforms value="-ublox9" />
         <sender value="client" />
     </message>
 </schema>

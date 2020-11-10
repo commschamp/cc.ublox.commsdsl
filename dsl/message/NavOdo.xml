@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="NavOdo" id="MsgId.NavOdo" displayName="NAV-ODO" order="0" platforms="+ublox8" sender="server">
+    <message name="NavOdo" id="MsgId.NavOdo" displayName="NAV-ODO" order="0" platforms="+ublox8,ublox9" sender="server">
         <int name="version" type="uint8" validValue="0" />
         <ref field="res3" name="reserved1" />
         <ref field="itow" />
@@ -10,7 +10,7 @@
     </message>
 
     <message name="NavOdoPoll" id="MsgId.NavOdo" displayName="NAV-ODO (Poll)" order="1" >
-        <platforms value="+ublox8" />
+        <platforms value="+ublox8,ublox9" />
         <sender value="client" />
     </message>
 </schema>

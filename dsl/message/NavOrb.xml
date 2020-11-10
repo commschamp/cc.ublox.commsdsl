@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="NavOrb" id="MsgId.NavOrb" displayName="NAV-ORB" order="0" platforms="+ublox8" sender="server">
+    <message name="NavOrb" id="MsgId.NavOrb" displayName="NAV-ORB" order="0" platforms="+ublox8,ublox9" sender="server">
         <ref field="itow" />
         <int name="version" type="uint8" defaultValue="1" validValue="1" />
         <int name="numSv" type="uint8" displayReadOnly="true" />
@@ -52,7 +52,7 @@
     </message>
     
     <message name="NavOrbPoll" id="MsgId.NavOrb" displayName="NAV-ORB (Poll)" order="1">
-        <platforms value="+ublox8" />
+        <platforms value="+ublox8,ublox9" />
         <sender value="client" />
     </message>
 </schema>

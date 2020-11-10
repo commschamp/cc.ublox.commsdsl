@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="NavHpposllh" id="MsgId.NavHpposllh" displayName="NAV-HPPOSLLH" order="0" platforms="+ublox8" sender="server">
+    <message name="NavHpposllh" id="MsgId.NavHpposllh" displayName="NAV-HPPOSLLH" order="0" platforms="+ublox8,ublox9" sender="server">
         <int name="version" type="uint8" validValue="0" />
-        <ref field="res3" name="reserved1" />
+        <ref field="res2" name="reserved1" />
+        <set name="flags" length="1">
+            <bit name="invalidLlh" idx="0" />
+        </set>
         <ref field="itow" />
         <ref field="lon" />
         <ref field="lat" />
@@ -17,7 +20,7 @@
     </message>
     
     <message name="NavHpposllhPoll" id="MsgId.NavHpposllh" displayName="NAV-HPPOSLLH (Poll)" order="1" >
-        <platforms value="+ublox8" />
+        <platforms value="+ublox8,ublox9" />
         <sender value="client" />
     </message>
 </schema>

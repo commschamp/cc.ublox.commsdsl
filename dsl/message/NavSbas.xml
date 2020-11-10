@@ -14,6 +14,7 @@
             <bit name="Corrections" idx="1" />
             <bit name="Integrity" idx="2" />
             <bit name="Testmode" idx="3" />
+            <bit name="Bad" idx="4" />
         </set>        
     </fields>
     <message name="NavSbas" id="MsgId.NavSbas" displayName="NAV-SBAS" order="0" sender="server">
@@ -22,7 +23,7 @@
         <enum name="mode" type="uint8">
             <validValue name="Disabled" val="0" />
             <validValue name="Integrity" val="1" displayName="Enabled Integrity" />
-            <validValue name="Testmode" val="2" displayName="Enabled Testmode" />
+            <validValue name="Testmode" val="3" displayName="Enabled Testmode" />
         </enum>
         <ref field="sbasSys" name="sys" />
         <ref field="sbasService" name="service" />

@@ -41,10 +41,10 @@
         </int>
         <int reuse="lon" name="lat" description="Latitude" />
         <int name="height" type="int32" units="mm" >
-            <description value="Height avove ellipsoid" />
+            <description value="Height above ellipsoid" />
         </int>
         <int name="hMSL" type="int32" units="mm">
-            <description value="Height avove mean sea level" />
+            <description value="Height above mean sea level" />
         </int>
         <int name="hAcc" type="uint32" units="mm" />
         <int name="vAcc" type="uint32" units="mm" />

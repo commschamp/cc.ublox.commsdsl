@@ -6,6 +6,7 @@
     <platform name="ublox6" />
     <platform name="ublox7" />
     <platform name="ublox8" />
+    <platform name="ublox9" />
     
     <fields>
         <enum name="MsgId" type="uint16" semanticType="messageId" hexAssign="true" endian="big">

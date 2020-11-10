@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="NavPvt" id="MsgId.NavPvt" displayName="NAV-PVT" order="1" platforms="+ublox7" sender="server">
+    <message name="NavPvt" id="MsgId.NavPvt" displayName="NAV-PVT" order="2" platforms="+ublox7" sender="server">
         <ref field="itow" />
         <ref field="year" />
         <ref field="month" />
@@ -12,6 +12,7 @@
             <bit name="validDate" idx="0" />
             <bit name="validTime" idx="1" />
             <bit name="fullyResolved" idx="2" />
+            <bit name="validMag" idx="3" />
         </set>
         <int name="tAcc" type="uint32" units="ns" />
         <int name="nano" type="int32" units="ns" />
@@ -58,13 +59,16 @@
         <int name="sAcc" type="uint32" units="mm/s" />
         <ref field="headingAcc" />
         <ref field="dop" name="pDop" />
-        <ref field="res2" name="reserved2" />
+        <set name="flags3" length="1">
+            <bit name="invalidLlh" idx="0" />
+        </set>        
+        <ref field="res1" name="reserved2" />
         <ref field="res4" name="reserved3" />
     </message>
 
-    <message name="NavPvt_u8" id="MsgId.NavPvt" displayName="NAV-PVT (ublox-8)" order="0" sender="server">
-        <description value="Updated version of NAV-PVT message introduced in ublox-8" />
-        <platforms value="+ublox8" />
+    <message name="NavPvt_u8" id="MsgId.NavPvt" displayName="NAV-PVT (ublox-8/9)" order="1" sender="server">
+        <description value="Updated version of NAV-PVT message introduced in ublox-8, applicable also to ublox-9" />
+        <platforms value="+ublox8,ublox9" />
         <copyFieldsFrom value="NavPvt" />
         <fields>
             <int name="headVeh" type="int32" units="deg" scaling="1/100000" displayDecimals="5" />
@@ -73,8 +77,8 @@
         </fields>
     </message>
     
-    <message name="NavPvtPoll" id="MsgId.NavPvt" displayName="NAV-PVT (Poll)" order="2">
-        <platforms value="+ublox7,ublox8" />
+    <message name="NavPvtPoll" id="MsgId.NavPvt" displayName="NAV-PVT (Poll)" order="100">
+        <platforms value="+ublox7,ublox8,ublox9" />
         <sender value="client" />
     </message>
 </schema>
