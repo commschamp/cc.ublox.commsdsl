@@ -39,6 +39,7 @@
             <validValue name="NavSvin" val="0x013B" displayName="NAV-SVIN" />
             <validValue name="NavRelposned" val="0x013C" displayName="NAV-RELPOSNED" />
             <validValue name="NavEkfstatus" val="0x0140" displayName="NAV-EKFSTATUS" />
+            <validValue name="NavSig" val="0x0143" displayName="NAV-SIG" />
             <validValue name="NavAopstatus" val="0x0160" displayName="NAV-AOPSTATUS" />
             <validValue name="NavEoe" val="0x0161" displayName="NAV-EOE" />
             <validValue name="RxmRaw" val="0x0210" displayName="RXM-RAW" />
