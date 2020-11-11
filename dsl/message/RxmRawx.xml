@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="RxmRawx" id="MsgId.RxmRawx" displayName="RXM-RAWX" order="0" platforms="+ublox8" sender="server">
+    <message name="RxmRawx" id="MsgId.RxmRawx" displayName="RXM-RAWX" order="0" platforms="+ublox8,ublox9" sender="server">
         <float name="rcvTow" type="double" units="s" />
         <int name="week" type="uint16" units="weeks" />
         <int name="leapS" type="int8" units="s" />
@@ -18,7 +18,7 @@
                 <float name="doMes" type="float" units="hz"/>
                 <ref field="gnssId" />
                 <int name="svid" type="uint8" />
-                <ref field="res1" name="reserved2" />
+                <int name="sigId" type="uint8" />
                 <int name="freqId" type="uint8" validRange="[0, 13]" />
                 <int name="locktime" type="uint16" units="ms" validMax="64500" />
                 <int name="cno" type="uint8" />
@@ -37,7 +37,7 @@
     </message>
 
     <message name="RxmRawxPoll" id="MsgId.RxmRawx" displayName="RXM-RAWX (Poll)" order="1">
-        <platforms value="+ublox8" />
+        <platforms value="+ublox8,ublox9" />
         <sender value="client" />
     </message>    
 </schema>

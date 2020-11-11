@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="RxmPmreq" id="MsgId.RxmPmreq" displayName="RXM-PMREQ" order="1" platforms="+ublox6,ublox7" sender="client">
+    <message name="RxmPmreq" id="MsgId.RxmPmreq" displayName="RXM-PMREQ" order="1" platforms="+ublox6,ublox7,ublox9" sender="client">
         <int name="duration" type="uint32" units="ms" />
         <set name="flags" length="4">
             <bit name="backup" idx="1" />
         </set>
     </message>
 
-    <message name="RxmPmreqV0" id="MsgId.RxmPmreq" displayName="RXM-PMREQ (v0)" order="0" platforms="+ublox8" sender="client">
+    <message name="RxmPmreqV0" id="MsgId.RxmPmreq" displayName="RXM-PMREQ (v0)" order="0" platforms="+ublox8,ublox9" sender="client">
         <int name="version" type="uint8" validValue="0" failOnInvalid="true" displayReadOnly="true" />
         <ref field="res3" name="reserved1" />
         <int name="duration" type="uint32" units="ms" />

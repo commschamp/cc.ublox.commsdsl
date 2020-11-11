@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="RxmMeasx" id="MsgId.RxmMeasx" displayName="RXM-MEASX" platforms="+ublox8" sender="server">
-        <int name="version" type="uint8" validValue="0" />
+    <message name="RxmMeasx" id="MsgId.RxmMeasx" displayName="RXM-MEASX" platforms="+ublox8,ublox9" sender="server">
+        <int name="version" type="uint8" validRange="[0, 1]" />
         <ref field="res3" name="reserved1" />
         <int name="gpsTOW" type="uint32" units="ms" />
         <int name="gloTOW" type="uint32" units="ms" />
