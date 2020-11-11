@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="NavSig" id="MsgId.NavSig" displayName="NAV-Sig" order="0" platforms="+ublox9" sender="server">
+    <message name="NavSig" id="MsgId.NavSig" displayName="NAV-SIG" order="0" platforms="+ublox9" sender="server">
         <ref field="itow" />
         <int name="version" type="uint8" validValue="0" />
         <int name="numSigs" type="uint8" displayReadOnly="true" />
@@ -59,7 +59,7 @@
         </list>
     </message>
     
-    <message name="NavSigPoll" id="MsgId.NavSig" displayName="NAV-Sig (Poll)" order="1">
+    <message name="NavSigPoll" id="MsgId.NavSig" displayName="NAV-SIG (Poll)" order="1">
         <platforms value="+ublox9" />
         <sender value="client" />
     </message>

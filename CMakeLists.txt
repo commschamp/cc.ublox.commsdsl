@@ -101,6 +101,7 @@ set (schema_files
     dsl/message/NavGeofence.xml
     dsl/message/NavSvin.xml
     dsl/message/NavRelposned.xml
+    dsl/message/NavSlas.xml
     dsl/message/NavSig.xml
     dsl/message/NavAopstatus.xml
     dsl/message/NavEoe.xml
