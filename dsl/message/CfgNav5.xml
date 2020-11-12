@@ -23,6 +23,7 @@
             <validValue name="Airborne2G" val="7" displayName="Airborne &lt;2g accel" />
             <validValue name="Airborne4G" val="8" displayName="Airborne &lt;4g accel" />
             <validValue name="WristWatch" val="9" displayName="Wrist watch"/>
+            <validValue name="Bike" val="10" />
         </enum>
         <enum name="fixMode" type="uint8">
             <validValue name="Only2D" val="1" displayName="2D Only" />

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="CfgDgnss" id="MsgId.CfgDgnss" displayName="CFG-DGNSS" order="0" platforms="+ublox8">
+    <message name="CfgDgnss" id="MsgId.CfgDgnss" displayName="CFG-DGNSS" order="0" platforms="+ublox8,ublox9">
         <enum name="dgnssMode" type="uint8">
             <validValue name="Float" val="2" />
             <validValue name="Fixed" val="3" />
@@ -9,7 +9,7 @@
     </message>
 
     <message name="CfgDgnssPoll" id="MsgId.CfgDgnss" displayName="CFG-DGNSS (Poll)" order="1">
-        <platforms value="+ublox8" />
+        <platforms value="+ublox8,ublox9" />
         <sender value="client" />
     </message>
 </schema>

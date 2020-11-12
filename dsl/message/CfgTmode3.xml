@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="CfgTmode3" id="MsgId.CfgTmode3" displayName="CFG-TMODE3" order="0" platforms="+ublox8">
+    <message name="CfgTmode3" id="MsgId.CfgTmode3" displayName="CFG-TMODE3" order="0" platforms="+ublox8,ublox9">
         <int name="version" type="uint8" validValue="0" />
         <ref field="res1" name="reserved1" />
         <bitfield name="flags">
@@ -41,7 +41,7 @@
     </message>
 
     <message name="CfgTmode3Poll" id="MsgId.CfgTmode3" displayName="CFG-TMODE3 (Poll)" order="1">
-        <platforms value="+ublox8" />
+        <platforms value="+ublox8,ublox9" />
         <sender value="client" />
     </message>
 </schema>

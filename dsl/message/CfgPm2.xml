@@ -42,7 +42,7 @@
         <int name="extintInactivityMs" type="uint32" units="ms" />
     </message>
 
-    <message name="CfgPm2" id="MsgId.CfgPm2" displayName="CFG-PM2" order="1" platforms="-ublox5">
+    <message name="CfgPm2" id="MsgId.CfgPm2" displayName="CFG-PM2" order="1" platforms="-ublox5,ublox9">
         <int name="version" type="uint8" validValue="1" defaultValue="1" failOnInvalid="true" displayReadOnly="true" />
         <ref field="res1" name="reserved1" />
         <int name="maxStartupStateDur" type="uint8" units="s" />
@@ -59,7 +59,7 @@
     </message>
 
     <message name="CfgPm2Poll" id="MsgId.CfgPm2" displayName="CFG-PM2 (Poll)" order="3">
-        <platforms value="-ublox5" />
+        <platforms value="-ublox5,ublox9" />
         <sender value="client" />
     </message>
 </schema>
