@@ -22,7 +22,7 @@ if ("${COMMSDSL_TAG}" STREQUAL "")
 endif ()
 
 if ("${COMMS_TAG}" STREQUAL "")
-    set(COMMS_TAG "v3.1.2")
+    set(COMMS_TAG "develop")
 endif ()
 
 set (VERSION "0.19.2")
@@ -73,6 +73,7 @@ endif ()
 set (schema_files
     dsl/main.xml
     dsl/field/common.xml
+    dsl/field/cfgval.xml
     dsl/message/NavPosecef.xml
     dsl/message/NavPosllh.xml
     dsl/message/NavStatus.xml
@@ -158,6 +159,7 @@ set (schema_files
     dsl/message/CfgTmode3.xml
     dsl/message/CfgFixseed.xml
     dsl/message/CfgPms.xml
+    dsl/message/CfgValset.xml
     dsl/message/UpdSos.xml
     dsl/message/MonIo.xml
     dsl/message/MonVer.xml

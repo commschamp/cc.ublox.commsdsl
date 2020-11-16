@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <fields>
+
+        <enum name="CfgValKeyId" type="uint32">
+            <!-- CFG-BDS -->
+            <validValue name="CFG_BDS_USE_PRN_1_TO_5" val = "0x10340014" />
+
+            <!-- CFG-GEOFENCE: -->
+            <validValue name="CFG_GEOFENCE_CONFLVL" val = "0x20240011" />
+            <validValue name="CFG_GEOFENCE_USE_PIO" val = "0x10240012" />
+            <validValue name="CFG_GEOFENCE_PINPOL" val = "0x20240013" />
+            <validValue name="CFG_GEOFENCE_PIN" val = "0x20240014" />
+            <validValue name="CFG_GEOFENCE_USE_FENCE1" val = "0x10240020" />
+            <validValue name="CFG_GEOFENCE_FENCE1_LAT" val = "0x40240021" />
+            <validValue name="CFG_GEOFENCE_FENCE1_LON" val = "0x40240022" />
+            <validValue name="CFG_GEOFENCE_FENCE1_RAD" val = "0x40240023" />
+            <validValue name="CFG_GEOFENCE_USE_FENCE2" val = "0x10240030" />
+            <validValue name="CFG_GEOFENCE_FENCE2_LAT" val = "0x40240031" />
+            <validValue name="CFG_GEOFENCE_FENCE2_LON" val = "0x40240032" />
+            <validValue name="CFG_GEOFENCE_FENCE2_RAD" val = "0x40240033" />
+            <validValue name="CFG_GEOFENCE_USE_FENCE3" val = "0x10240040" />
+            <validValue name="CFG_GEOFENCE_FENCE3_LAT" val = "0x40240041" />
+            <validValue name="CFG_GEOFENCE_FENCE3_LON" val = "0x40240042" />
+            <validValue name="CFG_GEOFENCE_FENCE3_RAD" val = "0x40240043" />
+            <validValue name="CFG_GEOFENCE_USE_FENCE4" val = "0x10240050" />
+            <validValue name="CFG_GEOFENCE_FENCE4_LAT" val = "0x40240051" />
+            <validValue name="CFG_GEOFENCE_FENCE4_LON" val = "0x40240052" />
+            <validValue name="CFG_GEOFENCE_FENCE4_RAD" val = "0x40240053" />
+        </enum>
+
+        <int name="CfgValU1" type="uint8" />
+        <int name="CfgValU2" type="uint16" />
+        <int name="CfgValU4" type="uint32" />
+        <int name="CfgValU8" type="uint64" />
+        <int name="CfgValL" reuse="CfgValU1" validRange="[0, 1]" />
+
+        <int name="CfgValKey" type="uint32" failOnInvalid="true" displayReadOnly="true" />
+
+        <enum name="CfgValKeyGroup" type="uint8">
+            <validValue name="Bds" val="0x34" />
+            <validValue name="Geofence" val="0x24" />
+        </enum>
+
+        <bitfield name="CfgValKeyFull" forceGen="true">
+            <!-- At this moment ignore reserved bits-->
+            <int name="id" type="uint16" />
+            <ref field="CfgValKeyGroup" name="group" />
+            <int name="size" type="uint8" />
+        </bitfield>
+
+        <!-- CFG-BDS -->
+        <variant name="CfgValBds" displayName="CFG-BDS" displayIdxReadOnlyHidden="true">
+            <bundle name="UsePrn1to5" displayName="USE_PRN_1_TO_5">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_BDS_USE_PRN_1_TO_5" defaultValue="CfgValKeyId.CFG_BDS_USE_PRN_1_TO_5" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+        </variant>
+
+        <!-- CFG-GEOFENCE: -->
+        <variant name="CfgValGeofence" displayName="CFG-GEOFENCE" displayIdxReadOnlyHidden="true">
+            <bundle name="Conflvl" displayName="CONFLVL">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_CONFLVL" defaultValue="CfgValKeyId.CFG_GEOFENCE_CONFLVL" />
+                <enum name="Val" type="uint8">
+                    <validValue name="L000" val="0" />
+                    <validValue name="L680" val="1" />
+                    <validValue name="L950" val="2" />
+                    <validValue name="L997" val="3" />
+                    <validValue name="L9999" val="4" />
+                    <validValue name="L999999" val="5" />
+                </enum>
+            </bundle>  
+            
+            <bundle name="UsePio" displayName="USE_PIO">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_USE_PIO" defaultValue="CfgValKeyId.CFG_GEOFENCE_USE_PIO" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>              
+        </variant>        
+
+        <variant name="CfgValPair" displayName="_" displayIdxReadOnlyHidden="true">
+            <ref field="CfgValBds" name="Bds"/>
+            <ref field="CfgValGeofence" name="Geofence" />
+        </variant>
+    </fields>
+</schema>

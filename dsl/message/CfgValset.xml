@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgValset" id="MsgId.CfgValset" displayName="CFG-VALSET" platforms="+ublox9" sender="client">
+        <int name="version" type="uint8" validValue="0" />
+        <set name="layers" length="1">
+            <bit name="ram" idx="0" />
+            <bit name="bbr" idx="1" />
+            <bit name="flash" idx="2" />
+        </set>
+        <ref field="res2" name="reserved0" />
+        <list name="cfgdata">
+            <ref field="CfgValPair" name="Element"/>
+        </list>
+    </message>
+</schema>

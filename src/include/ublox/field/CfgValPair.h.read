@@ -1,0 +1,20 @@
+// @brief Custom read functionality
+template <typename TIter>
+comms::ErrorStatus doRead(TIter& iter, std::size_t len)
+{
+    auto iterTmp = iter;
+    CfgValKeyFull<TOpt> keyFieldTmp;
+    auto es = keyFieldTmp.read(iterTmp, len);
+    if (es != comms::ErrorStatus::Success) {
+        return es;
+    }
+
+    switch (keyFieldTmp.field_group().value()) {
+    case CfgValKeyGroupCommon::ValueType::Bds:
+        return initField_bds().read(iter, len);
+    case CfgValKeyGroupCommon::ValueType::Geofence:
+        return initField_geofence().read(iter, len);
+    }
+
+    return comms::ErrorStatus::InvalidMsgData;
+}
