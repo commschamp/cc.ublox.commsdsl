@@ -46,8 +46,8 @@
 
             <!-- CFG-I2C -->
             <validValue name="CFG_I2C_ADDRESS" val = "0x20510001" />             
-            <validValue name="CFG-I2C-EXTENDEDTIMEOUT" val = "0x10510002" />
-            <validValue name="CFG-I2C-ENABLED" val = "0x20510003" />
+            <validValue name="CFG_I2C_EXTENDEDTIMEOUT" val = "0x10510002" />
+            <validValue name="CFG_I2C_ENABLED" val = "0x20510003" />
         </enum>
 
         <int name="CfgValU1" type="uint8" />
@@ -262,12 +262,31 @@
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_SUP_OPEN_THR" defaultValue="CfgValKeyId.CFG_HW_ANT_SUP_OPEN_THR" />
                 <ref field="CfgValU1" name="Val" />
             </bundle>                                                                                            
-        </variant>              
+        </variant>    
+
+        <!-- CFG-I2C -->
+        <variant name="CfgValI2c" displayName="CFG-I2C" displayIdxReadOnlyHidden="true">
+            <bundle name="Address" displayName="ADDRESS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_I2C_ADDRESS" defaultValue="CfgValKeyId.CFG_I2C_ADDRESS" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+
+            <bundle name="Extendedtimeout" displayName="EXTENDEDTIMEOUT">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_I2C_EXTENDEDTIMEOUT" defaultValue="CfgValKeyId.CFG_I2C_EXTENDEDTIMEOUT" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>   
+
+            <bundle name="Enabled" displayName="ENABLED">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_I2C_ENABLED" defaultValue="CfgValKeyId.CFG_I2C_ENABLED" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+        </variant>                  
 
         <variant name="CfgValPair" displayName="_" displayIdxReadOnlyHidden="true">
             <ref field="CfgValBds" name="Bds"/>
             <ref field="CfgValGeofence" name="Geofence" />
             <ref field="CfgValHw" name="Hw"/>
+            <ref field="CfgValI2c" name="I2c"/>
         </variant>
     </fields>
 </schema>
