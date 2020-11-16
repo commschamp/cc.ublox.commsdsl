@@ -14,6 +14,8 @@ comms::ErrorStatus doRead(TIter& iter, std::size_t len)
         return initField_bds().read(iter, len);
     case CfgValKeyGroupCommon::ValueType::Geofence:
         return initField_geofence().read(iter, len);
+    case CfgValKeyGroupCommon::ValueType::Hw:
+        return initField_hw().read(iter, len);        
     }
 
     return comms::ErrorStatus::InvalidMsgData;

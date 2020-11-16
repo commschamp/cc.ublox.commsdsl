@@ -27,6 +27,27 @@
             <validValue name="CFG_GEOFENCE_FENCE4_LAT" val = "0x40240051" />
             <validValue name="CFG_GEOFENCE_FENCE4_LON" val = "0x40240052" />
             <validValue name="CFG_GEOFENCE_FENCE4_RAD" val = "0x40240053" />
+
+            <!-- CFG-HW -->
+            <validValue name="CFG_HW_ANT_CFG_VOLTCTRL" val = "0x10a3002e" />            
+            <validValue name="CFG_HW_ANT_CFG_SHORTDET" val = "0x10a3002f" />
+            <validValue name="CFG_HW_ANT_CFG_SHORTDET_POL" val = "0x10a30030" />
+            <validValue name="CFG_HW_ANT_CFG_OPENDET" val = "0x10a30031" />
+            <validValue name="CFG_HW_ANT_CFG_OPENDET_POL" val = "0x10a30032" />
+            <validValue name="CFG_HW_ANT_CFG_PWRDOWN" val = "0x10a30033" />
+            <validValue name="CFG_HW_ANT_CFG_PWRDOWN_POL" val = "0x10a30034" />
+            <validValue name="CFG_HW_ANT_CFG_RECOVER" val = "0x10a30035" />
+            <validValue name="CFG_HW_ANT_SUP_SWITCH_PIN" val = "0x20a30036" />
+            <validValue name="CFG_HW_ANT_SUP_SHORT_PIN" val = "0x20a30037" />
+            <validValue name="CFG_HW_ANT_SUP_OPEN_PIN" val = "0x20a30038" />
+            <validValue name="CFG_HW_ANT_SUP_ENGINE" val = "0x20a30054" />
+            <validValue name="CFG_HW_ANT_SUP_SHORT_THR" val = "0x20a30055" />
+            <validValue name="CFG_HW_ANT_SUP_OPEN_THR" val = "0x20a30056" />
+
+            <!-- CFG-I2C -->
+            <validValue name="CFG_I2C_ADDRESS" val = "0x20510001" />             
+            <validValue name="CFG-I2C-EXTENDEDTIMEOUT" val = "0x10510002" />
+            <validValue name="CFG-I2C-ENABLED" val = "0x20510003" />
         </enum>
 
         <int name="CfgValU1" type="uint8" />
@@ -38,8 +59,10 @@
         <int name="CfgValKey" type="uint32" failOnInvalid="true" displayReadOnly="true" />
 
         <enum name="CfgValKeyGroup" type="uint8">
-            <validValue name="Bds" val="0x34" />
             <validValue name="Geofence" val="0x24" />
+            <validValue name="Bds" val="0x34" />
+            <validValue name="I2c" val="0x51" />
+            <validValue name="Hw" val="0xa3" />
         </enum>
 
         <bitfield name="CfgValKeyFull" forceGen="true">
@@ -162,13 +185,89 @@
             <bundle name="Fence4Rad" displayName="FENCE4_RAD">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE4_RAD" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE4_RAD" />
                 <ref field="GeofenceRadius" name="Val" />
-            </bundle>              
+            </bundle>  
+        </variant>  
 
-        </variant>        
+        <!-- CFG-HW -->
+        <variant name="CfgValHw" displayName="CFG-HW" displayIdxReadOnlyHidden="true">
+            <bundle name="AntCfgValctrl" displayName="ANT_CFG_VOLTCTRL">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_CFG_VOLTCTRL" defaultValue="CfgValKeyId.CFG_HW_ANT_CFG_VOLTCTRL" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+
+            <bundle name="AntCfgShortdet" displayName="ANT_CFG_SHORTDET">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_CFG_SHORTDET" defaultValue="CfgValKeyId.CFG_HW_ANT_CFG_SHORTDET" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>    
+
+            <bundle name="AntCfgShortdetPol" displayName="ANT_CFG_SHORTDET_POL">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_CFG_SHORTDET_POL" defaultValue="CfgValKeyId.CFG_HW_ANT_CFG_SHORTDET_POL" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>    
+
+            <bundle name="AntCfgOpendet" displayName="ANT_CFG_OPENDET">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_CFG_OPENDET" defaultValue="CfgValKeyId.CFG_HW_ANT_CFG_OPENDET" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>       
+
+            <bundle name="AntCfgOpendetPol" displayName="ANT_CFG_OPENDET_POL">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_CFG_OPENDET_POL" defaultValue="CfgValKeyId.CFG_HW_ANT_CFG_OPENDET_POL" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>  
+
+            <bundle name="AntCfgPwrdown" displayName="ANT_CFG_PWRDOWN">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_CFG_PWRDOWN" defaultValue="CfgValKeyId.CFG_HW_ANT_CFG_PWRDOWN" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>   
+
+            <bundle name="AntCfgPwrdownPol" displayName="ANT_CFG_PWRDOWN_POL">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_CFG_PWRDOWN_POL" defaultValue="CfgValKeyId.CFG_HW_ANT_CFG_PWRDOWN_POL" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>  
+
+            <bundle name="AntCfgRecover" displayName="ANT_CFG_RECOVER">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_CFG_RECOVER" defaultValue="CfgValKeyId.CFG_HW_ANT_CFG_RECOVER" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>  
+
+            <bundle name="AntSupSwitchPin" displayName="ANT_SUP_SWITCH_PIN">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_SUP_SWITCH_PIN" defaultValue="CfgValKeyId.CFG_HW_ANT_SUP_SWITCH_PIN" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle> 
+
+            <bundle name="AntSupShortPin" displayName="ANT_SUP_SHORT_PIN">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_SUP_SHORT_PIN" defaultValue="CfgValKeyId.CFG_HW_ANT_SUP_SHORT_PIN" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>   
+
+            <bundle name="AntSupOpenPin" displayName="ANT_SUP_OPEN_PIN">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_SUP_OPEN_PIN" defaultValue="CfgValKeyId.CFG_HW_ANT_SUP_OPEN_PIN" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>   
+
+            <bundle name="AntSupEngine" displayName="ANT_SUP_ENGINE">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_SUP_ENGINE" defaultValue="CfgValKeyId.CFG_HW_ANT_SUP_ENGINE" />
+                <enum name="Val" type="uint8">
+                    <validValue name="EXT" val="0" />
+                    <validValue name="MADC" val="1" />
+                </enum>
+            </bundle>   
+
+            <bundle name="AntSupShortThr" displayName="ANT_SUP_SHORT_THR">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_SUP_SHORT_THR" defaultValue="CfgValKeyId.CFG_HW_ANT_SUP_SHORT_THR" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>    
+
+            <bundle name="AntSupOpenThr" displayName="ANT_SUP_OPEN_THR">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_SUP_OPEN_THR" defaultValue="CfgValKeyId.CFG_HW_ANT_SUP_OPEN_THR" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>                                                                                            
+        </variant>              
 
         <variant name="CfgValPair" displayName="_" displayIdxReadOnlyHidden="true">
             <ref field="CfgValBds" name="Bds"/>
             <ref field="CfgValGeofence" name="Geofence" />
+            <ref field="CfgValHw" name="Hw"/>
         </variant>
     </fields>
 </schema>
