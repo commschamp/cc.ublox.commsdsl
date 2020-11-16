@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="CfgGeofence" id="MsgId.CfgGeofence" displayName="CFG-GEOFENCE" order="0" platforms="+ublox8">
+    <message name="CfgGeofence" id="MsgId.CfgGeofence" displayName="CFG-GEOFENCE" order="0" platforms="+ublox8,ublox9">
         <int name="version" type="uint8" validValue="0" />
         <int name="numFences" type="uint8" displayReadOnly="true"/>
         <int name="confLvl" type="uint8" />
@@ -25,7 +25,7 @@
     </message>
 
     <message name="CfgGeofencePoll" id="MsgId.CfgGeofence" displayName="CFG-GEOFENCE (Poll)" order="1">
-        <platforms value="+ublox8" />
+        <platforms value="+ublox8,ublox9" />
         <sender value="client" />
     </message>
 </schema>

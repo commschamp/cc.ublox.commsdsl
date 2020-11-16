@@ -10,6 +10,7 @@
             <bit name="trackFilt" idx="5" />
         </set>
         <enum name="cfgNmeaVersion" type="uint8">
+            <validValue name="V411" val="0x4b" displayName="v4.11" />
             <validValue name="V41" val="0x41" displayName="v4.1" />
             <validValue name="V40" val="0x40" displayName="v4.0" />
             <validValue name="V23" val="0x23" displayName="v2.3" />
@@ -48,7 +49,7 @@
             <validValue name="Main" val="1" />
         </enum>        
     </fields>
-    <message name="CfgNmeaV1" id="MsgId.CfgNmea" displayName="CFG-NMEA (V1)" order="0" platforms="+ublox8">
+    <message name="CfgNmeaV1" id="MsgId.CfgNmea" displayName="CFG-NMEA (V1)" order="0" platforms="+ublox8,ublox9">
         <ref field="cfgNmeaFilter" name="filter" />
         <ref field="cfgNmeaVersion" name="nmeaVersion" />
         <ref field="cfgNmeaNumSV" name="numSV" />
@@ -74,7 +75,7 @@
         <int name="version" type="uint8" validValue="0" failOnInvalid="true" displayReadOnly="true"/>
     </message>
 
-    <message name="CfgNmea" id="MsgId.CfgNmea" displayName="CFG-NMEA" order="2">    
+    <message name="CfgNmea" id="MsgId.CfgNmea" displayName="CFG-NMEA" order="2" platforms="-ublox9">    
         <ref field="cfgNmeaFilter" name="filter" />
         <ref field="cfgNmeaVersion" name="nmeaVersion" />
         <ref field="cfgNmeaNumSV" name="numSV" />

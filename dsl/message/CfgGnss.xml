@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="CfgGnss" id="MsgId.CfgGnss" displayName="CFG-GNSS" order="0" platforms="+ublox7,ublox8">
+    <message name="CfgGnss" id="MsgId.CfgGnss" displayName="CFG-GNSS" order="0" platforms="+ublox7,ublox8,ublox9">
         <int name="msgVer" type="uint8" validValue="0" />
         <int name="numTrkChHw" type="uint8" />
         <int name="numTrkChUse" type="uint8" />
@@ -23,7 +23,7 @@
     </message>
 
     <message name="CfgGnssPoll" id="MsgId.CfgGnss" displayName="CFG-GNSS (Poll)" order="1">
-        <platforms value="+ublox7,ublox8" />
+        <platforms value="+ublox7,ublox8,ublox9" />
         <sender value="client" />
     </message>
 </schema>
