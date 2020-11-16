@@ -75,5 +75,6 @@
             <validValue name="QZSS" val="5" />
             <validValue name="GLONASS" val="6" />
         </enum>
+        <int name="GeofenceRadius" type="uint32" units="m" scaling="1/100" displayDecimals="2" />
     </fields>
 </schema>

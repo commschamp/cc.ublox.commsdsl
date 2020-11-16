@@ -75,6 +75,95 @@
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_USE_PIO" defaultValue="CfgValKeyId.CFG_GEOFENCE_USE_PIO" />
                 <ref field="CfgValL" name="Val" />
             </bundle>              
+
+            <bundle name="Pinpol" displayName="PINPOL">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_PINPOL" defaultValue="CfgValKeyId.CFG_GEOFENCE_PINPOL" />
+                <enum name="Val" type="uint8">
+                    <validValue name="LOW_IN" val="0" />
+                    <validValue name="LOW_OUT" val="1" />
+                </enum>
+            </bundle>  
+
+            <bundle name="UseFence1" displayName="USE_FENCE1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_USE_FENCE1" defaultValue="CfgValKeyId.CFG_GEOFENCE_USE_FENCE1" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>              
+
+            <bundle name="Fence1Lat" displayName="FENCE1_LAT">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE1_LAT" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE1_LAT" />
+                <ref field="lat" name="Val" />
+            </bundle>              
+
+            <bundle name="Fence1Lon" displayName="FENCE1_LON">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE1_LON" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE1_LON" />
+                <ref field="lon" name="Val" />
+            </bundle>              
+
+            <bundle name="Fence1Rad" displayName="FENCE1_RAD">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE1_RAD" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE1_RAD" />
+                <ref field="GeofenceRadius" name="Val" />
+            </bundle>              
+
+            <bundle name="UseFence2" displayName="USE_FENCE2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_USE_FENCE2" defaultValue="CfgValKeyId.CFG_GEOFENCE_USE_FENCE2" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>              
+
+            <bundle name="Fence2Lat" displayName="FENCE2_LAT">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE2_LAT" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE2_LAT" />
+                <ref field="lat" name="Val" />
+            </bundle>              
+
+            <bundle name="Fence2Lon" displayName="FENCE2_LON">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE2_LON" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE2_LON" />
+                <ref field="lon" name="Val" />
+            </bundle>              
+
+            <bundle name="Fence2Rad" displayName="FENCE2_RAD">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE2_RAD" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE2_RAD" />
+                <ref field="GeofenceRadius" name="Val" />
+            </bundle>              
+
+            <bundle name="UseFence3" displayName="USE_FENCE3">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_USE_FENCE3" defaultValue="CfgValKeyId.CFG_GEOFENCE_USE_FENCE3" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>              
+
+            <bundle name="Fence3Lat" displayName="FENCE3_LAT">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE3_LAT" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE3_LAT" />
+                <ref field="lat" name="Val" />
+            </bundle>              
+
+            <bundle name="Fence3Lon" displayName="FENCE3_LON">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE3_LON" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE3_LON" />
+                <ref field="lon" name="Val" />
+            </bundle>              
+
+            <bundle name="Fence3Rad" displayName="FENCE3_RAD">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE3_RAD" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE3_RAD" />
+                <ref field="GeofenceRadius" name="Val" />
+            </bundle>              
+
+            <bundle name="UseFence4" displayName="USE_FENCE4">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_USE_FENCE4" defaultValue="CfgValKeyId.CFG_GEOFENCE_USE_FENCE4" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>              
+
+            <bundle name="Fence4Lat" displayName="FENCE4_LAT">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE4_LAT" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE4_LAT" />
+                <ref field="lat" name="Val" />
+            </bundle>              
+
+            <bundle name="Fence4Lon" displayName="FENCE4_LON">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE4_LON" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE4_LON" />
+                <ref field="lon" name="Val" />
+            </bundle>              
+
+            <bundle name="Fence4Rad" displayName="FENCE4_RAD">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE4_RAD" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE4_RAD" />
+                <ref field="GeofenceRadius" name="Val" />
+            </bundle>              
+
         </variant>        
 
         <variant name="CfgValPair" displayName="_" displayIdxReadOnlyHidden="true">
