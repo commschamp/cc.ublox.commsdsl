@@ -48,6 +48,16 @@
             <validValue name="CFG_I2C_ADDRESS" val = "0x20510001" />             
             <validValue name="CFG_I2C_EXTENDEDTIMEOUT" val = "0x10510002" />
             <validValue name="CFG_I2C_ENABLED" val = "0x20510003" />
+
+            <!-- CFG-I2CINPROT -->
+            <validValue name="CFG_I2CINPROT_UBX" val = "0x10710001" />             
+            <validValue name="CFG_I2CINPROT_NMEA" val = "0x10710002" />
+            <validValue name="CFG_I2CINPROT_RTCM3X" val = "0x10710004" />
+
+            <!-- CFG-I2COUTPROT -->
+            <validValue name="CFG_I2COUTPROT_UBX" val = "0x10720001" />             
+            <validValue name="CFG_I2COUTPROT_NMEA" val = "0x10720002" />
+            <validValue name="CFG_I2COUTPROT_RTCM3X" val = "0x10720004" />
         </enum>
 
         <int name="CfgValU1" type="uint8" />
@@ -62,6 +72,8 @@
             <validValue name="Geofence" val="0x24" />
             <validValue name="Bds" val="0x34" />
             <validValue name="I2c" val="0x51" />
+            <validValue name="I2cInProt" val="0x71" />
+            <validValue name="I2cOutProt" val="0x72" />
             <validValue name="Hw" val="0xa3" />
         </enum>
 
@@ -282,11 +294,49 @@
             </bundle>
         </variant>                  
 
+        <!-- CFG-I2CINPROT -->
+        <variant name="CfgValI2cInProt" displayName="CFG-I2CINPROT" displayIdxReadOnlyHidden="true">
+            <bundle name="Ubx" displayName="UBX">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_I2CINPROT_UBX" defaultValue="CfgValKeyId.CFG_I2CINPROT_UBX" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+
+            <bundle name="Nmea" displayName="NMEA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_I2CINPROT_NMEA" defaultValue="CfgValKeyId.CFG_I2CINPROT_NMEA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+
+            <bundle name="Rtcm3x" displayName="RTCM3X">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_I2CINPROT_RTCM3X" defaultValue="CfgValKeyId.CFG_I2CINPROT_RTCM3X" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+        </variant>
+
+        <!-- CFG-I2COUTPROT -->
+        <variant name="CfgValI2cOutProt" displayName="CFG-I2COUTPROT" displayIdxReadOnlyHidden="true">
+            <bundle name="Ubx" displayName="UBX">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_I2COUTPROT_UBX" defaultValue="CfgValKeyId.CFG_I2COUTPROT_UBX" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+
+            <bundle name="Nmea" displayName="NMEA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_I2COUTPROT_NMEA" defaultValue="CfgValKeyId.CFG_I2COUTPROT_NMEA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+
+            <bundle name="Rtcm3x" displayName="RTCM3X">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_I2COUTPROT_RTCM3X" defaultValue="CfgValKeyId.CFG_I2COUTPROT_RTCM3X" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+        </variant>
+
         <variant name="CfgValPair" displayName="_" displayIdxReadOnlyHidden="true">
             <ref field="CfgValBds" name="Bds"/>
             <ref field="CfgValGeofence" name="Geofence" />
             <ref field="CfgValHw" name="Hw"/>
             <ref field="CfgValI2c" name="I2c"/>
+            <ref field="CfgValI2cInProt" name="I2cInProt"/>
+            <ref field="CfgValI2cOutProt" name="I2cOutProt"/>
         </variant>
     </fields>
 </schema>
