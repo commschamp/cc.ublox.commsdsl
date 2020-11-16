@@ -21,7 +21,9 @@ comms::ErrorStatus doRead(TIter& iter, std::size_t len)
     case CfgValKeyGroupCommon::ValueType::I2cInProt:
         return initField_i2cInProt().read(iter, len);      
     case CfgValKeyGroupCommon::ValueType::I2cOutProt:
-        return initField_i2cOutProt().read(iter, len);      
+        return initField_i2cOutProt().read(iter, len);
+    case CfgValKeyGroupCommon::ValueType::InfMsg:
+        return initField_infMsg().read(iter, len);      
     }
 
     return comms::ErrorStatus::InvalidMsgData;

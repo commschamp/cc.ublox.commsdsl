@@ -58,6 +58,19 @@
             <validValue name="CFG_I2COUTPROT_UBX" val = "0x10720001" />             
             <validValue name="CFG_I2COUTPROT_NMEA" val = "0x10720002" />
             <validValue name="CFG_I2COUTPROT_RTCM3X" val = "0x10720004" />
+
+            <!-- CFG-INFMSG -->
+            <validValue name="CFG_INFMSG_UBX_I2C" val = "0x20920001" />             
+            <validValue name="CFG_INFMSG_UBX_UART1" val = "0x20920002" />
+            <validValue name="CFG_INFMSG_UBX_UART2" val = "0x20920003" />
+            <validValue name="CFG_INFMSG_UBX_USB" val = "0x20920004" />
+            <validValue name="CFG_INFMSG_UBX_SPI" val = "0x20920005" />
+            <validValue name="CFG_INFMSG_NMEA_I2C" val = "0x20920006" />
+            <validValue name="CFG_INFMSG_NMEA_UART1" val = "0x20920007" />
+            <validValue name="CFG_INFMSG_NMEA_UART2" val = "0x20920008" />
+            <validValue name="CFG_INFMSG_NMEA_USB" val = "0x20920009" />
+            <validValue name="CFG_INFMSG_NMEA_SPI" val = "0x2092000a" />
+
         </enum>
 
         <int name="CfgValU1" type="uint8" />
@@ -74,6 +87,7 @@
             <validValue name="I2c" val="0x51" />
             <validValue name="I2cInProt" val="0x71" />
             <validValue name="I2cOutProt" val="0x72" />
+            <validValue name="InfMsg" val="0x92" />
             <validValue name="Hw" val="0xa3" />
         </enum>
 
@@ -330,6 +344,59 @@
             </bundle>
         </variant>
 
+        <!-- CFG-INFMSG -->
+        <variant name="CfgValInfMsg" displayName="CFG-INFMSG" displayIdxReadOnlyHidden="true">
+            <bundle name="UbxI2c" displayName="UBX_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_INFMSG_UBX_I2C" defaultValue="CfgValKeyId.CFG_INFMSG_UBX_I2C" />
+                <ref field="InfMask" name="Val" />
+            </bundle>
+
+            <bundle name="UbxUart1" displayName="UBX_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_INFMSG_UBX_UART1" defaultValue="CfgValKeyId.CFG_INFMSG_UBX_UART1" />
+                <ref field="InfMask" name="Val" />
+            </bundle>
+
+            <bundle name="UbxUart2" displayName="UBX_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_INFMSG_UBX_UART2" defaultValue="CfgValKeyId.CFG_INFMSG_UBX_UART2" />
+                <ref field="InfMask" name="Val" />
+            </bundle>
+
+            <bundle name="UbxUsb" displayName="UBX_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_INFMSG_UBX_USB" defaultValue="CfgValKeyId.CFG_INFMSG_UBX_USB" />
+                <ref field="InfMask" name="Val" />
+            </bundle>
+
+            <bundle name="UbxSpi" displayName="UBX_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_INFMSG_UBX_SPI" defaultValue="CfgValKeyId.CFG_INFMSG_UBX_SPI" />
+                <ref field="InfMask" name="Val" />
+            </bundle>
+
+            <bundle name="NmeaI2c" displayName="NMEA_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_INFMSG_NMEA_I2C" defaultValue="CfgValKeyId.CFG_INFMSG_NMEA_I2C" />
+                <ref field="InfMask" name="Val" />
+            </bundle>
+
+            <bundle name="NmeaUart1" displayName="NMEA_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_INFMSG_NMEA_UART1" defaultValue="CfgValKeyId.CFG_INFMSG_NMEA_UART1" />
+                <ref field="InfMask" name="Val" />
+            </bundle>
+
+            <bundle name="NmeaUart2" displayName="NMEA_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_INFMSG_NMEA_UART2" defaultValue="CfgValKeyId.CFG_INFMSG_NMEA_UART2" />
+                <ref field="InfMask" name="Val" />
+            </bundle>
+
+            <bundle name="NmeaUsb" displayName="NMEA_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_INFMSG_NMEA_USB" defaultValue="CfgValKeyId.CFG_INFMSG_NMEA_USB" />
+                <ref field="InfMask" name="Val" />
+            </bundle>
+
+            <bundle name="NmeaSpi" displayName="NMEA_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_INFMSG_NMEA_SPI" defaultValue="CfgValKeyId.CFG_INFMSG_NMEA_SPI" />
+                <ref field="InfMask" name="Val" />
+            </bundle>
+        </variant>
+
         <variant name="CfgValPair" displayName="_" displayIdxReadOnlyHidden="true">
             <ref field="CfgValBds" name="Bds"/>
             <ref field="CfgValGeofence" name="Geofence" />
@@ -337,6 +404,7 @@
             <ref field="CfgValI2c" name="I2c"/>
             <ref field="CfgValI2cInProt" name="I2cInProt"/>
             <ref field="CfgValI2cOutProt" name="I2cOutProt"/>
+            <ref field="CfgValInfMsg" name="InfMsg"/>
         </variant>
     </fields>
 </schema>

@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <fields>
-        <set name="InfMask" type="uint8">
-            <bit name="ERROR" idx="0" />
-            <bit name="WARNING" idx="1" />
-            <bit name="NOTICE" idx="2" />
-            <bit name="TEST" idx="3" />
-            <bit name="DEBUG" idx="4" />
-        </set>        
-    </fields>
     <message name="CfgInf" id="MsgId.CfgInf" displayName="CFG-INF" order="0">
         <enum name="protocolId" type="uint8">
             <validValue name="UBX" val="0" />
