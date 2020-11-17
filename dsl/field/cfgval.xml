@@ -4,73 +4,79 @@
 
         <enum name="CfgValKeyId" type="uint32">
             <!-- CFG-BDS -->
-            <validValue name="CFG_BDS_USE_PRN_1_TO_5" val = "0x10340014" />
+            <validValue name="CFG_BDS_USE_PRN_1_TO_5" val="0x10340014" />
 
             <!-- CFG-GEOFENCE: -->
-            <validValue name="CFG_GEOFENCE_CONFLVL" val = "0x20240011" />
-            <validValue name="CFG_GEOFENCE_USE_PIO" val = "0x10240012" />
-            <validValue name="CFG_GEOFENCE_PINPOL" val = "0x20240013" />
-            <validValue name="CFG_GEOFENCE_PIN" val = "0x20240014" />
-            <validValue name="CFG_GEOFENCE_USE_FENCE1" val = "0x10240020" />
-            <validValue name="CFG_GEOFENCE_FENCE1_LAT" val = "0x40240021" />
-            <validValue name="CFG_GEOFENCE_FENCE1_LON" val = "0x40240022" />
-            <validValue name="CFG_GEOFENCE_FENCE1_RAD" val = "0x40240023" />
-            <validValue name="CFG_GEOFENCE_USE_FENCE2" val = "0x10240030" />
-            <validValue name="CFG_GEOFENCE_FENCE2_LAT" val = "0x40240031" />
-            <validValue name="CFG_GEOFENCE_FENCE2_LON" val = "0x40240032" />
-            <validValue name="CFG_GEOFENCE_FENCE2_RAD" val = "0x40240033" />
-            <validValue name="CFG_GEOFENCE_USE_FENCE3" val = "0x10240040" />
-            <validValue name="CFG_GEOFENCE_FENCE3_LAT" val = "0x40240041" />
-            <validValue name="CFG_GEOFENCE_FENCE3_LON" val = "0x40240042" />
-            <validValue name="CFG_GEOFENCE_FENCE3_RAD" val = "0x40240043" />
-            <validValue name="CFG_GEOFENCE_USE_FENCE4" val = "0x10240050" />
-            <validValue name="CFG_GEOFENCE_FENCE4_LAT" val = "0x40240051" />
-            <validValue name="CFG_GEOFENCE_FENCE4_LON" val = "0x40240052" />
-            <validValue name="CFG_GEOFENCE_FENCE4_RAD" val = "0x40240053" />
+            <validValue name="CFG_GEOFENCE_CONFLVL" val="0x20240011" />
+            <validValue name="CFG_GEOFENCE_USE_PIO" val="0x10240012" />
+            <validValue name="CFG_GEOFENCE_PINPOL" val="0x20240013" />
+            <validValue name="CFG_GEOFENCE_PIN" val="0x20240014" />
+            <validValue name="CFG_GEOFENCE_USE_FENCE1" val="0x10240020" />
+            <validValue name="CFG_GEOFENCE_FENCE1_LAT" val="0x40240021" />
+            <validValue name="CFG_GEOFENCE_FENCE1_LON" val="0x40240022" />
+            <validValue name="CFG_GEOFENCE_FENCE1_RAD" val="0x40240023" />
+            <validValue name="CFG_GEOFENCE_USE_FENCE2" val="0x10240030" />
+            <validValue name="CFG_GEOFENCE_FENCE2_LAT" val="0x40240031" />
+            <validValue name="CFG_GEOFENCE_FENCE2_LON" val="0x40240032" />
+            <validValue name="CFG_GEOFENCE_FENCE2_RAD" val="0x40240033" />
+            <validValue name="CFG_GEOFENCE_USE_FENCE3" val="0x10240040" />
+            <validValue name="CFG_GEOFENCE_FENCE3_LAT" val="0x40240041" />
+            <validValue name="CFG_GEOFENCE_FENCE3_LON" val="0x40240042" />
+            <validValue name="CFG_GEOFENCE_FENCE3_RAD" val="0x40240043" />
+            <validValue name="CFG_GEOFENCE_USE_FENCE4" val="0x10240050" />
+            <validValue name="CFG_GEOFENCE_FENCE4_LAT" val="0x40240051" />
+            <validValue name="CFG_GEOFENCE_FENCE4_LON" val="0x40240052" />
+            <validValue name="CFG_GEOFENCE_FENCE4_RAD" val="0x40240053" />
 
             <!-- CFG-HW -->
-            <validValue name="CFG_HW_ANT_CFG_VOLTCTRL" val = "0x10a3002e" />            
-            <validValue name="CFG_HW_ANT_CFG_SHORTDET" val = "0x10a3002f" />
-            <validValue name="CFG_HW_ANT_CFG_SHORTDET_POL" val = "0x10a30030" />
-            <validValue name="CFG_HW_ANT_CFG_OPENDET" val = "0x10a30031" />
-            <validValue name="CFG_HW_ANT_CFG_OPENDET_POL" val = "0x10a30032" />
-            <validValue name="CFG_HW_ANT_CFG_PWRDOWN" val = "0x10a30033" />
-            <validValue name="CFG_HW_ANT_CFG_PWRDOWN_POL" val = "0x10a30034" />
-            <validValue name="CFG_HW_ANT_CFG_RECOVER" val = "0x10a30035" />
-            <validValue name="CFG_HW_ANT_SUP_SWITCH_PIN" val = "0x20a30036" />
-            <validValue name="CFG_HW_ANT_SUP_SHORT_PIN" val = "0x20a30037" />
-            <validValue name="CFG_HW_ANT_SUP_OPEN_PIN" val = "0x20a30038" />
-            <validValue name="CFG_HW_ANT_SUP_ENGINE" val = "0x20a30054" />
-            <validValue name="CFG_HW_ANT_SUP_SHORT_THR" val = "0x20a30055" />
-            <validValue name="CFG_HW_ANT_SUP_OPEN_THR" val = "0x20a30056" />
+            <validValue name="CFG_HW_ANT_CFG_VOLTCTRL" val="0x10a3002e" />            
+            <validValue name="CFG_HW_ANT_CFG_SHORTDET" val="0x10a3002f" />
+            <validValue name="CFG_HW_ANT_CFG_SHORTDET_POL" val="0x10a30030" />
+            <validValue name="CFG_HW_ANT_CFG_OPENDET" val="0x10a30031" />
+            <validValue name="CFG_HW_ANT_CFG_OPENDET_POL" val="0x10a30032" />
+            <validValue name="CFG_HW_ANT_CFG_PWRDOWN" val="0x10a30033" />
+            <validValue name="CFG_HW_ANT_CFG_PWRDOWN_POL" val="0x10a30034" />
+            <validValue name="CFG_HW_ANT_CFG_RECOVER" val="0x10a30035" />
+            <validValue name="CFG_HW_ANT_SUP_SWITCH_PIN" val="0x20a30036" />
+            <validValue name="CFG_HW_ANT_SUP_SHORT_PIN" val="0x20a30037" />
+            <validValue name="CFG_HW_ANT_SUP_OPEN_PIN" val="0x20a30038" />
+            <validValue name="CFG_HW_ANT_SUP_ENGINE" val="0x20a30054" />
+            <validValue name="CFG_HW_ANT_SUP_SHORT_THR" val="0x20a30055" />
+            <validValue name="CFG_HW_ANT_SUP_OPEN_THR" val="0x20a30056" />
 
             <!-- CFG-I2C -->
-            <validValue name="CFG_I2C_ADDRESS" val = "0x20510001" />             
-            <validValue name="CFG_I2C_EXTENDEDTIMEOUT" val = "0x10510002" />
-            <validValue name="CFG_I2C_ENABLED" val = "0x20510003" />
+            <validValue name="CFG_I2C_ADDRESS" val="0x20510001" />             
+            <validValue name="CFG_I2C_EXTENDEDTIMEOUT" val="0x10510002" />
+            <validValue name="CFG_I2C_ENABLED" val="0x20510003" />
 
             <!-- CFG-I2CINPROT -->
-            <validValue name="CFG_I2CINPROT_UBX" val = "0x10710001" />             
-            <validValue name="CFG_I2CINPROT_NMEA" val = "0x10710002" />
-            <validValue name="CFG_I2CINPROT_RTCM3X" val = "0x10710004" />
+            <validValue name="CFG_I2CINPROT_UBX" val="0x10710001" />             
+            <validValue name="CFG_I2CINPROT_NMEA" val="0x10710002" />
+            <validValue name="CFG_I2CINPROT_RTCM3X" val="0x10710004" />
 
             <!-- CFG-I2COUTPROT -->
-            <validValue name="CFG_I2COUTPROT_UBX" val = "0x10720001" />             
-            <validValue name="CFG_I2COUTPROT_NMEA" val = "0x10720002" />
-            <validValue name="CFG_I2COUTPROT_RTCM3X" val = "0x10720004" />
+            <validValue name="CFG_I2COUTPROT_UBX" val="0x10720001" />             
+            <validValue name="CFG_I2COUTPROT_NMEA" val="0x10720002" />
+            <validValue name="CFG_I2COUTPROT_RTCM3X" val="0x10720004" />
 
             <!-- CFG-INFMSG -->
-            <validValue name="CFG_INFMSG_UBX_I2C" val = "0x20920001" />             
-            <validValue name="CFG_INFMSG_UBX_UART1" val = "0x20920002" />
-            <validValue name="CFG_INFMSG_UBX_UART2" val = "0x20920003" />
-            <validValue name="CFG_INFMSG_UBX_USB" val = "0x20920004" />
-            <validValue name="CFG_INFMSG_UBX_SPI" val = "0x20920005" />
-            <validValue name="CFG_INFMSG_NMEA_I2C" val = "0x20920006" />
-            <validValue name="CFG_INFMSG_NMEA_UART1" val = "0x20920007" />
-            <validValue name="CFG_INFMSG_NMEA_UART2" val = "0x20920008" />
-            <validValue name="CFG_INFMSG_NMEA_USB" val = "0x20920009" />
-            <validValue name="CFG_INFMSG_NMEA_SPI" val = "0x2092000a" />
+            <validValue name="CFG_INFMSG_UBX_I2C" val="0x20920001" />             
+            <validValue name="CFG_INFMSG_UBX_UART1" val="0x20920002" />
+            <validValue name="CFG_INFMSG_UBX_UART2" val="0x20920003" />
+            <validValue name="CFG_INFMSG_UBX_USB" val="0x20920004" />
+            <validValue name="CFG_INFMSG_UBX_SPI" val="0x20920005" />
+            <validValue name="CFG_INFMSG_NMEA_I2C" val="0x20920006" />
+            <validValue name="CFG_INFMSG_NMEA_UART1" val="0x20920007" />
+            <validValue name="CFG_INFMSG_NMEA_UART2" val="0x20920008" />
+            <validValue name="CFG_INFMSG_NMEA_USB" val="0x20920009" />
+            <validValue name="CFG_INFMSG_NMEA_SPI" val="0x2092000a" />
 
+            <!-- CFG-ITFM -->
+            <validValue name="CFG_ITFM_BBTHRESHOLD" val="0x20410001" />
+            <validValue name="CFG_ITFM_CWTHRESHOLD" val="0x20410002" />
+            <validValue name="CFG_ITFM_ENABLE" val="0x1041000d" />
+            <validValue name="CFG_ITFM_ANTSETTING" val="0x20410010" />
+            <validValue name="CFG_ITFM_ENABLE_AUX" val="0x10410013" />
         </enum>
 
         <int name="CfgValU1" type="uint8" />
@@ -84,6 +90,7 @@
         <enum name="CfgValKeyGroup" type="uint8">
             <validValue name="Geofence" val="0x24" />
             <validValue name="Bds" val="0x34" />
+            <validValue name="Itfm" val="0x41" />
             <validValue name="I2c" val="0x51" />
             <validValue name="I2cInProt" val="0x71" />
             <validValue name="I2cOutProt" val="0x72" />
@@ -397,6 +404,34 @@
             </bundle>
         </variant>
 
+        <!-- CFG-ITFM -->
+        <variant name="CfgValItfm" displayName="CFG-ITFM" displayIdxReadOnlyHidden="true">
+            <bundle name="BbThreshold" displayName="BBTHRESHOLD">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_ITFM_BBTHRESHOLD" defaultValue="CfgValKeyId.CFG_ITFM_BBTHRESHOLD" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+
+            <bundle name="CwThreshold" displayName="CWTHRESHOLD">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_ITFM_CWTHRESHOLD" defaultValue="CfgValKeyId.CFG_ITFM_CWTHRESHOLD" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+
+            <bundle name="Enable" displayName="ENABLE">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_ITFM_ENABLE" defaultValue="CfgValKeyId.CFG_ITFM_ENABLE" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+
+            <bundle name="AntSetting" displayName="ANTSETTING">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_ITFM_ANTSETTING" defaultValue="CfgValKeyId.CFG_ITFM_ANTSETTING" />
+                <enum name="Val" type="uint8">
+                    <validValue name="UNKNOWN" val="0" />
+                    <validValue name="PASSIVE" val="1" />
+                    <validValue name="ACTIVE" val="2" />
+                </enum>
+            </bundle>
+        </variant>
+
+
         <variant name="CfgValPair" displayName="_" displayIdxReadOnlyHidden="true">
             <ref field="CfgValBds" name="Bds"/>
             <ref field="CfgValGeofence" name="Geofence" />
@@ -405,6 +440,7 @@
             <ref field="CfgValI2cInProt" name="I2cInProt"/>
             <ref field="CfgValI2cOutProt" name="I2cOutProt"/>
             <ref field="CfgValInfMsg" name="InfMsg"/>
+            <ref field="CfgValItfm" name="Itfm"/>
         </variant>
     </fields>
 </schema>
