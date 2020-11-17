@@ -87,6 +87,10 @@
             <validValue name="CFG_LOGFILTER_SPEED_THRS" val="0x30de0007" />
             <validValue name="CFG_LOGFILTER_POSITION_THRS" val="0x40de0008" />
 
+            <!-- CFG-MOT -->
+            <validValue name="CFG_MOT_GNSSSPEED_THRS" val="0x20250038" />
+            <validValue name="CFG_MOT_GNSSDIST_THRS" val="0x3025003b" />
+
         </enum>
 
         <int name="CfgValU1" type="uint8" />
@@ -99,6 +103,7 @@
 
         <enum name="CfgValKeyGroup" type="uint8" hexAssign="true">
             <validValue name="Geofence" val="0x24" />
+            <validValue name="Mot" val="0x25" />
             <validValue name="Bds" val="0x34" />
             <validValue name="Itfm" val="0x41" />
             <validValue name="I2c" val="0x51" />
@@ -478,8 +483,22 @@
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_LOGFILTER_POSITION_THRS" defaultValue="CfgValKeyId.CFG_LOGFILTER_POSITION_THRS" />
                 <int reuse="CfgValU4" name="Val" units="m" />
             </bundle>
-
         </variant>
+
+        <!-- CFG-MOT -->
+        <variant name="CfgValMot" displayName="CFG-MOT" displayIdxReadOnlyHidden="true">
+            <bundle name="GnssSpeedThrs" displayName="GNSSSPEED_THRS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MOT_GNSSSPEED_THRS" defaultValue="CfgValKeyId.CFG_MOT_GNSSSPEED_THRS" />
+                <int reuse="CfgValU1" name="Val" units="m/s" scaling="1/100" displayDecimals="2" />
+            </bundle>
+
+            <bundle name="GnssDistThrs" displayName="GNSSDIST_THRS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MOT_GNSSDIST_THRS" defaultValue="CfgValKeyId.CFG_MOT_GNSSDIST_THRS" />
+                <int reuse="CfgValU1" name="Val">
+                    <special name="Default" val="0" />
+                </int>
+            </bundle>
+        </variant>        
 
         <variant name="CfgValPair" displayName="_" displayIdxReadOnlyHidden="true">
             <ref field="CfgValBds" name="Bds"/>
@@ -491,6 +510,7 @@
             <ref field="CfgValInfMsg" name="InfMsg"/>
             <ref field="CfgValItfm" name="Itfm"/>
             <ref field="CfgValLogfilter" name="Logfilter"/>
+            <ref field="CfgValMot" name="Mot"/>
         </variant>
     </fields>
 </schema>
