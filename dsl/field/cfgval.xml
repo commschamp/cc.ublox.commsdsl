@@ -77,6 +77,16 @@
             <validValue name="CFG_ITFM_ENABLE" val="0x1041000d" />
             <validValue name="CFG_ITFM_ANTSETTING" val="0x20410010" />
             <validValue name="CFG_ITFM_ENABLE_AUX" val="0x10410013" />
+
+            <!-- CFG-LOGFILTER -->
+            <validValue name="CFG_LOGFILTER_RECORD_ENA" val="0x10de0002" />
+            <validValue name="CFG_LOGFILTER_ONCE_PER_WAKE_UP_ENA" val="0x10de0003" />
+            <validValue name="CFG_LOGFILTER_APPLY_ALL_FILTERS" val="0x10de0004" />
+            <validValue name="CFG_LOGFILTER_MIN_INTERVAL" val="0x30de0005" />
+            <validValue name="CFG_LOGFILTER_TIME_THRS" val="0x30de0006" />
+            <validValue name="CFG_LOGFILTER_SPEED_THRS" val="0x30de0007" />
+            <validValue name="CFG_LOGFILTER_POSITION_THRS" val="0x40de0008" />
+
         </enum>
 
         <int name="CfgValU1" type="uint8" />
@@ -87,7 +97,7 @@
 
         <int name="CfgValKey" type="uint32" failOnInvalid="true" displayReadOnly="true" />
 
-        <enum name="CfgValKeyGroup" type="uint8">
+        <enum name="CfgValKeyGroup" type="uint8" hexAssign="true">
             <validValue name="Geofence" val="0x24" />
             <validValue name="Bds" val="0x34" />
             <validValue name="Itfm" val="0x41" />
@@ -96,6 +106,7 @@
             <validValue name="I2cOutProt" val="0x72" />
             <validValue name="InfMsg" val="0x92" />
             <validValue name="Hw" val="0xa3" />
+            <validValue name="Logfilter" val="0xde" />
         </enum>
 
         <bitfield name="CfgValKeyFull" forceGen="true">
@@ -431,6 +442,44 @@
             </bundle>
         </variant>
 
+        <!-- CFG-LOGFILTER -->
+        <variant name="CfgValLogfilter" displayName="CFG-LOGFILTER" displayIdxReadOnlyHidden="true">
+            <bundle name="RecordEna" displayName="RECORD_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_LOGFILTER_RECORD_ENA" defaultValue="CfgValKeyId.CFG_LOGFILTER_RECORD_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+
+            <bundle name="OncePerWakeUpEna" displayName="ONCE_PER_WAKE_UP_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_LOGFILTER_ONCE_PER_WAKE_UP_ENA" defaultValue="CfgValKeyId.CFG_LOGFILTER_ONCE_PER_WAKE_UP_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+
+            <bundle name="ApplyAllFilters" displayName="APPLY_ALL_FILTERS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_LOGFILTER_APPLY_ALL_FILTERS" defaultValue="CfgValKeyId.CFG_LOGFILTER_APPLY_ALL_FILTERS" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+
+            <bundle name="MinInterval" displayName="MIN_INTERVAL">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_LOGFILTER_MIN_INTERVAL" defaultValue="CfgValKeyId.CFG_LOGFILTER_MIN_INTERVAL" />
+                <int reuse="CfgValU2" name="Val" units="s" />
+            </bundle>
+
+            <bundle name="TimeThrs" displayName="TIME_THRS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_LOGFILTER_TIME_THRS" defaultValue="CfgValKeyId.CFG_LOGFILTER_TIME_THRS" />
+                <int reuse="CfgValU2" name="Val" units="s" />
+            </bundle>
+
+            <bundle name="SpeedThrs" displayName="SPEED_THRS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_LOGFILTER_SPEED_THRS" defaultValue="CfgValKeyId.CFG_LOGFILTER_SPEED_THRS" />
+                <int reuse="CfgValU2" name="Val" units="m/s" />
+            </bundle>
+
+            <bundle name="PositionThrs" displayName="POSITION_THRS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_LOGFILTER_POSITION_THRS" defaultValue="CfgValKeyId.CFG_LOGFILTER_POSITION_THRS" />
+                <int reuse="CfgValU4" name="Val" units="m" />
+            </bundle>
+
+        </variant>
 
         <variant name="CfgValPair" displayName="_" displayIdxReadOnlyHidden="true">
             <ref field="CfgValBds" name="Bds"/>
@@ -441,6 +490,7 @@
             <ref field="CfgValI2cOutProt" name="I2cOutProt"/>
             <ref field="CfgValInfMsg" name="InfMsg"/>
             <ref field="CfgValItfm" name="Itfm"/>
+            <ref field="CfgValLogfilter" name="Logfilter"/>
         </variant>
     </fields>
 </schema>

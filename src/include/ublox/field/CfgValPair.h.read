@@ -26,6 +26,8 @@ comms::ErrorStatus doRead(TIter& iter, std::size_t len)
         return initField_infMsg().read(iter, len);      
     case CfgValKeyGroupCommon::ValueType::Itfm:
         return initField_itfm().read(iter, len);      
+    case CfgValKeyGroupCommon::ValueType::Logfilter:
+        return initField_logfilter().read(iter, len);      
     }
 
     return comms::ErrorStatus::InvalidMsgData;
