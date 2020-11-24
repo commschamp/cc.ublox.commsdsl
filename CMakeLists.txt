@@ -18,7 +18,7 @@ option (UBLOX_USE_CCACHE "Use ccache on UNIX." ON)
 #     is not provided and examples are not disabled.
 
 if ("${COMMSDSL_TAG}" STREQUAL "")
-    set(COMMSDSL_TAG "v3.5.3")
+    set(COMMSDSL_TAG "develop")
 endif ()
 
 if ("${COMMS_TAG}" STREQUAL "")
@@ -160,6 +160,7 @@ set (schema_files
     dsl/message/CfgFixseed.xml
     dsl/message/CfgPms.xml
     dsl/message/CfgValset.xml
+    dsl/message/CfgValget.xml
     dsl/message/UpdSos.xml
     dsl/message/MonIo.xml
     dsl/message/MonVer.xml

@@ -222,11 +222,11 @@
             <validValue name="CFG_MSGOUT_RTCM_3X_TYPE1127_UART1" val="0x209102d7" />
             <validValue name="CFG_MSGOUT_RTCM_3X_TYPE1127_UART2" val="0x209102d8" />
             <validValue name="CFG_MSGOUT_RTCM_3X_TYPE1127_USB" val="0x209102d9" />
-            <validValue name="CFG_MSGOUT_RTCM_3X_TYPE1130_I2C" val="0x20910303" />
-            <validValue name="CFG_MSGOUT_RTCM_3X_TYPE1130_SPI" val="0x20910307" />
-            <validValue name="CFG_MSGOUT_RTCM_3X_TYPE1130_UART1" val="0x20910304" />
-            <validValue name="CFG_MSGOUT_RTCM_3X_TYPE1130_UART2" val="0x20910305" />
-            <validValue name="CFG_MSGOUT_RTCM_3X_TYPE1130_USB" val="0x20910306" />
+            <validValue name="CFG_MSGOUT_RTCM_3X_TYPE1230_I2C" val="0x20910303" />
+            <validValue name="CFG_MSGOUT_RTCM_3X_TYPE1230_SPI" val="0x20910307" />
+            <validValue name="CFG_MSGOUT_RTCM_3X_TYPE1230_UART1" val="0x20910304" />
+            <validValue name="CFG_MSGOUT_RTCM_3X_TYPE1230_UART2" val="0x20910305" />
+            <validValue name="CFG_MSGOUT_RTCM_3X_TYPE1230_USB" val="0x20910306" />
             <validValue name="CFG_MSGOUT_RTCM_3X_TYPE4072_0_I2C" val="0x209102fe" />
             <validValue name="CFG_MSGOUT_RTCM_3X_TYPE4072_0_SPI" val="0x20910302" />
             <validValue name="CFG_MSGOUT_RTCM_3X_TYPE4072_0_UART1" val="0x209102ff" />
@@ -502,6 +502,13 @@
             <ref field="CfgValKeyGroup" name="group" />
             <int name="size" type="uint8" />
         </bitfield>
+
+        <enum name="CfgValLayer" type="uint8">
+            <validValue name="Ram" val="0" displayName="RAM" />
+            <validValue name="Bbr" val="1" displayName="BBR" />
+            <validValue name="Flash" val="2" />
+            <validValue name="Default" val="7" />
+        </enum>
 
         <!-- CFG-BDS -->
         <variant name="CfgValBds" displayName="CFG-BDS" displayIdxReadOnlyHidden="true">
@@ -882,7 +889,1531 @@
             </bundle>
         </variant>        
 
-        <variant name="CfgValPair" displayName="_" displayIdxReadOnlyHidden="true">
+        <!-- CFG-MSGOUT -->
+        <variant name="CfgValMsgOut" displayName="CFG-MSGOUT" displayIdxReadOnlyHidden="true">
+            <bundle name="NmeaIdDtmI2c" displayName="CFG-MSGOUT-NMEA_ID_DTM_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_DTM_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_DTM_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdDtmSpi" displayName="CFG-MSGOUT-NMEA_ID_DTM_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_DTM_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_DTM_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdDtmUart1" displayName="CFG-MSGOUT-NMEA_ID_DTM_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_DTM_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_DTM_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdDtmUart2" displayName="CFG-MSGOUT-NMEA_ID_DTM_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_DTM_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_DTM_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdDtmUsb" displayName="CFG-MSGOUT-NMEA_ID_DTM_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_DTM_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_DTM_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGbsI2c" displayName="CFG-MSGOUT-NMEA_ID_GBS_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GBS_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GBS_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGbsSpi" displayName="CFG-MSGOUT-NMEA_ID_GBS_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GBS_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GBS_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGbsUart1" displayName="CFG-MSGOUT-NMEA_ID_GBS_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GBS_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GBS_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGbsUart2" displayName="CFG-MSGOUT-NMEA_ID_GBS_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GBS_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GBS_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGbsUsb" displayName="CFG-MSGOUT-NMEA_ID_GBS_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GBS_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GBS_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGgaI2c" displayName="CFG-MSGOUT-NMEA_ID_GGA_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GGA_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GGA_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGgaSpi" displayName="CFG-MSGOUT-NMEA_ID_GGA_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GGA_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GGA_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGgaUart1" displayName="CFG-MSGOUT-NMEA_ID_GGA_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GGA_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GGA_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGgaUart2" displayName="CFG-MSGOUT-NMEA_ID_GGA_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GGA_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GGA_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGgaUsb" displayName="CFG-MSGOUT-NMEA_ID_GGA_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GGA_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GGA_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGllI2c" displayName="CFG-MSGOUT-NMEA_ID_GLL_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GLL_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GLL_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGllSpi" displayName="CFG-MSGOUT-NMEA_ID_GLL_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GLL_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GLL_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGllUart1" displayName="CFG-MSGOUT-NMEA_ID_GLL_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GLL_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GLL_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGllUart2" displayName="CFG-MSGOUT-NMEA_ID_GLL_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GLL_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GLL_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGllUsb" displayName="CFG-MSGOUT-NMEA_ID_GLL_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GLL_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GLL_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGnsI2c" displayName="CFG-MSGOUT-NMEA_ID_GNS_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GNS_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GNS_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGnsSpi" displayName="CFG-MSGOUT-NMEA_ID_GNS_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GNS_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GNS_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGnsUart1" displayName="CFG-MSGOUT-NMEA_ID_GNS_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GNS_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GNS_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGnsUart2" displayName="CFG-MSGOUT-NMEA_ID_GNS_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GNS_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GNS_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGnsUsb" displayName="CFG-MSGOUT-NMEA_ID_GNS_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GNS_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GNS_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGrsI2c" displayName="CFG-MSGOUT-NMEA_ID_GRS_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GRS_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GRS_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGrsSpi" displayName="CFG-MSGOUT-NMEA_ID_GRS_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GRS_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GRS_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGrsUart1" displayName="CFG-MSGOUT-NMEA_ID_GRS_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GRS_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GRS_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGrsUart2" displayName="CFG-MSGOUT-NMEA_ID_GRS_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GRS_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GRS_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGrsUsb" displayName="CFG-MSGOUT-NMEA_ID_GRS_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GRS_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GRS_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGsaI2c" displayName="CFG-MSGOUT-NMEA_ID_GSA_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSA_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSA_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGsaSpi" displayName="CFG-MSGOUT-NMEA_ID_GSA_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSA_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSA_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGsaUart1" displayName="CFG-MSGOUT-NMEA_ID_GSA_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSA_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSA_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGsaUart2" displayName="CFG-MSGOUT-NMEA_ID_GSA_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSA_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSA_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGsaUsb" displayName="CFG-MSGOUT-NMEA_ID_GSA_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSA_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSA_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGstI2c" displayName="CFG-MSGOUT-NMEA_ID_GST_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GST_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GST_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGstSpi" displayName="CFG-MSGOUT-NMEA_ID_GST_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GST_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GST_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGstUart1" displayName="CFG-MSGOUT-NMEA_ID_GST_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GST_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GST_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGstUart2" displayName="CFG-MSGOUT-NMEA_ID_GST_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GST_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GST_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGstUsb" displayName="CFG-MSGOUT-NMEA_ID_GST_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GST_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GST_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGsvI2c" displayName="CFG-MSGOUT-NMEA_ID_GSV_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSV_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSV_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGsvSpi" displayName="CFG-MSGOUT-NMEA_ID_GSV_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSV_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSV_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGsvUart1" displayName="CFG-MSGOUT-NMEA_ID_GSV_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSV_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSV_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGsvUart2" displayName="CFG-MSGOUT-NMEA_ID_GSV_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSV_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSV_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdGsvUsb" displayName="CFG-MSGOUT-NMEA_ID_GSV_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSV_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_GSV_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdRlmI2c" displayName="CFG-MSGOUT-NMEA_ID_RLM_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RLM_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RLM_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdRlmSpi" displayName="CFG-MSGOUT-NMEA_ID_RLM_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RLM_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RLM_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdRlmUart1" displayName="CFG-MSGOUT-NMEA_ID_RLM_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RLM_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RLM_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdRlmUart2" displayName="CFG-MSGOUT-NMEA_ID_RLM_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RLM_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RLM_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdRlmUsb" displayName="CFG-MSGOUT-NMEA_ID_RLM_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RLM_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RLM_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdRmcI2c" displayName="CFG-MSGOUT-NMEA_ID_RMC_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RMC_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RMC_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdRmcSpi" displayName="CFG-MSGOUT-NMEA_ID_RMC_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RMC_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RMC_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdRmcUart1" displayName="CFG-MSGOUT-NMEA_ID_RMC_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RMC_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RMC_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdRmcUart2" displayName="CFG-MSGOUT-NMEA_ID_RMC_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RMC_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RMC_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdRmcUsb" displayName="CFG-MSGOUT-NMEA_ID_RMC_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RMC_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_RMC_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdVlwI2c" displayName="CFG-MSGOUT-NMEA_ID_VLW_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VLW_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VLW_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdVlwSpi" displayName="CFG-MSGOUT-NMEA_ID_VLW_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VLW_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VLW_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdVlwUart1" displayName="CFG-MSGOUT-NMEA_ID_VLW_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VLW_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VLW_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdVlwUart2" displayName="CFG-MSGOUT-NMEA_ID_VLW_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VLW_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VLW_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdVlwUsb" displayName="CFG-MSGOUT-NMEA_ID_VLW_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VLW_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VLW_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdVtgI2c" displayName="CFG-MSGOUT-NMEA_ID_VTG_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VTG_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VTG_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdVtgSpi" displayName="CFG-MSGOUT-NMEA_ID_VTG_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VTG_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VTG_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdVtgUart1" displayName="CFG-MSGOUT-NMEA_ID_VTG_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VTG_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VTG_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdVtgUart2" displayName="CFG-MSGOUT-NMEA_ID_VTG_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VTG_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VTG_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdVtgUsb" displayName="CFG-MSGOUT-NMEA_ID_VTG_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VTG_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_VTG_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdZdaI2c" displayName="CFG-MSGOUT-NMEA_ID_ZDA_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_ZDA_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_ZDA_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdZdaSpi" displayName="CFG-MSGOUT-NMEA_ID_ZDA_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_ZDA_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_ZDA_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdZdaUart1" displayName="CFG-MSGOUT-NMEA_ID_ZDA_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_ZDA_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_ZDA_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdZdaUart2" displayName="CFG-MSGOUT-NMEA_ID_ZDA_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_ZDA_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_ZDA_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NmeaIdZdaUsb" displayName="CFG-MSGOUT-NMEA_ID_ZDA_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_ZDA_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_NMEA_ID_ZDA_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="PubxIdPolypI2c" displayName="CFG-MSGOUT-PUBX_ID_POLYP_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYP_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYP_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="PubxIdPolypSpi" displayName="CFG-MSGOUT-PUBX_ID_POLYP_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYP_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYP_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="PubxIdPolypUart1" displayName="CFG-MSGOUT-PUBX_ID_POLYP_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYP_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYP_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="PubxIdPolypUart2" displayName="CFG-MSGOUT-PUBX_ID_POLYP_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYP_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYP_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="PubxIdPolypUsb" displayName="CFG-MSGOUT-PUBX_ID_POLYP_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYP_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYP_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="PubxIdPolysI2c" displayName="CFG-MSGOUT-PUBX_ID_POLYS_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYS_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYS_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="PubxIdPolysSpi" displayName="CFG-MSGOUT-PUBX_ID_POLYS_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYS_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYS_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="PubxIdPolysUart1" displayName="CFG-MSGOUT-PUBX_ID_POLYS_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYS_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYS_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="PubxIdPolysUart2" displayName="CFG-MSGOUT-PUBX_ID_POLYS_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYS_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYS_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="PubxIdPolysUsb" displayName="CFG-MSGOUT-PUBX_ID_POLYS_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYS_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYS_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="PubxIdPolytI2c" displayName="CFG-MSGOUT-PUBX_ID_POLYT_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYT_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYT_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="PubxIdPolytSpi" displayName="CFG-MSGOUT-PUBX_ID_POLYT_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYT_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYT_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="PubxIdPolytUart1" displayName="CFG-MSGOUT-PUBX_ID_POLYT_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYT_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYT_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="PubxIdPolytUart2" displayName="CFG-MSGOUT-PUBX_ID_POLYT_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYT_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYT_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="PubxIdPolytUsb" displayName="CFG-MSGOUT-PUBX_ID_POLYT_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYT_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_PUBX_ID_POLYT_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1005I2c" displayName="CFG-MSGOUT-RTCM_3X_TYPE1005_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1005_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1005_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1005Spi" displayName="CFG-MSGOUT-RTCM_3X_TYPE1005_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1005_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1005_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1005Uart1" displayName="CFG-MSGOUT-RTCM_3X_TYPE1005_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1005_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1005_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1005Uart2" displayName="CFG-MSGOUT-RTCM_3X_TYPE1005_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1005_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1005_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1005Usb" displayName="CFG-MSGOUT-RTCM_3X_TYPE1005_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1005_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1005_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1074I2c" displayName="CFG-MSGOUT-RTCM_3X_TYPE1074_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1074_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1074_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1074Spi" displayName="CFG-MSGOUT-RTCM_3X_TYPE1074_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1074_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1074_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1074Uart1" displayName="CFG-MSGOUT-RTCM_3X_TYPE1074_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1074_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1074_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1074Uart2" displayName="CFG-MSGOUT-RTCM_3X_TYPE1074_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1074_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1074_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1074Usb" displayName="CFG-MSGOUT-RTCM_3X_TYPE1074_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1074_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1074_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1077I2c" displayName="CFG-MSGOUT-RTCM_3X_TYPE1077_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1077_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1077_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1077Spi" displayName="CFG-MSGOUT-RTCM_3X_TYPE1077_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1077_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1077_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1077Uart1" displayName="CFG-MSGOUT-RTCM_3X_TYPE1077_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1077_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1077_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1077Uart2" displayName="CFG-MSGOUT-RTCM_3X_TYPE1077_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1077_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1077_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1077Usb" displayName="CFG-MSGOUT-RTCM_3X_TYPE1077_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1077_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1077_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1084I2c" displayName="CFG-MSGOUT-RTCM_3X_TYPE1084_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1084_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1084_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1084Spi" displayName="CFG-MSGOUT-RTCM_3X_TYPE1084_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1084_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1084_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1084Uart1" displayName="CFG-MSGOUT-RTCM_3X_TYPE1084_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1084_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1084_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1084Uart2" displayName="CFG-MSGOUT-RTCM_3X_TYPE1084_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1084_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1084_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1084Usb" displayName="CFG-MSGOUT-RTCM_3X_TYPE1084_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1084_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1084_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1087I2c" displayName="CFG-MSGOUT-RTCM_3X_TYPE1087_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1087_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1087_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1087Spi" displayName="CFG-MSGOUT-RTCM_3X_TYPE1087_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1087_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1087_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1087Uart1" displayName="CFG-MSGOUT-RTCM_3X_TYPE1087_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1087_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1087_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1087Uart2" displayName="CFG-MSGOUT-RTCM_3X_TYPE1087_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1087_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1087_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1087Usb" displayName="CFG-MSGOUT-RTCM_3X_TYPE1087_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1087_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1087_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1094I2c" displayName="CFG-MSGOUT-RTCM_3X_TYPE1094_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1094_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1094_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1094Spi" displayName="CFG-MSGOUT-RTCM_3X_TYPE1094_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1094_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1094_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1094Uart1" displayName="CFG-MSGOUT-RTCM_3X_TYPE1094_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1094_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1094_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1094Uart2" displayName="CFG-MSGOUT-RTCM_3X_TYPE1094_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1094_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1094_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1094Usb" displayName="CFG-MSGOUT-RTCM_3X_TYPE1094_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1094_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1094_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1097I2c" displayName="CFG-MSGOUT-RTCM_3X_TYPE1097_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1097_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1097_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1097Spi" displayName="CFG-MSGOUT-RTCM_3X_TYPE1097_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1097_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1097_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1097Uart1" displayName="CFG-MSGOUT-RTCM_3X_TYPE1097_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1097_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1097_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1097Uart2" displayName="CFG-MSGOUT-RTCM_3X_TYPE1097_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1097_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1097_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1097Usb" displayName="CFG-MSGOUT-RTCM_3X_TYPE1097_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1097_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1097_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1124I2c" displayName="CFG-MSGOUT-RTCM_3X_TYPE1124_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1124_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1124_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1124Spi" displayName="CFG-MSGOUT-RTCM_3X_TYPE1124_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1124_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1124_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1124Uart1" displayName="CFG-MSGOUT-RTCM_3X_TYPE1124_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1124_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1124_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1124Uart2" displayName="CFG-MSGOUT-RTCM_3X_TYPE1124_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1124_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1124_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1124Usb" displayName="CFG-MSGOUT-RTCM_3X_TYPE1124_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1124_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1124_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1127I2c" displayName="CFG-MSGOUT-RTCM_3X_TYPE1127_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1127_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1127_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1127Spi" displayName="CFG-MSGOUT-RTCM_3X_TYPE1127_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1127_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1127_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1127Uart1" displayName="CFG-MSGOUT-RTCM_3X_TYPE1127_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1127_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1127_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1127Uart2" displayName="CFG-MSGOUT-RTCM_3X_TYPE1127_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1127_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1127_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1127Usb" displayName="CFG-MSGOUT-RTCM_3X_TYPE1127_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1127_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1127_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1230I2c" displayName="CFG-MSGOUT-RTCM_3X_TYPE1230_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1230_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1230_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1230Spi" displayName="CFG-MSGOUT-RTCM_3X_TYPE1230_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1230_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1230_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1230Uart1" displayName="CFG-MSGOUT-RTCM_3X_TYPE1230_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1230_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1230_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1230Uart2" displayName="CFG-MSGOUT-RTCM_3X_TYPE1230_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1230_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1230_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType1230Usb" displayName="CFG-MSGOUT-RTCM_3X_TYPE1230_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1230_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE1230_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType4072_0I2c" displayName="CFG-MSGOUT-RTCM_3X_TYPE4072_0_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_0_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_0_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType4072_0Spi" displayName="CFG-MSGOUT-RTCM_3X_TYPE4072_0_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_0_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_0_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType4072_0Uart1" displayName="CFG-MSGOUT-RTCM_3X_TYPE4072_0_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_0_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_0_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType4072_0Uart2" displayName="CFG-MSGOUT-RTCM_3X_TYPE4072_0_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_0_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_0_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType4072_0Usb" displayName="CFG-MSGOUT-RTCM_3X_TYPE4072_0_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_0_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_0_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType4072_1I2c" displayName="CFG-MSGOUT-RTCM_3X_TYPE4072_1_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_1_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_1_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType4072_1Spi" displayName="CFG-MSGOUT-RTCM_3X_TYPE4072_1_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_1_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_1_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType4072_1Uart1" displayName="CFG-MSGOUT-RTCM_3X_TYPE4072_1_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_1_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_1_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType4072_1Uart2" displayName="CFG-MSGOUT-RTCM_3X_TYPE4072_1_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_1_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_1_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="Rtcm3xType4072_1Usb" displayName="CFG-MSGOUT-RTCM_3X_TYPE4072_1_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_1_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_RTCM_3X_TYPE4072_1_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxLogInfoI2c" displayName="CFG-MSGOUT-UBX_LOG_INFO_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_LOG_INFO_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_LOG_INFO_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxLogInfoSpi" displayName="CFG-MSGOUT-UBX_LOG_INFO_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_LOG_INFO_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_LOG_INFO_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxLogInfoUart1" displayName="CFG-MSGOUT-UBX_LOG_INFO_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_LOG_INFO_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_LOG_INFO_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxLogInfoUart2" displayName="CFG-MSGOUT-UBX_LOG_INFO_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_LOG_INFO_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_LOG_INFO_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxLogInfoUsb" displayName="CFG-MSGOUT-UBX_LOG_INFO_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_LOG_INFO_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_LOG_INFO_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonCommsI2c" displayName="CFG-MSGOUT-UBX_MON_COMMS_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_COMMS_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_COMMS_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonCommsSpi" displayName="CFG-MSGOUT-UBX_MON_COMMS_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_COMMS_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_COMMS_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonCommsUart1" displayName="CFG-MSGOUT-UBX_MON_COMMS_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_COMMS_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_COMMS_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonCommsUart2" displayName="CFG-MSGOUT-UBX_MON_COMMS_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_COMMS_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_COMMS_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonCommsUsb" displayName="CFG-MSGOUT-UBX_MON_COMMS_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_COMMS_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_COMMS_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonHw2I2c" displayName="CFG-MSGOUT-UBX_MON_HW2_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW2_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW2_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonHw2Spi" displayName="CFG-MSGOUT-UBX_MON_HW2_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW2_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW2_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonHw2Uart1" displayName="CFG-MSGOUT-UBX_MON_HW2_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW2_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW2_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonHw2Uart2" displayName="CFG-MSGOUT-UBX_MON_HW2_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW2_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW2_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonHw2Usb" displayName="CFG-MSGOUT-UBX_MON_HW2_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW2_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW2_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonHw3I2c" displayName="CFG-MSGOUT-UBX_MON_HW3_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW3_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW3_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonHw3Spi" displayName="CFG-MSGOUT-UBX_MON_HW3_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW3_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW3_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonHw3Uart1" displayName="CFG-MSGOUT-UBX_MON_HW3_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW3_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW3_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonHw3Uart2" displayName="CFG-MSGOUT-UBX_MON_HW3_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW3_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW3_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonHw3Usb" displayName="CFG-MSGOUT-UBX_MON_HW3_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW3_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW3_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonHwI2c" displayName="CFG-MSGOUT-UBX_MON_HW_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonHwSpi" displayName="CFG-MSGOUT-UBX_MON_HW_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonHwUart1" displayName="CFG-MSGOUT-UBX_MON_HW_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonHwUart2" displayName="CFG-MSGOUT-UBX_MON_HW_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonHwUsb" displayName="CFG-MSGOUT-UBX_MON_HW_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_HW_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonIoI2c" displayName="CFG-MSGOUT-UBX_MON_IO_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_IO_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_IO_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonIoSpi" displayName="CFG-MSGOUT-UBX_MON_IO_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_IO_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_IO_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonIoUart1" displayName="CFG-MSGOUT-UBX_MON_IO_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_IO_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_IO_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonIoUart2" displayName="CFG-MSGOUT-UBX_MON_IO_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_IO_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_IO_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonIoUsb" displayName="CFG-MSGOUT-UBX_MON_IO_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_IO_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_IO_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonMsgppI2c" displayName="CFG-MSGOUT-UBX_MON_MSGPP_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_MSGPP_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_MSGPP_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonMsgppSpi" displayName="CFG-MSGOUT-UBX_MON_MSGPP_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_MSGPP_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_MSGPP_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonMsgppUart1" displayName="CFG-MSGOUT-UBX_MON_MSGPP_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_MSGPP_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_MSGPP_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonMsgppUart2" displayName="CFG-MSGOUT-UBX_MON_MSGPP_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_MSGPP_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_MSGPP_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonMsgppUsb" displayName="CFG-MSGOUT-UBX_MON_MSGPP_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_MSGPP_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_MSGPP_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonRfI2c" displayName="CFG-MSGOUT-UBX_MON_RF_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RF_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RF_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonRfSpi" displayName="CFG-MSGOUT-UBX_MON_RF_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RF_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RF_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonRfUart1" displayName="CFG-MSGOUT-UBX_MON_RF_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RF_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RF_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonRfUart2" displayName="CFG-MSGOUT-UBX_MON_RF_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RF_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RF_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonRfUsb" displayName="CFG-MSGOUT-UBX_MON_RF_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RF_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RF_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonRxbufI2c" displayName="CFG-MSGOUT-UBX_MON_RXBUF_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXBUF_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXBUF_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonRxbufSpi" displayName="CFG-MSGOUT-UBX_MON_RXBUF_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXBUF_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXBUF_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonRxbufUart1" displayName="CFG-MSGOUT-UBX_MON_RXBUF_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXBUF_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXBUF_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonRxbufUart2" displayName="CFG-MSGOUT-UBX_MON_RXBUF_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXBUF_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXBUF_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonRxbufUsb" displayName="CFG-MSGOUT-UBX_MON_RXBUF_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXBUF_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXBUF_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonRxrI2c" displayName="CFG-MSGOUT-UBX_MON_RXR_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXR_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXR_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonRxrSpi" displayName="CFG-MSGOUT-UBX_MON_RXR_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXR_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXR_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonRxrUart1" displayName="CFG-MSGOUT-UBX_MON_RXR_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXR_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXR_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonRxrUart2" displayName="CFG-MSGOUT-UBX_MON_RXR_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXR_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXR_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonRxrUsb" displayName="CFG-MSGOUT-UBX_MON_RXR_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXR_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_RXR_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonSpanI2c" displayName="CFG-MSGOUT-UBX_MON_SPAN_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_SPAN_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_SPAN_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonSpanSpi" displayName="CFG-MSGOUT-UBX_MON_SPAN_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_SPAN_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_SPAN_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonSpanUart1" displayName="CFG-MSGOUT-UBX_MON_SPAN_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_SPAN_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_SPAN_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonSpanUart2" displayName="CFG-MSGOUT-UBX_MON_SPAN_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_SPAN_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_SPAN_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonSpanUsb" displayName="CFG-MSGOUT-UBX_MON_SPAN_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_SPAN_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_SPAN_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonTxbufI2c" displayName="CFG-MSGOUT-UBX_MON_TXBUF_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_TXBUF_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_TXBUF_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonTxbufSpi" displayName="CFG-MSGOUT-UBX_MON_TXBUF_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_TXBUF_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_TXBUF_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonTxbufUart1" displayName="CFG-MSGOUT-UBX_MON_TXBUF_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_TXBUF_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_TXBUF_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonTxbufUart2" displayName="CFG-MSGOUT-UBX_MON_TXBUF_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_TXBUF_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_TXBUF_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxMonTxbufUsb" displayName="CFG-MSGOUT-UBX_MON_TXBUF_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_TXBUF_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_MON_TXBUF_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavClockI2c" displayName="CFG-MSGOUT-UBX_NAV_CLOCK_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_CLOCK_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_CLOCK_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavClockSpi" displayName="CFG-MSGOUT-UBX_NAV_CLOCK_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_CLOCK_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_CLOCK_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavClockUart1" displayName="CFG-MSGOUT-UBX_NAV_CLOCK_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_CLOCK_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_CLOCK_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavClockUart2" displayName="CFG-MSGOUT-UBX_NAV_CLOCK_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_CLOCK_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_CLOCK_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavClockUsb" displayName="CFG-MSGOUT-UBX_NAV_CLOCK_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_CLOCK_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_CLOCK_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavDopI2c" displayName="CFG-MSGOUT-UBX_NAV_DOP_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_DOP_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_DOP_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavDopSpi" displayName="CFG-MSGOUT-UBX_NAV_DOP_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_DOP_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_DOP_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavDopUart1" displayName="CFG-MSGOUT-UBX_NAV_DOP_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_DOP_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_DOP_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavDopUart2" displayName="CFG-MSGOUT-UBX_NAV_DOP_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_DOP_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_DOP_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavDopUsb" displayName="CFG-MSGOUT-UBX_NAV_DOP_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_DOP_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_DOP_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavEoeI2c" displayName="CFG-MSGOUT-UBX_NAV_EOE_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_EOE_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_EOE_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavEoeSpi" displayName="CFG-MSGOUT-UBX_NAV_EOE_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_EOE_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_EOE_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavEoeUart1" displayName="CFG-MSGOUT-UBX_NAV_EOE_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_EOE_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_EOE_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavEoeUart2" displayName="CFG-MSGOUT-UBX_NAV_EOE_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_EOE_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_EOE_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavEoeUsb" displayName="CFG-MSGOUT-UBX_NAV_EOE_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_EOE_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_EOE_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavGeofenceI2c" displayName="CFG-MSGOUT-UBX_NAV_GEOFENCE_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_GEOFENCE_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_GEOFENCE_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavGeofenceSpi" displayName="CFG-MSGOUT-UBX_NAV_GEOFENCE_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_GEOFENCE_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_GEOFENCE_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavGeofenceUart1" displayName="CFG-MSGOUT-UBX_NAV_GEOFENCE_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_GEOFENCE_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_GEOFENCE_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavGeofenceUart2" displayName="CFG-MSGOUT-UBX_NAV_GEOFENCE_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_GEOFENCE_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_GEOFENCE_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavGeofenceUsb" displayName="CFG-MSGOUT-UBX_NAV_GEOFENCE_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_GEOFENCE_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_GEOFENCE_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavHpposecefI2c" displayName="CFG-MSGOUT-UBX_NAV_HPPOSECEF_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSECEF_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSECEF_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavHpposecefSpi" displayName="CFG-MSGOUT-UBX_NAV_HPPOSECEF_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSECEF_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSECEF_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavHpposecefUart1" displayName="CFG-MSGOUT-UBX_NAV_HPPOSECEF_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSECEF_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSECEF_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavHpposecefUart2" displayName="CFG-MSGOUT-UBX_NAV_HPPOSECEF_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSECEF_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSECEF_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavHpposecefUsb" displayName="CFG-MSGOUT-UBX_NAV_HPPOSECEF_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSECEF_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSECEF_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavHpposllhI2c" displayName="CFG-MSGOUT-UBX_NAV_HPPOSLLH_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSLLH_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSLLH_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavHpposllhSpi" displayName="CFG-MSGOUT-UBX_NAV_HPPOSLLH_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSLLH_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSLLH_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavHpposllhUart1" displayName="CFG-MSGOUT-UBX_NAV_HPPOSLLH_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSLLH_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSLLH_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavHpposllhUart2" displayName="CFG-MSGOUT-UBX_NAV_HPPOSLLH_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSLLH_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSLLH_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavHpposllhUsb" displayName="CFG-MSGOUT-UBX_NAV_HPPOSLLH_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSLLH_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_HPPOSLLH_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavOdoI2c" displayName="CFG-MSGOUT-UBX_NAV_ODO_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ODO_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ODO_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavOdoSpi" displayName="CFG-MSGOUT-UBX_NAV_ODO_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ODO_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ODO_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavOdoUart1" displayName="CFG-MSGOUT-UBX_NAV_ODO_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ODO_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ODO_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavOdoUart2" displayName="CFG-MSGOUT-UBX_NAV_ODO_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ODO_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ODO_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavOdoUsb" displayName="CFG-MSGOUT-UBX_NAV_ODO_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ODO_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ODO_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavOrbI2c" displayName="CFG-MSGOUT-UBX_NAV_ORB_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ORB_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ORB_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavOrbSpi" displayName="CFG-MSGOUT-UBX_NAV_ORB_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ORB_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ORB_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavOrbUart1" displayName="CFG-MSGOUT-UBX_NAV_ORB_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ORB_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ORB_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavOrbUart2" displayName="CFG-MSGOUT-UBX_NAV_ORB_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ORB_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ORB_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavOrbUsb" displayName="CFG-MSGOUT-UBX_NAV_ORB_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ORB_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_ORB_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavPosecefI2c" displayName="CFG-MSGOUT-UBX_NAV_POSECEF_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSECEF_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSECEF_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavPosecefSpi" displayName="CFG-MSGOUT-UBX_NAV_POSECEF_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSECEF_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSECEF_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavPosecefUart1" displayName="CFG-MSGOUT-UBX_NAV_POSECEF_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSECEF_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSECEF_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavPosecefUart2" displayName="CFG-MSGOUT-UBX_NAV_POSECEF_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSECEF_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSECEF_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavPosecefUsb" displayName="CFG-MSGOUT-UBX_NAV_POSECEF_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSECEF_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSECEF_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavPosllhI2c" displayName="CFG-MSGOUT-UBX_NAV_POSLLH_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSLLH_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSLLH_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavPosllhSpi" displayName="CFG-MSGOUT-UBX_NAV_POSLLH_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSLLH_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSLLH_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavPosllhUart1" displayName="CFG-MSGOUT-UBX_NAV_POSLLH_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSLLH_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSLLH_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavPosllhUart2" displayName="CFG-MSGOUT-UBX_NAV_POSLLH_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSLLH_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSLLH_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavPosllhUsb" displayName="CFG-MSGOUT-UBX_NAV_POSLLH_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSLLH_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_POSLLH_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavPvtI2c" displayName="CFG-MSGOUT-UBX_NAV_PVT_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_PVT_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_PVT_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavPvtSpi" displayName="CFG-MSGOUT-UBX_NAV_PVT_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_PVT_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_PVT_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavPvtUart1" displayName="CFG-MSGOUT-UBX_NAV_PVT_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_PVT_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_PVT_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavPvtUart2" displayName="CFG-MSGOUT-UBX_NAV_PVT_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_PVT_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_PVT_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavPvtUsb" displayName="CFG-MSGOUT-UBX_NAV_PVT_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_PVT_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_PVT_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavRelposnedI2c" displayName="CFG-MSGOUT-UBX_NAV_RELPOSNED_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_RELPOSNED_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_RELPOSNED_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavRelposnedSpi" displayName="CFG-MSGOUT-UBX_NAV_RELPOSNED_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_RELPOSNED_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_RELPOSNED_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavRelposnedUart1" displayName="CFG-MSGOUT-UBX_NAV_RELPOSNED_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_RELPOSNED_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_RELPOSNED_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavRelposnedUart2" displayName="CFG-MSGOUT-UBX_NAV_RELPOSNED_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_RELPOSNED_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_RELPOSNED_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavRelposnedUsb" displayName="CFG-MSGOUT-UBX_NAV_RELPOSNED_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_RELPOSNED_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_RELPOSNED_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSatI2c" displayName="CFG-MSGOUT-UBX_NAV_SAT_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SAT_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SAT_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSatSpi" displayName="CFG-MSGOUT-UBX_NAV_SAT_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SAT_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SAT_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSatUart1" displayName="CFG-MSGOUT-UBX_NAV_SAT_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SAT_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SAT_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSatUart2" displayName="CFG-MSGOUT-UBX_NAV_SAT_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SAT_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SAT_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSatUsb" displayName="CFG-MSGOUT-UBX_NAV_SAT_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SAT_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SAT_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSbasI2c" displayName="CFG-MSGOUT-UBX_NAV_SBAS_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SBAS_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SBAS_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSbasSpi" displayName="CFG-MSGOUT-UBX_NAV_SBAS_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SBAS_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SBAS_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSbasUart1" displayName="CFG-MSGOUT-UBX_NAV_SBAS_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SBAS_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SBAS_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSbasUart2" displayName="CFG-MSGOUT-UBX_NAV_SBAS_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SBAS_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SBAS_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSbasUsb" displayName="CFG-MSGOUT-UBX_NAV_SBAS_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SBAS_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SBAS_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSigI2c" displayName="CFG-MSGOUT-UBX_NAV_SIG_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SIG_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SIG_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSigSpi" displayName="CFG-MSGOUT-UBX_NAV_SIG_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SIG_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SIG_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSigUart1" displayName="CFG-MSGOUT-UBX_NAV_SIG_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SIG_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SIG_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSigUart2" displayName="CFG-MSGOUT-UBX_NAV_SIG_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SIG_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SIG_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSigUsb" displayName="CFG-MSGOUT-UBX_NAV_SIG_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SIG_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SIG_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSlasI2c" displayName="CFG-MSGOUT-UBX_NAV_SLAS_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SLAS_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SLAS_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSlasSpi" displayName="CFG-MSGOUT-UBX_NAV_SLAS_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SLAS_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SLAS_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSlasUart1" displayName="CFG-MSGOUT-UBX_NAV_SLAS_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SLAS_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SLAS_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSlasUart2" displayName="CFG-MSGOUT-UBX_NAV_SLAS_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SLAS_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SLAS_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSlasUsb" displayName="CFG-MSGOUT-UBX_NAV_SLAS_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SLAS_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SLAS_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavStatusI2c" displayName="CFG-MSGOUT-UBX_NAV_STATUS_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_STATUS_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_STATUS_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavStatusSpi" displayName="CFG-MSGOUT-UBX_NAV_STATUS_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_STATUS_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_STATUS_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavStatusUart1" displayName="CFG-MSGOUT-UBX_NAV_STATUS_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_STATUS_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_STATUS_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavStatusUart2" displayName="CFG-MSGOUT-UBX_NAV_STATUS_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_STATUS_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_STATUS_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavStatusUsb" displayName="CFG-MSGOUT-UBX_NAV_STATUS_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_STATUS_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_STATUS_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSvinI2c" displayName="CFG-MSGOUT-UBX_NAV_SVIN_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SVIN_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SVIN_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSvinSpi" displayName="CFG-MSGOUT-UBX_NAV_SVIN_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SVIN_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SVIN_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSvinUart1" displayName="CFG-MSGOUT-UBX_NAV_SVIN_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SVIN_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SVIN_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSvinUart2" displayName="CFG-MSGOUT-UBX_NAV_SVIN_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SVIN_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SVIN_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavSvinUsb" displayName="CFG-MSGOUT-UBX_NAV_SVIN_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SVIN_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_SVIN_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimebdsI2c" displayName="CFG-MSGOUT-UBX_NAV_TIMEBDS_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEBDS_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEBDS_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimebdsSpi" displayName="CFG-MSGOUT-UBX_NAV_TIMEBDS_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEBDS_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEBDS_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimebdsUart1" displayName="CFG-MSGOUT-UBX_NAV_TIMEBDS_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEBDS_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEBDS_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimebdsUart2" displayName="CFG-MSGOUT-UBX_NAV_TIMEBDS_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEBDS_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEBDS_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimebdsUsb" displayName="CFG-MSGOUT-UBX_NAV_TIMEBDS_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEBDS_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEBDS_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimegalI2c" displayName="CFG-MSGOUT-UBX_NAV_TIMEGAL_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGAL_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGAL_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimegalSpi" displayName="CFG-MSGOUT-UBX_NAV_TIMEGAL_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGAL_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGAL_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimegalUart1" displayName="CFG-MSGOUT-UBX_NAV_TIMEGAL_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGAL_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGAL_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimegalUart2" displayName="CFG-MSGOUT-UBX_NAV_TIMEGAL_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGAL_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGAL_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimegalUsb" displayName="CFG-MSGOUT-UBX_NAV_TIMEGAL_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGAL_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGAL_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimegloI2c" displayName="CFG-MSGOUT-UBX_NAV_TIMEGLO_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGLO_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGLO_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimegloSpi" displayName="CFG-MSGOUT-UBX_NAV_TIMEGLO_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGLO_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGLO_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimegloUart1" displayName="CFG-MSGOUT-UBX_NAV_TIMEGLO_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGLO_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGLO_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimegloUart2" displayName="CFG-MSGOUT-UBX_NAV_TIMEGLO_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGLO_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGLO_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimegloUsb" displayName="CFG-MSGOUT-UBX_NAV_TIMEGLO_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGLO_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGLO_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimegpsI2c" displayName="CFG-MSGOUT-UBX_NAV_TIMEGPS_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGPS_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGPS_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimegpsSpi" displayName="CFG-MSGOUT-UBX_NAV_TIMEGPS_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGPS_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGPS_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimegpsUart1" displayName="CFG-MSGOUT-UBX_NAV_TIMEGPS_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGPS_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGPS_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimegpsUart2" displayName="CFG-MSGOUT-UBX_NAV_TIMEGPS_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGPS_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGPS_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimegpsUsb" displayName="CFG-MSGOUT-UBX_NAV_TIMEGPS_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGPS_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEGPS_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimelsI2c" displayName="CFG-MSGOUT-UBX_NAV_TIMELS_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMELS_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMELS_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimelsSpi" displayName="CFG-MSGOUT-UBX_NAV_TIMELS_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMELS_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMELS_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimelsUart1" displayName="CFG-MSGOUT-UBX_NAV_TIMELS_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMELS_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMELS_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimelsUart2" displayName="CFG-MSGOUT-UBX_NAV_TIMELS_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMELS_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMELS_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimelsUsb" displayName="CFG-MSGOUT-UBX_NAV_TIMELS_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMELS_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMELS_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimeqzssI2c" displayName="CFG-MSGOUT-UBX_NAV_TIMEQZSS_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEQZSS_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEQZSS_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimeqzssSpi" displayName="CFG-MSGOUT-UBX_NAV_TIMEQZSS_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEQZSS_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEQZSS_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimeqzssUart1" displayName="CFG-MSGOUT-UBX_NAV_TIMEQZSS_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEQZSS_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEQZSS_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimeqzssUart2" displayName="CFG-MSGOUT-UBX_NAV_TIMEQZSS_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEQZSS_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEQZSS_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimeqzssUsb" displayName="CFG-MSGOUT-UBX_NAV_TIMEQZSS_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEQZSS_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEQZSS_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimeutcI2c" displayName="CFG-MSGOUT-UBX_NAV_TIMEUTC_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEUTC_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEUTC_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimeutcSpi" displayName="CFG-MSGOUT-UBX_NAV_TIMEUTC_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEUTC_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEUTC_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimeutcUart1" displayName="CFG-MSGOUT-UBX_NAV_TIMEUTC_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEUTC_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEUTC_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimeutcUart2" displayName="CFG-MSGOUT-UBX_NAV_TIMEUTC_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEUTC_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEUTC_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavTimeutcUsb" displayName="CFG-MSGOUT-UBX_NAV_TIMEUTC_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEUTC_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_TIMEUTC_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavVelecefI2c" displayName="CFG-MSGOUT-UBX_NAV_VELECEF_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELECEF_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELECEF_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavVelecefSpi" displayName="CFG-MSGOUT-UBX_NAV_VELECEF_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELECEF_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELECEF_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavVelecefUart1" displayName="CFG-MSGOUT-UBX_NAV_VELECEF_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELECEF_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELECEF_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavVelecefUart2" displayName="CFG-MSGOUT-UBX_NAV_VELECEF_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELECEF_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELECEF_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavVelecefUsb" displayName="CFG-MSGOUT-UBX_NAV_VELECEF_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELECEF_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELECEF_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavVelnedI2c" displayName="CFG-MSGOUT-UBX_NAV_VELNED_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELNED_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELNED_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavVelnedSpi" displayName="CFG-MSGOUT-UBX_NAV_VELNED_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELNED_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELNED_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavVelnedUart1" displayName="CFG-MSGOUT-UBX_NAV_VELNED_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELNED_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELNED_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavVelnedUart2" displayName="CFG-MSGOUT-UBX_NAV_VELNED_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELNED_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELNED_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxNavVelnedUsb" displayName="CFG-MSGOUT-UBX_NAV_VELNED_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELNED_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_NAV_VELNED_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmMeasxI2c" displayName="CFG-MSGOUT-UBX_RXM_MEASX_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_MEASX_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_MEASX_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmMeasxSpi" displayName="CFG-MSGOUT-UBX_RXM_MEASX_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_MEASX_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_MEASX_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmMeasxUart1" displayName="CFG-MSGOUT-UBX_RXM_MEASX_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_MEASX_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_MEASX_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmMeasxUart2" displayName="CFG-MSGOUT-UBX_RXM_MEASX_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_MEASX_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_MEASX_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmMeasxUsb" displayName="CFG-MSGOUT-UBX_RXM_MEASX_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_MEASX_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_MEASX_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmRawxI2c" displayName="CFG-MSGOUT-UBX_RXM_RAWX_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RAWX_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RAWX_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmRawxSpi" displayName="CFG-MSGOUT-UBX_RXM_RAWX_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RAWX_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RAWX_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmRawxUart1" displayName="CFG-MSGOUT-UBX_RXM_RAWX_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RAWX_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RAWX_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmRawxUart2" displayName="CFG-MSGOUT-UBX_RXM_RAWX_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RAWX_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RAWX_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmRawxUsb" displayName="CFG-MSGOUT-UBX_RXM_RAWX_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RAWX_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RAWX_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmRlmI2c" displayName="CFG-MSGOUT-UBX_RXM_RLM_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RLM_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RLM_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmRlmSpi" displayName="CFG-MSGOUT-UBX_RXM_RLM_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RLM_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RLM_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmRlmUart1" displayName="CFG-MSGOUT-UBX_RXM_RLM_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RLM_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RLM_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmRlmUart2" displayName="CFG-MSGOUT-UBX_RXM_RLM_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RLM_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RLM_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmRlmUsb" displayName="CFG-MSGOUT-UBX_RXM_RLM_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RLM_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RLM_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmRtcmI2c" displayName="CFG-MSGOUT-UBX_RXM_RTCM_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RTCM_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RTCM_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmRtcmSpi" displayName="CFG-MSGOUT-UBX_RXM_RTCM_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RTCM_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RTCM_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmRtcmUart1" displayName="CFG-MSGOUT-UBX_RXM_RTCM_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RTCM_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RTCM_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmRtcmUart2" displayName="CFG-MSGOUT-UBX_RXM_RTCM_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RTCM_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RTCM_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmRtcmUsb" displayName="CFG-MSGOUT-UBX_RXM_RTCM_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RTCM_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_RTCM_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmSfrbxI2c" displayName="CFG-MSGOUT-UBX_RXM_SFRBX_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_SFRBX_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_SFRBX_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmSfrbxSpi" displayName="CFG-MSGOUT-UBX_RXM_SFRBX_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_SFRBX_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_SFRBX_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmSfrbxUart1" displayName="CFG-MSGOUT-UBX_RXM_SFRBX_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_SFRBX_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_SFRBX_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmSfrbxUart2" displayName="CFG-MSGOUT-UBX_RXM_SFRBX_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_SFRBX_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_SFRBX_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxRxmSfrbxUsb" displayName="CFG-MSGOUT-UBX_RXM_SFRBX_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_SFRBX_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_RXM_SFRBX_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxTimTm2I2c" displayName="CFG-MSGOUT-UBX_TIM_TM2_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TM2_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TM2_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxTimTm2Spi" displayName="CFG-MSGOUT-UBX_TIM_TM2_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TM2_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TM2_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxTimTm2Uart1" displayName="CFG-MSGOUT-UBX_TIM_TM2_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TM2_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TM2_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxTimTm2Uart2" displayName="CFG-MSGOUT-UBX_TIM_TM2_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TM2_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TM2_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxTimTm2Usb" displayName="CFG-MSGOUT-UBX_TIM_TM2_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TM2_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TM2_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxTimTpI2c" displayName="CFG-MSGOUT-UBX_TIM_TP_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TP_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TP_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxTimTpSpi" displayName="CFG-MSGOUT-UBX_TIM_TP_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TP_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TP_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxTimTpUart1" displayName="CFG-MSGOUT-UBX_TIM_TP_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TP_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TP_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxTimTpUart2" displayName="CFG-MSGOUT-UBX_TIM_TP_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TP_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TP_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxTimTpUsb" displayName="CFG-MSGOUT-UBX_TIM_TP_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TP_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_TP_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxTimVrfyI2c" displayName="CFG-MSGOUT-UBX_TIM_VRFY_I2C">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_VRFY_I2C" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_VRFY_I2C" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxTimVrfySpi" displayName="CFG-MSGOUT-UBX_TIM_VRFY_SPI">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_VRFY_SPI" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_VRFY_SPI" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxTimVrfyUart1" displayName="CFG-MSGOUT-UBX_TIM_VRFY_UART1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_VRFY_UART1" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_VRFY_UART1" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxTimVrfyUart2" displayName="CFG-MSGOUT-UBX_TIM_VRFY_UART2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_VRFY_UART2" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_VRFY_UART2" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="UbxTimVrfyUsb" displayName="CFG-MSGOUT-UBX_TIM_VRFY_USB">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_VRFY_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_VRFY_USB" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+        </variant>
+
+        <variant name="CfgValPair" displayIdxReadOnlyHidden="true">
             <ref field="CfgValBds" name="Bds"/>
             <ref field="CfgValGeofence" name="Geofence" />
             <ref field="CfgValHw" name="Hw"/>
@@ -893,6 +2424,7 @@
             <ref field="CfgValItfm" name="Itfm"/>
             <ref field="CfgValLogfilter" name="Logfilter"/>
             <ref field="CfgValMot" name="Mot"/>
+            <ref field="CfgValMsgOut" name="MsgOut"/>
         </variant>
     </fields>
 </schema>
