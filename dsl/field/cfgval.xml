@@ -472,36 +472,54 @@
             <validValue name="CFG_MSGOUT_UBX_TIM_VRFY_UART1" val="0x20910093" />
             <validValue name="CFG_MSGOUT_UBX_TIM_VRFY_UART2" val="0x20910094" />
             <validValue name="CFG_MSGOUT_UBX_TIM_VRFY_USB" val="0x20910095" />
+
+            <!-- CFG-NAVHPG -->
+            <validValue name="CFG_NAVHPG_DGNSSMODE" val="0x20140011" />
+
+            <!-- CFG-NAVSPG -->
+            <validValue name="CFG_NAVSPG_FIXMODE" val="0x20110011" />
+            <validValue name="CFG_NAVSPG_INIFIX3D" val="0x10110013" />
+            <validValue name="CFG_NAVSPG_WKNROLLOVER" val="0x30110017" />
+            <validValue name="CFG_NAVSPG_UTCSTANDARD" val="0x2011001c" />
+            <validValue name="CFG_NAVSPG_DYNMODEL" val="0x20110021" />
+            <validValue name="CFG_NAVSPG_ACKAIDING" val="0x10110025" />
+            <validValue name="CFG_NAVSPG_USE_USRDAT" val="0x10110061" />
+            <validValue name="CFG_NAVSPG_USRDAT_MAJA" val="0x50110062" />
+            <validValue name="CFG_NAVSPG_USRDAT_FLAT" val="0x50110063" />
+            <validValue name="CFG_NAVSPG_USRDAT_DX" val="0x40110064" />
+            <validValue name="CFG_NAVSPG_USRDAT_DY" val="0x40110065" />
+            <validValue name="CFG_NAVSPG_USRDAT_DZ" val="0x40110066" />
+            <validValue name="CFG_NAVSPG_USRDAT_ROTX" val="0x40110067" />
+            <validValue name="CFG_NAVSPG_USRDAT_ROTY" val="0x40110068" />
+            <validValue name="CFG_NAVSPG_USRDAT_ROTZ" val="0x40110069" />
+            <validValue name="CFG_NAVSPG_USRDAT_SCALE" val="0x4011006a" />
+            <validValue name="CFG_NAVSPG_INFIL_MINSVS" val="0x201100a1" />
+            <validValue name="CFG_NAVSPG_INFIL_MAXSVS" val="0x201100a2" />
+            <validValue name="CFG_NAVSPG_INFIL_MINCNO" val="0x201100a3" />
+            <validValue name="CFG_NAVSPG_INFIL_MINELEV" val="0x201100a4" />
+            <validValue name="CFG_NAVSPG_INFIL_NCNOTHRS" val="0x201100aa" />
+            <validValue name="CFG_NAVSPG_INFIL_CNOTHRS" val="0x201100ab" />
+            <validValue name="CFG_NAVSPG_OUTFIL_PDOP" val="0x301100b1" />
+            <validValue name="CFG_NAVSPG_OUTFIL_TDOP" val="0x301100b2" />
+            <validValue name="CFG_NAVSPG_OUTFIL_PACC" val="0x301100b3" />
+            <validValue name="CFG_NAVSPG_OUTFIL_TACC" val="0x301100b4" />
+            <validValue name="CFG_NAVSPG_OUTFIL_FACC" val="0x301100b5" />
+            <validValue name="CFG_NAVSPG_CONSTR_ALT" val="0x401100c1" />
+            <validValue name="CFG_NAVSPG_CONSTR_ALTVAR" val="0x401100c2" />
+            <validValue name="CFG_NAVSPG_CONSTR_DGNSSTO" val="0x201100c4" />
         </enum>
 
         <int name="CfgValU1" type="uint8" displayName="Val" />
+        <int name="CfgValI1" type="int8" displayName="Val" />
         <int name="CfgValU2" type="uint16" displayName="Val"/>
         <int name="CfgValU4" type="uint32" displayName="Val"/>
+        <int name="CfgValI4" type="int32" displayName="Val"/>
         <int name="CfgValU8" type="uint64" displayName="Val"/>
         <int name="CfgValL" reuse="CfgValU1" validRange="[0, 1]" displayName="Val" />
+        <float name="CfgValR4" type="float" displayName="Val"/>
+        <float name="CfgValR8" type="double" displayName="Val"/>
 
         <int name="CfgValKey" type="uint32" failOnInvalid="true" displayReadOnly="true" displayName="Key" />
-
-        <enum name="CfgValKeyGroup" type="uint8" hexAssign="true">
-            <validValue name="Geofence" val="0x24" />
-            <validValue name="Mot" val="0x25" />
-            <validValue name="Bds" val="0x34" />
-            <validValue name="Itfm" val="0x41" />
-            <validValue name="I2c" val="0x51" />
-            <validValue name="I2cInProt" val="0x71" />
-            <validValue name="I2cOutProt" val="0x72" />
-            <validValue name="MsgOut" val="0x91" />
-            <validValue name="InfMsg" val="0x92" />
-            <validValue name="Hw" val="0xa3" />
-            <validValue name="Logfilter" val="0xde" />
-        </enum>
-
-        <bitfield name="CfgValKeyFull" forceGen="true">
-            <!-- At this moment ignore reserved bits-->
-            <int name="id" type="uint16" />
-            <ref field="CfgValKeyGroup" name="group" />
-            <int name="size" type="uint8" />
-        </bitfield>
 
         <enum name="CfgValLayer" type="uint8">
             <validValue name="Ram" val="0" displayName="RAM" />
@@ -2390,6 +2408,157 @@
             <bundle name="MsgoutUbxTimVrfyUsb" displayName="CFG-MSGOUT-UBX_TIM_VRFY_USB">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_VRFY_USB" defaultValue="CfgValKeyId.CFG_MSGOUT_UBX_TIM_VRFY_USB" />
                 <ref field="CfgValU1" name="Val" />
+            </bundle>
+
+            <!-- CFG-NAVHPG -->
+            <bundle name="NavhpgDgnssmode" displayName="CFG-NAVHPG-DGNSSMODE">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVHPG_DGNSSMODE" defaultValue="CfgValKeyId.CFG_NAVHPG_DGNSSMODE" />
+                <enum name="Val" type="uint8">
+                    <validValue name="RTK_FLOAT" val="2" />
+                    <validValue name="RTK_FIXED" val="3" />
+                </enum>
+            </bundle>
+
+            <!-- CFG-NAVSPG -->
+            <bundle name="NavspgFixmode" displayName="CFG-NAVSPG-FIXMODE">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_FIXMODE" defaultValue="CfgValKeyId.CFG_NAVSPG_FIXMODE" />
+                <enum name="Val" type="uint8">
+                    <validValue name="ONLY_2D" val="1" />
+                    <validValue name="ONLY_3D" val="2" />
+                    <validValue name="AUTO" val="3" />
+                </enum>
+            </bundle>
+            <bundle name="NavspgInifix3d" displayName="CFG-NAVSPG-INIFIX3D">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_INIFIX3D" defaultValue="CfgValKeyId.CFG_NAVSPG_INIFIX3D" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="NavspgWknrollover" displayName="CFG-NAVSPG-WKNROLLOVER">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_WKNROLLOVER" defaultValue="CfgValKeyId.CFG_NAVSPG_WKNROLLOVER" />
+                <int reuse="CfgValU2" name="Val" validRange="[1, 4096]" />
+            </bundle>
+            <bundle name="NavspgUtcstandard" displayName="CFG-NAVSPG-UTCSTANDARD">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_UTCSTANDARD" defaultValue="CfgValKeyId.CFG_NAVSPG_UTCSTANDARD" />
+                <enum name="Val" type="uint8">
+                    <validValue name="AUTO" val="0" />
+                    <validValue name="USNO" val="3" />
+                    <validValue name="EU" val="5" />
+                    <validValue name="SU" val="6" />
+                    <validValue name="NTSC" val="7" />
+                </enum>
+            </bundle>
+            <bundle name="NavspgDynmodel" displayName="CFG-NAVSPG-DYNMODEL">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_DYNMODEL" defaultValue="CfgValKeyId.CFG_NAVSPG_DYNMODEL" />
+                <enum name="Val" type="uint8">
+                    <validValue name="PORT" val="0" />
+                    <validValue name="STAT" val="2" />
+                    <validValue name="PED" val="3" />
+                    <validValue name="AUTOMOT" val="4" />
+                    <validValue name="SEA" val="5" />
+                    <validValue name="AIR1" val="6" />
+                    <validValue name="AIR2" val="7" />
+                    <validValue name="AIR4" val="8" />
+                    <validValue name="WRIST" val="9" />
+                </enum>
+            </bundle>
+            <bundle name="NavspgAckaiding" displayName="CFG-NAVSPG-ACKAIDING">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_ACKAIDING" defaultValue="CfgValKeyId.CFG_NAVSPG_ACKAIDING" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="NavspgUseUsrdat" displayName="CFG-NAVSPG-USE_USRDAT">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_USE_USRDAT" defaultValue="CfgValKeyId.CFG_NAVSPG_USE_USRDAT" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="NavspgUsrdatMaja" displayName="CFG-NAVSPG-USRDAT_MAJA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_USRDAT_MAJA" defaultValue="CfgValKeyId.CFG_NAVSPG_USRDAT_MAJA" />
+                <float reuse="CfgValR8" name="Val" units="m" validRange="[6300000.0, 6500000.0]" defaultValue="6300000.0" />
+            </bundle>
+            <bundle name="NavspgUsrdatFlat" displayName="CFG-NAVSPG-USRDAT_FLAT">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_USRDAT_FLAT" defaultValue="CfgValKeyId.CFG_NAVSPG_USRDAT_FLAT" />
+                <float reuse="CfgValR8" name="Val" validRange="[0.0, 500.0]" />
+            </bundle>
+            <bundle name="NavspgUsrdatDx" displayName="CFG-NAVSPG-USRDAT_DX">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_USRDAT_DX" defaultValue="CfgValKeyId.CFG_NAVSPG_USRDAT_DX" />
+                <float reuse="CfgValR4" name="Val" units="m" validRange="[-5000.0, 5000.0]" />
+            </bundle>
+            <bundle name="NavspgUsrdatDy" displayName="CFG-NAVSPG-USRDAT_DY">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_USRDAT_DY" defaultValue="CfgValKeyId.CFG_NAVSPG_USRDAT_DY" />
+                <float reuse="CfgValR4" name="Val" units="m" validRange="[-5000.0, 5000.0]" />
+            </bundle>
+            <bundle name="NavspgUsrdatDz" displayName="CFG-NAVSPG-USRDAT_DZ">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_USRDAT_DZ" defaultValue="CfgValKeyId.CFG_NAVSPG_USRDAT_DZ" />
+                <float reuse="CfgValR4" name="Val" units="m" validRange="[-5000.0, 5000.0]" />
+            </bundle>
+            <bundle name="NavspgUsrdatRotx" displayName="CFG-NAVSPG-USRDAT_ROTX">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_USRDAT_ROTX" defaultValue="CfgValKeyId.CFG_NAVSPG_USRDAT_ROTX" />
+                <ref field="CfgValR4" name="Val" />
+            </bundle>
+            <bundle name="NavspgUsrdatRoty" displayName="CFG-NAVSPG-USRDAT_ROTY">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_USRDAT_ROTY" defaultValue="CfgValKeyId.CFG_NAVSPG_USRDAT_ROTY" />
+                <ref field="CfgValR4" name="Val" />
+            </bundle>
+            <bundle name="NavspgUsrdatRotz" displayName="CFG-NAVSPG-USRDAT_ROTZ">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_USRDAT_ROTZ" defaultValue="CfgValKeyId.CFG_NAVSPG_USRDAT_ROTZ" />
+                <ref field="CfgValR4" name="Val" />
+            </bundle>
+            <bundle name="NavspgUsrdatScale" displayName="CFG-NAVSPG-USRDAT_SCALE">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_USRDAT_SCALE" defaultValue="CfgValKeyId.CFG_NAVSPG_USRDAT_SCALE" />
+                <ref field="CfgValR4" name="Val" />
+            </bundle>
+            <bundle name="NavspgInfilMinsvs" displayName="CFG-NAVSPG-INFIL_MINSVS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_INFIL_MINSVS" defaultValue="CfgValKeyId.CFG_NAVSPG_INFIL_MINSVS" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NavspgInfilMaxsvs" displayName="CFG-NAVSPG-INFIL_MAXSVS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_INFIL_MAXSVS" defaultValue="CfgValKeyId.CFG_NAVSPG_INFIL_MAXSVS" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NavspgInfilMincno" displayName="CFG-NAVSPG-INFIL_MINCNO">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_INFIL_MINCNO" defaultValue="CfgValKeyId.CFG_NAVSPG_INFIL_MINCNO" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NavspgInfilMinelev" displayName="CFG-NAVSPG-INFIL_MINELEV">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_INFIL_MINELEV" defaultValue="CfgValKeyId.CFG_NAVSPG_INFIL_MINELEV" />
+                <int reuse="CfgValI1" name="Val" units="deg"/>
+            </bundle>
+            <bundle name="NavspgInfilNcnothrs" displayName="CFG-NAVSPG-INFIL_NCNOTHRS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_INFIL_NCNOTHRS" defaultValue="CfgValKeyId.CFG_NAVSPG_INFIL_NCNOTHRS" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NavspgInfilCnothrs" displayName="CFG-NAVSPG-INFIL_CNOTHRS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_INFIL_CNOTHRS" defaultValue="CfgValKeyId.CFG_NAVSPG_INFIL_CNOTHRS" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="NavspgOutfilPdop" displayName="CFG-NAVSPG-OUTFIL_PDOP">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_OUTFIL_PDOP" defaultValue="CfgValKeyId.CFG_NAVSPG_OUTFIL_PDOP" />
+                <int reuse="CfgValU2" name="Val" scaling="1/10"/>
+            </bundle>
+            <bundle name="NavspgOutfilTdop" displayName="CFG-NAVSPG-OUTFIL_TDOP">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_OUTFIL_TDOP" defaultValue="CfgValKeyId.CFG_NAVSPG_OUTFIL_TDOP" />
+                <int reuse="CfgValU2" name="Val" scaling="1/10"/>
+            </bundle>
+            <bundle name="NavspgOutfilPacc" displayName="CFG-NAVSPG-OUTFIL_PACC">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_OUTFIL_PACC" defaultValue="CfgValKeyId.CFG_NAVSPG_OUTFIL_PACC" />
+                <int reuse="CfgValU2" name="Val" units="m"/>
+            </bundle>
+            <bundle name="NavspgOutfilTacc" displayName="CFG-NAVSPG-OUTFIL_TACC">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_OUTFIL_TACC" defaultValue="CfgValKeyId.CFG_NAVSPG_OUTFIL_TACC" />
+                <int reuse="CfgValU2" name="Val" units="m"/>
+            </bundle>
+            <bundle name="NavspgOutfilFacc" displayName="CFG-NAVSPG-OUTFIL_FACC">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_OUTFIL_FACC" defaultValue="CfgValKeyId.CFG_NAVSPG_OUTFIL_FACC" />
+                <int reuse="CfgValU2" name="Val" units="m/s" scaling="1/100" />
+            </bundle>
+            <bundle name="NavspgConstrAlt" displayName="CFG-NAVSPG-CONSTR_ALT">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_CONSTR_ALT" defaultValue="CfgValKeyId.CFG_NAVSPG_CONSTR_ALT" />
+                <int reuse="CfgValI4" name="Val" units="m" scaling="1/100" />
+            </bundle>
+            <bundle name="NavspgConstrAltvar" displayName="CFG-NAVSPG-CONSTR_ALTVAR">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_CONSTR_ALTVAR" defaultValue="CfgValKeyId.CFG_NAVSPG_CONSTR_ALTVAR" />
+                <int reuse="CfgValU4" name="Val" scaling="1/10000" />
+            </bundle>
+            <bundle name="NavspgConstrDgnssto" displayName="CFG-NAVSPG-CONSTR_DGNSSTO">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_CONSTR_DGNSSTO" defaultValue="CfgValKeyId.CFG_NAVSPG_CONSTR_DGNSSTO" />
+                <int reuse="CfgValU1" name="Val" units="s" />
             </bundle>
         </variant>
     </fields>
