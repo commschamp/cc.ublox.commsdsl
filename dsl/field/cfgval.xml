@@ -507,6 +507,28 @@
             <validValue name="CFG_NAVSPG_CONSTR_ALT" val="0x401100c1" />
             <validValue name="CFG_NAVSPG_CONSTR_ALTVAR" val="0x401100c2" />
             <validValue name="CFG_NAVSPG_CONSTR_DGNSSTO" val="0x201100c4" />
+
+            <!-- CFG-NMEA -->
+            <validValue name="CFG_NMEA_PROTVER" val="0x20930001" />
+            <validValue name="CFG_NMEA_MAXSVS" val="0x20930002" />
+            <validValue name="CFG_NMEA_COMPAT" val="0x10930003" />
+            <validValue name="CFG_NMEA_CONSIDER" val="0x10930004" />
+            <validValue name="CFG_NMEA_LIMIT82" val="0x10930005" />
+            <validValue name="CFG_NMEA_HIGHPREC" val="0x10930006" />
+            <validValue name="CFG_NMEA_SVNUMBERING" val="0x20930007" />
+            <validValue name="CFG_NMEA_FILT_GPS" val="0x10930011" />
+            <validValue name="CFG_NMEA_FILT_SBAS" val="0x10930012" />
+            <validValue name="CFG_NMEA_FILT_GAL" val="0x10930013" />
+            <validValue name="CFG_NMEA_FILT_QZSS" val="0x10930015" />
+            <validValue name="CFG_NMEA_FILT_GLO" val="0x10930016" />
+            <validValue name="CFG_NMEA_FILT_BDS" val="0x10930017" />
+            <validValue name="CFG_NMEA_OUT_INVFIX" val="0x10930021" />
+            <validValue name="CFG_NMEA_OUT_MSKFIX" val="0x10930022" />
+            <validValue name="CFG_NMEA_OUT_INVTIME" val="0x10930023" />
+            <validValue name="CFG_NMEA_OUT_INVDATE" val="0x10930024" />
+            <validValue name="CFG_NMEA_OUT_ONLYGPS" val="0x10930025" />
+            <validValue name="CFG_NMEA_OUT_FROZENCOG" val="0x10930026" />
+            <validValue name="CFG_NMEA_MAINTALKERID" val="0x20930031" />
         </enum>
 
         <int name="CfgValU1" type="uint8" displayName="Val" />
@@ -2559,6 +2581,104 @@
             <bundle name="NavspgConstrDgnssto" displayName="CFG-NAVSPG-CONSTR_DGNSSTO">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NAVSPG_CONSTR_DGNSSTO" defaultValue="CfgValKeyId.CFG_NAVSPG_CONSTR_DGNSSTO" />
                 <int reuse="CfgValU1" name="Val" units="s" />
+            </bundle>
+
+            <!-- CFG-NMEA -->
+            <bundle name="NmeaProtver" displayName="CFG-NMEA-PROTVER">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_PROTVER" defaultValue="CfgValKeyId.CFG_NMEA_PROTVER" />
+                <ref field="NmeaVersion" name="Val" />
+            </bundle>
+            <bundle name="NmeaMaxsvs" displayName="CFG-NMEA-MAXSVS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_MAXSVS" defaultValue="CfgValKeyId.CFG_NMEA_MAXSVS" />
+                <enum name="Val" type="uint8">
+                    <validValue name="UNLIM" val="0" />
+                    <validValue name="SVS_8" val="8" />
+                    <validValue name="SVS_12" val="12" />
+                    <validValue name="SVS_16" val="16" />
+                </enum>
+            </bundle>
+            <bundle name="NmeaCompat" displayName="CFG-NMEA-COMPAT">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_COMPAT" defaultValue="CfgValKeyId.CFG_NMEA_COMPAT" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="NmeaConsider" displayName="CFG-NMEA-CONSIDER">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_CONSIDER" defaultValue="CfgValKeyId.CFG_NMEA_CONSIDER" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="NmeaLimit82" displayName="CFG-NMEA-LIMIT82">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_LIMIT82" defaultValue="CfgValKeyId.CFG_NMEA_LIMIT82" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="NmeaHighprec" displayName="CFG-NMEA-HIGHPREC">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_HIGHPREC" defaultValue="CfgValKeyId.CFG_NMEA_HIGHPREC" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="NmeaSvnumbering" displayName="CFG-NMEA-SVNUMBERING">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_SVNUMBERING" defaultValue="CfgValKeyId.CFG_NMEA_SVNUMBERING" />
+                <enum name="Val" type="uint8">
+                    <validValue name="AUTO" val="0" />
+                    <validValue name="GP" val="1" />
+                    <validValue name="GL" val="2" />
+                    <validValue name="GN" val="3" />
+                    <validValue name="GA" val="4" />
+                    <validValue name="GB" val="5" />
+                    <validValue name="GQ" val="6" />
+                </enum>
+            </bundle>
+            <bundle name="NmeaFiltGps" displayName="CFG-NMEA-FILT_GPS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_FILT_GPS" defaultValue="CfgValKeyId.CFG_NMEA_FILT_GPS" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="NmeaFiltSbas" displayName="CFG-NMEA-FILT_SBAS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_FILT_SBAS" defaultValue="CfgValKeyId.CFG_NMEA_FILT_SBAS" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="NmeaFiltGal" displayName="CFG-NMEA-FILT_GAL">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_FILT_GAL" defaultValue="CfgValKeyId.CFG_NMEA_FILT_GAL" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="NmeaFiltQzss" displayName="CFG-NMEA-FILT_QZSS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_FILT_QZSS" defaultValue="CfgValKeyId.CFG_NMEA_FILT_QZSS" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="NmeaFiltGlo" displayName="CFG-NMEA-FILT_GLO">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_FILT_GLO" defaultValue="CfgValKeyId.CFG_NMEA_FILT_GLO" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="NmeaFiltBds" displayName="CFG-NMEA-FILT_BDS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_FILT_BDS" defaultValue="CfgValKeyId.CFG_NMEA_FILT_BDS" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="NmeaOutInvfix" displayName="CFG-NMEA-OUT_INVFIX">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_OUT_INVFIX" defaultValue="CfgValKeyId.CFG_NMEA_OUT_INVFIX" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="NmeaOutMskfix" displayName="CFG-NMEA-OUT_MSKFIX">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_OUT_MSKFIX" defaultValue="CfgValKeyId.CFG_NMEA_OUT_MSKFIX" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="NmeaOutInvtime" displayName="CFG-NMEA-OUT_INVTIME">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_OUT_INVTIME" defaultValue="CfgValKeyId.CFG_NMEA_OUT_INVTIME" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="NmeaOutInvdate" displayName="CFG-NMEA-OUT_INVDATE">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_OUT_INVDATE" defaultValue="CfgValKeyId.CFG_NMEA_OUT_INVDATE" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="NmeaOutOnlygps" displayName="CFG-NMEA-OUT_ONLYGPS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_OUT_ONLYGPS" defaultValue="CfgValKeyId.CFG_NMEA_OUT_ONLYGPS" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="NmeaOutFrozencog" displayName="CFG-NMEA-OUT_FROZENCOG">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_OUT_FROZENCOG" defaultValue="CfgValKeyId.CFG_NMEA_OUT_FROZENCOG" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="NmeaOutMaintalkerid" displayName="CFG-NMEA-MAINTALKERID">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_NMEA_MAINTALKERID" defaultValue="CfgValKeyId.CFG_NMEA_MAINTALKERID" />
+                <enum name="Val" type="uint8">
+                    <validValue name="GNSS" val="0" />
+                    <validValue name="MAIN" val="1" />
+                </enum>
             </bundle>
         </variant>
     </fields>

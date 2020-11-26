@@ -9,13 +9,6 @@
             <bit name="gpsOnlyFilter" idx="4" />
             <bit name="trackFilt" idx="5" />
         </set>
-        <enum name="cfgNmeaVersion" type="uint8">
-            <validValue name="V411" val="0x4b" displayName="v4.11" />
-            <validValue name="V41" val="0x41" displayName="v4.1" />
-            <validValue name="V40" val="0x40" displayName="v4.0" />
-            <validValue name="V23" val="0x23" displayName="v2.3" />
-            <validValue name="V21" val="0x21" displayName="v2.1" />
-        </enum>
         <set name="cfgNmeaFlags" length="1">
             <bit name="compat" idx="0" />
             <bit name="consider" idx="1" />
@@ -51,7 +44,7 @@
     </fields>
     <message name="CfgNmeaV1" id="MsgId.CfgNmea" displayName="CFG-NMEA (V1)" order="0" platforms="+ublox8,ublox9">
         <ref field="cfgNmeaFilter" name="filter" />
-        <ref field="cfgNmeaVersion" name="nmeaVersion" />
+        <ref field="NmeaVersion" name="nmeaVersion" />
         <ref field="cfgNmeaNumSV" name="numSV" />
         <ref field="cfgNmeaFlags" name="flags" />
         <ref field="cfgNmeaGnssToFilter" name="gnssToFilter" />
@@ -65,7 +58,7 @@
 
     <message name="CfgNmeaV0" id="MsgId.CfgNmea" displayName="CFG-NMEA (V0)" order="1" platforms="+ublox7,ublox8">    
         <ref field="cfgNmeaFilter" name="filter" />
-        <ref field="cfgNmeaVersion" name="nmeaVersion" />
+        <ref field="NmeaVersion" name="nmeaVersion" />
         <ref field="cfgNmeaNumSV" name="numSV" />
         <ref field="cfgNmeaFlags" name="flags" />
         <ref field="cfgNmeaGnssToFilter" name="gnssToFilter" />
@@ -77,7 +70,7 @@
 
     <message name="CfgNmea" id="MsgId.CfgNmea" displayName="CFG-NMEA" order="2" platforms="-ublox9">    
         <ref field="cfgNmeaFilter" name="filter" />
-        <ref field="cfgNmeaVersion" name="nmeaVersion" />
+        <ref field="NmeaVersion" name="nmeaVersion" />
         <ref field="cfgNmeaNumSV" name="numSV" />
         <ref field="cfgNmeaFlags" name="flags" />
     </message>
