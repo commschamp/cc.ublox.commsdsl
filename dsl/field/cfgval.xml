@@ -550,6 +550,15 @@
             <validValue name="CFG_RATE_MEAS" val="0x30210001" />
             <validValue name="CFG_RATE_NAV" val="0x30210002" />
             <validValue name="CFG_RATE_TIMEREF" val="0x20210003 " />
+
+            <!-- CFG-RATE -->
+            <validValue name="CFG_RINV_DUMP" val="0x10c70001" />
+            <validValue name="CFG_RINV_BINARY" val="0x10c70002" />
+            <validValue name="CFG_RINV_DATA_SIZE" val="0x20c70003 " />
+            <validValue name="CFG_RINV_CHUNK0" val="0x50c70004 " />
+            <validValue name="CFG_RINV_CHUNK1" val="0x50c70005 " />
+            <validValue name="CFG_RINV_CHUNK2" val="0x50c70006 " />
+            <validValue name="CFG_RINV_CHUNK3" val="0x50c70007 " />
         </enum>
 
         <int name="CfgValU1" type="uint8" displayName="Val" />
@@ -2778,6 +2787,36 @@
                     <validValue name="BDS" val="3" />
                     <validValue name="GAL" val="4" />
                 </enum>
+            </bundle>
+
+            <!-- CFG-RINV -->
+            <bundle name="RinvDump" displayName="CFG-RINV-DUMP">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_RINV_DUMP" defaultValue="CfgValKeyId.CFG_RINV_DUMP" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="RinvBinary" displayName="CFG-RINV-BINARY">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_RINV_BINARY" defaultValue="CfgValKeyId.CFG_RINV_BINARY" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="RinvDataSize" displayName="CFG-RINV-DATA_SIZE">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_RINV_DATA_SIZE" defaultValue="CfgValKeyId.CFG_RINV_DATA_SIZE" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="RinvChunk0" displayName="CFG-RINV-CHUNK0">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_RINV_CHUNK0" defaultValue="CfgValKeyId.CFG_RINV_CHUNK0" />
+                <ref field="CfgValU8" name="Val" />
+            </bundle>
+            <bundle name="RinvChunk1" displayName="CFG-RINV-CHUNK1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_RINV_CHUNK1" defaultValue="CfgValKeyId.CFG_RINV_CHUNK1" />
+                <ref field="CfgValU8" name="Val" />
+            </bundle>
+            <bundle name="RinvChunk2" displayName="CFG-RINV-CHUNK2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_RINV_CHUNK2" defaultValue="CfgValKeyId.CFG_RINV_CHUNK2" />
+                <ref field="CfgValU8" name="Val" />
+            </bundle>
+            <bundle name="RinvChunk3" displayName="CFG-RINV-CHUNK3">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_RINV_CHUNK3" defaultValue="CfgValKeyId.CFG_RINV_CHUNK3" />
+                <ref field="CfgValU8" name="Val" />
             </bundle>
         </variant>
     </fields>
