@@ -545,6 +545,11 @@
             <validValue name="CFG_QZSS_USE_SLAS_DGNSS" val="0x10370005" />
             <validValue name="CFG_QZSS_USE_SLAS_TESTMODE" val="0x10370006" />
             <validValue name="CFG_QZSS_USE_SLAS_RAIM_UNCORR" val="0x10370007 " />
+
+            <!-- CFG-RATE -->
+            <validValue name="CFG_RATE_MEAS" val="0x30210001" />
+            <validValue name="CFG_RATE_NAV" val="0x30210002" />
+            <validValue name="CFG_RATE_TIMEREF" val="0x20210003 " />
         </enum>
 
         <int name="CfgValU1" type="uint8" displayName="Val" />
@@ -2753,6 +2758,26 @@
             <bundle name="QzssUseSlasRaimUncorr" displayName="CFG-QZSS-USE_SLAS_RAIM_UNCORR">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_QZSS_USE_SLAS_RAIM_UNCORR" defaultValue="CfgValKeyId.CFG_QZSS_USE_SLAS_RAIM_UNCORR" />
                 <ref field="CfgValL" name="Val" />
+            </bundle>
+
+            <!-- CFG-RATE -->
+            <bundle name="RateMeas" displayName="CFG-RATE-MEAS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_RATE_MEAS" defaultValue="CfgValKeyId.CFG_RATE_MEAS" />
+                <int reuse="CfgValU2" name="Val" units="s" scaling="1/1000" displayDecimals="3" />
+            </bundle>
+            <bundle name="RateNav" displayName="CFG-RATE-NAV">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_RATE_NAV" defaultValue="CfgValKeyId.CFG_RATE_NAV" />
+                <ref field="CfgValU2" name="Val" />
+            </bundle>
+            <bundle name="RateTimeref" displayName="CFG-RATE-TIMEREF">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_RATE_TIMEREF" defaultValue="CfgValKeyId.CFG_RATE_TIMEREF" />
+                <enum name="Val" type="uint8">
+                    <validValue name="UTC" val="0" />
+                    <validValue name="GPS" val="1" />
+                    <validValue name="GLO" val="2" />
+                    <validValue name="BDS" val="3" />
+                    <validValue name="GAL" val="4" />
+                </enum>
             </bundle>
         </variant>
     </fields>
