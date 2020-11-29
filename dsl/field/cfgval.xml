@@ -529,6 +529,17 @@
             <validValue name="CFG_NMEA_OUT_ONLYGPS" val="0x10930025" />
             <validValue name="CFG_NMEA_OUT_FROZENCOG" val="0x10930026" />
             <validValue name="CFG_NMEA_MAINTALKERID" val="0x20930031" />
+
+            <!-- CFG-ODO -->
+            <validValue name="CFG_ODO_USE_ODO" val="0x10220001" />
+            <validValue name="CFG_ODO_USE_COG" val="0x10220002" />
+            <validValue name="CFG_ODO_OUTLPVEL" val="0x10220003" />
+            <validValue name="CFG_ODO_OUTLPCOG" val="0x10220004" />
+            <validValue name="CFG_ODO_PROFILE" val="0x20220005" />
+            <validValue name="CFG_ODO_COGMAXSPEED" val="0x20220021" />
+            <validValue name="CFG_ODO_COGMAXPOSACC" val="0x20220022" />
+            <validValue name="CFG_ODO_VELLPGAIN" val="0x20220031" />
+            <validValue name="CFG_ODO_COGLPGAIN" val="0x20220032" />
         </enum>
 
         <int name="CfgValU1" type="uint8" displayName="Val" />
@@ -2679,6 +2690,50 @@
                     <validValue name="GNSS" val="0" />
                     <validValue name="MAIN" val="1" />
                 </enum>
+            </bundle>
+
+            <!-- CFG-ODO -->
+            <bundle name="OdoUseOdo" displayName="CFG-ODO-USE_ODO">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_ODO_USE_ODO" defaultValue="CfgValKeyId.CFG_ODO_USE_ODO" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="OdoUseCog" displayName="CFG-ODO-USE_COG">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_ODO_USE_COG" defaultValue="CfgValKeyId.CFG_ODO_USE_COG" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="OdoOutlpvel" displayName="CFG-ODO-OUTLPVEL">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_ODO_OUTLPVEL" defaultValue="CfgValKeyId.CFG_ODO_OUTLPVEL" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="OdoOutlpcog" displayName="CFG-ODO-OUTLPCOG">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_ODO_OUTLPCOG" defaultValue="CfgValKeyId.CFG_ODO_OUTLPCOG" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="OdoProfile" displayName="CFG-ODO-PROFILE">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_ODO_PROFILE" defaultValue="CfgValKeyId.CFG_ODO_PROFILE" />
+                <enum name="Val" type="uint8">
+                    <validValue name="RUN" val="0" />
+                    <validValue name="CYCL" val="1" />
+                    <validValue name="SWIM" val="2" />
+                    <validValue name="CAR" val="3" />
+                    <validValue name="CUSTOM" val="4" />
+                </enum>
+            </bundle>
+            <bundle name="OdoCogmaxspeed" displayName="CFG-ODO-COGMAXSPEED">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_ODO_COGMAXSPEED" defaultValue="CfgValKeyId.CFG_ODO_COGMAXSPEED" />
+                <int reuse="CfgValU1" name="Val" units="m/s" />
+            </bundle>
+            <bundle name="OdoCogmaxposacc" displayName="CFG-ODO-COGMAXPOSACC">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_ODO_COGMAXPOSACC" defaultValue="CfgValKeyId.CFG_ODO_COGMAXPOSACC" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="OdoVellpgain" displayName="CFG-ODO-VELLPGAIN">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_ODO_VELLPGAIN" defaultValue="CfgValKeyId.CFG_ODO_VELLPGAIN" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="OdoCoglpgain" displayName="CFG-ODO-COGLPGAIN">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_ODO_COGLPGAIN" defaultValue="CfgValKeyId.CFG_ODO_COGLPGAIN" />
+                <ref field="CfgValU1" name="Val" />
             </bundle>
         </variant>
     </fields>
