@@ -540,6 +540,11 @@
             <validValue name="CFG_ODO_COGMAXPOSACC" val="0x20220022" />
             <validValue name="CFG_ODO_VELLPGAIN" val="0x20220031" />
             <validValue name="CFG_ODO_COGLPGAIN" val="0x20220032" />
+
+            <!-- CFG-QZSS -->
+            <validValue name="CFG_QZSS_USE_SLAS_DGNSS" val="0x10370005" />
+            <validValue name="CFG_QZSS_USE_SLAS_TESTMODE" val="0x10370006" />
+            <validValue name="CFG_QZSS_USE_SLAS_RAIM_UNCORR" val="0x10370007 " />
         </enum>
 
         <int name="CfgValU1" type="uint8" displayName="Val" />
@@ -2734,6 +2739,20 @@
             <bundle name="OdoCoglpgain" displayName="CFG-ODO-COGLPGAIN">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_ODO_COGLPGAIN" defaultValue="CfgValKeyId.CFG_ODO_COGLPGAIN" />
                 <ref field="CfgValU1" name="Val" />
+            </bundle>
+
+            <!-- CFG-QZSS -->
+            <bundle name="QzssUseSlasDgnss" displayName="CFG-QZSS-USE_SLAS_DGNSS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_QZSS_USE_SLAS_DGNSS" defaultValue="CfgValKeyId.CFG_QZSS_USE_SLAS_DGNSS" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="QzssUseSlasTestmode" displayName="CFG-QZSS-USE_SLAS_TESTMODE">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_QZSS_USE_SLAS_TESTMODE" defaultValue="CfgValKeyId.CFG_QZSS_USE_SLAS_TESTMODE" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="QzssUseSlasRaimUncorr" displayName="CFG-QZSS-USE_SLAS_RAIM_UNCORR">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_QZSS_USE_SLAS_RAIM_UNCORR" defaultValue="CfgValKeyId.CFG_QZSS_USE_SLAS_RAIM_UNCORR" />
+                <ref field="CfgValL" name="Val" />
             </bundle>
         </variant>
     </fields>
