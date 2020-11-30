@@ -559,6 +559,12 @@
             <validValue name="CFG_RINV_CHUNK1" val="0x50c70005 " />
             <validValue name="CFG_RINV_CHUNK2" val="0x50c70006 " />
             <validValue name="CFG_RINV_CHUNK3" val="0x50c70007 " />
+
+            <!-- CFG-RTCM -->
+            <validValue name="CFG_RTCM_DF003_OUT" val="0x30090001" />
+            <validValue name="CFG_RTCM_DF003_IN" val="0x30090008" />
+            <validValue name="CFG_RTCM_DF003_IN_FILTER" val="0x20090009" />
+
         </enum>
 
         <int name="CfgValU1" type="uint8" displayName="Val" />
@@ -2817,6 +2823,24 @@
             <bundle name="RinvChunk3" displayName="CFG-RINV-CHUNK3">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_RINV_CHUNK3" defaultValue="CfgValKeyId.CFG_RINV_CHUNK3" />
                 <ref field="CfgValU8" name="Val" />
+            </bundle>
+
+            <!-- CFG-RTCM -->
+            <bundle name="RtcmDf003Out" displayName="CFG-RTCM-DF003_OUT">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_RTCM_DF003_OUT" defaultValue="CfgValKeyId.CFG_RTCM_DF003_OUT" />
+                <ref field="CfgValU2" name="Val" />
+            </bundle>
+            <bundle name="RtcmDf003In" displayName="CFG-RTCM-DF003_IN">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_RTCM_DF003_IN" defaultValue="CfgValKeyId.CFG_RTCM_DF003_IN" />
+                <ref field="CfgValU2" name="Val" />
+            </bundle>
+            <bundle name="RtcmDf003InFilter" displayName="CFG-RTCM-DF003_IN_FILTER">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_RTCM_DF003_IN_FILTER" defaultValue="CfgValKeyId.CFG_RTCM_DF003_IN_FILTER" />
+                <enum name="Val" type="uint8">
+                    <validValue name="DISABLED" val="0" />
+                    <validValue name="RELAXED" val="1" />
+                    <validValue name="STRICT" val="2" />
+                </enum>
             </bundle>
         </variant>
     </fields>
