@@ -571,6 +571,26 @@
             <validValue name="CFG_SBAS_USE_DIFFCORR" val="0x10360004" />
             <validValue name="CFG_SBAS_USE_INTEGRITY" val="0x10360005" />
             <validValue name="CFG_SBAS_PRNSCANMASK" val="0x50360006" />
+
+            <!-- CFG-SIGNAL -->
+            <validValue name="CFG_SIGNAL_GPS_ENA" val="0x1031001f" />
+            <validValue name="CFG_SIGNAL_GPS_L1CA_ENA" val="0x10310001" />
+            <validValue name="CFG_SIGNAL_GPS_L2C_ENA" val="0x10310003" />
+            <validValue name="CFG_SIGNAL_SBAS_ENA" val="0x10310020" />
+            <validValue name="CFG_SIGNAL_SBAS_L1CA_ENA" val="0x10310005" />
+            <validValue name="CFG_SIGNAL_GAL_ENA" val="0x10310021" />
+            <validValue name="CFG_SIGNAL_GAL_E1_ENA" val="0x10310007" />
+            <validValue name="CFG_SIGNAL_GAL_E5B_ENA" val="0x1031000a" />
+            <validValue name="CFG_SIGNAL_BDS_ENA" val="0x10310022" />
+            <validValue name="CFG_SIGNAL_BDS_B1_ENA" val="0x1031000d" />
+            <validValue name="CFG_SIGNAL_BDS_B2_ENA" val="0x1031000e" />
+            <validValue name="CFG_SIGNAL_QZSS_ENA" val="0x10310024" />
+            <validValue name="CFG_SIGNAL_QZSS_L1CA_ENA" val="0x10310012" />
+            <validValue name="CFG_SIGNAL_QZSS_L1S_ENA" val="0x10310014" />
+            <validValue name="CFG_SIGNAL_QZSS_L2C_ENA" val="0x10310015" />
+            <validValue name="CFG_SIGNAL_GLO_ENA" val="0x10310025" />
+            <validValue name="CFG_SIGNAL_GLO_L1_ENA" val="0x10310018" />
+            <validValue name="CFG_SIGNAL_GLO_L2_ENA" val="0x1031001a" />
         </enum>
 
         <int name="CfgValU1" type="uint8" displayName="Val" />
@@ -2909,6 +2929,80 @@
                     <bit name="PRN157" idx="37" />
                     <bit name="PRN158" idx="38" />
                 </set>
+            </bundle>
+
+            <!-- CFG-SIGNAL -->
+            <bundle name="SignalGpsEna" displayName="CFG-SIGNAL-GPS_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SIGNAL_GPS_ENA" defaultValue="CfgValKeyId.CFG_SIGNAL_GPS_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SignalGpsL1caEna" displayName="CFG-SIGNAL-GPS_L1CA_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SIGNAL_GPS_L1CA_ENA" defaultValue="CfgValKeyId.CFG_SIGNAL_GPS_L1CA_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SignalGpsL2cEna" displayName="CFG-SIGNAL-GPS_L2C_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SIGNAL_GPS_L2C_ENA" defaultValue="CfgValKeyId.CFG_SIGNAL_GPS_L2C_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SignalSbasEna" displayName="CFG-SIGNAL-SBAS_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SIGNAL_SBAS_ENA" defaultValue="CfgValKeyId.CFG_SIGNAL_SBAS_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SignalSbasL1caEna" displayName="CFG-SIGNAL-SBAS_L1CA_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SIGNAL_SBAS_L1CA_ENA" defaultValue="CfgValKeyId.CFG_SIGNAL_SBAS_L1CA_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SignalGalEna" displayName="CFG-SIGNAL-GAL_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SIGNAL_GAL_ENA" defaultValue="CfgValKeyId.CFG_SIGNAL_GAL_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SignalGalE1Ena" displayName="CFG-SIGNAL-GAL_E1_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SIGNAL_GAL_E1_ENA" defaultValue="CfgValKeyId.CFG_SIGNAL_GAL_E1_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SignalGalE5bEna" displayName="CFG-SIGNAL-GAL_E5B_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SIGNAL_GAL_E5B_ENA" defaultValue="CfgValKeyId.CFG_SIGNAL_GAL_E5B_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SignalBdsEna" displayName="CFG-SIGNAL-BDS_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SIGNAL_BDS_ENA" defaultValue="CfgValKeyId.CFG_SIGNAL_BDS_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SignalBdsB1Ena" displayName="CFG-SIGNAL-BDS_B1_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SIGNAL_BDS_B1_ENA" defaultValue="CfgValKeyId.CFG_SIGNAL_BDS_B1_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SignalBdsB2Ena" displayName="CFG-SIGNAL-BDS_B2_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SIGNAL_BDS_B2_ENA" defaultValue="CfgValKeyId.CFG_SIGNAL_BDS_B2_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SignalQzssEna" displayName="CFG-SIGNAL-QZSS_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SIGNAL_QZSS_ENA" defaultValue="CfgValKeyId.CFG_SIGNAL_QZSS_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SignalQzssL1caEna" displayName="CFG-SIGNAL-QZSS_L1CA_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SIGNAL_QZSS_L1CA_ENA" defaultValue="CfgValKeyId.CFG_SIGNAL_QZSS_L1CA_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SignalQzssL1sEna" displayName="CFG-SIGNAL-QZSS_L1S_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SIGNAL_QZSS_L1S_ENA" defaultValue="CfgValKeyId.CFG_SIGNAL_QZSS_L1S_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SignalQzssL2cEna" displayName="CFG-SIGNAL-QZSS_L2C_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SIGNAL_QZSS_L2C_ENA" defaultValue="CfgValKeyId.CFG_SIGNAL_QZSS_L2C_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SignalGloEna" displayName="CFG-SIGNAL-GLO_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SIGNAL_GLO_ENA" defaultValue="CfgValKeyId.CFG_SIGNAL_GLO_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SignalGloL1Ena" displayName="CFG-SIGNAL-GLO_L1_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SIGNAL_GLO_L1_ENA" defaultValue="CfgValKeyId.CFG_SIGNAL_GLO_L1_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SignalGloL2Ena" displayName="CFG-SIGNAL-GLO_L2_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SIGNAL_GLO_L2_ENA" defaultValue="CfgValKeyId.CFG_SIGNAL_GLO_L2_ENA" />
+                <ref field="CfgValL" name="Val" />
             </bundle>
         </variant>
     </fields>
