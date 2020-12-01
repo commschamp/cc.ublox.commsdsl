@@ -40,9 +40,13 @@
             <description value="Longitude" />
         </int>
         <int reuse="lon" name="lat" description="Latitude" />
+        <int name="latHP" type="int8" units="deg" scaling="1/1000000000" displayDecimals="9" />    
+        <int name="lonHP" type="int8" units="deg" scaling="1/1000000000" displayDecimals="9" />    
         <int name="height" type="int32" units="mm" >
             <description value="Height above ellipsoid" />
         </int>
+        <int name="alt" type="int32" units="cm" />
+        <int name="altHP" type="int8" units="mm" scaling="1/10" displayDecimals="1" />
         <int name="hMSL" type="int32" units="mm">
             <description value="Height above mean sea level" />
         </int>
@@ -89,6 +93,7 @@
             <validValue name="V40" val="0x40" displayName="v4.0" />
             <validValue name="V23" val="0x23" displayName="v2.3" />
             <validValue name="V21" val="0x21" displayName="v2.1" />
-        </enum>                
+        </enum>
+        <int name="fixedPosAcc" type="uint32" units="mm" scaling="1/10" displayDecimals="1" />
     </fields>
 </schema>

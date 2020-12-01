@@ -604,10 +604,29 @@
             <validValue name="CFG_SPIINPROT_NMEA" val="0x10790002" />
             <validValue name="CFG_SPIINPROT_RTCM3X" val="0x10790004" />
 
-            <!-- CFG-SPIINPROT -->
+            <!-- CFG-SPIOUTPROT -->
             <validValue name="CFG_SPIOUTPROT_UBX" val="0x107a0001" />
             <validValue name="CFG_SPIOUTPROT_NMEA" val="0x107a0002" />
             <validValue name="CFG_SPIOUTPROT_RTCM3X" val="0x107a0004" />
+
+            <!-- CFG-TMODE -->
+            <validValue name="CFG_TMODE_MODE" val="0x20030001" />
+            <validValue name="CFG_TMODE_POS_TYPE" val="0x20030002" />
+            <validValue name="CFG_TMODE_ECEF_X" val="0x40030003" />
+            <validValue name="CFG_TMODE_ECEF_Y" val="0x40030004" />
+            <validValue name="CFG_TMODE_ECEF_Z" val="0x40030005" />
+            <validValue name="CFG_TMODE_ECEF_X_HP" val="0x20030006" />
+            <validValue name="CFG_TMODE_ECEF_Y_HP" val="0x20030007" />
+            <validValue name="CFG_TMODE_ECEF_Z_HP" val="0x20030008" />
+            <validValue name="CFG_TMODE_LAT" val="0x40030009" />
+            <validValue name="CFG_TMODE_LON" val="0x4003000a" />
+            <validValue name="CFG_TMODE_HEIGHT" val="0x4003000b" />
+            <validValue name="CFG_TMODE_LAT_HP" val="0x2003000c" />
+            <validValue name="CFG_TMODE_LON_HP" val="0x2003000d" />
+            <validValue name="CFG_TMODE_HEIGHT_HP" val="0x2003000e" />
+            <validValue name="CFG_TMODE_FIXED_POS_ACC" val="0x4003000f" />
+            <validValue name="CFG_TMODE_SVIN_MIN_DUR" val="0x40030010" />
+            <validValue name="CFG_TMODE_SVIN_ACC_LIMIT" val="0x40030011" />
         </enum>
 
         <int name="CfgValU1" type="uint8" displayName="Val" />
@@ -3072,6 +3091,82 @@
                 <ref field="CfgValL" name="Val" />
             </bundle>
 
+            <!-- CFG-TMODE -->
+            <bundle name="TmodeMode" displayName="CFG-TMODE-MODE">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TMODE_MODE" defaultValue="CfgValKeyId.CFG_TMODE_MODE" />
+                <enum name="Val" type="uint8">
+                    <validValue name="DISABLED" val="0" />
+                    <validValue name="SURVEY_IN" val="1" />
+                    <validValue name="FIXED" val="2" />
+                </enum>
+            </bundle>
+            <bundle name="TmodePosType" displayName="CFG-TMODE-POS_TYPE">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TMODE_POS_TYPE" defaultValue="CfgValKeyId.CFG_TMODE_POS_TYPE" />
+                <enum name="Val" type="uint8">
+                    <validValue name="ECEF" val="0" />
+                    <validValue name="LLH" val="1" />
+                </enum>
+            </bundle>
+            <bundle name="TmodeEcefX" displayName="CFG-TMODE-ECEF_X">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TMODE_ECEF_X" defaultValue="CfgValKeyId.CFG_TMODE_ECEF_X" />
+                <ref field="ecefX" name="Val" />
+            </bundle>
+            <bundle name="TmodeEcefY" displayName="CFG-TMODE-ECEF_Y">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TMODE_ECEF_Y" defaultValue="CfgValKeyId.CFG_TMODE_ECEF_Y" />
+                <ref field="ecefY" name="Val" />
+            </bundle>
+            <bundle name="TmodeEcefZ" displayName="CFG-TMODE-ECEF_Z">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TMODE_ECEF_Z" defaultValue="CfgValKeyId.CFG_TMODE_ECEF_Z" />
+                <ref field="ecefZ" name="Val" />
+            </bundle>
+            <bundle name="TmodeEcefXHp" displayName="CFG-TMODE-ECEF_X_HP">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TMODE_ECEF_X_HP" defaultValue="CfgValKeyId.CFG_TMODE_ECEF_X_HP" />
+                <ref field="ecefHP" name="Val" />
+            </bundle>
+            <bundle name="TmodeEcefYHp" displayName="CFG-TMODE-ECEF_Y_HP">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TMODE_ECEF_Y_HP" defaultValue="CfgValKeyId.CFG_TMODE_ECEF_Y_HP" />
+                <ref field="ecefHP" name="Val" />
+            </bundle>
+            <bundle name="TmodeEcefZHp" displayName="CFG-TMODE-ECEF_Z_HP">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TMODE_ECEF_Z_HP" defaultValue="CfgValKeyId.CFG_TMODE_ECEF_Z_HP" />
+                <ref field="ecefHP" name="Val" />
+            </bundle>
+            <bundle name="TmodeLat" displayName="CFG-TMODE-LAT">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TMODE_LAT" defaultValue="CfgValKeyId.CFG_TMODE_LAT" />
+                <ref field="lat" name="Val" />
+            </bundle>
+            <bundle name="TmodeLon" displayName="CFG-TMODE-LON">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TMODE_LON" defaultValue="CfgValKeyId.CFG_TMODE_LON" />
+                <ref field="lon" name="Val" />
+            </bundle>
+            <bundle name="TmodeHeight" displayName="CFG-TMODE-HEIGHT">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TMODE_HEIGHT" defaultValue="CfgValKeyId.CFG_TMODE_HEIGHT" />
+                <ref field="alt" name="Val" />
+            </bundle>
+            <bundle name="TmodeLatHp" displayName="CFG-TMODE-LAT_HP">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TMODE_LAT_HP" defaultValue="CfgValKeyId.CFG_TMODE_LAT_HP" />
+                <ref field="latHP" name="Val" />
+            </bundle>
+            <bundle name="TmodeLonHp" displayName="CFG-TMODE-LON_HP">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TMODE_LON_HP" defaultValue="CfgValKeyId.CFG_TMODE_LON_HP" />
+                <ref field="lonHP" name="Val" />
+            </bundle>
+            <bundle name="TmodeHeightHp" displayName="CFG-TMODE-HEIGHT_HP">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TMODE_HEIGHT_HP" defaultValue="CfgValKeyId.CFG_TMODE_HEIGHT_HP" />
+                <ref field="altHP" name="Val" />
+            </bundle>
+            <bundle name="TmodeFixedPosAcc" displayName="CFG-TMODE-FIXED_POS_ACC">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TMODE_FIXED_POS_ACC" defaultValue="CfgValKeyId.CFG_TMODE_FIXED_POS_ACC" />
+                <ref field="fixedPosAcc" name="Val"/>
+            </bundle>
+            <bundle name="TmodeSvinMinDur" displayName="CFG-TMODE-SVIN_MIN_DUR">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TMODE_SVIN_MIN_DUR" defaultValue="CfgValKeyId.CFG_TMODE_SVIN_MIN_DUR" />
+                <int name="Val" type="uint32" units="s" />
+            </bundle>
+            <bundle name="TmodeSvinAccLimit" displayName="CFG-TMODE-SVIN_ACC_LIMIT">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TMODE_SVIN_ACC_LIMIT" defaultValue="CfgValKeyId.CFG_TMODE_SVIN_ACC_LIMIT" />
+                <int name="Val" type="uint32" units="mm" scaling="1/10" displayDecimals="1"/>
+            </bundle>
         </variant>
     </fields>
 </schema>

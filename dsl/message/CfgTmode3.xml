@@ -25,16 +25,16 @@
         </optional>
         <optional name="lla" defaultMode="missing" displayExtModeCtrl="true">
             <bundle name="llaWrap" displayName="_">
-                <int name="lat" type="int32" units="deg" scaling="1/10000000" displayDecimals="7"/>
-                <int name="lon" type="int32" units="deg" scaling="1/10000000" displayDecimals="7"/>
-                <int name="alt" type="int32" units="cm"/>
-                <int name="latHP" type="int8" units="deg" scaling="1/1000000000" displayDecimals="9" />    
-                <int name="lonHP" type="int8" units="deg" scaling="1/1000000000" displayDecimals="9" />    
-                <int name="altHP" type="int8" units="mm" scaling="1/10" displayDecimals="1"/>    
+                <ref field="lat" />
+                <ref field="lon" />
+                <ref field="alt" />
+                <ref field="latHP" />
+                <ref field="lonHP" />
+                <ref field="altHP" />
             </bundle>
         </optional>
         <ref field="res1" name="reserved2" />
-        <int name="fixedPosAcc" type="uint32" units="mm" scaling="1/10" displayDecimals="1" />
+        <ref field="fixedPosAcc" />
         <int name="svinMinDur" type="uint32" units="s" />
         <int name="svinVarLimit" type="uint32" units="mm" scaling="1/10" displayDecimals="1"/>
         <ref field="res8" name="reserved3" />
