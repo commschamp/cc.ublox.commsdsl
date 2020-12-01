@@ -599,6 +599,15 @@
             <validValue name="CFG_SPI_EXTENDEDTIMEOUT" val="0x10640005" />
             <validValue name="CFG_SPI_ENABLED" val="0x10640006" />
 
+            <!-- CFG-SPIINPROT -->
+            <validValue name="CFG_SPIINPROT_UBX" val="0x10790001" />
+            <validValue name="CFG_SPIINPROT_NMEA" val="0x10790002" />
+            <validValue name="CFG_SPIINPROT_RTCM3X" val="0x10790004" />
+
+            <!-- CFG-SPIINPROT -->
+            <validValue name="CFG_SPIOUTPROT_UBX" val="0x107a0001" />
+            <validValue name="CFG_SPIOUTPROT_NMEA" val="0x107a0002" />
+            <validValue name="CFG_SPIOUTPROT_RTCM3X" val="0x107a0004" />
         </enum>
 
         <int name="CfgValU1" type="uint8" displayName="Val" />
@@ -3034,6 +3043,35 @@
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SPI_ENABLED" defaultValue="CfgValKeyId.CFG_SPI_ENABLED" />
                 <ref field="CfgValL" name="Val" />
             </bundle>
+
+            <!-- CFG-SPIINPROT -->
+            <bundle name="SpiinprotUbx" displayName="CFG-SPIINPROT-UBX">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SPIINPROT_UBX" defaultValue="CfgValKeyId.CFG_SPIINPROT_UBX" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SpiinprotNmea" displayName="CFG-SPIINPROT-NMEA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SPIINPROT_NMEA" defaultValue="CfgValKeyId.CFG_SPIINPROT_NMEA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SpiinprotRtcm3x" displayName="CFG-SPIINPROT-RTCM3X">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SPIINPROT_RTCM3X" defaultValue="CfgValKeyId.CFG_SPIINPROT_RTCM3X" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+
+            <!-- CFG-SPIOUTPROT -->
+            <bundle name="SpioutprotUbx" displayName="CFG-SPIOUTPROT-UBX">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SPIOUTPROT_UBX" defaultValue="CfgValKeyId.CFG_SPIOUTPROT_UBX" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SpioutprotNmea" displayName="CFG-SPIOUTPROT-NMEA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SPIOUTPROT_NMEA" defaultValue="CfgValKeyId.CFG_SPIOUTPROT_NMEA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SpioutprotRtcm3x" displayName="CFG-SPIOUTPROT-RTCM3X">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SPIOUTPROT_RTCM3X" defaultValue="CfgValKeyId.CFG_SPIOUTPROT_RTCM3X" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+
         </variant>
     </fields>
 </schema>
