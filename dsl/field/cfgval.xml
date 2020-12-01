@@ -591,6 +591,14 @@
             <validValue name="CFG_SIGNAL_GLO_ENA" val="0x10310025" />
             <validValue name="CFG_SIGNAL_GLO_L1_ENA" val="0x10310018" />
             <validValue name="CFG_SIGNAL_GLO_L2_ENA" val="0x1031001a" />
+
+            <!-- CFG-SPI -->
+            <validValue name="CFG_SPI_MAXFF" val="0x20640001" />
+            <validValue name="CFG_SPI_CPOLARITY" val="0x10640002" />
+            <validValue name="CFG_SPI_CPHASE" val="0x10640003" />
+            <validValue name="CFG_SPI_EXTENDEDTIMEOUT" val="0x10640005" />
+            <validValue name="CFG_SPI_ENABLED" val="0x10640006" />
+
         </enum>
 
         <int name="CfgValU1" type="uint8" displayName="Val" />
@@ -3002,6 +3010,28 @@
             </bundle>
             <bundle name="SignalGloL2Ena" displayName="CFG-SIGNAL-GLO_L2_ENA">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SIGNAL_GLO_L2_ENA" defaultValue="CfgValKeyId.CFG_SIGNAL_GLO_L2_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+
+            <!-- CFG-SPI -->
+            <bundle name="SpiMaxff" displayName="CFG-SPI-MAXFF">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SPI_MAXFF" defaultValue="CfgValKeyId.CFG_SPI_MAXFF" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SpiCpolarity" displayName="CFG-SPI-CPOLARITY">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SPI_CPOLARITY" defaultValue="CfgValKeyId.CFG_SPI_CPOLARITY" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SpiCphase" displayName="CFG-SPI-CPHASE">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SPI_CPHASE" defaultValue="CfgValKeyId.CFG_SPI_CPHASE" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SpiExtendedtimeout" displayName="CFG-SPI-EXTENDEDTIMEOUT">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SPI_EXTENDEDTIMEOUT" defaultValue="CfgValKeyId.CFG_SPI_EXTENDEDTIMEOUT" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="SpiEnabled" displayName="CFG-SPI-ENABLED">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_SPI_ENABLED" defaultValue="CfgValKeyId.CFG_SPI_ENABLED" />
                 <ref field="CfgValL" name="Val" />
             </bundle>
         </variant>
