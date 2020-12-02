@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
     <fields>
-        <enum name="CfgValSat" type="uint8" displayName="Val">
-            <validValue name="UTC" val="0" />
-            <validValue name="GPS" val="1" />
-            <validValue name="GLO" val="2" />
-            <validValue name="BDS" val="3" />
-            <validValue name="GAL" val="4" />
-        </enum>
-
         <int name="CfgValU1" type="uint8" displayName="Val" />
         <int name="CfgValI1" type="int8" displayName="Val" />
         <int name="CfgValU2" type="uint16" displayName="Val"/>
@@ -18,6 +10,32 @@
         <int name="CfgValL" reuse="CfgValU1" validRange="[0, 1]" displayName="Val" />
         <float name="CfgValR4" type="float" displayName="Val"/>
         <float name="CfgValR8" type="double" displayName="Val"/>
+
+        <enum name="CfgValSat" type="uint8" displayName="Val">
+            <validValue name="UTC" val="0" />
+            <validValue name="GPS" val="1" />
+            <validValue name="GLO" val="2" />
+            <validValue name="BDS" val="3" />
+            <validValue name="GAL" val="4" />
+        </enum>
+
+        <enum name="CfgValUartStopBits" type="uint8" displayName="Val">
+            <validValue name="HALF" val="0" />
+            <validValue name="ONE" val="1" />
+            <validValue name="ONEHALF" val="2" />
+            <validValue name="TWO " val="3" />
+        </enum>
+
+        <enum name="CfgValUartDataBits" type="uint8" displayName="Val">
+            <validValue name="EIGHT" val="0" />
+            <validValue name="SEVEN" val="1" />
+        </enum>
+
+        <enum name="CfgValUartParity" type="uint8" displayName="Val">
+            <validValue name="NONE" val="0" />
+            <validValue name="ODD" val="1" />
+            <validValue name="EVEN" val="2" />
+        </enum>
 
         <enum name="CfgValKeyId" type="uint32" hexAssign="true">
             <!-- CFG-BDS -->
@@ -671,6 +689,13 @@
             <validValue name="CFG_TXREADY_PIN" val="0x20a20003" />
             <validValue name="CFG_TXREADY_THRESHOLD" val="0x30a20004" />
             <validValue name="CFG_TXREADY_INTERFACE" val="0x20a20005" />
+
+            <!-- CFG-UART1 -->
+            <validValue name="CFG_UART1_BAUDRATE" val="0x40520001" />
+            <validValue name="CFG_UART1_STOPBITS" val="0x20520002" />
+            <validValue name="CFG_UART1_DATABITS" val="0x20520003" />
+            <validValue name="CFG_UART1_PARITY" val="0x20520004" />
+            <validValue name="CFG_UART1_ENABLED" val="0x10520005" />
         </enum>
 
         <int name="CfgValKey" type="uint32" failOnInvalid="true" displayReadOnly="true" displayName="Key" />
@@ -3299,6 +3324,28 @@
                     <validValue name="I2C" val="0" />
                     <validValue name="SPI" val="1" />
                 </enum>
+            </bundle>
+
+            <!-- CFG-UART1 -->
+            <bundle name="Uart1Baudrate" displayName="CFG-UART1-BAUDRATE">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_UART1_BAUDRATE" defaultValue="CfgValKeyId.CFG_UART1_BAUDRATE" />
+                <ref field="CfgValU4" name="Val" />
+            </bundle>
+            <bundle name="Uart1Stopbits" displayName="CFG-UART1-STOPBITS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_UART1_STOPBITS" defaultValue="CfgValKeyId.CFG_UART1_STOPBITS" />
+                <ref field="CfgValUartStopBits" name="Val" />
+            </bundle>
+            <bundle name="Uart1Databits" displayName="CFG-UART1-DATABITS">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_UART1_DATABITS" defaultValue="CfgValKeyId.CFG_UART1_DATABITS" />
+                <ref field="CfgValUartDataBits" name="Val" />
+            </bundle>
+            <bundle name="Uart1Parity" displayName="CFG-UART1-PARITY">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_UART1_PARITY" defaultValue="CfgValKeyId.CFG_UART1_PARITY" />
+                <ref field="CfgValUartParity" name="Val" />
+            </bundle>
+            <bundle name="Uart1Enabled" displayName="CFG-UART1-ENABLED">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_UART1_ENABLED" defaultValue="CfgValKeyId.CFG_UART1_ENABLED" />
+                <ref field="CfgValL" name="Val" />
             </bundle>
         </variant>
     </fields>
