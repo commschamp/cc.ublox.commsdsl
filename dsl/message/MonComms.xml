@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="MonComms" id="MsgId.MonComms" displayName="MON-COMMS" order="0" platforms="+ublox9" sender="server">
+        <int name="version" type="uint16" validValue="0"/>
+        <int name="nPorts" type="uint16" displayReadOnly="true" />
+        <set name="txErrors" length="1">
+            <bit name="mem" idx="0" />
+            <bit name="alloc" idx="1" />
+        </set>
+        <ref field="res1" name="reserved0" />
+        <list name="protIds" count="4">
+            <enum name="element" type="uint8" displayName="_">
+                <validValue name="UBX" val="0" />
+                <validValue name="NMEA" val="1" />
+                <validValue name="RTCM2" val="2" />
+                <validValue name="RTCM3" val="5" />
+                <validValue name="None" val="0xff" />
+            </enum>
+        </list>
+        <list name="list" countPrefix="$nPorts">
+            <bundle name="element" displayName="_">
+                <int name="portId" type="uint16" />
+                <int name="txPending" type="uint16" />
+                <int name="txBytes" type="uint32" />
+                <int name="txUsage" type="uint8" />
+                <int name="txPeakUsage" type="uint8" />
+                <int name="rxPending" type="uint16" />
+                <int name="rxBytes" type="uint32" />
+                <int name="rxUsage" type="uint8" />
+                <int name="rxPeakUsage" type="uint8" />
+                <int name="overrunErrs" type="uint16" />
+                <list name="msgs" count="4">
+                    <int name="element" type="uint16" />
+                </list>
+                <ref field="res8" name="reserved1" />
+                <int name="skipped" type="uint32" />
+            </bundle>
+        </list>
+    </message>
+    
+    <message name="MonCommsPoll" id="MsgId.MonComms" displayName="MON-PATCH (Poll)" order="1">
+        <platforms value="+ublox9" />
+        <sender value="client" />
+    </message>
+</schema>

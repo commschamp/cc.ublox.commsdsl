@@ -173,6 +173,10 @@ set (schema_files
     dsl/message/MonPatch.xml
     dsl/message/MonGnss.xml
     dsl/message/MonSmgr.xml
+    dsl/message/MonSpan.xml
+    dsl/message/MonComms.xml
+    dsl/message/MonHw3.xml
+    dsl/message/MonRf.xml
     dsl/message/AidReq.xml
     dsl/message/AidIni.xml
     dsl/message/AidHui.xml

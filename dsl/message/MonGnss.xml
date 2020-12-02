@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="MonGnss" id="MsgId.MonGnss" displayName="MON-GNSS" order="0" platforms="+ublox8" sender="server">
+    <message name="MonGnss" id="MsgId.MonGnss" displayName="MON-GNSS" order="0" platforms="+ublox8,ublox9" sender="server">
         <int name="version" type="uint8" defaultValue="1" validValue="1"/>
         <set name="supported" length="1">
             <bit name="GPSSup" idx="0" />
@@ -25,7 +25,7 @@
     </message>
     
     <message name="MonGnssPoll" id="MsgId.MonGnss" displayName="MON-GNSS (Poll)" order="1">
-        <platforms value="+ublox8" />
+        <platforms value="+ublox8,ublox9" />
         <sender value="client" />
     </message>
 </schema>

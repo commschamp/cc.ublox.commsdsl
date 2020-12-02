@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="MonRf" id="MsgId.MonRf" displayName="MON-RF" order="0" platforms="+ublox9" sender="server">
+        <int name="version" type="uint8" validValue="0" />
+        <int name="nBlocks" type="uint8" />
+        <ref field="res2" name="reserved0" />
+        <list name="list" countPrefix="$nBlocks">
+            <bundle name="element">
+                <int name="blockId" type="uint8" />
+                <bitfield name="flags">
+                    <ref field="MonJammingState" name="jammingState" bitLength="2" />
+                    <ref field="res1" bitLength="6" />
+                </bitfield>
+                <ref field="MonAntStatus" name="antStatus" />
+                <ref field="MonAntPower" name="antPower" />
+                <int name="postStatus" type="uint32" />
+                <ref field="res4" name="reserved1" />
+                <int name="noisePerMS" type="uint16" />
+                <int name="agcCnt" type="uint16" />
+                <int name="jamInd" type="uint8" />
+                <int name="ofsI" type="int8" />
+                <int name="magI" type="uint8" />
+                <int name="ofsQ" type="int8" />
+                <int name="magQ" type="uint8" />
+                <ref field="res3" name="reserved2" />
+            </bundle>
+        </list>
+    </message>
+    
+    <message name="MonRfPoll" id="MsgId.MonRf" displayName="MON-RF (Poll)" order="1">
+        <platforms value="+ublox9" />
+        <sender value="client" />
+    </message>
+</schema>
