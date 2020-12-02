@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
     <fields>
+        <enum name="CfgValSat" type="uint8" displayName="Val">
+            <validValue name="UTC" val="0" />
+            <validValue name="GPS" val="1" />
+            <validValue name="GLO" val="2" />
+            <validValue name="BDS" val="3" />
+            <validValue name="GAL" val="4" />
+        </enum>
 
         <enum name="CfgValKeyId" type="uint32" hexAssign="true">
             <!-- CFG-BDS -->
@@ -627,6 +634,26 @@
             <validValue name="CFG_TMODE_FIXED_POS_ACC" val="0x4003000f" />
             <validValue name="CFG_TMODE_SVIN_MIN_DUR" val="0x40030010" />
             <validValue name="CFG_TMODE_SVIN_ACC_LIMIT" val="0x40030011" />
+
+            <!-- CFG-TP -->
+            <validValue name="CFG_TP_PULSE_DEF" val="0x20050023" />
+            <validValue name="CFG_TP_PULSE_LENGTH_DEF" val="0x20050030" />
+            <validValue name="CFG_TP_ANT_CABLEDELAY" val="0x30050001" />
+            <validValue name="CFG_TP_PERIOD_TP1" val="0x40050002" />
+            <validValue name="CFG_TP_PERIOD_LOCK_TP1" val="0x40050003" />
+            <validValue name="CFG_TP_FREQ_TP1" val="0x40050024" />
+            <validValue name="CFG_TP_FREQ_LOCK_TP1" val="0x40050025" />
+            <validValue name="CFG_TP_LEN_TP1" val="0x40050004" />
+            <validValue name="CFG_TP_LEN_LOCK_TP1" val="0x40050005" />
+            <validValue name="CFG_TP_DUTY_TP1" val="0x5005002a" />
+            <validValue name="CFG_TP_DUTY_LOCK_TP1" val="0x5005002b" />
+            <validValue name="CFG_TP_USER_DELAY_TP1" val="0x40050006" />
+            <validValue name="CFG_TP_TP1_ENA" val="0x10050007" />
+            <validValue name="CFG_TP_SYNC_GNSS_TP1" val="0x10050008" />
+            <validValue name="CFG_TP_USE_LOCKED_TP1" val="0x10050009" />
+            <validValue name="CFG_TP_ALIGN_TO_TOW_TP1" val="0x1005000a" />
+            <validValue name="CFG_TP_POL_TP1" val="0x1005000b" />
+            <validValue name="CFG_TP_TIMEGRID_TP1" val="0x2005000c" />
         </enum>
 
         <int name="CfgValU1" type="uint8" displayName="Val" />
@@ -2848,13 +2875,7 @@
             </bundle>
             <bundle name="RateTimeref" displayName="CFG-RATE-TIMEREF">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_RATE_TIMEREF" defaultValue="CfgValKeyId.CFG_RATE_TIMEREF" />
-                <enum name="Val" type="uint8">
-                    <validValue name="UTC" val="0" />
-                    <validValue name="GPS" val="1" />
-                    <validValue name="GLO" val="2" />
-                    <validValue name="BDS" val="3" />
-                    <validValue name="GAL" val="4" />
-                </enum>
+                <ref field="CfgValSat" name="Val" />
             </bundle>
 
             <!-- CFG-RINV -->
@@ -3166,6 +3187,86 @@
             <bundle name="TmodeSvinAccLimit" displayName="CFG-TMODE-SVIN_ACC_LIMIT">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TMODE_SVIN_ACC_LIMIT" defaultValue="CfgValKeyId.CFG_TMODE_SVIN_ACC_LIMIT" />
                 <int name="Val" type="uint32" units="mm" scaling="1/10" displayDecimals="1"/>
+            </bundle>
+
+            <!-- CFG-TP -->
+            <bundle name="TpPulseDef" displayName="CFG-TP-PULSE_DEF">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TP_PULSE_DEF" defaultValue="CfgValKeyId.CFG_TP_PULSE_DEF" />
+                <enum name="Val" type="uint8">
+                    <validValue name="PERIOD" val="0" />
+                    <validValue name="FREQ" val="1" />
+                </enum>
+            </bundle>
+            <bundle name="TpPulseLengthDef" displayName="CFG-TP-PULSE_LENGTH_DEF">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TP_PULSE_LENGTH_DEF" defaultValue="CfgValKeyId.CFG_TP_PULSE_LENGTH_DEF" />
+                <enum name="Val" type="uint8">
+                    <validValue name="RATIO" val="0" />
+                    <validValue name="LENGTH" val="1" />
+                </enum>
+            </bundle>
+            <bundle name="TpAntCabledelay" displayName="CFG-TP-ANT_CABLEDELAY">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TP_ANT_CABLEDELAY" defaultValue="CfgValKeyId.CFG_TP_ANT_CABLEDELAY" />
+                <int name="Val" type="int16" units="s" scaling="1/1000000000" displayDecimals="9" />
+            </bundle>
+            <bundle name="TpPeriodTp1" displayName="CFG-TP-PERIOD_TP1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TP_PERIOD_TP1" defaultValue="CfgValKeyId.CFG_TP_PERIOD_TP1" />
+                <int name="Val" type="uint32" units="s" scaling="1/1000000" displayDecimals="6" />
+            </bundle>
+            <bundle name="TpPeriodLockTp1" displayName="CFG-TP-PERIOD_LOCK_TP1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TP_PERIOD_LOCK_TP1" defaultValue="CfgValKeyId.CFG_TP_PERIOD_LOCK_TP1" />
+                <int name="Val" type="uint32" units="s" scaling="1/1000000" displayDecimals="6" />
+            </bundle>
+            <bundle name="TpFreqTp1" displayName="CFG-TP-FREQ_TP1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TP_FREQ_TP1" defaultValue="CfgValKeyId.CFG_TP_FREQ_TP1" />
+                <int name="Val" type="uint32" units="hz" />
+            </bundle>
+            <bundle name="TpFreqLockTp1" displayName="CFG-TP-FREQ_LOCK_TP1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TP_FREQ_LOCK_TP1" defaultValue="CfgValKeyId.CFG_TP_FREQ_LOCK_TP1" />
+                <int name="Val" type="uint32" units="hz" />
+            </bundle>
+            <bundle name="TpLenTp1" displayName="CFG-TP-LEN_TP1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TP_LEN_TP1" defaultValue="CfgValKeyId.CFG_TP_LEN_TP1" />
+                <int name="Val" type="uint32" units="s" scaling="1/1000000" displayDecimals="6" />
+            </bundle>
+            <bundle name="TpLenLockTp1" displayName="CFG-TP-LEN_LOCK_TP1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TP_LEN_LOCK_TP1" defaultValue="CfgValKeyId.CFG_TP_LEN_LOCK_TP1" />
+                <int name="Val" type="uint32" units="s" scaling="1/1000000" displayDecimals="6" />
+            </bundle>
+            <bundle name="TpDutyTp1" displayName="CFG-TP-DUTY_TP1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TP_DUTY_TP1" defaultValue="CfgValKeyId.CFG_TP_DUTY_TP1" />
+                <ref field="CfgValR8" name="Val" />
+            </bundle>
+            <bundle name="TpDutyLockTp1" displayName="CFG-TP-DUTY_LOCK_TP1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TP_DUTY_LOCK_TP1" defaultValue="CfgValKeyId.CFG_TP_DUTY_LOCK_TP1" />
+                <ref field="CfgValR8" name="Val" />
+            </bundle>
+            <bundle name="TpUserDelayTp1" displayName="CFG-TP-USER_DELAY_TP1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TP_USER_DELAY_TP1" defaultValue="CfgValKeyId.CFG_TP_USER_DELAY_TP1" />
+                <int name="Val" type="int32" units="s" scaling="1/1000000000" displayDecimals="9" />
+            </bundle>
+            <bundle name="TpTp1Ena" displayName="CFG-TP-TP1_ENA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TP_TP1_ENA" defaultValue="CfgValKeyId.CFG_TP_TP1_ENA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="TpSyncGnssTp1" displayName="CFG-TP-SYNC_GNSS_TP1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TP_SYNC_GNSS_TP1" defaultValue="CfgValKeyId.CFG_TP_SYNC_GNSS_TP1" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="TpUseLockedTp1" displayName="CFG-TP-USE_LOCKED_TP1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TP_USE_LOCKED_TP1" defaultValue="CfgValKeyId.CFG_TP_USE_LOCKED_TP1" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="TpAlignToTowTp1" displayName="CFG-TP-ALIGN_TO_TOW_TP1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TP_ALIGN_TO_TOW_TP1" defaultValue="CfgValKeyId.CFG_TP_ALIGN_TO_TOW_TP1" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="TpPolTp1" displayName="CFG-TP-POL_TP1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TP_POL_TP1" defaultValue="CfgValKeyId.CFG_TP_POL_TP1" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="TpTimegridTp1" displayName="CFG-TP-TIMEGRID_TP1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TP_TIMEGRID_TP1" defaultValue="CfgValKeyId.CFG_TP_TIMEGRID_TP1" />
+                <ref field="CfgValSat" name="Val" />
             </bundle>
         </variant>
     </fields>
