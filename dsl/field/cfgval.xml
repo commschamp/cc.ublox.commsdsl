@@ -9,6 +9,16 @@
             <validValue name="GAL" val="4" />
         </enum>
 
+        <int name="CfgValU1" type="uint8" displayName="Val" />
+        <int name="CfgValI1" type="int8" displayName="Val" />
+        <int name="CfgValU2" type="uint16" displayName="Val"/>
+        <int name="CfgValU4" type="uint32" displayName="Val"/>
+        <int name="CfgValI4" type="int32" displayName="Val"/>
+        <int name="CfgValU8" type="uint64" displayName="Val"/>
+        <int name="CfgValL" reuse="CfgValU1" validRange="[0, 1]" displayName="Val" />
+        <float name="CfgValR4" type="float" displayName="Val"/>
+        <float name="CfgValR8" type="double" displayName="Val"/>
+
         <enum name="CfgValKeyId" type="uint32" hexAssign="true">
             <!-- CFG-BDS -->
             <validValue name="CFG_BDS_USE_PRN_1_TO_5" val="0x10340014" />
@@ -654,17 +664,14 @@
             <validValue name="CFG_TP_ALIGN_TO_TOW_TP1" val="0x1005000a" />
             <validValue name="CFG_TP_POL_TP1" val="0x1005000b" />
             <validValue name="CFG_TP_TIMEGRID_TP1" val="0x2005000c" />
-        </enum>
 
-        <int name="CfgValU1" type="uint8" displayName="Val" />
-        <int name="CfgValI1" type="int8" displayName="Val" />
-        <int name="CfgValU2" type="uint16" displayName="Val"/>
-        <int name="CfgValU4" type="uint32" displayName="Val"/>
-        <int name="CfgValI4" type="int32" displayName="Val"/>
-        <int name="CfgValU8" type="uint64" displayName="Val"/>
-        <int name="CfgValL" reuse="CfgValU1" validRange="[0, 1]" displayName="Val" />
-        <float name="CfgValR4" type="float" displayName="Val"/>
-        <float name="CfgValR8" type="double" displayName="Val"/>
+            <!-- CFG-TXREADY -->
+            <validValue name="CFG_TXREADY_ENABLED" val="0x10a20001" />
+            <validValue name="CFG_TXREADY_POLARITY" val="0x10a20002" />
+            <validValue name="CFG_TXREADY_PIN" val="0x20a20003" />
+            <validValue name="CFG_TXREADY_THRESHOLD" val="0x30a20004" />
+            <validValue name="CFG_TXREADY_INTERFACE" val="0x20a20005" />
+        </enum>
 
         <int name="CfgValKey" type="uint32" failOnInvalid="true" displayReadOnly="true" displayName="Key" />
 
@@ -3267,6 +3274,31 @@
             <bundle name="TpTimegridTp1" displayName="CFG-TP-TIMEGRID_TP1">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TP_TIMEGRID_TP1" defaultValue="CfgValKeyId.CFG_TP_TIMEGRID_TP1" />
                 <ref field="CfgValSat" name="Val" />
+            </bundle>
+
+            <!-- CFG-TXREADY -->
+            <bundle name="TxreadyEnabled" displayName="CFG-TXREADY-ENABLED">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TXREADY_ENABLED" defaultValue="CfgValKeyId.CFG_TXREADY_ENABLED" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="TxreadyPolarity" displayName="CFG-TXREADY-POLARITY">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TXREADY_POLARITY" defaultValue="CfgValKeyId.CFG_TXREADY_POLARITY" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="TxreadyPin" displayName="CFG-TXREADY-PIN">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TXREADY_PIN" defaultValue="CfgValKeyId.CFG_TXREADY_PIN" />
+                <ref field="CfgValU1" name="Val" />
+            </bundle>
+            <bundle name="TxreadyThreshold" displayName="CFG-TXREADY-THRESHOLD">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TXREADY_THRESHOLD" defaultValue="CfgValKeyId.CFG_TXREADY_THRESHOLD" />
+                <ref field="CfgValU2" name="Val" />
+            </bundle>
+            <bundle name="TxreadyInterface" displayName="CFG-TXREADY-INTERFACE">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_TXREADY_INTERFACE" defaultValue="CfgValKeyId.CFG_TXREADY_INTERFACE" />
+                <enum name="Val" type="uint8">
+                    <validValue name="I2C" val="0" />
+                    <validValue name="SPI" val="1" />
+                </enum>
             </bundle>
         </variant>
     </fields>
