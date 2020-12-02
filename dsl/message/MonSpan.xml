@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="MonSpan" id="MsgId.MonSpan" displayName="MON-SPAN" order="0" platforms="+ublox9" sender="server">
+        <int name="version" type="uint8" validValue="0" />
+        <int name="numRfblocks" type="uint8" />
+        <ref field="res2" name="reserved0" />
+        <list name="list" countPrefix="$numRfblocks">
+            <bundle name="element">
+                <list name="spectrum" count="256">
+                    <int name="element" type="uint8" />
+                </list>
+                <int name="span" type="uint32" units="hz" />
+                <int name="res" type="uint32" units="hz" />
+                <int name="center" type="uint32" units="hz" />
+                <int name="pga" type="uint8" />
+                <ref field="res3" name="reserved1" />
+            </bundle>
+        </list>
+    </message>
+    
+    <message name="MonSpanPoll" id="MsgId.MonSpan" displayName="MON-SPAN (Poll)" order="1">
+        <platforms value="+ublox9" />
+        <sender value="client" />
+    </message>
+</schema>

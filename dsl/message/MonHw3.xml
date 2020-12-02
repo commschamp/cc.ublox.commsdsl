@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="MonHw3" id="MsgId.MonHw3" displayName="MON-HW3" order="0" platforms="+ublox9" sender="server">
+        <int name="version" type="uint8" validValue="0" />
+        <int name="nPins" type="uint8" />
+        <set name="flags" length="1">
+            <bit name="rctCalib" idx="0" />
+            <bit name="safeBoot" idx="1" />
+            <bit name="xtalAbsent" idx="2" />
+        </set>
+        <string name="hwVersion" length="10" />
+        <data name="reserved0" length="9" />
+        <list name="list" countPrefix="$nPins">
+            <bundle name="element">
+                <int name="pinId" type="uint16" />
+                <bitfield name="pinMask">
+                    <set name="bitsLow" bitLength="1">
+                        <bit name="periphPIO" idx="0" />
+                    </set>
+                    <enum name="pinBank" type="uint8" bitLength="3">
+                        <validValue name="A" val="0" />
+                        <validValue name="B" val="1" />
+                        <validValue name="C" val="2" />
+                        <validValue name="D" val="3" />
+                        <validValue name="E" val="4" />
+                        <validValue name="F" val="5" />
+                        <validValue name="G" val="6" />
+                        <validValue name="H" val="7" />
+                    </enum>
+                    <set name="bitsHigh" bitLength="12">
+                        <bit name="direction" idx="0" />
+                        <bit name="value" idx="1" />
+                        <bit name="vpManager" idx="2" />
+                        <bit name="pioIrq" idx="3" />
+                        <bit name="pioPullHigh" idx="4" />
+                        <bit name="pioPullLow" idx="5" />
+                    </set>
+                </bitfield>
+                <int name="VP" type="uint8"/>
+                <ref field="res1" name="reserved1" />
+            </bundle>
+        </list>
+    </message>
+    
+    <message name="MonHw3Poll" id="MsgId.MonHw3" displayName="MON-HW3 (Poll)" order="1">
+        <platforms value="+ublox9" />
+        <sender value="client" />
+    </message>
+</schema>
