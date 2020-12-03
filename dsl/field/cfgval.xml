@@ -10,6 +10,7 @@
         <int name="CfgValL" reuse="CfgValU1" validRange="[0, 1]" displayName="Val" />
         <float name="CfgValR4" type="float" displayName="Val"/>
         <float name="CfgValR8" type="double" displayName="Val"/>
+        <data name="CfgValData8" length="8" displayName="Val"/>
 
         <enum name="CfgValSat" type="uint8" displayName="Val">
             <validValue name="UTC" val="0" />
@@ -725,6 +726,34 @@
             <validValue name="CFG_UART2OUTPROT_NMEA" val="0x10760002" />
             <validValue name="CFG_UART2OUTPROT_RTCM3X" val="0x10760004" />
 
+            <!-- CFG-USB -->
+            <validValue name="CFG_USB_ENABLED" val="0x10650001" />
+            <validValue name="CFG_USB_SELFPOW" val="0x10650002" />
+            <validValue name="CFG_USB_VENDOR_ID" val="0x3065000a" />
+            <validValue name="CFG_USB_PRODUCT_ID" val="0x3065000b" />
+            <validValue name="CFG_USB_POWER" val="0x3065000c" />
+            <validValue name="CFG_USB_VENDOR_STR0" val="0x5065000d" />
+            <validValue name="CFG_USB_VENDOR_STR1" val="0x5065000e" />
+            <validValue name="CFG_USB_VENDOR_STR2" val="0x5065000f" />
+            <validValue name="CFG_USB_VENDOR_STR3" val="0x50650010" />
+            <validValue name="CFG_USB_PRODUCT_STR0" val="0x50650011" />
+            <validValue name="CFG_USB_PRODUCT_STR1" val="0x50650012" />
+            <validValue name="CFG_USB_PRODUCT_STR2" val="0x50650013" />
+            <validValue name="CFG_USB_PRODUCT_STR3" val="0x50650014" />
+            <validValue name="CFG_USB_SERIAL_NO_STR0" val="0x50650015" />
+            <validValue name="CFG_USB_SERIAL_NO_STR1" val="0x50650016" />
+            <validValue name="CFG_USB_SERIAL_NO_STR2" val="0x50650017" />
+            <validValue name="CFG_USB_SERIAL_NO_STR3" val="0x50650018" />
+
+            <!-- CFG-USBINPROT -->
+            <validValue name="CFG_USBINPROT_UBX" val="0x10770001" />
+            <validValue name="CFG_USBINPROT_NMEA" val="0x10770002" />
+            <validValue name="CFG_USBINPROT_RTCM3X" val="0x10770004" />
+
+            <!-- CFG-USBOUTPROT -->
+            <validValue name="CFG_USBOUTPROT_UBX" val="0x10780001" />
+            <validValue name="CFG_USBOUTPROT_NMEA" val="0x10780002" />
+            <validValue name="CFG_USBOUTPROT_RTCM3X" val="0x10780004" />
         </enum>
 
         <int name="CfgValKey" type="uint32" failOnInvalid="true" displayReadOnly="true" displayName="Key" />
@@ -3458,6 +3487,123 @@
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_UART2OUTPROT_RTCM3X" defaultValue="CfgValKeyId.CFG_UART2OUTPROT_RTCM3X" />
                 <ref field="CfgValL" name="Val" />
             </bundle>            
+
+            <!-- CFG-USB -->
+            <bundle name="UsbEnabled" displayName="CFG-USB-ENABLED">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USB_ENABLED" defaultValue="CfgValKeyId.CFG_USB_ENABLED" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="UsbSelfpow" displayName="CFG-USB-SELFPOW">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USB_SELFPOW" defaultValue="CfgValKeyId.CFG_USB_SELFPOW" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="UsbVendorId" displayName="CFG-USB-VENDOR_ID">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USB_VENDOR_ID" defaultValue="CfgValKeyId.CFG_USB_VENDOR_ID" />
+                <ref field="CfgValU2" name="Val" />
+            </bundle>
+            <bundle name="UsbProductId" displayName="CFG-USB-PRODUCT_ID">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USB_PRODUCT_ID" defaultValue="CfgValKeyId.CFG_USB_PRODUCT_ID" />
+                <ref field="CfgValU2" name="Val" />
+            </bundle>
+            <bundle name="UsbPower" displayName="CFG-USB-POWER">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USB_POWER" defaultValue="CfgValKeyId.CFG_USB_POWER" />
+                <int reuse="CfgValU2" name="Val" units="ma" />
+            </bundle>
+            <bundle name="UsbVendorStr0" displayName="CFG-USB-VENDOR_STR0">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USB_VENDOR_STR0" defaultValue="CfgValKeyId.CFG_USB_VENDOR_STR0" />
+                <ref field="CfgValData8" name="Val" />
+            </bundle>
+            <bundle name="UsbVendorStr1" displayName="CFG-USB-VENDOR_STR1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USB_VENDOR_STR1" defaultValue="CfgValKeyId.CFG_USB_VENDOR_STR1" />
+                <ref field="CfgValData8" name="Val" />
+            </bundle>
+            <bundle name="UsbVendorStr2" displayName="CFG-USB-VENDOR_STR2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USB_VENDOR_STR2" defaultValue="CfgValKeyId.CFG_USB_VENDOR_STR2" />
+                <ref field="CfgValData8" name="Val" />
+            </bundle>
+            <bundle name="UsbVendorStr3" displayName="CFG-USB-VENDOR_STR3">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USB_VENDOR_STR3" defaultValue="CfgValKeyId.CFG_USB_VENDOR_STR3" />
+                <ref field="CfgValData8" name="Val" />
+            </bundle>
+            <bundle name="UsbProductStr0" displayName="CFG-USB-PRODUCT_STR0">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USB_PRODUCT_STR0" defaultValue="CfgValKeyId.CFG_USB_PRODUCT_STR0" />
+                <ref field="CfgValData8" name="Val" />
+            </bundle>
+            <bundle name="UsbProductStr1" displayName="CFG-USB-PRODUCT_STR1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USB_PRODUCT_STR1" defaultValue="CfgValKeyId.CFG_USB_PRODUCT_STR1" />
+                <ref field="CfgValData8" name="Val" />
+            </bundle>
+            <bundle name="UsbProductStr2" displayName="CFG-USB-PRODUCT_STR2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USB_PRODUCT_STR2" defaultValue="CfgValKeyId.CFG_USB_PRODUCT_STR2" />
+                <ref field="CfgValData8" name="Val" />
+            </bundle>
+            <bundle name="UsbProductStr3" displayName="CFG-USB-PRODUCT_STR3">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USB_PRODUCT_STR3" defaultValue="CfgValKeyId.CFG_USB_PRODUCT_STR3" />
+                <ref field="CfgValData8" name="Val" />
+            </bundle>
+            <bundle name="UsbSerialNoStr0" displayName="CFG-USB-SERIAL_NO_STR0">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USB_SERIAL_NO_STR0" defaultValue="CfgValKeyId.CFG_USB_SERIAL_NO_STR0" />
+                <ref field="CfgValData8" name="Val" />
+            </bundle>
+            <bundle name="UsbSerialNoStr1" displayName="CFG-USB-SERIAL_NO_STR1">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USB_SERIAL_NO_STR1" defaultValue="CfgValKeyId.CFG_USB_SERIAL_NO_STR1" />
+                <ref field="CfgValData8" name="Val" />
+            </bundle>
+            <bundle name="UsbSerialNoStr2" displayName="CFG-USB-SERIAL_NO_STR2">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USB_SERIAL_NO_STR2" defaultValue="CfgValKeyId.CFG_USB_SERIAL_NO_STR2" />
+                <ref field="CfgValData8" name="Val" />
+            </bundle>
+            <bundle name="UsbSerialNoStr3" displayName="CFG-USB-SERIAL_NO_STR3">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USB_SERIAL_NO_STR3" defaultValue="CfgValKeyId.CFG_USB_SERIAL_NO_STR3" />
+                <ref field="CfgValData8" name="Val" />
+            </bundle>
+
+            <!-- CFG-USBINPROT -->
+            <bundle name="UsbinprotUbx" displayName="CFG-USBINPROT-UBX">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USBINPROT_UBX" defaultValue="CfgValKeyId.CFG_USBINPROT_UBX" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="UsbinprotNmea" displayName="CFG-USBINPROT-NMEA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USBINPROT_NMEA" defaultValue="CfgValKeyId.CFG_USBINPROT_NMEA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="UsbinprotRtcm3x" displayName="CFG-USBINPROT-RTCM3X">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USBINPROT_RTCM3X" defaultValue="CfgValKeyId.CFG_USBINPROT_RTCM3X" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+
+            <!-- CFG-USBOUTPROT -->
+            <bundle name="UsboutprotUbx" displayName="CFG-USBOUTPROT-UBX">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USBOUTPROT_UBX" defaultValue="CfgValKeyId.CFG_USBOUTPROT_UBX" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="UsboutprotNmea" displayName="CFG-USBOUTPROT-NMEA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USBOUTPROT_NMEA" defaultValue="CfgValKeyId.CFG_USBOUTPROT_NMEA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="UsboutprotRtcm3x" displayName="CFG-USBOUTPROT-RTCM3X">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USBOUTPROT_RTCM3X" defaultValue="CfgValKeyId.CFG_USBOUTPROT_RTCM3X" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>            
+
         </variant>
+
+        <bundle name="CfgValPairSimple">
+            <description>
+                The CfgValPair definition may be too extensive and too complex for some 
+                applications. This field may be a simpler replacement. 
+                It also requires custom various custom operations.
+            </description>
+            <members>
+                <ref field="CfgValKeyId" name="Key" />
+                <variant name="Val" displayIdxReadOnlyHidden="true">
+                    <ref field="CfgValL" name="L" />
+                    <ref field="CfgValU1" name="U1" />
+                    <ref field="CfgValU2" name="U2" />
+                    <ref field="CfgValU4" name="U4" />
+                    <ref field="CfgValU8" name="U8" />
+                </variant>
+            </members>
+        </bundle>
     </fields>
 </schema>
