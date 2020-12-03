@@ -701,6 +701,12 @@
             <validValue name="CFG_UART1INPROT_UBX" val="0x10730001" />
             <validValue name="CFG_UART1INPROT_NMEA" val="0x10730002" />
             <validValue name="CFG_UART1INPROT_RTCM3X" val="0x10730004" />
+
+            <!-- CFG-UART1OUTPROT -->
+            <validValue name="CFG_UART1OUTPROT_UBX" val="0x10740001" />
+            <validValue name="CFG_UART1OUTPROT_NMEA" val="0x10740002" />
+            <validValue name="CFG_UART1OUTPROT_RTCM3X" val="0x10740004" />
+
         </enum>
 
         <int name="CfgValKey" type="uint32" failOnInvalid="true" displayReadOnly="true" displayName="Key" />
@@ -3364,6 +3370,20 @@
             </bundle>
             <bundle name="Uart1inprotRtcm3x" displayName="CFG-UART1INPROT-RTCM3X">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_UART1INPROT_RTCM3X" defaultValue="CfgValKeyId.CFG_UART1INPROT_RTCM3X" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+
+            <!-- CFG-UART1OUTPROT -->
+            <bundle name="Uart1outprotUbx" displayName="CFG-UART1OUTPROT-UBX">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_UART1OUTPROT_UBX" defaultValue="CfgValKeyId.CFG_UART1OUTPROT_UBX" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="Uart1outprotNmea" displayName="CFG-UART1OUTPROT-NMEA">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_UART1OUTPROT_NMEA" defaultValue="CfgValKeyId.CFG_UART1OUTPROT_NMEA" />
+                <ref field="CfgValL" name="Val" />
+            </bundle>
+            <bundle name="Uart1outprotRtcm3x" displayName="CFG-UART1OUTPROT-RTCM3X">
+                <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_UART1OUTPROT_RTCM3X" defaultValue="CfgValKeyId.CFG_UART1OUTPROT_RTCM3X" />
                 <ref field="CfgValL" name="Val" />
             </bundle>
         </variant>
