@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="AidIni" id="MsgId.AidIni" displayName="AID-INI" order="0">
+    <message name="AidIni" id="MsgId.AidIni" displayName="AID-INI" platforms="-ublox9" order="0">
         <optional name="ecefX" defaultMode="exist" displayExtModeCtrl="true">
             <int name="ecefX" type="int32" units="cm" />
         </optional>
@@ -74,6 +74,7 @@
     </message>
 
     <message name="AidIniPoll" id="MsgId.AidIni" displayName="AID-INI (Poll)" order="1">
+        <platforms value="-ublox9" />
         <sender value="client" />
     </message>
 </schema>

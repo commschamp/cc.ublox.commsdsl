@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="AidHui" id="MsgId.AidHui" displayName="AID-HUI" order="0">
+    <message name="AidHui" id="MsgId.AidHui" displayName="AID-HUI" order="0" platforms="-ublox9">
         <int name="health" type="uint32" />
         <float name="utcA0" type="double" />
         <float name="utcA1" type="double" />
@@ -27,6 +27,7 @@
     </message>
 
     <message name="AidHuiPoll" id="MsgId.AidHui" displayName="AID-HUI (Poll)" order="1">
+        <platforms value="-ublox9" />
         <sender value="client" />
     </message>
 </schema>
