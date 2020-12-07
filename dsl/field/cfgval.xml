@@ -765,7 +765,7 @@
             <validValue name="Default" val="7" />
         </enum>
 
-        <variant name="CfgValPair" displayIdxReadOnlyHidden="true">
+        <variant name="CfgValPair" displayIdxReadOnlyHidden="true" forceGen="true">
             <!-- CFG-BDS -->
             <bundle name="BdsUsePrn1to5" displayName="CFG-BDS-USE_PRN_1_TO_5">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_BDS_USE_PRN_1_TO_5" defaultValue="CfgValKeyId.CFG_BDS_USE_PRN_1_TO_5" />
@@ -3585,7 +3585,6 @@
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USBOUTPROT_RTCM3X" defaultValue="CfgValKeyId.CFG_USBOUTPROT_RTCM3X" />
                 <ref field="CfgValL" name="Val" />
             </bundle>            
-
         </variant>
 
         <bundle name="CfgValPairSimple">
@@ -3597,11 +3596,11 @@
             <members>
                 <ref field="CfgValKeyId" name="Key" />
                 <variant name="Val" displayIdxReadOnlyHidden="true">
-                    <ref field="CfgValL" name="L" />
-                    <ref field="CfgValU1" name="U1" />
-                    <ref field="CfgValU2" name="U2" />
-                    <ref field="CfgValU4" name="U4" />
-                    <ref field="CfgValU8" name="U8" />
+                    <ref field="CfgValL" name="L" displayName="L" />
+                    <ref field="CfgValU1" name="U1" displayName="U1" />
+                    <ref field="CfgValU2" name="U2" displayName="U2" />
+                    <ref field="CfgValU4" name="U4" displayName="U4" />
+                    <ref field="CfgValU8" name="U8" displayName="U8" />
                 </variant>
             </members>
         </bundle>

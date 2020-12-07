@@ -5,11 +5,11 @@
         <ref field="CfgValLayer" name="layer" />
         <int name="position" type="uint16" />
         <list name="cfgdata">
-            <ref field="CfgValPair" name="Element"/>
+            <ref field="CfgValPairSimple" name="Element"/>
         </list>
     </message>
 
-    <message name="CfgValgetPoll" id="MsgId.CfgValget" displayName="CFG-VALGET (Poll)" order="1" platforms="+ublox9" sender="client">
+    <message name="CfgValgetPoll" id="MsgId.CfgValget" displayName="CFG-VALGET (Poll)" order="10" platforms="+ublox9" sender="client">
         <int name="version" type="uint8" validValue="0" failOnInvalid="true" displayReadOnly="true" />
         <ref field="CfgValLayer" name="layer" />
         <int name="position" type="uint16" />
