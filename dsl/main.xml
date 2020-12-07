@@ -105,6 +105,7 @@
             <validValue name="CfgPms" val="0x0686" displayName="CFG-PMS" />
             <validValue name="CfgValset" val="0x068a" displayName="CFG-VALSET" />
             <validValue name="CfgValget" val="0x068b" displayName="CFG-VALGET" />
+            <validValue name="CfgValdel" val="0x068c" displayName="CFG-VALDEL" />
             <validValue name="UpdSos" val="0x0914" displayName="UPD-SOS" />
             <validValue name="MonIo" val="0x0a02" displayName="MON-IO" />
             <validValue name="MonVer" val="0x0a04" displayName="MON-VER" />

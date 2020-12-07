@@ -1,0 +1,15 @@
+/// @brief Allow construction from other files, 
+///     like members of CfgValPair.
+template <typename TFrom>
+static CfgValPairSimple from(const TFrom& f)
+{
+    return comms::field_cast<CfgValPairSimple>(f);
+}
+
+/// @brief Allow casting to other fields, 
+///     like members of CfgValPair.
+template <typename TTo>
+TTo to() const
+{
+    return comms::field_cast<TTo>(*this);
+}
