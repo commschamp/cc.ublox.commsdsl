@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="MgaDbd" id="MsgId.MgaDbd" displayName="MGA-DBD" order="0"  platforms="+ublox8">
+    <message name="MgaDbd" id="MsgId.MgaDbd" displayName="MGA-DBD" order="0"  platforms="+ublox8,ublox9">
         <list name="reserved1" count="12">
             <ref field="res1" name="element" displayName="_" />
         </list>
@@ -8,7 +8,7 @@
     </message>
 
     <message name="MgaDbdPoll" id="MsgId.MgaDbd" displayName="MGA-DBD (Poll)" order="1" >
-        <platforms value="+ublox8" />
+        <platforms value="+ublox8,ublox9" />
         <sender value="client" />
     </message>
 
