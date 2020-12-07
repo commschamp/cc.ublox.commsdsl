@@ -6,7 +6,7 @@
         <int name="qErr" type="int32" />
         <int name="week" type="uint16" units="weeks" />
         <bitfield name="flags">
-            <set name="bits" bitLength="2" displayName="_">
+            <set name="bitsLow" bitLength="2" displayName="_">
                 <bit name="timeBase" idx="0" />
                 <bit name="utc" idx="1" />
             </set>
@@ -15,7 +15,9 @@
                 <validValue name="NotActive" val="1" />
                 <validValue name="Active" val="2" />
             </enum>
-            <int reuse="res1" bitLength="4" name="reserved" displayHidden="true" />
+            <set name="bitsHigh" bitLength="4" displayName="_">
+                <bit name="qErrInvalid" idx="0" />
+            </set>
         </bitfield>
         <bitfield name="refInfo">
             <enum name="timeRefGnss" type="uint8" bitLength="4">
@@ -32,6 +34,7 @@
                 <validValue name="BIMP" val="4" />
                 <validValue name="EuLab" val="5" />
                 <validValue name="SU" val="6" />
+                <validValue name="NTSC" val="7" />
                 <validValue name="Unknown" val="15" />
             </enum>
         </bitfield>
