@@ -161,6 +161,7 @@ set (schema_files
     dsl/message/CfgPms.xml
     dsl/message/CfgValset.xml
     dsl/message/CfgValget.xml
+    dsl/message/CfgValdel.xml
     dsl/message/UpdSos.xml
     dsl/message/MonIo.xml
     dsl/message/MonVer.xml

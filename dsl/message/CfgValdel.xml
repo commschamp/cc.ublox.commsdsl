@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgValdel" id="MsgId.CfgValdel" displayName="CFG-VALDEL" platforms="+ublox9" sender="client">
+        <int name="version" type="uint8" validRange="[0, 1]" />
+        <set name="layers" length="1">
+            <bit name="bbr" idx="1" />
+            <bit name="flash" idx="2" />
+        </set>
+        <bitfield name="transaction">
+            <enum name="action" type="uint8" bitLength="2">
+                <validValue name="Transactionless" val="0" />
+                <validValue name="Start" val="1" />
+                <validValue name="Ongoing" val="2" />
+                <validValue name="End" val="3" />
+            </enum>
+            <ref field="res1" name="reserved" bitLength="6" />
+        </bitfield>
+        <ref field="res1" name="reserved0" />
+        <list name="keys">
+            <ref field="CfgValKeyId" name="Element"/>
+        </list>
+    </message>
+</schema>
