@@ -95,5 +95,13 @@
             <validValue name="V21" val="0x21" displayName="v2.1" />
         </enum>
         <int name="fixedPosAcc" type="uint32" units="mm" scaling="1/10" displayDecimals="1" />
+        <enum name="psmState" type="uint8">
+            <validValue name="NotAvailable" val="0" displayName="N/A" />
+            <validValue name="Enabled" val="1" displayName="ENABLED" />
+            <validValue name="Acquisition" val="2" displayName="ACQUISITION" />
+            <validValue name="Tracking" val="3" displayName="TRACKING" />
+            <validValue name="PowerOptTracking" val="4" displayName="POWER OPTIMIZED TRACKING" />
+            <validValue name="Inactive" val="5" displayName="INACTIVE" />
+        </enum>
     </fields>
 </schema>

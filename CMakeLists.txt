@@ -219,6 +219,8 @@ set (schema_files
     dsl/message/LogRetrievestring.xml
     dsl/message/LogFindtime.xml
     dsl/message/LogRetrieveposextra.xml
+    dsl/message/LogRetrievebatch.xml
+    dsl/message/LogBatch.xml
     dsl/message/SecSign.xml
     dsl/message/SecUniqid.xml
     dsl/message/HnrPvt.xml

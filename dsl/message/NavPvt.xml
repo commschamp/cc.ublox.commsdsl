@@ -22,14 +22,7 @@
                 <bit name="gnssFixOK" idx="0" />
                 <bit name="diffSoln" idx="1" />
             </set>
-            <enum name="psmState" type="uint8" bitLength="3">
-                <validValue name="NotAvailable" val="0" displayName="N/A" />
-                <validValue name="Enabled" val="1" displayName="ENABLED" />
-                <validValue name="Acquisition" val="2" displayName="ACQUISITION" />
-                <validValue name="Tracking" val="3" displayName="TRACKING" />
-                <validValue name="PowerOptTracking" val="4" displayName="POWER OPTIMIZED TRACKING" />
-                <validValue name="Inactive" val="5" displayName="INACTIVE" />
-            </enum>
+            <ref field="psmState" bitLength="3" />
             <set name="midBits" bitLength="1" displayName="_">
                 <bit name="headVehValid" idx="0" />
             </set>

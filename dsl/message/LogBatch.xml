@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="LogBatch" id="MsgId.LogBatch" displayName="LOG-BATCH" platforms="+ublox9" sender="server">
+        <int name="version" type="uint8" validValue="0" />
+        <set name="contentValid" length="1">
+            <bit name="extraPvt" idx="0" />
+            <bit name="extraOdo" idx="1" />
+        </set>
+        <int name="msgCount" type="uint16" />
+        <ref field="itow" name="iTOW" />
+        <ref field="year" />
+        <ref field="month" />
+        <ref field="day" />
+        <ref field="hour" />
+        <ref field="min" />
+        <ref field="sec" />
+        <set name="valid" length="1" >
+            <bit name="validDate" idx="0" />
+            <bit name="validTime" idx="1" />
+        </set>
+        <int name="tAcc" type="uint32" units="ns" />
+        <int name="fracSec" type="int32" units="ns" />
+        <ref field="gpsFix" name="fixType" />
+        <bitfield name="flags" >
+            <set name="bitsLow" bitLength="2">
+                <bit name="gnssFixOK" idx="0" />
+                <bit name="diffSoln" idx="1" />
+            </set>
+            <ref field="psmState" bitLength="3" />
+            <ref field="res1" bitLength="3" name="reserved" displayHidden="true" />
+        </bitfield>
+        <int name="flags2" type="uint8" />
+        <int name="numSV" type="uint8" />
+        <ref field="lon" />
+        <ref field="lat" />
+        <ref field="height" />
+        <ref field="hMSL" />
+        <ref field="hAcc" />
+        <ref field="vAcc" />
+        <ref field="vel" name="velN" />
+        <ref field="vel" name="velE" />
+        <ref field="vel" name="velD" />
+        <ref field="vel" name="gSpeed" />
+        <ref field="heading" name="headMot" />
+        <int name="sAcc" type="uint32" units="mm/s" />
+        <ref field="headingAcc" name="headAcc"/>
+        <ref field="dop" name="pDOP" />
+        <ref field="res2" name="reserved0" />
+        <int name="distance" type="uint32" units="m" />
+        <int name="totalDistance" type="uint32" units="m" />
+        <int name="totalStd" type="uint32" units="m" />
+        <ref field="res4" name="reserved1" />
+    </message>
+</schema>

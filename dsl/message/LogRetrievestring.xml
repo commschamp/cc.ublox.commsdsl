@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="LogRetrievestring" id="MsgId.LogRetrievestring" displayName="LOG-RETRIEVESTRING" platforms="+ublox7,ublox8" sender="server">
+    <message name="LogRetrievestring" id="MsgId.LogRetrievestring" displayName="LOG-RETRIEVESTRING" platforms="+ublox7,ublox8,ublox9" sender="server">
         <int name="entryIndex" type="uint32" />
         <int name="version" type="uint8" validValue="0" />
         <ref field="res1" name="reserved1" />
