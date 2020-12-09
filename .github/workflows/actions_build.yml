@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v2
       
     - name: Install Packages
-      run: sudo apt install libboost-all-dev libxml2-dev gcc-${{matrix.cc_ver}} g++-${{matrix.cc_ver}}
+      run: sudo apt install libqt5gui5 libboost-all-dev libxml2-dev gcc-${{matrix.cc_ver}} g++-${{matrix.cc_ver}}
 
     - name: Create Build Environment
       run: cmake -E make_directory ${{runner.workspace}}/build
@@ -38,8 +38,8 @@ jobs:
     - name: Create Target Project Build Directory
       run: cmake -E make_directory ${{runner.workspace}}/build/build.output
       
-    - name: RE-Install Packages
-      run: sudo apt install libqt5gui5
+    - name: Looking for qt5
+      run: ls /usr/lib/*/cmake/*/Qt5*.cmake
 
     - name: Configure Target Project
       shell: bash
