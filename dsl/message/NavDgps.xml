@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="NavDgps" id="MsgId.NavDgps" displayName="NAV-DGPS" order="0" platforms="-ublox5" sender="server">
+    <message name="NavDgps" id="MsgId.NavDgps" displayName="NAV-DGPS" order="0" platforms="-ublox5,ublox9" sender="server">
         <ref field="itow" />
         <int name="age" type="int32" units="ms" />
         <int name="baseId" type="int16" />
@@ -28,7 +28,7 @@
     </message>
     
     <message name="NavDgpsPoll" id="MsgId.NavDgps" displayName="NAV-DGPS (Poll)" order="1">
-        <platforms value="-ublox5" />
+        <platforms value="-ublox5,ublox9" />
         <sender value="client" />
     </message>
 </schema>

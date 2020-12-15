@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
 
-    <message name="AidAlp" id="MsgId.AidAlp" displayName="AID-ALP" order="0" platforms="-ublox8" sender="client">
+    <message name="AidAlp" id="MsgId.AidAlp" displayName="AID-ALP" order="0" platforms="-ublox8,ublox9" sender="client">
         <int name="predTow" type="uint32" units="s"/>
         <int name="predDur" type="uint32" units="s"/>
         <int name="age" type="int32" units="s"/>
@@ -13,14 +13,14 @@
         <ref field="res2" name="reserved3" />
     </message>
 
-    <message name="AidAlpStatus" id="MsgId.AidAlp" displayName="AID-ALP (Status)" order="1" platforms="-ublox8">
+    <message name="AidAlpStatus" id="MsgId.AidAlp" displayName="AID-ALP (Status)" order="1" platforms="-ublox8,ublox9">
         <enum name="status" type="uint8" failOnInvalid="true">
             <validValue name="nak" val="0" />
             <validValue name="ack" val="1" />
         </enum>
     </message>
 
-    <message name="AidAlpData" id="MsgId.AidAlp" displayName="AID-ALP (Data)" order="3" platforms="-ublox8" sender="client">
+    <message name="AidAlpData" id="MsgId.AidAlp" displayName="AID-ALP (Data)" order="3" platforms="-ublox8,ublox9" sender="client">
         <list name="alpData">
             <int name="element" type="uint16" displayName="_" />
         </list>

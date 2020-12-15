@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="SecUniqid" id="MsgId.SecUniqid" displayName="SEC-UNIQID" platforms="+ublox8" sender="server">
+    <message name="SecUniqid" id="MsgId.SecUniqid" displayName="SEC-UNIQID" platforms="+ublox8,ublox9" sender="server">
         <int name="version" type="uint8" defaultValue="1" validValue="1" />
         <ref field="res3" name="reserved1" />
         <data name="uniqueId" length="5" />
     </message>
 
-    <message name="SecUniqidPoll" id="MsgId.SecUniqid" displayName="SEC-UNIQID (Poll)" platforms="+ublox8" sender="client" order="1" />
+    <message name="SecUniqidPoll" id="MsgId.SecUniqid" displayName="SEC-UNIQID (Poll)" platforms="+ublox8,ublox9" sender="client" order="1" />
 </schema>

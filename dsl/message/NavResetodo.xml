@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
     <message name="NavResetodo" id="MsgId.NavResetodo" displayName="NAV-RESETODO">
-        <platforms value="+ublox8" />
+        <platforms value="+ublox8,ublox9" />
         <sender value="client" />
     </message>
 </schema>

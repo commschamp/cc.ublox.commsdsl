@@ -19,12 +19,12 @@
         </optional>
     </message>
 
-    <message name="AidAopPollSv" id="MsgId.AidAop" displayName="AID-AOP (Poll SV)" order="2" platforms="-ublox5" sender="client">
+    <message name="AidAopPollSv" id="MsgId.AidAop" displayName="AID-AOP (Poll SV)" order="2" platforms="-ublox5,ublox9" sender="client">
         <int name="svid" type="uint8" />
     </message>
 
     <message name="AidAopPoll" id="MsgId.AidAop" displayName="AID-AOP (Poll)" order="3">
-        <platforms value="-ublox5" />
+        <platforms value="-ublox5,ublox9" />
         <sender value="client" />
     </message>
 </schema>

@@ -6,6 +6,7 @@
     <platform name="ublox6" />
     <platform name="ublox7" />
     <platform name="ublox8" />
+    <platform name="ublox9" />
     
     <fields>
         <enum name="MsgId" type="uint16" semanticType="messageId" hexAssign="true" endian="big">
@@ -38,6 +39,8 @@
             <validValue name="NavSvin" val="0x013B" displayName="NAV-SVIN" />
             <validValue name="NavRelposned" val="0x013C" displayName="NAV-RELPOSNED" />
             <validValue name="NavEkfstatus" val="0x0140" displayName="NAV-EKFSTATUS" />
+            <validValue name="NavSlas" val="0x0142" displayName="NAV-SLAS" />
+            <validValue name="NavSig" val="0x0143" displayName="NAV-SIG" />
             <validValue name="NavAopstatus" val="0x0160" displayName="NAV-AOPSTATUS" />
             <validValue name="NavEoe" val="0x0161" displayName="NAV-EOE" />
             <validValue name="RxmRaw" val="0x0210" displayName="RXM-RAW" />
@@ -100,6 +103,9 @@
             <validValue name="CfgFixseed" val="0x0684" displayName="CFG-FIXSEED" />
             <validValue name="CfgDynseed" val="0x0685" displayName="CFG-DYNSEED" />
             <validValue name="CfgPms" val="0x0686" displayName="CFG-PMS" />
+            <validValue name="CfgValset" val="0x068a" displayName="CFG-VALSET" />
+            <validValue name="CfgValget" val="0x068b" displayName="CFG-VALGET" />
+            <validValue name="CfgValdel" val="0x068c" displayName="CFG-VALDEL" />
             <validValue name="UpdSos" val="0x0914" displayName="UPD-SOS" />
             <validValue name="MonIo" val="0x0a02" displayName="MON-IO" />
             <validValue name="MonVer" val="0x0a04" displayName="MON-VER" />
@@ -112,6 +118,10 @@
             <validValue name="MonPatch" val="0x0a27" displayName="MON-PATCH" />
             <validValue name="MonGnss" val="0x0a28" displayName="MON-GNSS" />
             <validValue name="MonSmgr" val="0x0a2e" displayName="MON-SMGR" />
+            <validValue name="MonSpan" val="0x0a31" displayName="MON-SPAN" />
+            <validValue name="MonComms" val="0x0a36" displayName="MON-COMMS" />
+            <validValue name="MonHw3" val="0x0a37" displayName="MON-HW3" />
+            <validValue name="MonRf" val="0x0a38" displayName="MON-RF" />
             <validValue name="AidReq" val="0x0b00" displayName="AID-REQ" />
             <validValue name="AidIni" val="0x0b01" displayName="AID-INI" />
             <validValue name="AidHui" val="0x0b02" displayName="AID-HUI" />
@@ -154,6 +164,8 @@
             <validValue name="LogRetrievestring" val="0x210d" displayName="LOG-RETRIEVESTRING" />
             <validValue name="LogFindtime" val="0x210e" displayName="LOG-FINDTIME" />
             <validValue name="LogRetrieveposextra" val="0x210f" displayName="LOG-RETRIEVEPOSEXTRA" />
+            <validValue name="LogRetrievebatch" val="0x2110" displayName="LOG-RETRIEVEBATCH" />
+            <validValue name="LogBatch" val="0x2111" displayName="LOG-BATCH" />
             <validValue name="SecSign" val="0x2701" displayName="SEC-SIGN" />
             <validValue name="SecUniqid" val="0x2703" displayName="SEC-UNIQID" />
             <validValue name="HnrPvt" val="0x2800" displayName="HNR-PVT" />

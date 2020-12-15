@@ -1,0 +1,53 @@
+/// @brief Custom refresh functionality
+bool refresh()
+{
+    bool updated = Base::refresh();
+
+    auto valId = getValueId();
+    switch (valId) {
+        case ValId_OneByteLsb: 
+            if (field_val().currentField() != Field_val::FieldIdx_l) {
+                field_val().initField_l();
+                updated = true;
+            }
+            break;
+
+        case ValId_OneByte:
+            if (field_val().currentField() != Field_val::FieldIdx_u1) {
+                field_val().initField_u1();
+                updated = true;
+            }
+            break;
+
+        case ValId_TwoBytes:
+            if (field_val().currentField() != Field_val::FieldIdx_u2) {
+                field_val().initField_u2();
+                updated = true;
+            }
+            break;
+
+        case ValId_FourBytes: 
+            if (field_val().currentField() != Field_val::FieldIdx_u4) {
+                field_val().initField_u4();
+                updated = true;
+            }
+            break;
+
+        case ValId_EightBytes:
+            if (field_val().currentField() != Field_val::FieldIdx_u8) {
+                field_val().initField_u8();
+                updated = true;
+            }
+            break;
+
+        default:
+            if (field_val().currentField() < Field_val::FieldIdx_numOfValues) {
+                field_val().reset();
+                updated = true;
+            }
+
+            break;
+    }
+
+    return updated;
+}

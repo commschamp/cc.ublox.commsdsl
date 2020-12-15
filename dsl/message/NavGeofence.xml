@@ -7,7 +7,7 @@
             <validValue name="Outside" val="2" />
         </enum>
     </fields>
-    <message name="NavGeofence" id="MsgId.NavGeofence" displayName="NAV-GEOFENCE" order="0" platforms="+ublox8" sender="server">
+    <message name="NavGeofence" id="MsgId.NavGeofence" displayName="NAV-GEOFENCE" order="0" platforms="+ublox8,ublox9" sender="server">
         <ref field="itow" />
         <int name="version" type="uint8" validValue="0" />
         <enum name="status" type="uint8">
@@ -19,13 +19,15 @@
         <list name="list" countPrefix="$numFences" >
             <bundle name="element" displayName="_">
                 <ref field="GeofenceState" name="state"/>
-                <ref field="res1" name="reserved1" />
+                <int name="id" type="uint8">
+                    <special name="NotAvailable" val="0" />
+                </int>
             </bundle>
         </list>
     </message>
     
     <message name="NavGeofencePoll" id="MsgId.NavGeofence" displayName="NAV-GEOFENCE (Poll)" order="1">
-        <platforms value="+ublox8" />
+        <platforms value="+ublox8,ublox9" />
         <sender value="client" />
     </message>
 </schema>

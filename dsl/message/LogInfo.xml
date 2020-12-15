@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="LogInfo" id="MsgId.LogInfo" displayName="LOG-INFO" order="0" platforms="+ublox7,ublox8" sender="server">
+    <message name="LogInfo" id="MsgId.LogInfo" displayName="LOG-INFO" order="0" platforms="+ublox7,ublox8,ublox9" sender="server">
         <int name="version" type="uint8" defaultValue="1" validValue="1" />
         <ref field="res3" name="reserved1" />
         <int name="filestoreCapacity" type="uint32" />
@@ -31,7 +31,7 @@
     </message>
 
     <message name="LogInfoPoll" id="MsgId.LogInfo" displayName="LOG-INFO (Poll)" order="1">
-        <platforms value="+ublox7,ublox8" />
+        <platforms value="+ublox7,ublox8,ublox9" />
         <sender value="client" />
     </message>
 

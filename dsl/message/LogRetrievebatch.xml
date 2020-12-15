@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="LogRetrievebatch" id="MsgId.LogRetrievebatch" displayName="LOG-RETRIEVEBATCH" platforms="+ublox9" sender="client">
+        <int name="version" type="uint8" validValue="0" />
+        <set name="flags" length="1">
+            <bit name="sendMonFirst" idx="0" />
+        </set>
+        <ref field="res2" name="reserved0" />
+    </message>
+</schema>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="MgaGalEph" id="MsgId.MgaGal" displayName="MGA-GAL-EPH" order="0" platforms="+ublox8" sender="client">
+    <message name="MgaGalEph" id="MsgId.MgaGal" displayName="MGA-GAL-EPH" order="0" platforms="+ublox8,ublox9" sender="client">
         <int name="type" type="uint8" defaultValue="1" validValue="1" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
         <int name="svid" type="uint8" />
@@ -36,7 +36,7 @@
         <ref field="res4" name="reserved3" />
     </message>
 
-    <message name="MgaGalAlm" id="MsgId.MgaGal" displayName="MGA-GAL-ALM" order="1" platforms="+ublox8" sender="client">
+    <message name="MgaGalAlm" id="MsgId.MgaGal" displayName="MGA-GAL-ALM" order="1" platforms="+ublox8,ublox9" sender="client">
         <int name="type" type="uint8" defaultValue="2" validValue="2" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
         <int name="svid" type="uint8" />
@@ -59,7 +59,7 @@
 
     </message>
 
-    <message name="MgaGalTimeoffset" id="MsgId.MgaGal" displayName="MGA-GAL-TIMEOFFSET" order="2" platforms="+ublox8" sender="client">
+    <message name="MgaGalTimeoffset" id="MsgId.MgaGal" displayName="MGA-GAL-TIMEOFFSET" order="2" platforms="+ublox8,ublox9" sender="client">
         <int name="type" type="uint8" defaultValue="3" validValue="3" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
         <ref field="res2" name="reserved1" />
@@ -70,7 +70,7 @@
         <ref field="res2" name="reserved2" />
     </message>
 
-    <message name="MgaGalUtc" id="MsgId.MgaGal" displayName="MGA-GAL-UTC" order="3" platforms="+ublox8" sender="client">
+    <message name="MgaGalUtc" id="MsgId.MgaGal" displayName="MGA-GAL-UTC" order="3" platforms="+ublox8,ublox9" sender="client">
         <int name="type" type="uint8" defaultValue="5" validValue="5" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
         <ref field="res2" name="reserved1" />

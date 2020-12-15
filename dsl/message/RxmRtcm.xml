@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="RxmRtcm" id="MsgId.RxmRtcm" displayName="RXM-RTCM" platforms="+ublox8" sender="server">
+    <message name="RxmRtcm" id="MsgId.RxmRtcm" displayName="RXM-RTCM" platforms="+ublox8,ublox9" sender="server">
         <int name="version" type="uint8" defaultValue="2" validValue="2" />
-        <set name="flags" length="1">
-            <bit name="crcFailed" idx="0" />
-        </set>
-        <ref field="res2" name="reserved1" />
+        <bitfield name="flags">
+            <set name="bitsLow" bitLength="1" displayName="_">
+                <bit name="crcFailed" idx="0" />
+            </set>
+            <enum name="msgUsed" type="uint8" bitLength="2">
+                <validValue name="DoNotKnow" val="0" />
+                <validValue name="NotUsed" val="1" />
+                <validValue name="RTCM" val="2" />
+            </enum>
+            <ref field="res1" name="bitsHigh" bitLength="5" />
+        </bitfield>
+        <int name="subType" type="uint16" />
         <int name="refStation" type="uint16" />
         <int name="msgType" type="uint16" />
     </message>

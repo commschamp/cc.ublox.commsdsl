@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="AidAlpsrv" id="MsgId.AidAlpsrv" displayName="AID-ALPSRV" order="0" platforms="-ublox8">
+    <message name="AidAlpsrv" id="MsgId.AidAlpsrv" displayName="AID-ALPSRV" order="0" platforms="-ublox8,ublox9">
         <int name="idSize" type="uint8" />        
         <int name="type" type="uint8" />        
         <int name="ofs" type="uint16" />
@@ -13,7 +13,7 @@
         <data name="data" lengthPrefix="$dataSize" />
     </message>
 
-    <message name="AidAlpsrvToServer" id="MsgId.AidAlpsrv" displayName="AID-ALPSRV (To Server)" order="1" platforms="-ublox8" sender="server">
+    <message name="AidAlpsrvToServer" id="MsgId.AidAlpsrv" displayName="AID-ALPSRV (To Server)" order="1" platforms="-ublox8,ublox9" sender="server">
         <int name="idSize" type="uint8" />        
         <int name="type" type="uint8" />        
         <int name="ofs" type="uint16" />

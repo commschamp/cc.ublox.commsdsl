@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="RxmSfrbx" id="MsgId.RxmSfrbx" displayName="RXM-SFRBX" platforms="+ublox8" sender="server">
+    <message name="RxmSfrbx" id="MsgId.RxmSfrbx" displayName="RXM-SFRBX" platforms="+ublox8,ublox9" sender="server">
         <ref field="gnssId" />
         <int name="svid" type="uint8" />
         <ref field="res1" name="reserved1" />
         <int name="freqId" type="uint8" validRange="[0, 13]" />
         <int name="numWords" type="uint8" displayReadOnly="true" />
-        <ref field="res2" name="reserved2" />
-        <int name="version" type="uint8" defaultValue="1" validValue="1" />
-        <ref field="res2" name="reserved3" />
+        <int name="chn" type="uint8" description="Introduced in ublox-9" />
+        <int name="version" type="uint8" defaultValue="1" validRange="[1, 2]" />
+        <ref field="res1" name="reserved3" />
         <list name="dwrd" countPrefix="$numWords">
             <int name="element" type="uint32" />
         </list>

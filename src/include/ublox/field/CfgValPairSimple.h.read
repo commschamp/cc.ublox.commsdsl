@@ -1,0 +1,32 @@
+/// @brief Custom read functionality
+template <typename TIter>
+comms::ErrorStatus read(TIter& iter, std::size_t len)
+{
+    auto es = Base::template readUntilAndUpdateLen<FieldIdx_val>(iter, len);
+    if (es != comms::ErrorStatus::Success) {
+        return es;
+    }
+
+    auto valId = getValueId();
+    switch (valId) {
+        case ValId_OneByteLsb: 
+            field_val().initField_l();
+            break;
+        case ValId_OneByte:
+            field_val().initField_u1();
+            break;
+        case ValId_TwoBytes:
+            field_val().initField_u2();
+            break;
+        case ValId_FourBytes: 
+            field_val().initField_u4();
+            break;
+        case ValId_EightBytes:
+            field_val().initField_u8();
+            break;
+        default:
+            return comms::ErrorStatus::InvalidMsgData;
+    }
+
+    return Base::template readFrom<FieldIdx_val>(iter, len);
+}

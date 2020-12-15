@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="CfgRxm" id="MsgId.CfgRxm" displayName="CFG-RXM" order="0">
+    <message name="CfgRxm" id="MsgId.CfgRxm" displayName="CFG-RXM" order="0" platforms="-ublox9">
         <ref field="res1" name="reserved1" />
         <enum name="lpMode" type="uint8">
             <validValue name="Continuous" val="0" />
@@ -10,6 +10,7 @@
     </message>
 
     <message name="CfgRxmPoll" id="MsgId.CfgRxm" displayName="CFG-RXM (Poll)" order="1">
+        <platforms value="-ublox9" />
         <sender value="client" />
     </message>
 </schema>

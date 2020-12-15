@@ -40,11 +40,15 @@
             <description value="Longitude" />
         </int>
         <int reuse="lon" name="lat" description="Latitude" />
+        <int name="latHP" type="int8" units="deg" scaling="1/1000000000" displayDecimals="9" />    
+        <int name="lonHP" type="int8" units="deg" scaling="1/1000000000" displayDecimals="9" />    
         <int name="height" type="int32" units="mm" >
-            <description value="Height avove ellipsoid" />
+            <description value="Height above ellipsoid" />
         </int>
+        <int name="alt" type="int32" units="cm" />
+        <int name="altHP" type="int8" units="mm" scaling="1/10" displayDecimals="1" />
         <int name="hMSL" type="int32" units="mm">
-            <description value="Height avove mean sea level" />
+            <description value="Height above mean sea level" />
         </int>
         <int name="hAcc" type="uint32" units="mm" />
         <int name="vAcc" type="uint32" units="mm" />
@@ -74,6 +78,30 @@
             <validValue name="IMES" val="4" />
             <validValue name="QZSS" val="5" />
             <validValue name="GLONASS" val="6" />
+        </enum>
+        <int name="GeofenceRadius" type="uint32" units="m" scaling="1/100" displayDecimals="2" />
+        <set name="InfMask" type="uint8">
+            <bit name="ERROR" idx="0" />
+            <bit name="WARNING" idx="1" />
+            <bit name="NOTICE" idx="2" />
+            <bit name="TEST" idx="3" />
+            <bit name="DEBUG" idx="4" />
+        </set> 
+        <enum name="NmeaVersion" type="uint8">
+            <validValue name="V411" val="0x4b" displayName="v4.11" />
+            <validValue name="V41" val="0x41" displayName="v4.1" />
+            <validValue name="V40" val="0x40" displayName="v4.0" />
+            <validValue name="V23" val="0x23" displayName="v2.3" />
+            <validValue name="V21" val="0x21" displayName="v2.1" />
+        </enum>
+        <int name="fixedPosAcc" type="uint32" units="mm" scaling="1/10" displayDecimals="1" />
+        <enum name="psmState" type="uint8">
+            <validValue name="NotAvailable" val="0" displayName="N/A" />
+            <validValue name="Enabled" val="1" displayName="ENABLED" />
+            <validValue name="Acquisition" val="2" displayName="ACQUISITION" />
+            <validValue name="Tracking" val="3" displayName="TRACKING" />
+            <validValue name="PowerOptTracking" val="4" displayName="POWER OPTIMIZED TRACKING" />
+            <validValue name="Inactive" val="5" displayName="INACTIVE" />
         </enum>
     </fields>
 </schema>

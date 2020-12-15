@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="CfgValget" id="MsgId.CfgValget" displayName="CFG-VALGET" order="0" platforms="+ublox9" sender="server">
+        <int name="version" type="uint8" validValue="1" defaultValue="1" failOnInvalid="true" displayReadOnly="true" />
+        <ref field="CfgValLayer" name="layer" />
+        <int name="position" type="uint16" />
+        <list name="cfgdata">
+            <ref field="CfgValPairSimple" name="Element"/>
+        </list>
+    </message>
+
+    <message name="CfgValgetPoll" id="MsgId.CfgValget" displayName="CFG-VALGET (Poll)" order="10" platforms="+ublox9" sender="client">
+        <int name="version" type="uint8" validValue="0" failOnInvalid="true" displayReadOnly="true" />
+        <ref field="CfgValLayer" name="layer" />
+        <int name="position" type="uint16" />
+        <list name="keys">
+            <ref field="CfgValKeyId" name="Element"/>
+        </list>
+    </message>
+</schema>

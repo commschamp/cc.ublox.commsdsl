@@ -1,0 +1,17 @@
+/// @brief Value ID
+enum ValId
+{
+    ValId_OneByteLsb = 0x1,
+    ValId_OneByte = 0x2,
+    ValId_TwoBytes = 0x3,
+    ValId_FourBytes = 0x4,
+    ValId_EightBytes = 0x5,
+    ValId_ValuesLimit
+};
+
+/// @brief Get the length of the value field
+ValId getValueId() const
+{
+    return static_cast<ValId>(
+        (static_cast<std::uint32_t>(field_key().value()) >> 28) & 0x7);    
+} 

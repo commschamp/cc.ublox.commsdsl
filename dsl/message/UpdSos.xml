@@ -9,7 +9,7 @@
         </enum>
     </fields>
 
-    <message name="UpdSosRestored" id="MsgId.UpdSos" displayName="UPD-SOS (Restored)" order="0" platforms="+ublox8" sender="server">
+    <message name="UpdSosRestored" id="MsgId.UpdSos" displayName="UPD-SOS (Restored)" order="0" platforms="+ublox8,ublox9" sender="server">
         <int name="cmd" type="uint8" defaultValue="updSosCmd.Restored" validValue="updSosCmd.Restored" failOnInvalid="true" displayReadOnly="true"/>
         <ref field="res3" name="reserved1" />
         <enum name="response" type="uint8">
@@ -21,7 +21,7 @@
         <ref field="res3" name="reserved2" />
     </message>
 
-    <message name="UpdSosAck" id="MsgId.UpdSos" displayName="UPD-SOS (Ack)" order="1" platforms="+ublox8" sender="server">
+    <message name="UpdSosAck" id="MsgId.UpdSos" displayName="UPD-SOS (Ack)" order="1" platforms="+ublox8,ublox9" sender="server">
         <int name="cmd" type="uint8" defaultValue="updSosCmd.Ack" validValue="updSosCmd.Ack" failOnInvalid="true" displayReadOnly="true" />
         <ref field="res3" name="reserved1" />
         <enum name="response" type="uint8">
@@ -31,18 +31,18 @@
         <ref field="res3" name="reserved2" />
     </message>  
 
-    <message name="UpdSosClear" id="MsgId.UpdSos" displayName="UPD-SOS (Clear)" order="2" platforms="+ublox8" sender="client">
+    <message name="UpdSosClear" id="MsgId.UpdSos" displayName="UPD-SOS (Clear)" order="2" platforms="+ublox8,ublox9" sender="client">
         <int name="cmd" type="uint8" defaultValue="updSosCmd.Clear" validValue="updSosCmd.Clear" failOnInvalid="true" displayReadOnly="true"/>
         <ref field="res3" name="reserved1" />
     </message> 
 
-    <message name="UpdSosCreate" id="MsgId.UpdSos" displayName="UPD-SOS (Create)" order="3" platforms="+ublox8" sender="client">
+    <message name="UpdSosCreate" id="MsgId.UpdSos" displayName="UPD-SOS (Create)" order="3" platforms="+ublox8,ublox9" sender="client">
         <int name="cmd" type="uint8" defaultValue="updSosCmd.Create" validValue="updSosCmd.Create" failOnInvalid="true" displayReadOnly="true"/>
         <ref field="res3" name="reserved1" />
     </message>              
 
     <message name="UpdSosPoll" id="MsgId.UpdSos" displayName="UPD-SOS (Poll)" order="4">
-        <platforms value="+ublox8" />
+        <platforms value="+ublox8,ublox9" />
         <sender value="client" />
     </message>
 </schema>

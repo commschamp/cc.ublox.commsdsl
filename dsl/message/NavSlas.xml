@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="ublox">
+    <message name="NavSlas" id="MsgId.NavSlas" displayName="NAV-SLAS" order="0" platforms="+ublox9" sender="server">
+        <ref field="itow" />
+        <int name="version" type="uint8" validValue="0" />
+        <ref field="res3" name="reserved0" />
+        <int name="gmsLon" type="int32" units="deg" scaling="1/1000" displayDecimals="3" />
+        <int name="gmsLat" type="int32" units="deg" scaling="1/1000" displayDecimals="3" />
+        <int name="gmsCode" type="uint8" />
+        <int name="qzssSvId" type="uint8" />
+        <set name="serviceFlags" length="1">
+            <bit name="gmsAvailable" idx="0" />
+            <bit name="qzssSvAvailable" idx="1" />
+            <bit name="testMode" idx="2" />
+        </set>
+        <int name="cnt" type="uint8" displayReadOnly="true" />
+        <list name="list" countPrefix="$cnt" >
+            <bundle name="element" displayName="_">
+                <ref field="gnssId" />
+                <int name="svid" type="uint8" />
+                <int name="sigId" type="uint8" />
+                <ref field="res4" name="reserved1" />
+                <int name="prc" type="int16" units="cm" />
+            </bundle>
+        </list>
+    </message>
+    
+    <message name="NavSlasPoll" id="MsgId.NavSlas" displayName="NAV-SLAS (Poll)" order="1">
+        <platforms value="+ublox9" />
+        <sender value="client" />
+    </message>
+</schema>

@@ -7,13 +7,7 @@
         </enum>
         <ref field="res3" name="reserved1" />
         <list name="infMsgMask" count="6">
-            <set name="element" type="uint8">
-                <bit name="ERROR" idx="0" />
-                <bit name="WARNING" idx="1" />
-                <bit name="NOTICE" idx="2" />
-                <bit name="TEST" idx="3" />
-                <bit name="DEBUG" idx="4" />
-            </set>
+            <ref field="InfMask" name="element" />
         </list>
     </message>
 

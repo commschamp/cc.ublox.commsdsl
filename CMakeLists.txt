@@ -18,14 +18,14 @@ option (UBLOX_USE_CCACHE "Use ccache on UNIX." ON)
 #     is not provided and examples are not disabled.
 
 if ("${COMMSDSL_TAG}" STREQUAL "")
-    set(COMMSDSL_TAG "v3.5.3")
+    set(COMMSDSL_TAG "v3.6")
 endif ()
 
 if ("${COMMS_TAG}" STREQUAL "")
-    set(COMMS_TAG "v3.1.2")
+    set(COMMS_TAG "v3.1.3")
 endif ()
 
-set (VERSION "0.19.1")
+set (VERSION "0.20")
 
 set (EXTERNALS_DIR "${PROJECT_SOURCE_DIR}/externals")
 
@@ -73,6 +73,7 @@ endif ()
 set (schema_files
     dsl/main.xml
     dsl/field/common.xml
+    dsl/field/cfgval.xml
     dsl/message/NavPosecef.xml
     dsl/message/NavPosllh.xml
     dsl/message/NavStatus.xml
@@ -101,6 +102,8 @@ set (schema_files
     dsl/message/NavGeofence.xml
     dsl/message/NavSvin.xml
     dsl/message/NavRelposned.xml
+    dsl/message/NavSlas.xml
+    dsl/message/NavSig.xml
     dsl/message/NavAopstatus.xml
     dsl/message/NavEoe.xml
     dsl/message/RxmRaw.xml
@@ -156,6 +159,9 @@ set (schema_files
     dsl/message/CfgTmode3.xml
     dsl/message/CfgFixseed.xml
     dsl/message/CfgPms.xml
+    dsl/message/CfgValset.xml
+    dsl/message/CfgValget.xml
+    dsl/message/CfgValdel.xml
     dsl/message/UpdSos.xml
     dsl/message/MonIo.xml
     dsl/message/MonVer.xml
@@ -168,6 +174,10 @@ set (schema_files
     dsl/message/MonPatch.xml
     dsl/message/MonGnss.xml
     dsl/message/MonSmgr.xml
+    dsl/message/MonSpan.xml
+    dsl/message/MonComms.xml
+    dsl/message/MonHw3.xml
+    dsl/message/MonRf.xml
     dsl/message/AidReq.xml
     dsl/message/AidIni.xml
     dsl/message/AidHui.xml
@@ -209,6 +219,8 @@ set (schema_files
     dsl/message/LogRetrievestring.xml
     dsl/message/LogFindtime.xml
     dsl/message/LogRetrieveposextra.xml
+    dsl/message/LogRetrievebatch.xml
+    dsl/message/LogBatch.xml
     dsl/message/SecSign.xml
     dsl/message/SecUniqid.xml
     dsl/message/HnrPvt.xml

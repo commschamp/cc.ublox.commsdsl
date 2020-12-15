@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="RxmSvsi" id="MsgId.RxmSvsi" displayName="RXM-SVSI" order="0" sender="server">
+    <message name="RxmSvsi" id="MsgId.RxmSvsi" displayName="RXM-SVSI" order="0" platforms="-ublox9" sender="server">
         <ref field="itow" />
         <int name="week" type="int16" units="weeks" />
         <int name="numVis" type="uint8" />
@@ -28,6 +28,7 @@
     </message>
 
     <message name="RxmSvsiPoll" id="MsgId.RxmSvsi" displayName="RXM-SVSI (Poll)" order="1">
+        <platforms value="-ublox9" />
         <sender value="client" />
     </message>    
 </schema>

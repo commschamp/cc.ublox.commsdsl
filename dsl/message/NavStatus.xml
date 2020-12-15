@@ -12,6 +12,7 @@
         <bitfield name="fixStat">
             <set name="bits" bitLength="6" displayName="_">
                 <bit name="diffCorr" idx="0" />
+                <bit name="carrSolnValid" idx="1" />
             </set>
             <enum name="mapMatching" type="uint8" bitLength="2">
                 <validValue name="None" val="0" displayName="none"/>
@@ -34,7 +35,12 @@
                 <validValue name="Spoofing" val="2" />
                 <validValue name="MultipleSpoofing" val="3" displayName="Multiple spoofing" />
             </enum>
-            <int reuse="res1" name="res2" bitLength="3"  displayHidden="true" />
+            <int reuse="res1" name="res2" bitLength="1"  displayHidden="true" />
+            <enum name="carrSoln" type="uint8" bitLength="2">
+                <validValue name="NoCarrier" val="0" />
+                <validValue name="Float" val="1" />
+                <validValue name="Fixed" val="2" />
+            </enum>
         </bitfield>
         <int name="ttff" type="uint32" units="ms" />
         <int name="msss" type="uint32" units="ms" />
