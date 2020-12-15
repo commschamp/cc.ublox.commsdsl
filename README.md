@@ -3,7 +3,7 @@
 use a UBX binary protocol to transmit GPS data to a host computer using
 asynchronous serial ports. This project provides a definition all 
 the messages as well as wrapping transport framing used by 
-**u-blox 5/6/7/8** devices.
+**u-blox 5/6/7/8/9** devices.
 
 The protocol is defined in multiple [schema](dsl)
 files using [CommsDSL](https://github.com/commschamp/CommsDSL-Specification).
