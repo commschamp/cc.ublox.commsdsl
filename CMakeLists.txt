@@ -25,7 +25,7 @@ if ("${COMMS_TAG}" STREQUAL "")
     set(COMMS_TAG "v3.2")
 endif ()
 
-set (VERSION "0.20.1")
+set (VERSION "0.20.2")
 
 set (EXTERNALS_DIR "${PROJECT_SOURCE_DIR}/externals")
 
