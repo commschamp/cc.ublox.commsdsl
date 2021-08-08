@@ -55,7 +55,7 @@ if ("${COMMSDSL2COMMS}" STREQUAL "")
             SOURCE_DIR "${commsdsl2comms_src_dir}"
             CMAKE_ARGS
                 -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${commsdsl2comms_install_dir}
-                -DCOMMSDSL_NO_TESTS=ON -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} 
+                -DCOMMSDSL_BUILD_UNIT_TESTS=OFF -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} 
                 -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER} 
                 -DBOOST_ROOT=${BOOST_ROOT} -DBOOST_LIBRARYDIR=${BOOST_LIBRARYDIR}
                 -DBOOST_INCLUDEDIR=${BOOST_INCLUDEDIR} ${boost_static_libs_param}
