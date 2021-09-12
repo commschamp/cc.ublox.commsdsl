@@ -27,7 +27,7 @@ IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" (
     set TOOLCHAIN=msvc16
     set QT_SUBDIR=msvc2017
     set QT_VER=5.14
-    set BOOST_VER=1_71_0
+    set BOOST_VER=1_73_0
     IF "%PLATFORM%"=="x86" (
         echo Performing x86 build in VS2019
         call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars32.bat"
