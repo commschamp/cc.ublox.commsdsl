@@ -1,7 +1,8 @@
 image:
-    - Visual Studio 2019
-    - Visual Studio 2017
-    - Visual Studio 2015
+    - Visual Studio 2022  
+    - Visual Studio 2019  
+    - Visual Studio 2017    
+
 
 init:
     - git config --global core.autocrlf input
@@ -18,6 +19,8 @@ configuration:
     - Release
 
 environment:
+    COMMS_BRANCH: master
+    CC_TOOLS_QT_BRANCH: master
     matrix:
         - CPP_STD: 11
         - CPP_STD: 14
@@ -27,10 +30,6 @@ environment:
 matrix:
     fast_finish: false
     exclude:
-        - image: Visual Studio 2015
-          CPP_STD: 17 
-        - image: Visual Studio 2015
-          CPP_STD: 20    
         - image: Visual Studio 2017
           CPP_STD: 20                           
         
@@ -40,17 +39,47 @@ install:
 
 build_script:
     - set BUILD_DIR=%APPVEYOR_BUILD_FOLDER%\build.%PLATFORM%.%CONFIGURATION%.%TOOLCHAIN%
+    - set EXTERNALS_DIR=%APPVEYOR_BUILD_FOLDER%\externals
     - if exist %BUILD_DIR% rmdir /S /Q %BUILD_DIR%
+    - if exist %EXTERNALS_DIR% rmdir /S /Q %EXTERNALS_DIR%
+    - mkdir %EXTERNALS_DIR%
+    - cd %EXTERNALS_DIR%
+    - git clone -b %COMMS_BRANCH% https://github.com/commschamp/comms
+    - git clone -b %CC_TOOLS_QT_BRANCH% https://github.com/commschamp/cc_tools_qt
+    - echo ------------------------- Building COMMS library -------------------------
+    - set COMMS_BUILD_DIR=%APPVEYOR_BUILD_FOLDER%\externals\comms\build.%PLATFORM%.%CONFIGURATION%.%TOOLCHAIN%
+    - cmake -E make_directory %COMMS_BUILD_DIR%
+    - cd %COMMS_BUILD_DIR%
+    - cmake %APPVEYOR_BUILD_FOLDER%/externals/comms -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=%CONFIGURATION% -DCMAKE_INSTALL_PREFIX=install
+    - cmake --build . --target install
+    - echo ------------------------- Building cc_tools_qt -------------------------
+    - set CC_TOOLS_BUILD_DIR=%APPVEYOR_BUILD_FOLDER%\externals\cc_tools_qt\build.%PLATFORM%.%CONFIGURATION%.%TOOLCHAIN%
+    - cmake -E make_directory %CC_TOOLS_BUILD_DIR%
+    - cd %CC_TOOLS_BUILD_DIR%
+    - cmake %APPVEYOR_BUILD_FOLDER%/externals/cc_tools_qt -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=%CONFIGURATION% -DCMAKE_INSTALL_PREFIX=install -DCC_TOOLS_QT_DIR=%QTDIR% -DCC_TOOLS_QT_BUILD_APPS=OFF -DCC_TOOLS_QT_EXTERNAL_COMMS=ON -DCMAKE_PREFIX_PATH="%COMMS_BUILD_DIR%\install"
+    - cmake --build . --target install
+    - echo ------------------------- Building Project -------------------------
     - mkdir %BUILD_DIR%
     - cd %BUILD_DIR%
-    - cmake .. -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "NMake Makefiles" -DBOOST_ROOT="%BOOST_DIR%" -DBoost_USE_STATIC_LIBS=ON 
-    - nmake
+    - cmake .. -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "NMake Makefiles" -DBOOST_ROOT="%BOOST_DIR%" -DBoost_USE_STATIC_LIBS=ON -DCOMMS_INSTALL_DIR="%COMMS_BUILD_DIR%\install"
+    - cmake --build .
+    - echo ------------------------- Building Output -------------------------
     - mkdir output.build
     - cd output.build
-    - echo ------------------------- Building Output -------------------------
-    - cmake ../output -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "NMake Makefiles" -DOPT_QT_DIR=%QTDIR% -DCMAKE_CXX_STANDARD=%CPP_STD% -DOPT_BUILD_TEST=ON -DOPT_TEST_INPUT_MESSAGES=ublox::input::Ublox5Messages -DOPT_BUILD_PLUGIN=ON -DOPT_MSVC_FORCE_WARN_LEVEL="/W4" -DCMAKE_INSTALL_PREFIX=install
-    - nmake all_messages
-    - nmake ublox_input_test
-    
+    - cmake ../output -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "NMake Makefiles" -DCMAKE_CXX_STANDARD=%CPP_STD% -DCMAKE_INSTALL_PREFIX=install -DOPT_REQUIRE_COMMS_LIB=OFF
+    - cmake --build . --target install
+    - echo ------------------------- Building Test -------------------------
+    - cd %BUILD_DIR%
+    - mkdir output_test.build
+    - cd output_test.build
+    - echo TEST_PREFIX_PATH=%TEST_PREFIX_PATH%
+    - cmake ../output_test -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "NMake Makefiles" -DCMAKE_CXX_STANDARD=%CPP_STD% -DCMAKE_INSTALL_PREFIX=install -DCMAKE_PREFIX_PATH="%COMMS_BUILD_DIR%\install;%BUILD_DIR%\output.build\install" -DOPT_TEST_INPUT_MESSAGES=ublox::input::Ublox5Messages
+    - cmake --build . --target install
+    - echo ------------------------- Building Tools -------------------------
+    - cd %BUILD_DIR%
+    - mkdir output_tools.build
+    - cd output_tools.build
+    - cmake ../output_tools -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "NMake Makefiles" -DCMAKE_CXX_STANDARD=%CPP_STD% -DCMAKE_INSTALL_PREFIX=install -DCMAKE_PREFIX_PATH="%COMMS_BUILD_DIR%\install;%CC_TOOLS_BUILD_DIR%\install;%BUILD_DIR%\output.build\install;%QTDIR%"
+    - cmake --build . --target install    
 
 
