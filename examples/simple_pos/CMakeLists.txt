@@ -7,7 +7,7 @@ set (src
 )
 
 add_executable(${name} ${src})
-target_include_directories(${name} PRIVATE "${OUTPUT_DIR}/include")
+target_include_directories(${name} PRIVATE "${PROT_OUTPUT_DIR}/include")
 target_link_libraries(${name} cc::comms Boost::boost Boost::program_options Boost::system)
 
 foreach (c ${extra_boost_components})

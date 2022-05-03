@@ -9,19 +9,18 @@ if ("${COMMS_INSTALL_DIR}" STREQUAL "")
         COMMAND ${CMAKE_COMMAND} -E make_directory "${EXTERNALS_DIR}"
     ) 
 
-    set (cc_src_dir ${EXTERNALS_DIR}/comms_champion)
-    set (cc_bin_dir ${PROJECT_BINARY_DIR}/comms_champion)
+    set (cc_src_dir ${EXTERNALS_DIR}/comms)
+    set (cc_bin_dir ${PROJECT_BINARY_DIR}/comms)
     set (COMMS_INSTALL_DIR ${cc_bin_dir}/install)
 
     include (${PROJECT_SOURCE_DIR}/cmake/CC_Prefetch.cmake)
     cc_prefetch(SRC_DIR ${cc_src_dir} TAG ${COMMS_TAG})
-    include (${cc_src_dir}/cmake/CC_External.cmake)
-    cc_build_during_config(
+    include (${cc_src_dir}/cmake/CC_CommsExternal.cmake)
+    cc_comms_build_during_config(
         SRC_DIR ${cc_src_dir}
         BUILD_DIR ${cc_bin_dir}
         TAG ${COMMS_TAG}
         CMAKE_ARGS
-            -DCC_BUILD_TOOLS_LIBRARY=OFF -DCC_BUILD_UNIT_TESTS=OFF
             -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
             -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} 
             -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
