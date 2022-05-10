@@ -43,11 +43,6 @@ to help CMake find required libraries and headers.
 It is recommended to use `-DBoost_USE_STATIC_LIBS=ON` parameter to force
 linkage with static Boost libraries.
 
-**NOTE**, that **commsdsl2comms** application also requires 
-[Boost](https://www.boost.org) libraries. Please provide path to the latter, when
-**commsdsl2comms** is built internally, even if example applications are excluded
-from the build.
-
 If code generation output directory is not provided, it defaults to 
 `output` subdirectory of the one used to build the project.
 
