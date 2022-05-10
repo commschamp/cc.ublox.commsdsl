@@ -22,7 +22,7 @@ option (UBLOX_USE_CCACHE "Use ccache on UNIX." ON)
 # COMMSDSL_CXX_COMPILER - "C++" Compiler for commsdsl project
 
 if ("${COMMSDSL_TAG}" STREQUAL "")
-    set(COMMSDSL_TAG "develop")
+    set(COMMSDSL_TAG "v4.0")
 endif ()
 
 if ("${COMMS_TAG}" STREQUAL "")
