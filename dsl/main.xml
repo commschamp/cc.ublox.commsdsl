@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox"
-        endian="little"
-        nonUniqueMsgIdAllowed="true">
+<schema name="ublox" endian="little" nonUniqueMsgIdAllowed="true" dslVersion="5" >
     <platform name="ublox5" />
     <platform name="ublox6" />
     <platform name="ublox7" />
@@ -175,7 +173,7 @@
     <frame name="UbloxFrame">
         <sync name="Sync">
             <field>
-                <int name="Sync" type="uint16" defaultValue="0x62b5" validValue="0x62b5" displayName="SYNC"/> 
+                <int name="Sync" type="uint16" defaultValidValue="0x62b5" displayName="SYNC"/> 
             </field>
         </sync>
         <id name="Id">

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
     <message name="MgaIniPosXyz" id="MsgId.MgaIni" displayName="MGA-BDS-POS_XYZ" order="0" platforms="+ublox8,ublox9" sender="client">
-        <int name="type" type="uint8" defaultValue="0" validValue="0" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="0" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
         <ref field="res2" name="reserved1" />
         <ref field="ecefX" />
@@ -11,7 +11,7 @@
     </message>
 
     <message name="MgaIniPosLlh" id="MsgId.MgaIni" displayName="MGA-BDS-POS_LLH" order="1" platforms="+ublox8,ublox9" sender="client">
-        <int name="type" type="uint8" defaultValue="1" validValue="1" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="1" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
         <ref field="res2" name="reserved1" />
         <ref field="lat" />
@@ -21,7 +21,7 @@
     </message>
 
     <message name="MgaIniTimeUtc" id="MsgId.MgaIni" displayName="MGA-BDS-TIME_UTC" order="2" platforms="+ublox8,ublox9" sender="client">
-        <int name="type" type="uint8" defaultValue="0x10" validValue="0x10" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="0x10" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
         <bitfield name="ref">
             <enum name="source" type="uint8" bitLength="4">
@@ -49,7 +49,7 @@
     </message>    
 
     <message name="MgaIniTimeGnss" id="MsgId.MgaIni" displayName="MGA-BDS-TIME_GNSS" order="3" platforms="+ublox8,ublox9" sender="client">
-        <int name="type" type="uint8" defaultValue="0x11" validValue="0x11" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="0x11" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
         <bitfield name="ref">
             <enum name="source" type="uint8" bitLength="4">
@@ -73,7 +73,7 @@
     </message>      
 
     <message name="MgaIniClkd" id="MsgId.MgaIni" displayName="MGA-BDS-CLKD" order="4" platforms="+ublox8,ublox9" sender="client">
-        <int name="type" type="uint8" defaultValue="0x20" validValue="0x20" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="0x20" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
         <ref field="res2" name="reserved1" />
         <int name="clkD" type="int32" />
@@ -81,7 +81,7 @@
     </message>   
 
     <message name="MgaIniFreq" id="MsgId.MgaIni" displayName="MGA-BDS-FREQ" order="5" platforms="+ublox8,ublox9" sender="client">
-        <int name="type" type="uint8" defaultValue="0x21" validValue="0x21" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="0x21" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
         <ref field="res1" name="reserved1" />
         <bitfield name="flags">
@@ -98,7 +98,7 @@
     </message>     
 
     <message name="MgaIniEop" id="MsgId.MgaIni" displayName="MGA-BDS-EOP" order="6" platforms="+ublox8,ublox9" sender="client">
-        <int name="type" type="uint8" defaultValue="0x30" validValue="0x30" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="0x30" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
         <ref field="res2" name="reserved1" />
         <int name="d2kRef" type="uint16" units="d" />

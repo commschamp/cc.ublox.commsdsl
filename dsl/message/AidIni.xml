@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
-    <message name="AidIni" id="MsgId.AidIni" displayName="AID-INI" platforms="-ublox9" order="0">
+    <message name="AidIni" id="MsgId.AidIni" displayName="AID-INI" platforms="-ublox9" order="0" readOverride="replace" refreshOverride="replace">
         <optional name="ecefX" defaultMode="exist" displayExtModeCtrl="true">
             <int name="ecefX" type="int32" units="cm" />
         </optional>

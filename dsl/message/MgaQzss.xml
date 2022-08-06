@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
     <message name="MgaQzssEph" id="MsgId.MgaQzss" displayName="MGA-QZSS-EPH" order="0" platforms="+ublox8,ublox9" sender="client">
-        <int name="type" type="uint8" defaultValue="1" validValue="1" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="1" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
         <int name="svid" type="uint8" />
         <ref field="res1" name="reserved1" />
@@ -35,7 +35,7 @@
     </message>
 
     <message name="MgaQzssAlm" id="MsgId.MgaQzss" displayName="MGA-QZSS-ALM" order="1" platforms="+ublox8,ublox9" sender="client">
-        <int name="type" type="uint8" defaultValue="2" validValue="2" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="2" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
         <int name="svid" type="uint8" />
         <int name="svHealth" type="uint8" />
@@ -54,7 +54,7 @@
     </message>
 
     <message name="MgaQzssHealth" id="MsgId.MgaQzss" displayName="MGA-QZSS-HEALTH" order="2" platforms="+ublox8,ublox9" sender="client">
-        <int name="type" type="uint8" defaultValue="4" validValue="4" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="4" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
         <ref field="res2" name="reserved1" />
         <data name="healthCode" length="5" />

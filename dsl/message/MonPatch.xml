@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
     <message name="MonPatch" id="MsgId.MonPatch" displayName="MON-PATCH" order="0" platforms="+ublox8,ublox9" sender="server">
-        <int name="version" type="uint16" defaultValue="1" validValue="1"/>
+        <int name="version" type="uint16" defaultValidValue="1"/>
         <int name="nEntries" type="uint16" displayReadOnly="true" />
         <list name="list" countPrefix="$nEntries">
             <bundle name="element" displayName="_">

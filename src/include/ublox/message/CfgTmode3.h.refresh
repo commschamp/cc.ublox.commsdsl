@@ -1,7 +1,0 @@
-/// @brief Custom refresh functionality.
-bool doRefresh()
-{
-    bool updated = Base::doRefresh();
-    updated = refresh_optionals() || updated;
-    return updated;
-}

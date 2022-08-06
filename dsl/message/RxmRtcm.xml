@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
     <message name="RxmRtcm" id="MsgId.RxmRtcm" displayName="RXM-RTCM" platforms="+ublox8,ublox9" sender="server">
-        <int name="version" type="uint8" defaultValue="2" validValue="2" />
+        <int name="version" type="uint8" defaultValidValue="2" />
         <bitfield name="flags">
             <set name="bitsLow" bitLength="1" displayName="_">
                 <bit name="crcFailed" idx="0" />

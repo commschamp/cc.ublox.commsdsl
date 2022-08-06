@@ -14,8 +14,8 @@
     </message>
 
     <message name="LogFindtimeResp" id="MsgId.LogFindtime" displayName="LOG-FINDTIME (Response)" order="1" platforms="+ublox7,ublox8,ublox9" sender="server">
-        <int name="version" type="uint8" defaultValue="1" validValue="1" />
-        <int name="type" type="uint8" defaultValue="1" validValue="1" failOnInvalid="true" displayReadOnly="true" />
+        <int name="version" type="uint8" defaultValidValue="1" />
+        <int name="type" type="uint8" defaultValidValue="1" failOnInvalid="true" displayReadOnly="true" />
         <ref field="res2" name="reserved1" />
         <int name="entryNumber" type="uint32" />
     </message>

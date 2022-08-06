@@ -1,7 +1,0 @@
-# For some reason message/AidHui.cpp fails to compile in Release mode with g++-4.8
-if ((CMAKE_COMPILER_IS_GNUCC) AND 
-    (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.9) AND 
-    ("${CMAKE_BUILD_TYPE}" STREQUAL "Release"))
-    set_source_files_properties (message/AidHui.cpp PROPERTIES COMPILE_FLAGS "-O2")
-endif ()
-
