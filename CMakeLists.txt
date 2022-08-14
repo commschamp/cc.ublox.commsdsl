@@ -18,7 +18,7 @@ option (UBLOX_BUILD_GEN_TOOLS "Build and install generated plugin for tools" OFF
 # COMMSDSL2TEST_EXTRA_ARGS - Extra arguments to pass to "commsdsl2test"
 # COMMSDSL2TOOLS_QT_EXTRA_ARGS - Extra arguments to pass to "commsdsl2tools_qt"
 
-set (VERSION "1.1.0")
+set (VERSION "1.1.1")
 
 set (EXTERNALS_DIR "${PROJECT_SOURCE_DIR}/externals")
 
