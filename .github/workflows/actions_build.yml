@@ -3,9 +3,9 @@ name: Github Actions Build
 on: [push]
 
 env:
-  COMMS_BRANCH: develop
-  COMMSDSL_BRANCH: develop
-  CC_TOOLS_QT_BRANCH: v4.0
+  COMMS_BRANCH: master
+  COMMSDSL_BRANCH: master
+  CC_TOOLS_QT_BRANCH: master
 
 jobs:
   build_gcc_limited_ubuntu_18_04:
@@ -57,7 +57,7 @@ jobs:
     - name: Build Target 
       working-directory: ${{runner.workspace}}/build
       shell: bash
-      run: cmake --build . --target install
+      run: cmake --build . --config ${{matrix.type}} --target install
       env:
         VERBOSE: 1 
 
@@ -110,7 +110,7 @@ jobs:
     - name: Build Target 
       working-directory: ${{runner.workspace}}/build
       shell: bash
-      run: cmake --build . --target install
+      run: cmake --build . --config ${{matrix.type}} --target install
       env:
         VERBOSE: 1 
 
@@ -165,7 +165,7 @@ jobs:
     - name: Build Target 
       working-directory: ${{runner.workspace}}/build
       shell: bash
-      run: cmake --build . --target install
+      run: cmake --build . --config ${{matrix.type}} --target install
       env:
         VERBOSE: 1 
       
@@ -224,7 +224,7 @@ jobs:
     - name: Build Target 
       working-directory: ${{runner.workspace}}/build
       shell: bash
-      run: cmake --build . --target install
+      run: cmake --build . --config ${{matrix.type}} --target install
       env:
         VERBOSE: 1 
 
@@ -280,6 +280,6 @@ jobs:
     - name: Build Target 
       working-directory: ${{runner.workspace}}/build
       shell: bash
-      run: cmake --build . --target install
+      run: cmake --build . --config ${{matrix.type}} --target install
       env:
         VERBOSE: 1 

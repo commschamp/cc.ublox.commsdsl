@@ -19,9 +19,9 @@ configuration:
     - Release
 
 environment:
-    COMMS_BRANCH: develop
-    COMMSDSL_BRANCH: develop
-    CC_TOOLS_QT_BRANCH: develop
+    COMMS_BRANCH: master
+    COMMSDSL_BRANCH: master
+    CC_TOOLS_QT_BRANCH: master
     matrix:
         - CPP_STD: 11
         - CPP_STD: 14
@@ -51,7 +51,7 @@ build_script:
     - echo ------------------------- Building Project -------------------------
     - cd %BUILD_DIR%
     - cmake .. -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "NMake Makefiles" -DBOOST_ROOT="%BOOST_DIR%" -DBoost_USE_STATIC_LIBS=ON -DCMAKE_INSTALL_PREFIX="%COMMON_INSTALL_DIR%" -DCMAKE_PREFIX_PATH="%COMMON_INSTALL_DIR%" -DCMAKE_CXX_STANDARD=%CPP_STD% -DUBLOX_BUILD_GEN_PROTOCOL=ON -DUBLOX_BUILD_GEN_TEST=ON -DUBLOX_BUILD_GEN_TOOLS=ON
-    - cmake --build . --target install
+    - cmake --build .  --config %CONFIGURATION% --target install
 
 
 
