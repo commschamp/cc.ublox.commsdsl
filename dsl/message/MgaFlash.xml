@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema name="ublox">
     <message name="MgaFlashEph" id="MsgId.MgaFlash" displayName="MGA-FLASH-DATA" order="0" platforms="+ublox8" sender="client">
-        <int name="type" type="uint8" defaultValue="1" validValue="1" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="1" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
         <int name="sequence" type="uint16" />
         <int name="size" type="uint16" displayReadOnly="true" />
@@ -9,12 +9,12 @@
     </message>
 
     <message name="MgaFlashStop" id="MsgId.MgaFlash" displayName="MGA-FLASH-STOP" order="2" platforms="+ublox8" sender="client">
-        <int name="type" type="uint8" defaultValue="2" validValue="2" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="2" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
     </message>
 
     <message name="MgaFlashAck" id="MsgId.MgaFlash" displayName="MGA-FLASH-ACK" order="1" platforms="+ublox8" sender="server">
-        <int name="type" type="uint8" defaultValue="3" validValue="3" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="3" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />
         <enum name="ack" type="uint8">
             <validValue name="Ack" val="0" />

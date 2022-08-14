@@ -32,7 +32,7 @@
     </fields>
 
     <message name="CfgPrtDdc" id="MsgId.CfgPrt" displayName="CFG-PRT (DDC)" order="0">
-        <int name="portId" type="uint8" defaultValue="cfgPrtPortId.DDC" validValue="cfgPrtPortId.DDC">
+        <int name="portId" type="uint8" defaultValidValue="cfgPrtPortId.DDC">
             <failOnInvalid value="true" />
             <displayReadOnly value="true" />
         </int>
@@ -51,7 +51,7 @@
     </message>
 
     <message name="CfgPrtUart" id="MsgId.CfgPrt" displayName="CFG-PRT (UART)" order="1">
-        <int name="portId" type="uint8" defaultValue="cfgPrtPortId.UART" validValue="cfgPrtPortId.UART">
+        <int name="portId" type="uint8" defaultValidValue="cfgPrtPortId.UART">
             <failOnInvalid value="true" />
             <displayReadOnly value="true" />
         </int>
@@ -88,7 +88,7 @@
     </message>
 
     <message name="CfgPrtUsb" id="MsgId.CfgPrt" displayName="CFG-PRT (USB)" order="2">
-        <int name="portId" type="uint8" defaultValue="cfgPrtPortId.USB" validValue="cfgPrtPortId.USB">
+        <int name="portId" type="uint8" defaultValidValue="cfgPrtPortId.USB">
             <failOnInvalid value="true" />
             <displayReadOnly value="true" />
         </int>
@@ -103,7 +103,7 @@
     </message>
 
     <message name="CfgPrtSpi" id="MsgId.CfgPrt" displayName="CFG-PRT (SPI)" order="3">
-        <int name="portId" type="uint8" defaultValue="cfgPrtPortId.SPI" validValue="cfgPrtPortId.SPI">
+        <int name="portId" type="uint8" defaultValidValue="cfgPrtPortId.SPI">
             <failOnInvalid value="true" />
             <displayReadOnly value="true" />
         </int>

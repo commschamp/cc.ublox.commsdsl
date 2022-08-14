@@ -7,9 +7,9 @@
         </enum>
     </fields>
 
-    <message name="CfgTp5" id="MsgId.CfgTp5" displayName="CFG-TP5" order="0" platforms="-ublox5">
+    <message name="CfgTp5" id="MsgId.CfgTp5" displayName="CFG-TP5" order="0" platforms="-ublox5" readOverride="replace" refreshOverride="replace">
         <ref field="cfgTp5TpIdx" name="tpIdx" />
-        <int name="version" type="uint8" defaultValue="1" validValue="1" />
+        <int name="version" type="uint8" defaultValidValue="1" />
         <ref field="res2" name="reserved1" />
         <int name="antCableDelay" type="int16" units="ns" />
         <int name="rfGroupDelay" type="int16" units="ns" />

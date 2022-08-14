@@ -37,7 +37,7 @@
     <message name="NavRelposned_v1" id="MsgId.NavRelposned" displayName="NAV-RELPOSNED (V1)" order="0" platforms="+ublox9" sender="server">
         <description value="Updated version of NAV-RELPOSNED (v1), message introduced in ublox-9" />
         <fields>
-            <int name="version" type="uint8" validValue="1" defaultValue="1" failOnInvalid="true" />
+            <int name="version" type="uint8" defaultValidValue="1" failOnInvalid="true" />
             <ref field="res1" name="reserved1" />
             <int name="refStationId" type="uint16" validRange="[0, 4095]" />
             <ref field="itow" />

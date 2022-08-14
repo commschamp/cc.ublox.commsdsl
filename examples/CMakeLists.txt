@@ -3,40 +3,9 @@ include(GNUInstallDirs)
 
 set (CMAKE_CXX_STANDARD 14)
 
-set (COMMS_TGT "comms_tgt")
-if ("${COMMS_INSTALL_DIR}" STREQUAL "")
-    execute_process (
-        COMMAND ${CMAKE_COMMAND} -E make_directory "${EXTERNALS_DIR}"
-    ) 
-
-    set (cc_src_dir ${EXTERNALS_DIR}/comms)
-    set (cc_bin_dir ${PROJECT_BINARY_DIR}/comms)
-    set (COMMS_INSTALL_DIR ${cc_bin_dir}/install)
-
-    include (${PROJECT_SOURCE_DIR}/cmake/CC_Prefetch.cmake)
-    cc_prefetch(SRC_DIR ${cc_src_dir} TAG ${COMMS_TAG})
-    include (${cc_src_dir}/cmake/CC_CommsExternal.cmake)
-    cc_comms_build_during_config(
-        SRC_DIR ${cc_src_dir}
-        BUILD_DIR ${cc_bin_dir}
-        TAG ${COMMS_TAG}
-        CMAKE_ARGS
-            -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
-            -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} 
-            -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
-            -DCMAKE_INSTALL_PREFIX=${COMMS_INSTALL_DIR}        
-    )
-    
-endif ()
-
 list (APPEND CMAKE_PREFIX_PATH "${COMMS_INSTALL_DIR}")
 
-find_package(LibComms NO_MODULE)
-
-if (NOT TARGET cc::comms)
-    message (Warning "Cannot compile example application due to missing COMMS libraries")
-    return ()
-endif ()
+find_package(LibComms NO_MODULE REQUIRED)
 
 find_package(Boost)
 
@@ -58,7 +27,7 @@ find_package(Threads REQUIRED)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/common/include)
 
-set (cc_compile_file "${COMMS_INSTALL_DIR}/lib/LibComms/cmake/CC_Compile.cmake")
+set (cc_compile_file "${LibComms_DIR}/CC_Compile.cmake")
 if (EXISTS ${cc_compile_file})
     include (${cc_compile_file})
 

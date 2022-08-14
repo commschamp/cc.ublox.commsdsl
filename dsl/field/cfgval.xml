@@ -3587,7 +3587,7 @@
             </bundle>            
         </variant>
 
-        <bundle name="CfgValPairSimple">
+        <bundle name="CfgValPairSimple" readOverride="replace" refreshOverride="replace">
             <description>
                 The CfgValPair definition may be too extensive and too complex for some 
                 applications. This field may be a simpler replacement. 

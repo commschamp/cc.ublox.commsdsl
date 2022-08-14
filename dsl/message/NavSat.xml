@@ -2,7 +2,7 @@
 <schema name="ublox">
     <message name="NavSat" id="MsgId.NavSat" displayName="NAV-SAT" order="0" platforms="+ublox8,ublox9" sender="server">
         <ref field="itow" />
-        <int name="version" type="uint8" defaultValue="1" validValue="1" />
+        <int name="version" type="uint8" defaultValidValue="1" />
         <int name="numSvs" type="uint8" displayReadOnly="true" />
         <ref field="res2" name="reserved1" />
         <list name="list" countPrefix="$numSvs" >
