@@ -49,7 +49,10 @@ jobs:
     - name: Configure CMake
       shell: bash
       working-directory: ${{runner.workspace}}/build
-      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install -DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=gold -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_BUILD_GEN_PROTOCOL=ON -DUBLOX_BUILD_GEN_TEST=ON -DUBLOX_NO_EXAMPLES=ON
+      run: |
+        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
+        -DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=gold -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install \
+        -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_BUILD_GEN_PROTOCOL=ON -DUBLOX_BUILD_GEN_TEST=ON
       env:
         CC: gcc-${{matrix.cc_ver}}
         CXX: g++-${{matrix.cc_ver}}
@@ -102,7 +105,11 @@ jobs:
     - name: Configure CMake
       shell: bash
       working-directory: ${{runner.workspace}}/build
-      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install -DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=gold -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_BUILD_GEN_PROTOCOL=ON -DUBLOX_BUILD_GEN_TEST=ON -DUBLOX_BUILD_GEN_TOOLS=ON
+      run: |
+        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
+        -DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=gold -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install \
+        -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_BUILD_GEN_PROTOCOL=ON -DUBLOX_BUILD_GEN_TEST=ON \
+        -DUBLOX_BUILD_GEN_TOOLS=ON -DUBLOX_BUILD_EXAMPLES=ON
       env:
         CC: gcc-${{matrix.cc_ver}}
         CXX: g++-${{matrix.cc_ver}}
@@ -114,18 +121,14 @@ jobs:
       env:
         VERBOSE: 1 
 
-
   build_gcc_ubuntu_20_04:
     runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
       matrix:
         type: [Debug, Release, MinSizeRel]
-        cc_ver: [8, 9, 10, 11]
-        cpp: [11, 14, 17, 20]
-        exclude:
-          - cc_ver: 8
-            cpp: 20
+        cc_ver: [8]
+        cpp: [11, 14, 17]
 
     steps:
     - uses: actions/checkout@v2
@@ -157,7 +160,64 @@ jobs:
     - name: Configure CMake
       shell: bash
       working-directory: ${{runner.workspace}}/build
-      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_BUILD_GEN_PROTOCOL=ON -DUBLOX_BUILD_GEN_TEST=ON -DUBLOX_BUILD_GEN_TOOLS=ON
+      run: |
+        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
+        -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} \
+        -DUBLOX_BUILD_GEN_PROTOCOL=ON -DUBLOX_BUILD_GEN_TEST=ON -DUBLOX_BUILD_GEN_TOOLS=ON  -DUBLOX_BUILD_EXAMPLES=ON
+      env:
+        CC: gcc-${{matrix.cc_ver}}
+        CXX: g++-${{matrix.cc_ver}}
+
+    - name: Build Target 
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
+      run: cmake --build . --config ${{matrix.type}} --target install
+      env:
+        VERBOSE: 1 
+      
+  build_gcc_ubuntu_22_04:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        type: [Debug, Release, MinSizeRel]
+        cc_ver: [9, 10, 11, 12]
+        cpp: [11, 14, 17, 20]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Prepare Install
+      run: sudo apt-get update --fix-missing    
+      
+    - name: Install Packages
+      run: sudo apt install libqt5gui5 qtbase5-dev libboost-all-dev libxml2-dev gcc-${{matrix.cc_ver}} g++-${{matrix.cc_ver}}
+
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{runner.workspace}}/build      
+
+    - name: Prepare externals
+      shell: bash
+      run: $GITHUB_WORKSPACE/script/prepare_externals.sh
+      env:
+        BUILD_DIR: ${{runner.workspace}}/build
+        CC: gcc-${{matrix.cc_ver}}
+        CXX: g++-${{matrix.cc_ver}}
+        EXTERNALS_DIR: ${{runner.workspace}}/externals
+        COMMON_INSTALL_DIR: ${{runner.workspace}}/build/install
+        COMMON_BUILD_TYPE: ${{matrix.type}}
+        COMMON_CXX_STANDARD: ${{matrix.cpp}}
+        COMMS_TAG: ${{env.COMMS_BRANCH}}
+        COMMSDSL_TAG: ${{env.COMMSDSL_BRANCH}}
+        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_BRANCH}}
+
+    - name: Configure CMake
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      run: |
+        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
+        -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} \
+        -DUBLOX_BUILD_GEN_PROTOCOL=ON -DUBLOX_BUILD_GEN_TEST=ON -DUBLOX_BUILD_GEN_TOOLS=ON -DUBLOX_BUILD_EXAMPLES=ON
       env:
         CC: gcc-${{matrix.cc_ver}}
         CXX: g++-${{matrix.cc_ver}}
@@ -216,7 +276,11 @@ jobs:
     - name: Configure CMake
       shell: bash
       working-directory: ${{runner.workspace}}/build
-      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install -DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=gold -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_BUILD_GEN_PROTOCOL=ON -DUBLOX_BUILD_GEN_TEST=ON -DUBLOX_BUILD_GEN_TOOLS=ON
+      run: |
+        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
+        -DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=gold -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install \
+        -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_BUILD_GEN_PROTOCOL=ON -DUBLOX_BUILD_GEN_TEST=ON \
+        -DUBLOX_BUILD_GEN_TOOLS=ON -DUBLOX_BUILD_EXAMPLES=ON
       env:
         CC: clang-${{matrix.cc_ver}}
         CXX: clang++-${{matrix.cc_ver}}
@@ -234,7 +298,7 @@ jobs:
       fail-fast: false
       matrix:
         type: [Debug, Release, MinSizeRel]
-        cc_ver: [7, 8, 9, 10, 11, 12]
+        cc_ver: [7, 8, 9, 10, 11]
         cpp: [11, 14, 17, 20]
         exclude:
           - cc_ver: 7
@@ -272,7 +336,66 @@ jobs:
     - name: Configure CMake
       shell: bash
       working-directory: ${{runner.workspace}}/build
-      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_BUILD_GEN_PROTOCOL=ON -DUBLOX_BUILD_GEN_TEST=ON -DUBLOX_BUILD_GEN_TOOLS=ON
+      run: |
+        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
+        -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} \
+        -DUBLOX_BUILD_GEN_PROTOCOL=ON -DUBLOX_BUILD_GEN_TEST=ON -DUBLOX_BUILD_GEN_TOOLS=ON \
+        -DUBLOX_BUILD_EXAMPLES=ON
+      env:
+        CC: clang-${{matrix.cc_ver}}
+        CXX: clang++-${{matrix.cc_ver}}
+
+    - name: Build Target 
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
+      run: cmake --build . --config ${{matrix.type}} --target install
+      env:
+        VERBOSE: 1 
+
+  build_clang_ubuntu_22_04:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        type: [Debug, Release, MinSizeRel]
+        cc_ver: [12, 13, 14]
+        cpp: [11, 14, 17, 20]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Prepare Install
+      run: sudo apt-get update --fix-missing    
+      
+    - name: Install Packages
+      run: sudo apt install libqt5gui5 qtbase5-dev libboost-all-dev libxml2-dev clang-${{matrix.cc_ver}}
+
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{runner.workspace}}/build      
+
+    - name: Prepare externals
+      shell: bash
+      run: $GITHUB_WORKSPACE/script/prepare_externals.sh
+      env:
+        BUILD_DIR: ${{runner.workspace}}/build
+        CC: clang-${{matrix.cc_ver}}
+        CXX: clang++-${{matrix.cc_ver}}
+        EXTERNALS_DIR: ${{runner.workspace}}/externals
+        COMMON_INSTALL_DIR: ${{runner.workspace}}/build/install
+        COMMON_BUILD_TYPE: ${{matrix.type}}
+        COMMON_CXX_STANDARD: ${{matrix.cpp}}
+        COMMS_TAG: ${{env.COMMS_BRANCH}}
+        COMMSDSL_TAG: ${{env.COMMSDSL_BRANCH}}
+        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_BRANCH}} 
+
+    - name: Configure CMake
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      run: |
+        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
+        -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} \
+        -DUBLOX_BUILD_GEN_PROTOCOL=ON -DUBLOX_BUILD_GEN_TEST=ON -DUBLOX_BUILD_GEN_TOOLS=ON \
+        -DUBLOX_BUILD_EXAMPLES=ON
       env:
         CC: clang-${{matrix.cc_ver}}
         CXX: clang++-${{matrix.cc_ver}}
