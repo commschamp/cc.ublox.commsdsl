@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgDynseed" id="MsgId.CfgDynseed" displayName="CFG-DYNSEED" platforms="+ublox8" sender="client">
         <int name="version" type="uint8" defaultValidValue="2" />
         <ref field="res3" name="reserved1" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgNav5" id="MsgId.CfgNav5" displayName="CFG-NAV5" order="0">
         <set name="mask" length="2">
             <bit name="dyn" idx="0" />

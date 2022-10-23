@@ -62,8 +62,10 @@ goto comms_build
 :comms_update
 echo "Updating COMMS library..."
 cd "%COMMS_SRC_DIR%"
-git pull
+git fetch --all
+git checkout .
 git checkout %COMMS_TAG%
+git pull --all
 if %errorlevel% neq 0 exit /b %errorlevel%
 
 :comms_build
@@ -84,14 +86,17 @@ goto commsdsl_build
 :commsdsl_update
 echo "Updating commsdsl..."
 cd %COMMSDSL_SRC_DIR%
-git pull
+git fetch --all
+git checkout .
 git checkout %COMMSDSL_TAG%
+git pull --all
 
 :commsdsl_build
 echo "Building commsdsl ..."
 mkdir "%COMMSDSL_BUILD_DIR%"
 cd %COMMSDSL_BUILD_DIR%
-cmake -G %GENERATOR% -S %COMMSDSL_SRC_DIR% -B %COMMSDSL_BUILD_DIR% -DCMAKE_INSTALL_PREFIX=%COMMSDSL_INSTALL_DIR% -DCMAKE_BUILD_TYPE=%COMMON_BUILD_TYPE% -DCOMMSDSL_INSTALL_LIBRARY=OFF
+cmake -G %GENERATOR% -S %COMMSDSL_SRC_DIR% -B %COMMSDSL_BUILD_DIR% -DCMAKE_INSTALL_PREFIX=%COMMSDSL_INSTALL_DIR% -DCMAKE_BUILD_TYPE=%COMMON_BUILD_TYPE% ^
+    -DCOMMSDSL_INSTALL_LIBRARY=OFF -DCOMMSDSL_BUILD_COMMSDSL2TEST=ON -DCOMMSDSL_BUILD_COMMSDSL2TOOLS_QT=ON
 if %errorlevel% neq 0 exit /b %errorlevel%
 cmake --build %COMMSDSL_BUILD_DIR% --config %COMMON_BUILD_TYPE% --target install
 if %errorlevel% neq 0 exit /b %errorlevel%
@@ -105,8 +110,10 @@ goto cc_tools_qt_build
 :cc_tools_qt_update
 echo "Updating cc_tools_qt..."
 cd %CC_TOOLS_QT_SRC_DIR%
-git pull
+git fetch --all
+git checkout .
 git checkout %CC_TOOLS_QT_TAG%
+git pull --all
 
 :cc_tools_qt_build
 echo "Building cc_tools_qt ..."

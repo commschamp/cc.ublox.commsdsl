@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgTp" id="MsgId.CfgTp" displayName="CFG-TP" order="0" platforms="+ublox5,ublox6">
         <int name="interval" type="uint32" units="us" />
         <int name="length" type="uint32" units="us" />

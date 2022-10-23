@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="EsfRaw" id="MsgId.EsfRaw" displayName="ESF-RAW" platforms="+ublox8" sender="server">
         <ref field="res4" name="reserved1" />
         <list name="data">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgSbas" id="MsgId.CfgSbas" displayName="CFG-SBAS" order="0">
         <set name="mode" length="1">
             <bit name="enabled" idx="0" />

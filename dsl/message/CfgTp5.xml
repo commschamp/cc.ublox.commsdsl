@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <fields>
         <enum name="cfgTp5TpIdx" type="uint8" displayName="tpIdx">
             <validValue name="TIMEPULSE" val="0" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="MgaGalEph" id="MsgId.MgaGal" displayName="MGA-GAL-EPH" order="0" platforms="+ublox8,ublox9" sender="client">
         <int name="type" type="uint8" defaultValidValue="1" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />

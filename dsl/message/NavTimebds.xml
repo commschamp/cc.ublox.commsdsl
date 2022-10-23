@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="NavTimebds" id="MsgId.NavTimebds" displayName="NAV-TIMEBDS" order="0" platforms="+ublox8,ublox9" sender="server">
         <ref field="itow" />
         <int name="SOW" type="uint32" units="s" />

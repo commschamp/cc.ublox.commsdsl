@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgRst" id="MsgId.CfgRst" displayName="CFG-RST" sender="client">
         <set name="navBbrMask" length="2">
             <bit name="eph" idx="0" />

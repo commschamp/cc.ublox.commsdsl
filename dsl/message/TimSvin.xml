@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="TimSvin" id="MsgId.TimSvin" displayName="TIM-SVIN" order="0" platforms="-ublox7,ublox9" sender="server">
         <int name="dur" type="uint32" units="s" />
         <int name="meanX" type="int32" units="cm" />

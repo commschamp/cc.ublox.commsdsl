@@ -5,7 +5,7 @@
 
 namespace po = boost::program_options;
 
-namespace ublox
+namespace cc_ublox
 {
 
 namespace simple_pos
@@ -74,5 +74,5 @@ std::string ProgramOptions::device() const
 
 } // namespace simple_pos
 
-} // namespace ublox
+} // namespace cc_ublox
 

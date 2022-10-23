@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <fields>
         <set name="cfgNmeaFilter" length="1">
             <bit name="posFilt" idx="0" />

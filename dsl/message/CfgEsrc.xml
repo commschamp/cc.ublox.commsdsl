@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgEsrc" id="MsgId.CfgEsrc" displayName="CFG-ESRC" order="0" platforms="+ublox8">
         <int name="version" type="uint8" validValue="0" />
         <int name="numSources" type="uint8" displayReadOnly="true"/>

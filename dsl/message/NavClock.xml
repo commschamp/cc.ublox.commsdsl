@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="NavClock" id="MsgId.NavClock" displayName="NAV-CLOCK" order="0" sender="server">
         <ref field="itow" />
         <int name="clkB" type="int32" units="ns" />

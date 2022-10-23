@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgRinv" id="MsgId.CfgRinv" displayName="CFG-RINV" order="0" platforms="-ublox5">
         <set name="flags" length="1">
             <bit name="dump" idx="0" />

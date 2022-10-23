@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="NavSlas" id="MsgId.NavSlas" displayName="NAV-SLAS" order="0" platforms="+ublox9" sender="server">
         <ref field="itow" />
         <int name="version" type="uint8" validValue="0" />

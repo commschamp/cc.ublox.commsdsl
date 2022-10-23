@@ -5,7 +5,7 @@
 
 #include <boost/program_options.hpp>
 
-namespace ublox
+namespace cc_ublox
 {
 
 namespace simple_pos

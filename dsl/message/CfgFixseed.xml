@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgFixseed" id="MsgId.CfgFixseed" displayName="CFG-FIXSEED" platforms="+ublox8" sender="client">
         <int name="version" type="uint8" defaultValidValue="2" />
         <int name="length" type="uint8" displayReadOnly="true" validRange="[1, 10]" />

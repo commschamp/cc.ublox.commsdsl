@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgEsfgwt" id="MsgId.CfgEsfgwt" displayName="CFG-ESFGWT" order="0" platforms="+ublox6">
         <set name="flags" length="2">
             <bit name="setVehicle" idx="12" />

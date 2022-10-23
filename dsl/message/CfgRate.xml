@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgRate" id="MsgId.CfgRate" displayName="CFG-RATE" order="0">
         <int name="measRate" type="uint16" units="ms" />
         <int name="navRate" type="uint16" />

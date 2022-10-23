@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="LogFindtime" id="MsgId.LogFindtime" displayName="LOG-FINDTIME" order="0" platforms="+ublox7,ublox8,ublox9" sender="client">
         <int name="version" type="uint8" validValue="0" />
         <int name="type" type="uint8" validValue="0" failOnInvalid="true" displayReadOnly="true" />

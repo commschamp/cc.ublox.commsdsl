@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgPms" id="MsgId.CfgPms" displayName="CFG-PMS" order="0" platforms="+ublox8">
         <int name="version" type="uint8" validValue="0" />
         <enum name="powerSetupValue" type="uint8">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="RxmRtcm" id="MsgId.RxmRtcm" displayName="RXM-RTCM" platforms="+ublox8,ublox9" sender="server">
         <int name="version" type="uint8" defaultValidValue="2" />
         <bitfield name="flags">

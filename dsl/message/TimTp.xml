@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="TimTp" id="MsgId.TimTp" displayName="TIM-TP" order="0" sender="server">
         <int name="towMS" type="uint32" units="ms" />
         <int name="towSubMS" type="uint32" units="ms" scaling="1/0x100000000" />

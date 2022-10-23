@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="MonComms" id="MsgId.MonComms" displayName="MON-COMMS" order="0" platforms="+ublox9" sender="server">
         <int name="version" type="uint16" validValue="0"/>
         <int name="nPorts" type="uint16" displayReadOnly="true" />

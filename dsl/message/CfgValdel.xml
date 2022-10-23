@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgValdel" id="MsgId.CfgValdel" displayName="CFG-VALDEL" platforms="+ublox9" sender="client">
         <int name="version" type="uint8" validRange="[0, 1]" />
         <set name="layers" length="1">
