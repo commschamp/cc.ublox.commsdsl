@@ -15,6 +15,7 @@ option (UBLOX_BUILD_EXAMPLES "Build examples." OFF)
 # UBLOX_PROT_OUTPUT_DIR - Path to protocol output directory. If not provided <build_dir>/output one is used.
 # UBLOX_TEST_OUTPUT_DIR - Path to test output directory. If not provided <build_dir>/output_tools one is used.
 # UBLOX_TOOLS_OUTPUT_DIR - Path to tools output directory. If not provided <build_dir>/output_tools one is used.
+# UBLOX_SCHEMA_FILES_LIST_FILE - Path to the file containing list of DSL files, use it to replace "schema_files" list below.
 # COMMSDSL2COMMS_EXTRA_ARGS - Extra arguments to pass to "commsdsl2comms"
 # COMMSDSL2TEST_EXTRA_ARGS - Extra arguments to pass to "commsdsl2test"
 # COMMSDSL2TOOLS_QT_EXTRA_ARGS - Extra arguments to pass to "commsdsl2tools_qt"
@@ -41,165 +42,167 @@ if ("${UBLOX_SWIG_OUTPUT_DIR}" STREQUAL "")
     set (UBLOX_SWIG_OUTPUT_DIR "${CMAKE_BINARY_DIR}/output_swig")
 endif ()
 
-set (schema_files
-    dsl/main.xml
-    dsl/field/common.xml
-    dsl/field/cfgval.xml
-    dsl/message/NavPosecef.xml
-    dsl/message/NavPosllh.xml
-    dsl/message/NavStatus.xml
-    dsl/message/NavDop.xml
-    dsl/message/NavAtt.xml
-    dsl/message/NavSol.xml
-    dsl/message/NavPvt.xml
-    dsl/message/NavOdo.xml
-    dsl/message/NavResetodo.xml
-    dsl/message/NavVelecef.xml
-    dsl/message/NavVelned.xml
-    dsl/message/NavHpposecef.xml
-    dsl/message/NavHpposllh.xml
-    dsl/message/NavTimegps.xml
-    dsl/message/NavTimeutc.xml
-    dsl/message/NavClock.xml
-    dsl/message/NavTimeglo.xml
-    dsl/message/NavTimebds.xml
-    dsl/message/NavTimegal.xml
-    dsl/message/NavTimels.xml
-    dsl/message/NavSvinfo.xml
-    dsl/message/NavDgps.xml
-    dsl/message/NavSbas.xml
-    dsl/message/NavOrb.xml
-    dsl/message/NavSat.xml
-    dsl/message/NavGeofence.xml
-    dsl/message/NavSvin.xml
-    dsl/message/NavRelposned.xml
-    dsl/message/NavSlas.xml
-    dsl/message/NavSig.xml
-    dsl/message/NavAopstatus.xml
-    dsl/message/NavEoe.xml
-    dsl/message/RxmRaw.xml
-    dsl/message/RxmSfrb.xml
-    dsl/message/RxmSfrbx.xml
-    dsl/message/RxmMeasx.xml
-    dsl/message/RxmRawx.xml
-    dsl/message/RxmSvsi.xml
-    dsl/message/RxmAlm.xml
-    dsl/message/RxmEph.xml
-    dsl/message/RxmRtcm.xml
-    dsl/message/RxmPmreq.xml
-    dsl/message/RxmRlm.xml
-    dsl/message/RxmImes.xml
-    dsl/message/Inf.xml
-    dsl/message/Ack.xml
-    dsl/message/CfgPrt.xml
-    dsl/message/CfgMsg.xml
-    dsl/message/CfgInf.xml
-    dsl/message/CfgRst.xml
-    dsl/message/CfgDat.xml
-    dsl/message/CfgTp.xml
-    dsl/message/CfgRate.xml
-    dsl/message/CfgCfg.xml
-    dsl/message/CfgFxn.xml
-    dsl/message/CfgRxm.xml
-    dsl/message/CfgEkf.xml
-    dsl/message/CfgAnt.xml
-    dsl/message/CfgSbas.xml
-    dsl/message/CfgNmea.xml
-    dsl/message/CfgUsb.xml
-    dsl/message/CfgTmode.xml
-    dsl/message/CfgOdo.xml
-    dsl/message/CfgNvs.xml
-    dsl/message/CfgNavx5.xml
-    dsl/message/CfgNav5.xml
-    dsl/message/CfgTp5.xml
-    dsl/message/CfgPm.xml
-    dsl/message/CfgRinv.xml
-    dsl/message/CfgItfm.xml
-    dsl/message/CfgPm2.xml
-    dsl/message/CfgTmode2.xml
-    dsl/message/CfgGnss.xml
-    dsl/message/CfgLogfilter.xml
-    dsl/message/CfgTxslot.xml
-    dsl/message/CfgPwr.xml
-    dsl/message/CfgHnr.xml
-    dsl/message/CfgEsrc.xml
-    dsl/message/CfgDosc.xml
-    dsl/message/CfgSmgr.xml
-    dsl/message/CfgGeofence.xml
-    dsl/message/CfgDgnss.xml
-    dsl/message/CfgTmode3.xml
-    dsl/message/CfgFixseed.xml
-    dsl/message/CfgPms.xml
-    dsl/message/CfgValset.xml
-    dsl/message/CfgValget.xml
-    dsl/message/CfgValdel.xml
-    dsl/message/UpdSos.xml
-    dsl/message/MonIo.xml
-    dsl/message/MonVer.xml
-    dsl/message/MonMsgpp.xml
-    dsl/message/MonRxbuf.xml
-    dsl/message/MonTxbuf.xml
-    dsl/message/MonHw.xml
-    dsl/message/MonHw2.xml
-    dsl/message/MonRxr.xml
-    dsl/message/MonPatch.xml
-    dsl/message/MonGnss.xml
-    dsl/message/MonSmgr.xml
-    dsl/message/MonSpan.xml
-    dsl/message/MonComms.xml
-    dsl/message/MonHw3.xml
-    dsl/message/MonRf.xml
-    dsl/message/AidReq.xml
-    dsl/message/AidIni.xml
-    dsl/message/AidHui.xml
-    dsl/message/AidData.xml
-    dsl/message/AidAlm.xml
-    dsl/message/AidEph.xml
-    dsl/message/AidAlpsrv.xml
-    dsl/message/AidAop.xml
-    dsl/message/AidAlp.xml
-    dsl/message/TimTp.xml
-    dsl/message/TimTm2.xml
-    dsl/message/TimSvin.xml
-    dsl/message/TimVrfy.xml
-    dsl/message/TimDosc.xml
-    dsl/message/TimTos.xml
-    dsl/message/TimSmeas.xml
-    dsl/message/TimVcocal.xml
-    dsl/message/TimFchg.xml
-    dsl/message/EsfMeas.xml
-    dsl/message/EsfRaw.xml
-    dsl/message/EsfStatus.xml
-    dsl/message/EsfIns.xml
-    dsl/message/MgaGps.xml
-    dsl/message/MgaGal.xml
-    dsl/message/MgaBds.xml
-    dsl/message/MgaQzss.xml
-    dsl/message/MgaGlo.xml
-    dsl/message/MgaAno.xml
-    dsl/message/MgaFlash.xml
-    dsl/message/MgaIni.xml
-    dsl/message/MgaAck.xml
-    dsl/message/MgaDbd.xml
-    dsl/message/LogErase.xml
-    dsl/message/LogString.xml
-    dsl/message/LogCreate.xml
-    dsl/message/LogInfo.xml
-    dsl/message/LogRetrieve.xml
-    dsl/message/LogRetrievepos.xml
-    dsl/message/LogRetrievestring.xml
-    dsl/message/LogFindtime.xml
-    dsl/message/LogRetrieveposextra.xml
-    dsl/message/LogRetrievebatch.xml
-    dsl/message/LogBatch.xml
-    dsl/message/SecSign.xml
-    dsl/message/SecUniqid.xml
-    dsl/message/HnrPvt.xml
-)
+if ("${UBLOX_SCHEMA_FILES_LIST_FILE}" STREQUAL "")
+    set (schema_files
+        dsl/main.xml
+        dsl/field/common.xml
+        dsl/field/cfgval.xml
+        dsl/message/NavPosecef.xml
+        dsl/message/NavPosllh.xml
+        dsl/message/NavStatus.xml
+        dsl/message/NavDop.xml
+        dsl/message/NavAtt.xml
+        dsl/message/NavSol.xml
+        dsl/message/NavPvt.xml
+        dsl/message/NavOdo.xml
+        dsl/message/NavResetodo.xml
+        dsl/message/NavVelecef.xml
+        dsl/message/NavVelned.xml
+        dsl/message/NavHpposecef.xml
+        dsl/message/NavHpposllh.xml
+        dsl/message/NavTimegps.xml
+        dsl/message/NavTimeutc.xml
+        dsl/message/NavClock.xml
+        dsl/message/NavTimeglo.xml
+        dsl/message/NavTimebds.xml
+        dsl/message/NavTimegal.xml
+        dsl/message/NavTimels.xml
+        dsl/message/NavSvinfo.xml
+        dsl/message/NavDgps.xml
+        dsl/message/NavSbas.xml
+        dsl/message/NavOrb.xml
+        dsl/message/NavSat.xml
+        dsl/message/NavGeofence.xml
+        dsl/message/NavSvin.xml
+        dsl/message/NavRelposned.xml
+        dsl/message/NavSlas.xml
+        dsl/message/NavSig.xml
+        dsl/message/NavAopstatus.xml
+        dsl/message/NavEoe.xml
+        dsl/message/RxmRaw.xml
+        dsl/message/RxmSfrb.xml
+        dsl/message/RxmSfrbx.xml
+        dsl/message/RxmMeasx.xml
+        dsl/message/RxmRawx.xml
+        dsl/message/RxmSvsi.xml
+        dsl/message/RxmAlm.xml
+        dsl/message/RxmEph.xml
+        dsl/message/RxmRtcm.xml
+        dsl/message/RxmPmreq.xml
+        dsl/message/RxmRlm.xml
+        dsl/message/RxmImes.xml
+        dsl/message/Inf.xml
+        dsl/message/Ack.xml
+        dsl/message/CfgPrt.xml
+        dsl/message/CfgMsg.xml
+        dsl/message/CfgInf.xml
+        dsl/message/CfgRst.xml
+        dsl/message/CfgDat.xml
+        dsl/message/CfgTp.xml
+        dsl/message/CfgRate.xml
+        dsl/message/CfgCfg.xml
+        dsl/message/CfgFxn.xml
+        dsl/message/CfgRxm.xml
+        dsl/message/CfgEkf.xml
+        dsl/message/CfgAnt.xml
+        dsl/message/CfgSbas.xml
+        dsl/message/CfgNmea.xml
+        dsl/message/CfgUsb.xml
+        dsl/message/CfgTmode.xml
+        dsl/message/CfgOdo.xml
+        dsl/message/CfgNvs.xml
+        dsl/message/CfgNavx5.xml
+        dsl/message/CfgNav5.xml
+        dsl/message/CfgTp5.xml
+        dsl/message/CfgPm.xml
+        dsl/message/CfgRinv.xml
+        dsl/message/CfgItfm.xml
+        dsl/message/CfgPm2.xml
+        dsl/message/CfgTmode2.xml
+        dsl/message/CfgGnss.xml
+        dsl/message/CfgLogfilter.xml
+        dsl/message/CfgTxslot.xml
+        dsl/message/CfgPwr.xml
+        dsl/message/CfgHnr.xml
+        dsl/message/CfgEsrc.xml
+        dsl/message/CfgDosc.xml
+        dsl/message/CfgSmgr.xml
+        dsl/message/CfgGeofence.xml
+        dsl/message/CfgDgnss.xml
+        dsl/message/CfgTmode3.xml
+        dsl/message/CfgFixseed.xml
+        dsl/message/CfgPms.xml
+        dsl/message/CfgValset.xml
+        dsl/message/CfgValget.xml
+        dsl/message/CfgValdel.xml
+        dsl/message/UpdSos.xml
+        dsl/message/MonIo.xml
+        dsl/message/MonVer.xml
+        dsl/message/MonMsgpp.xml
+        dsl/message/MonRxbuf.xml
+        dsl/message/MonTxbuf.xml
+        dsl/message/MonHw.xml
+        dsl/message/MonHw2.xml
+        dsl/message/MonRxr.xml
+        dsl/message/MonPatch.xml
+        dsl/message/MonGnss.xml
+        dsl/message/MonSmgr.xml
+        dsl/message/MonSpan.xml
+        dsl/message/MonComms.xml
+        dsl/message/MonHw3.xml
+        dsl/message/MonRf.xml
+        dsl/message/AidReq.xml
+        dsl/message/AidIni.xml
+        dsl/message/AidHui.xml
+        dsl/message/AidData.xml
+        dsl/message/AidAlm.xml
+        dsl/message/AidEph.xml
+        dsl/message/AidAlpsrv.xml
+        dsl/message/AidAop.xml
+        dsl/message/AidAlp.xml
+        dsl/message/TimTp.xml
+        dsl/message/TimTm2.xml
+        dsl/message/TimSvin.xml
+        dsl/message/TimVrfy.xml
+        dsl/message/TimDosc.xml
+        dsl/message/TimTos.xml
+        dsl/message/TimSmeas.xml
+        dsl/message/TimVcocal.xml
+        dsl/message/TimFchg.xml
+        dsl/message/EsfMeas.xml
+        dsl/message/EsfRaw.xml
+        dsl/message/EsfStatus.xml
+        dsl/message/EsfIns.xml
+        dsl/message/MgaGps.xml
+        dsl/message/MgaGal.xml
+        dsl/message/MgaBds.xml
+        dsl/message/MgaQzss.xml
+        dsl/message/MgaGlo.xml
+        dsl/message/MgaAno.xml
+        dsl/message/MgaFlash.xml
+        dsl/message/MgaIni.xml
+        dsl/message/MgaAck.xml
+        dsl/message/MgaDbd.xml
+        dsl/message/LogErase.xml
+        dsl/message/LogString.xml
+        dsl/message/LogCreate.xml
+        dsl/message/LogInfo.xml
+        dsl/message/LogRetrieve.xml
+        dsl/message/LogRetrievepos.xml
+        dsl/message/LogRetrievestring.xml
+        dsl/message/LogFindtime.xml
+        dsl/message/LogRetrieveposextra.xml
+        dsl/message/LogRetrievebatch.xml
+        dsl/message/LogBatch.xml
+        dsl/message/SecSign.xml
+        dsl/message/SecUniqid.xml
+        dsl/message/HnrPvt.xml
+    )
 
-string(REPLACE ";" "\n" schema_files_str "${schema_files}")
-set (schema_files_list_file "${CMAKE_BINARY_DIR}/schema_files.txt")
-file(WRITE ${schema_files_list_file} "${schema_files_str}")
+    string(REPLACE ";" "\n" schema_files_str "${schema_files}")
+    set (UBLOX_SCHEMA_FILES_LIST_FILE "${CMAKE_BINARY_DIR}/schema_files.txt")
+    file(WRITE ${UBLOX_SCHEMA_FILES_LIST_FILE} "${schema_files_str}")
+endif ()
 
 
 set (prot_tmp_dir "${CMAKE_BINARY_DIR}/output.tmp")
@@ -239,7 +242,7 @@ if (UBLOX_BUILD_GEN_PROTOCOL)
         DEPENDS ${schema_files} ${src_files} rm_prot_tmp_tgt
         COMMAND ${COMMSDSL2COMMS} ${warn_as_error} -V ${VERSION}
             -o ${prot_tmp_dir} 
-            -c ${code_input_dir} -p ${PROJECT_SOURCE_DIR} -i ${schema_files_list_file} 
+            -c ${code_input_dir} -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
             ${COMMSDSL2COMMS_EXTRA_ARGS} 
     )
 
@@ -313,7 +316,7 @@ if (UBLOX_BUILD_GEN_TEST)
         OUTPUT ${test_tmp_dir}
         DEPENDS ${schema_files} ${src_files} rm_test_tmp_tgt
         COMMAND ${COMMSDSL2TEST} ${warn_as_error} ${COMMSDSL2TEST_EXTRA_ARGS}
-            -o ${test_tmp_dir} -p ${PROJECT_SOURCE_DIR} -i ${schema_files_list_file} 
+            -o ${test_tmp_dir} -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
     )
 
     add_custom_target("test_output_tgt" ALL
@@ -366,7 +369,7 @@ if (UBLOX_BUILD_GEN_TOOLS)
         OUTPUT ${tools_tmp_dir}
         DEPENDS ${schema_files} ${src_files} rm_tools_tmp_tgt
         COMMAND ${COMMSDSL2TOOLS_QT} ${warn_as_error} ${COMMSDSL2TOOLS_QT_EXTRA_ARGS}
-            -o ${tools_tmp_dir} -p ${PROJECT_SOURCE_DIR} -i ${schema_files_list_file} 
+            -o ${tools_tmp_dir} -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
     )
 
     add_custom_target("tools_output_tgt" ALL
