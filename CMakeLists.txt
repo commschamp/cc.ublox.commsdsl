@@ -19,6 +19,7 @@ option (UBLOX_BUILD_EXAMPLES "Build examples." OFF)
 # COMMSDSL2COMMS_EXTRA_ARGS - Extra arguments to pass to "commsdsl2comms"
 # COMMSDSL2TEST_EXTRA_ARGS - Extra arguments to pass to "commsdsl2test"
 # COMMSDSL2TOOLS_QT_EXTRA_ARGS - Extra arguments to pass to "commsdsl2tools_qt"
+# COMMSDSL2SWIG_EXTRA_ARGS - Extra arguments to pass to "commsdsl2swig"
 
 set (VERSION "2.0.0")
 
@@ -401,6 +402,62 @@ if (UBLOX_BUILD_GEN_TOOLS)
             -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}           
             -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
             -DCMAKE_PREFIX_PATH=${combined_prefix_path_str}
+    )   
+endif ()
+
+if (UBLOX_BUILD_GEN_SWIG)
+    if (NOT UBLOX_BUILD_GEN_PROTOCOL)
+        message (FATAL_ERROR "UBLOX_BUILD_GEN_PROTOCOL is required for UBLOX_BUILD_GEN_swig")
+    endif ()
+
+    find_program(COMMSDSL2SWIG commsdsl2swig PATH_SUFFIXES bin REQUIRED)    
+
+    set (swig_tmp_dir "${CMAKE_BINARY_DIR}/output_swig.tmp")
+
+    add_custom_target(rm_swig_tmp_tgt
+        COMMAND ${CMAKE_COMMAND} -E remove_directory ${swig_tmp_dir}
+    )
+
+    add_custom_command(
+        OUTPUT ${swig_tmp_dir}
+        DEPENDS ${schema_file} ${src_files} rm_swig_tmp_tgt
+        COMMAND ${COMMSDSL2SWIG} ${warn_as_error} ${COMMSDSL2SWIG_EXTRA_ARGS}
+            -c ${CMAKE_CURRENT_SOURCE_DIR}/swig_src -o ${swig_tmp_dir} 
+            -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
+    )
+
+    add_custom_target("swig_output_tgt" ALL
+        COMMAND ${CMAKE_COMMAND}
+            -DGENERATED="${swig_tmp_dir}" -DOUTPUT="${UBLOX_SWIG_OUTPUT_DIR}"
+            -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"        
+        DEPENDS ${swig_tmp_dir} ${readme_file} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_file})
+
+    execute_process(
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${UBLOX_SWIG_OUTPUT_DIR}
+    )    
+
+    execute_process(
+        COMMAND ${CMAKE_COMMAND} -E touch ${UBLOX_SWIG_OUTPUT_DIR}/dummy.txt
+    )
+
+    set (swig_build_dir ${CMAKE_CURRENT_BINARY_DIR}/swig_tgt_build)
+    ExternalProject_Add(
+        "swig_tgt"
+        BUILD_ALWAYS TRUE
+        DEPENDS "prot_tgt" "swig_output_tgt"
+        SOURCE_DIR ${UBLOX_SWIG_OUTPUT_DIR}
+        BINARY_DIR ${swig_build_dir}
+        CMAKE_GENERATOR ${CMAKE_GENERATOR}
+        LIST_SEPARATOR |
+        CMAKE_ARGS
+            -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
+            -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
+            -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}        
+            -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
+            -DCMAKE_PREFIX_PATH=${combined_prefix_path_str}
+            -DOPT_SWIG_LANGUAGES=python|java|csharp
+        INSTALL_COMMAND
+            ${CMAKE_COMMAND} -E echo "Skipping install"            
     )   
 endif ()
 
