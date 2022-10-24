@@ -54,11 +54,7 @@ dsl/message/CfgItfm.xml
 dsl/message/CfgPm2.xml
 dsl/message/CfgTmode2.xml
 dsl/message/CfgGnss.xml
-dsl/message/CfgLogfilter.xml
 dsl/message/CfgTxslot.xml
 dsl/message/CfgPwr.xml
-dsl/message/CfgHnr.xml
-dsl/message/CfgEsrc.xml
-dsl/message/CfgDosc.xml
 dsl/message/CfgDgnss.xml
 dsl/message/CfgTmode3.xml
