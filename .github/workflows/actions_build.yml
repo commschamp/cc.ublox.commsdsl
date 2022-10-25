@@ -53,7 +53,7 @@ jobs:
         cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
         -DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=gold -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install \
         -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON \
-        -DUBLOX_SCHEMA_FILES_LIST_FILE=${{runner.workspace}}/basic_msgs.txt
+        -DUBLOX_SCHEMA_FILES_LIST_FILE=$GITHUB_WORKSPACE/basic_msgs.txt
       env:
         CC: gcc-${{matrix.cc_ver}}
         CXX: g++-${{matrix.cc_ver}}
@@ -111,7 +111,7 @@ jobs:
         -DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=gold -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install \
         -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON \
         -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_EXAMPLES=ON \
-        -DUBLOX_SCHEMA_FILES_LIST_FILE=${{runner.workspace}}/basic_msgs.txt
+        -DUBLOX_SCHEMA_FILES_LIST_FILE=$GITHUB_WORKSPACE/basic_msgs.txt
       env:
         CC: gcc-${{matrix.cc_ver}}
         CXX: g++-${{matrix.cc_ver}}
@@ -166,7 +166,7 @@ jobs:
         cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
         -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} \
         -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_EXAMPLES=ON \
-        -DUBLOX_SCHEMA_FILES_LIST_FILE=${{runner.workspace}}/basic_msgs.txt
+        -DUBLOX_SCHEMA_FILES_LIST_FILE=$GITHUB_WORKSPACE/basic_msgs.txt
       env:
         CC: gcc-${{matrix.cc_ver}}
         CXX: g++-${{matrix.cc_ver}}
@@ -221,7 +221,7 @@ jobs:
         cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
         -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} \
         -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON -DUBLOX_GEN_SWIG=ON -DUBLOX_BUILD_EXAMPLES=ON \
-        -DUBLOX_SCHEMA_FILES_LIST_FILE=${{runner.workspace}}/basic_msgs.txt
+        -DUBLOX_SCHEMA_FILES_LIST_FILE=$GITHUB_WORKSPACE/basic_msgs.txt
       env:
         CC: gcc-${{matrix.cc_ver}}
         CXX: g++-${{matrix.cc_ver}}
@@ -285,7 +285,7 @@ jobs:
         -DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=gold -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install \
         -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON \
         -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_EXAMPLES=ON \
-        -DUBLOX_SCHEMA_FILES_LIST_FILE=${{runner.workspace}}/basic_msgs.txt
+        -DUBLOX_SCHEMA_FILES_LIST_FILE=$GITHUB_WORKSPACE/basic_msgs.txt
       env:
         CC: clang-${{matrix.cc_ver}}
         CXX: clang++-${{matrix.cc_ver}}
@@ -345,7 +345,7 @@ jobs:
         cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
         -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} \
         -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_EXAMPLES=ON \
-        -DUBLOX_SCHEMA_FILES_LIST_FILE=${{runner.workspace}}/basic_msgs.txt
+        -DUBLOX_SCHEMA_FILES_LIST_FILE=$GITHUB_WORKSPACE/basic_msgs.txt
       env:
         CC: clang-${{matrix.cc_ver}}
         CXX: clang++-${{matrix.cc_ver}}
@@ -401,7 +401,7 @@ jobs:
         -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} \
         -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON \
         -DUBLOX_GEN_SWIG=ON -DUBLOX_BUILD_EXAMPLES=ON \
-        -DUBLOX_SCHEMA_FILES_LIST_FILE=${{runner.workspace}}/basic_msgs.txt
+        -DUBLOX_SCHEMA_FILES_LIST_FILE=$GITHUB_WORKSPACE/basic_msgs.txt
       env:
         CC: clang-${{matrix.cc_ver}}
         CXX: clang++-${{matrix.cc_ver}}
