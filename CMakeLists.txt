@@ -19,6 +19,7 @@ option (UBLOX_BUILD_EXAMPLES "Build examples." OFF)
 # UBLOX_PROT_OUTPUT_DIR - Path to protocol output directory. If not provided <build_dir>/output one is used.
 # UBLOX_TEST_OUTPUT_DIR - Path to test output directory. If not provided <build_dir>/output_tools one is used.
 # UBLOX_TOOLS_OUTPUT_DIR - Path to tools output directory. If not provided <build_dir>/output_tools one is used.
+# UBLOX_SWIG_OUTPUT_DIR - Path to swig output directory. If not provided <build_dir>/output_swig one is used.
 # UBLOX_SCHEMA_FILES_LIST_FILE - Path to the file containing list of DSL files, use it to replace "schema_files" list below.
 # COMMSDSL2COMMS_EXTRA_ARGS - Extra arguments to pass to "commsdsl2comms"
 # COMMSDSL2TEST_EXTRA_ARGS - Extra arguments to pass to "commsdsl2test"
