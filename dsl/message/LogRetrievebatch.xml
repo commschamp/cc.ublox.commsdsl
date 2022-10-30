@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="LogRetrievebatch" id="MsgId.LogRetrievebatch" displayName="LOG-RETRIEVEBATCH" platforms="+ublox9" sender="client">
         <int name="version" type="uint8" validValue="0" />
         <set name="flags" length="1">

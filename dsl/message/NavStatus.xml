@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="NavStatus" id="MsgId.NavStatus" displayName="NAV-STATUS" order="0" sender="server">
         <ref field="itow" />
         <ref field="gpsFix" />

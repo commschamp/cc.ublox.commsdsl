@@ -6,7 +6,7 @@
 
 #include "comms/cast.h"
 
-namespace ublox
+namespace cc_ublox
 {
 
 namespace frame
@@ -17,7 +17,7 @@ namespace checksum
 
 /// @brief Checksum calculator.
 /// @details Provided to @b comms::protocol::ChecksumLayer
-///     when defining transport framing (@ref ublox::frame::UbloxFrame).
+///     when defining transport framing (@ref cc_ublox::frame::UbloxFrame).
 struct UbloxChecksum
 {
     template <typename TIter>
@@ -42,6 +42,6 @@ struct UbloxChecksum
 
 }  // namespace frame
 
-}  // namespace ublox
+}  // namespace cc_ublox
 
 

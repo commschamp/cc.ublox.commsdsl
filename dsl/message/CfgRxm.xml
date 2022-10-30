@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgRxm" id="MsgId.CfgRxm" displayName="CFG-RXM" order="0" platforms="-ublox9">
         <ref field="res1" name="reserved1" />
         <enum name="lpMode" type="uint8">

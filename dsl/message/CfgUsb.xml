@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgUsb" id="MsgId.CfgUsb" displayName="CFG-USB" order="0">
         <int name="vendorId" type="uint16" />
         <int name="productId" type="uint16" />

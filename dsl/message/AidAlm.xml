@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="AidAlm" id="MsgId.AidAlm" displayName="AID-ALM" order="0" sender="server">
         <platforms value="-ublox9" />
         <copyFieldsFrom value="RxmAlm" />

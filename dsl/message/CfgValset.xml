@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgValset" id="MsgId.CfgValset" displayName="CFG-VALSET" platforms="+ublox9" sender="client">
         <int name="version" type="uint8" validValue="0" />
         <set name="layers" length="1">

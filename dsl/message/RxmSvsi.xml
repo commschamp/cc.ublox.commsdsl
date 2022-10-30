@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="RxmSvsi" id="MsgId.RxmSvsi" displayName="RXM-SVSI" order="0" platforms="-ublox9" sender="server">
         <ref field="itow" />
         <int name="week" type="int16" units="weeks" />

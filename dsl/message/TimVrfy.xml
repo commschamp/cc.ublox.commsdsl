@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="TimVrfy" id="MsgId.TimVrfy" displayName="TIM-VRFY" order="0" platforms="-ublox5" sender="server">
         <ref field="itow" />
         <int name="frac" type="int32" units="ns" />

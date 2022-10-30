@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="NavAopstatus" id="MsgId.NavAopstatus" displayName="NAV-AOPSTATUS" order="0" platforms="+ublox6,ublox7" sender="server">
         <ref field="itow" />
         <set name="aopCfg" length="1">

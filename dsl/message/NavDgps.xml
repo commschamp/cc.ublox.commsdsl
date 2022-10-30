@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="NavDgps" id="MsgId.NavDgps" displayName="NAV-DGPS" order="0" platforms="-ublox5,ublox9" sender="server">
         <ref field="itow" />
         <int name="age" type="int32" units="ms" />

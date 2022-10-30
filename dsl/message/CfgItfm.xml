@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgItfm" id="MsgId.CfgItfm" displayName="CFG-ITFM" order="0" platforms="-ublox5">
         <bitfield name="config">
             <int name="bbThreshold" type="uint8" bitLength="4" />

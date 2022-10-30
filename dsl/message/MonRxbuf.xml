@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="MonRxbuf" id="MsgId.MonRxbuf" displayName="MON-RXBUF" order="0" sender="server">
         <list name="pending" count="6">
             <int name="element" type="uint16" displayName="_"/>

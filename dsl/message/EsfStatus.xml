@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="EsfStatus" id="MsgId.EsfStatus" displayName="ESF-STATUS" order="0" platforms="+ublox6,ublox8" sender="server">
         <ref field="itow" />
         <int name="version" type="uint8" defaultValue="2" validRange="[0, 2]" />

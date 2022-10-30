@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="NavAtt" id="MsgId.NavAtt" displayName="NAV-ATT" order="0" platforms="+ublox8">
         <ref field="itow" />
         <int name="version" type="uint8" />

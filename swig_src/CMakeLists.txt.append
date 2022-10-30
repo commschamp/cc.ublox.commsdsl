@@ -1,0 +1,9 @@
+target_link_libraries(cc_ublox_swig_python Python3::Python)
+target_link_libraries(cc_ublox_swig_java JNI::JNI)
+
+add_custom_target(
+    cc_ublox_swig_java_compile ALL
+    COMMAND ${Java_JAVAC_EXECUTABLE} -Xdiags:verbose -d . ${CMAKE_CURRENT_BINARY_DIR}/output_java/*.java
+    DEPENDS ${PROJECT_NAME}_java
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+)

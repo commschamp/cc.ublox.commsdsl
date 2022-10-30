@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgTmode" id="MsgId.CfgTmode" displayName="CFG-TMODE" order="0" platforms="+ublox5,ublox6">
         <enum name="timeMode" type="uint32" >
             <validValue name="Disabled" val="0" />

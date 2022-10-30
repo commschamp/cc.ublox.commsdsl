@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgPm" id="MsgId.CfgPm" displayName="CFG-PM" order="0" platforms="+ublox6">
         <int name="version" type="uint8" validValue="0" />
         <ref field="res1" name="res1" />

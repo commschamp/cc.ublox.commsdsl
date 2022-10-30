@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <fields>
         <bitfield name="cfgPm2Flags" displayName="flags">
             <set name="bitsLow" bitLength="8" displayName="_">

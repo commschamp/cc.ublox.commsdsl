@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="MgaDbd" id="MsgId.MgaDbd" displayName="MGA-DBD" order="0"  platforms="+ublox8,ublox9">
         <list name="reserved1" count="12">
             <ref field="res1" name="element" displayName="_" />

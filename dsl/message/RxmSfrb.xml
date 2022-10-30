@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="RxmSfrb" id="MsgId.RxmSfrb" displayName="RXM-SFRB" platforms="+ublox6,ublox7" sender="server">
         <int name="cno" type="uint8" />
         <int name="svid" type="uint8" />

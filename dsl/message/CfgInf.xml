@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgInf" id="MsgId.CfgInf" displayName="CFG-INF" order="0">
         <enum name="protocolId" type="uint8">
             <validValue name="UBX" val="0" />

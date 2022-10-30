@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="RxmAlm" id="MsgId.RxmAlm" displayName="RXM-ALM" order="0" platforms="+ublox6,ublox7" sender="server">
         <int name="svid" type="uint32" />
         <int name="week" type="uint32" units="weeks" />

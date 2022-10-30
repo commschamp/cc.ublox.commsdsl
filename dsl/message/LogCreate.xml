@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="LogCreate" id="MsgId.LogCreate" displayName="LOG-CREATE" platforms="+ublox7,ublox8,ublox9" sender="client">
         <int name="version" type="uint8" validValue="0" />
         <set name="logCfg" length="1">

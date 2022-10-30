@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="NavSvinfo" id="MsgId.NavSvinfo" displayName="NAV-SVINFO" order="0" platforms="-ublox9" sender="server">
         <ref field="itow" />
         <int name="numCh" type="uint8" displayReadOnly="true" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="NavTimeglo" id="MsgId.NavTimeglo" displayName="NAV-TIMEGLO" order="0" platforms="+ublox8,ublox9" sender="server">
         <ref field="itow" />
         <int name="TOD" type="uint32" units="s" />

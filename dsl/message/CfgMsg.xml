@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
 
     <message name="CfgMsg" id="MsgId.CfgMsg" displayName="CFG-MSG" order="0">
         <ref field="MsgId" />

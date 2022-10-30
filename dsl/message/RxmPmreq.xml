@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="RxmPmreq" id="MsgId.RxmPmreq" displayName="RXM-PMREQ" order="1" platforms="+ublox6,ublox7,ublox9" sender="client">
         <int name="duration" type="uint32" units="ms" />
         <set name="flags" length="4">

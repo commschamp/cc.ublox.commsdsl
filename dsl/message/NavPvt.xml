@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="NavPvt" id="MsgId.NavPvt" displayName="NAV-PVT" order="2" platforms="+ublox7" sender="server">
         <ref field="itow" />
         <ref field="year" />

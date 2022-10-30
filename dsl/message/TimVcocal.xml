@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="TimVcocal" id="MsgId.TimVcocal" displayName="TIM-VCOCAL" order="0" platforms="+ublox8" sender="server">
         <int name="type" type="uint8" defaultValidValue="3" failOnInvalid="true" displayReadOnly="true" />
         <int name="version" type="uint8" validValue="0" />

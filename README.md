@@ -29,6 +29,12 @@ This project uses CMake as its build system. Please open main
 mentioned available parameters, which can be used in addition to standard 
 ones provided by CMake itself, to modify the default build. 
 
+Note that **UBX** protocol is huge and it may be impractical to 
+support all the messages, especially if some extra applications for testing 
+and/or bindings to other languages is needed. It is highly recommended
+to provide a list of required messages using **UBLOX_SCHEMA_FILES_LIST_FILE** 
+cmake parameter.
+
 This project also has external dependencies, it requires an access to
 the [COMMS Library](https://github.com/commschamp/commsdsl) and
 code generators from [commsdsl](https://github.com/commschamp/commsdsl) projects.

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="EsfIns" id="MsgId.EsfIns" displayName="ESF-INS" order="0" platforms="+ublox8" sender="server">
         <bitfield name="bitfield0">
             <int name="version" type="uint8" defaultValidValue="1" />

@@ -9,7 +9,7 @@
 int main(int argc, const char* argv[])
 {
     try {
-        ublox::simple_pos::ProgramOptions options;
+        cc_ublox::simple_pos::ProgramOptions options;
         options.parse(argc, argv);
         if (options.helpRequested()) {
             std::cout << "Usage:\n\t" << argv[0] << " [OPTIONS]\n";
@@ -17,7 +17,7 @@ int main(int argc, const char* argv[])
             return 0;
         }
 
-        ublox::common::boost_wrap::io io;
+        cc_ublox::common::boost_wrap::io io;
 
         boost::asio::signal_set signals(io, SIGINT, SIGTERM);
         signals.async_wait(
@@ -32,7 +32,7 @@ int main(int argc, const char* argv[])
                 std::cerr << "Termination due to signal " << signum << std::endl;
             });
 
-        ublox::simple_pos::Session session(io, options.device());
+        cc_ublox::simple_pos::Session session(io, options.device());
         if (!session.start()) {
             return -1;
         }

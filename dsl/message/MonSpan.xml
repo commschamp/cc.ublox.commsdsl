@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="MonSpan" id="MsgId.MonSpan" displayName="MON-SPAN" order="0" platforms="+ublox9" sender="server">
         <int name="version" type="uint8" validValue="0" />
         <int name="numRfblocks" type="uint8" />

@@ -8,11 +8,11 @@
 
 #include "common/boost_wrap.h"
 
-#include "ublox/Message.h"
-#include "ublox/message/NavPosllh.h"
-#include "ublox/frame/UbloxFrame.h"
+#include "cc_ublox/Message.h"
+#include "cc_ublox/message/NavPosllh.h"
+#include "cc_ublox/frame/UbloxFrame.h"
 
-namespace ublox
+namespace cc_ublox
 {
 
 namespace simple_pos    
@@ -21,20 +21,20 @@ namespace simple_pos
 class Session 
 {
     using InMessage =
-        ublox::Message<
+        cc_ublox::Message<
             comms::option::ReadIterator<const std::uint8_t*>,
             comms::option::Handler<Session> // Dispatch to this object
         >;
 
     using OutBuffer = std::vector<std::uint8_t>;
     using OutMessage =
-        ublox::Message<
+        cc_ublox::Message<
             comms::option::IdInfoInterface,
             comms::option::WriteIterator<std::back_insert_iterator<OutBuffer> >,
             comms::option::LengthInfoInterface
         >;
 
-    using InNavPosllh = ublox::message::NavPosllh<InMessage>;
+    using InNavPosllh = cc_ublox::message::NavPosllh<InMessage>;
 
 public:
     Session(common::boost_wrap::io& io, const std::string& dev);
@@ -53,7 +53,7 @@ private:
             InNavPosllh
         >;
 
-    using Frame = ublox::frame::UbloxFrame<InMessage, AllInMessages>;
+    using Frame = cc_ublox::frame::UbloxFrame<InMessage, AllInMessages>;
 
     using SerialPort = boost::asio::serial_port;
 
@@ -74,4 +74,4 @@ private:
 
 } // namespace simple_pos
 
-} // namespace ublox
+} // namespace cc_ublox

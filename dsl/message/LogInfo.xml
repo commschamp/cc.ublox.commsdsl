@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="LogInfo" id="MsgId.LogInfo" displayName="LOG-INFO" order="0" platforms="+ublox7,ublox8,ublox9" sender="server">
         <int name="version" type="uint8" defaultValidValue="1" />
         <ref field="res3" name="reserved1" />

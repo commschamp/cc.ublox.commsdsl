@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="TimFchg" id="MsgId.TimFchg" displayName="TIM-FCHG" order="0" platforms="+ublox8" sender="server">
         <int name="version" type="int8" validValue="0" />
         <ref field="res3" name="reserved1" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgFxn" id="MsgId.CfgFxn" displayName="CFG-FXN" order="0" platforms="+ublox6">
         <set name="flags" length="4">
             <bit name="sleep" idx="1" />

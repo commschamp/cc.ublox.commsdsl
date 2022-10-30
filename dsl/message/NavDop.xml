@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="NavDop" id="MsgId.NavDop" displayName="NAV-DOP" order="0" sender="server">
         <ref field="itow" />
         <ref field="dop" name="gDOP" />

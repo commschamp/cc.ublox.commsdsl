@@ -3,7 +3,7 @@
 #include <boost/version.hpp>
 #include <boost/asio.hpp>
 
-namespace ublox
+namespace cc_ublox
 {
 
 namespace common
@@ -47,4 +47,4 @@ void post(io& i, TFunc&& func)
 } // namespace common
 
 
-} // namespace ublox
+} // namespace cc_ublox

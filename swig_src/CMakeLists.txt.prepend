@@ -1,0 +1,10 @@
+find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
+find_package(JNI REQUIRED)
+find_package(Java REQUIRED COMPONENTS Runtime Development)
+
+if (NOT TARGET JNI::JNI AND JNI_FOUND)
+    add_library(JNI::JNI UNKNOWN IMPORTED GLOBAL)
+    set_target_properties(JNI::JNI PROPERTIES
+        IMPORTED_LOCATION "${JAVA_AWT_LIBRARY}"
+        INTERFACE_INCLUDE_DIRECTORIES "${JNI_INCLUDE_DIRS}")
+endif ()

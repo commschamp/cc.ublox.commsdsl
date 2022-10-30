@@ -3,12 +3,12 @@
 #include <iostream>
 #include <cassert>
 
-#include "ublox/message/CfgPrtUsb.h"
-#include "ublox/message/NavPosllhPoll.h"
+#include "cc_ublox/message/CfgPrtUsb.h"
+#include "cc_ublox/message/NavPosllhPoll.h"
 #include "comms/units.h"
 #include "comms/process.h"
 
-namespace ublox
+namespace cc_ublox
 {
 
 namespace simple_pos    
@@ -91,7 +91,7 @@ void Session::processInputData()
 
 void Session::sendPosPoll()
 {
-    using OutNavPosllhPoll = ublox::message::NavPosllhPoll<OutMessage>;
+    using OutNavPosllhPoll = cc_ublox::message::NavPosllhPoll<OutMessage>;
     sendMessage(OutNavPosllhPoll());
 
     m_pollTimer.expires_from_now(boost::posix_time::seconds(1));
@@ -134,7 +134,7 @@ void Session::sendMessage(const OutMessage& msg)
 
 void Session::configureUbxOutput()
 {
-    using OutCfgPrtUsb = ublox::message::CfgPrtUsb<OutMessage>;
+    using OutCfgPrtUsb = cc_ublox::message::CfgPrtUsb<OutMessage>;
 
     OutCfgPrtUsb msg;
     auto& outProtoMaskField = msg.field_outProtoMask();
@@ -153,4 +153,4 @@ void Session::configureUbxOutput()
 
 } // namespace simple_pos
 
-} // namespace ublox
+} // namespace cc_ublox

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="MonHw2" id="MsgId.MonHw2" displayName="MON-HW2" order="0" platforms="-ublox5" sender="server">
         <int name="ofsI" type="int8" />
         <int name="magI" type="uint8" />

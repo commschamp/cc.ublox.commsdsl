@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="MonIo" id="MsgId.MonIo" displayName="MON-IO" order="0" sender="server">
         <list name="list">
             <bundle name="element" displayName="_">

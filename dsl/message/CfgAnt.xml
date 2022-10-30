@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="ublox">
+<schema>
     <message name="CfgAnt" id="MsgId.CfgAnt" displayName="CFG-ANT" order="0">
         <set name="flags" length="2">
             <bit name="svcs" idx="0" />
