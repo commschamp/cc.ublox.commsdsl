@@ -26,7 +26,7 @@ option (UBLOX_BUILD_EXAMPLES "Build examples." OFF)
 # COMMSDSL2TOOLS_QT_EXTRA_ARGS - Extra arguments to pass to "commsdsl2tools_qt"
 # COMMSDSL2SWIG_EXTRA_ARGS - Extra arguments to pass to "commsdsl2swig"
 
-set (VERSION "2.0.0")
+set (VERSION "2.0.1")
 
 set (EXTERNALS_DIR "${PROJECT_SOURCE_DIR}/externals")
 
