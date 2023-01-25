@@ -443,7 +443,7 @@ if (UBLOX_GEN_SWIG)
 
     add_custom_command(
         OUTPUT ${swig_tmp_dir}
-        DEPENDS ${schema_file} ${src_files} rm_swig_tmp_tgt
+        DEPENDS ${schema_files} ${src_files} rm_swig_tmp_tgt
         COMMAND ${COMMSDSL2SWIG} ${warn_as_error} ${COMMSDSL2SWIG_EXTRA_ARGS}
             -c ${CMAKE_CURRENT_SOURCE_DIR}/swig_src -o ${swig_tmp_dir} 
             -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
@@ -453,7 +453,7 @@ if (UBLOX_GEN_SWIG)
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${swig_tmp_dir}" -DOUTPUT="${UBLOX_SWIG_OUTPUT_DIR}"
             -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"        
-        DEPENDS ${swig_tmp_dir} ${readme_file} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_file})
+        DEPENDS ${swig_tmp_dir} ${readme_file} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
 
     if (UBLOX_BUILD_SWIG)
         if ((NOT UBLOX_GEN_PROTOCOL) OR (NOT UBLOX_BUILD_PROTOCOL))
@@ -502,16 +502,16 @@ if (UBLOX_GEN_EMSCRIPTEN)
 
     add_custom_command(
         OUTPUT ${emscripten_tmp_dir}
-        DEPENDS ${schema_file} ${src_files} rm_emscripten_tmp_tgt
+        DEPENDS ${schema_files} ${src_files} rm_emscripten_tmp_tgt
         COMMAND ${COMMSDSL2EMSCRIPTEN} ${warn_as_error} ${COMMSDSL2EMSCRIPTEN_EXTRA_ARGS}
-            -o ${emscripten_tmp_dir} ${schema_file}
+            -o ${emscripten_tmp_dir} -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
     )
 
     add_custom_target("emscripten_output_tgt" ALL
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${emscripten_tmp_dir}" -DOUTPUT="${UBLOX_EMSCRIPTEN_OUTPUT_DIR}"
             -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"        
-        DEPENDS ${emscripten_tmp_dir} ${readme_file} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_file})
+        DEPENDS ${emscripten_tmp_dir} ${readme_file} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
 
     if (UBLOX_BUILD_EMSCRIPTEN)
         if ((NOT UBLOX_GEN_PROTOCOL) OR (NOT UBLOX_BUILD_PROTOCOL))
