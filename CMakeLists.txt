@@ -30,7 +30,7 @@ option (UBLOX_BUILD_EXAMPLES "Build examples." OFF)
 # COMMSDSL2SWIG_EXTRA_ARGS - Extra arguments to pass to "commsdsl2swig"
 # COMMSDSL2EMSCRIPTEN_EXTRA_ARGS - Extra arguments to pass to "commsdsl2emscripten"
 
-set (VERSION "2.1")
+set (VERSION "2.1.1")
 
 set (EXTERNALS_DIR "${PROJECT_SOURCE_DIR}/externals")
 
