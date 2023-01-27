@@ -47,6 +47,11 @@ which can help in preparation of these dependencies. They are also used
 in configuration of the [github actions](.github/workflows/actions_build.yml) and
 [appveyor](.appveyor.yml).
 
+The project's cmake configuration [options](CMakeLists.txt) allow building
+bindings to other high level programming languages using [swig](https://www.swig.org/)
+and [emscripten](https://emscripten.org/), see relevant commsdsl's
+[documentation](https://github.com/commschamp/commsdsl/tree/master/doc) pages for details.
+
 The [example](#examples) applications use [Boost](https://www.boost.org)
 to parse their command line parameters as well as manage their asynchronous I/O. 
 In case Boost libraries are not installed in expected default location
