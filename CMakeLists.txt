@@ -30,7 +30,7 @@ option (UBLOX_BUILD_EXAMPLES "Build examples." OFF)
 # COMMSDSL2SWIG_EXTRA_ARGS - Extra arguments to pass to "commsdsl2swig"
 # COMMSDSL2EMSCRIPTEN_EXTRA_ARGS - Extra arguments to pass to "commsdsl2emscripten"
 
-set (VERSION "2.1")
+set (VERSION "2.2")
 
 set (EXTERNALS_DIR "${PROJECT_SOURCE_DIR}/externals")
 
@@ -298,10 +298,10 @@ if (UBLOX_GEN_PROTOCOL)
             SOURCE_DIR ${UBLOX_PROT_OUTPUT_DIR}
             BINARY_DIR ${prot_build_dir}
             INSTALL_DIR ${CMAKE_INSTALL_PREFIX}
-            CMAKE_GENERATOR ${CMAKE_GENERATOR}
             CMAKE_ARGS
                 -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
-                -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
+                -DCMAKE_GENERATOR=${CMAKE_GENERATOR} -DCMAKE_GENERATOR_PLATFORM=${CMAKE_GENERATOR_PLATFORM}
+                -DCMAKE_GENERATOR_TOOLSET=${CMAKE_GENERATOR_TOOLSET} -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
                 -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}           
                 -DOPT_REQUIRE_COMMS_LIB=OFF
                 -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
@@ -365,11 +365,11 @@ if (UBLOX_GEN_TEST)
             DEPENDS "prot_tgt" "test_output_tgt"
             SOURCE_DIR ${UBLOX_TEST_OUTPUT_DIR}
             BINARY_DIR ${test_build_dir}
-            CMAKE_GENERATOR ${CMAKE_GENERATOR}
             LIST_SEPARATOR |
             CMAKE_ARGS
                 -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
-                -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
+                -DCMAKE_GENERATOR=${CMAKE_GENERATOR} -DCMAKE_GENERATOR_PLATFORM=${CMAKE_GENERATOR_PLATFORM}
+                -DCMAKE_GENERATOR_TOOLSET=${CMAKE_GENERATOR_TOOLSET} -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
                 -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}           
                 -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
                 -DCMAKE_PREFIX_PATH=${combined_prefix_path_str}
@@ -398,7 +398,7 @@ if (UBLOX_GEN_TOOLS)
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${tools_tmp_dir}" -DOUTPUT="${UBLOX_TOOLS_OUTPUT_DIR}"
             -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"        
-        DEPENDS ${tools_tmp_dir} ${readme_file} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
+        DEPENDS ${tools_tmp_dir} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
 
     if (UBLOX_BUILD_TOOLS)
         if ((NOT UBLOX_GEN_PROTOCOL) OR (NOT UBLOX_BUILD_PROTOCOL))
@@ -420,11 +420,11 @@ if (UBLOX_GEN_TOOLS)
             DEPENDS "prot_tgt" "tools_output_tgt"
             SOURCE_DIR ${UBLOX_TOOLS_OUTPUT_DIR}
             BINARY_DIR ${tools_build_dir}
-            CMAKE_GENERATOR ${CMAKE_GENERATOR}
             LIST_SEPARATOR |
             CMAKE_ARGS
                 -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
-                -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
+                -DCMAKE_GENERATOR=${CMAKE_GENERATOR} -DCMAKE_GENERATOR_PLATFORM=${CMAKE_GENERATOR_PLATFORM}
+                -DCMAKE_GENERATOR_TOOLSET=${CMAKE_GENERATOR_TOOLSET} -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
                 -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}           
                 -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
                 -DCMAKE_PREFIX_PATH=${combined_prefix_path_str}
@@ -453,7 +453,7 @@ if (UBLOX_GEN_SWIG)
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${swig_tmp_dir}" -DOUTPUT="${UBLOX_SWIG_OUTPUT_DIR}"
             -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"        
-        DEPENDS ${swig_tmp_dir} ${readme_file} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
+        DEPENDS ${swig_tmp_dir} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
 
     if (UBLOX_BUILD_SWIG)
         if ((NOT UBLOX_GEN_PROTOCOL) OR (NOT UBLOX_BUILD_PROTOCOL))
@@ -475,11 +475,11 @@ if (UBLOX_GEN_SWIG)
             DEPENDS "prot_tgt" "swig_output_tgt"
             SOURCE_DIR ${UBLOX_SWIG_OUTPUT_DIR}
             BINARY_DIR ${swig_build_dir}
-            CMAKE_GENERATOR ${CMAKE_GENERATOR}
             LIST_SEPARATOR |
             CMAKE_ARGS
                 -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
-                -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
+                -DCMAKE_GENERATOR=${CMAKE_GENERATOR} -DCMAKE_GENERATOR_PLATFORM=${CMAKE_GENERATOR_PLATFORM}
+                -DCMAKE_GENERATOR_TOOLSET=${CMAKE_GENERATOR_TOOLSET} -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
                 -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}        
                 -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
                 -DCMAKE_PREFIX_PATH=${combined_prefix_path_str}
@@ -511,7 +511,7 @@ if (UBLOX_GEN_EMSCRIPTEN)
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${emscripten_tmp_dir}" -DOUTPUT="${UBLOX_EMSCRIPTEN_OUTPUT_DIR}"
             -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"        
-        DEPENDS ${emscripten_tmp_dir} ${readme_file} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
+        DEPENDS ${emscripten_tmp_dir} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
 
     if (UBLOX_BUILD_EMSCRIPTEN)
         if ((NOT UBLOX_GEN_PROTOCOL) OR (NOT UBLOX_BUILD_PROTOCOL))
@@ -541,9 +541,9 @@ if (UBLOX_GEN_EMSCRIPTEN)
             SOURCE_DIR ${UBLOX_EMSCRIPTEN_OUTPUT_DIR}
             BINARY_DIR ${emscripten_build_dir}
             CMAKE_COMMAND ${EMCMAKE_EXECUTABLE} ${CMAKE_COMMAND}
-            CMAKE_GENERATOR ${CMAKE_GENERATOR}
             LIST_SEPARATOR |
             CMAKE_ARGS
+                -DCMAKE_GENERATOR=${CMAKE_GENERATOR} -DCMAKE_GENERATOR_PLATFORM=${CMAKE_GENERATOR_PLATFORM}
                 -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} 
                 -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
                 -DOPT_MODULARIZE=ON
