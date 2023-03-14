@@ -398,7 +398,7 @@ if (UBLOX_GEN_TOOLS)
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${tools_tmp_dir}" -DOUTPUT="${UBLOX_TOOLS_OUTPUT_DIR}"
             -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"        
-        DEPENDS ${tools_tmp_dir} ${readme_file} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
+        DEPENDS ${tools_tmp_dir} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
 
     if (UBLOX_BUILD_TOOLS)
         if ((NOT UBLOX_GEN_PROTOCOL) OR (NOT UBLOX_BUILD_PROTOCOL))
@@ -453,7 +453,7 @@ if (UBLOX_GEN_SWIG)
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${swig_tmp_dir}" -DOUTPUT="${UBLOX_SWIG_OUTPUT_DIR}"
             -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"        
-        DEPENDS ${swig_tmp_dir} ${readme_file} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
+        DEPENDS ${swig_tmp_dir} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
 
     if (UBLOX_BUILD_SWIG)
         if ((NOT UBLOX_GEN_PROTOCOL) OR (NOT UBLOX_BUILD_PROTOCOL))
@@ -511,7 +511,7 @@ if (UBLOX_GEN_EMSCRIPTEN)
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${emscripten_tmp_dir}" -DOUTPUT="${UBLOX_EMSCRIPTEN_OUTPUT_DIR}"
             -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"        
-        DEPENDS ${emscripten_tmp_dir} ${readme_file} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
+        DEPENDS ${emscripten_tmp_dir} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
 
     if (UBLOX_BUILD_EMSCRIPTEN)
         if ((NOT UBLOX_GEN_PROTOCOL) OR (NOT UBLOX_BUILD_PROTOCOL))
