@@ -30,7 +30,7 @@ option (UBLOX_BUILD_EXAMPLES "Build examples." OFF)
 # COMMSDSL2SWIG_EXTRA_ARGS - Extra arguments to pass to "commsdsl2swig"
 # COMMSDSL2EMSCRIPTEN_EXTRA_ARGS - Extra arguments to pass to "commsdsl2emscripten"
 
-set (VERSION "2.2.1")
+set (UBLOX_VERSION "2.3")
 
 set (EXTERNALS_DIR "${PROJECT_SOURCE_DIR}/externals")
 
@@ -262,7 +262,7 @@ if (UBLOX_GEN_PROTOCOL)
     add_custom_command(
         OUTPUT ${prot_tmp_dir}
         DEPENDS ${schema_files} ${src_files} rm_prot_tmp_tgt
-        COMMAND ${COMMSDSL2COMMS} ${warn_as_error} -V ${VERSION}
+        COMMAND ${COMMSDSL2COMMS} ${warn_as_error} -V ${UBLOX_VERSION}
             -o ${prot_tmp_dir} 
             -c ${code_input_dir} -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
             ${COMMSDSL2COMMS_EXTRA_ARGS} 
