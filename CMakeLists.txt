@@ -382,6 +382,7 @@ if (UBLOX_GEN_TEST)
                 -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}           
                 -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
                 -DCMAKE_PREFIX_PATH=${combined_prefix_path_str}
+                -DOPT_TEST_OPTIONS=cc_ublox::options::AllMessagesDynMemMsgFactoryDefaultOptions
         )   
     endif ()
 endif ()
