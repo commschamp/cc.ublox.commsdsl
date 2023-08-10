@@ -3,9 +3,9 @@ name: Github Actions Build
 on: [push]
 
 env:
-  COMMS_BRANCH: develop
-  COMMSDSL_BRANCH: develop
-  CC_TOOLS_QT_BRANCH: develop
+  COMMS_BRANCH: v5.2.1
+  COMMSDSL_BRANCH: v6.2.1
+  CC_TOOLS_QT_BRANCH: v4.2.1
 
 jobs:
   build_gcc_old_ubuntu_20_04:
