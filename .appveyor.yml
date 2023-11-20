@@ -20,8 +20,8 @@ configuration:
 
 environment:
     COMMS_BRANCH: v5.2.1
-    COMMSDSL_BRANCH: v6.2.1
-    CC_TOOLS_QT_BRANCH: v4.2.1
+    COMMSDSL_BRANCH: v6.2.4
+    CC_TOOLS_QT_BRANCH: v4.2.3
     matrix:
         - CPP_STD: 11
         - CPP_STD: 14
