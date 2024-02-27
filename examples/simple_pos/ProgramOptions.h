@@ -25,4 +25,4 @@ private:
 
 } // namespace simple_pos
 
-} // namespace demo3
+} // namespace ublox

@@ -21,7 +21,9 @@ option (UBLOX_BUILD_EXAMPLES "Build examples." OFF)
 # UBLOX_PROT_OUTPUT_DIR - Path to protocol output directory. If not provided <build_dir>/output one is used.
 # UBLOX_TEST_OUTPUT_DIR - Path to test output directory. If not provided <build_dir>/output_tools one is used.
 # UBLOX_TOOLS_OUTPUT_DIR - Path to tools output directory. If not provided <build_dir>/output_tools one is used.
+# UBLOX_TOOLS_QT_VER - Major Qt version to be used when building tools output. Defaults to 5
 # UBLOX_SWIG_OUTPUT_DIR - Path to swig output directory. If not provided <build_dir>/output_swig one is used.
+# UBLOX_SWIG_SRC_DIR - Path to the commsdsl2swig sources. If not provided local "src/swig" dir is used.
 # UBLOX_SCHEMA_FILES_LIST_FILE - Path to the file containing list of DSL files, use it to replace "schema_files" list below.
 # UBLOX_EMSCRIPTEN_OUTPUT_DIR - Path to emscripten output directory. If not provided <build_dir>/output_emscripten one is used.
 # COMMSDSL2COMMS_EXTRA_ARGS - Extra arguments to pass to "commsdsl2comms"
@@ -30,8 +32,8 @@ option (UBLOX_BUILD_EXAMPLES "Build examples." OFF)
 # COMMSDSL2SWIG_EXTRA_ARGS - Extra arguments to pass to "commsdsl2swig"
 # COMMSDSL2EMSCRIPTEN_EXTRA_ARGS - Extra arguments to pass to "commsdsl2emscripten"
 
-set (UBLOX_VERSION "2.5.1")
-set (UBLOX_MIN_COMMSDSL_VERSION "6.2.4")
+set (UBLOX_VERSION "2.6")
+set (UBLOX_MIN_COMMSDSL_VERSION "6.3")
 
 set (EXTERNALS_DIR "${PROJECT_SOURCE_DIR}/externals")
 
@@ -54,7 +56,7 @@ if ("${UBLOX_SWIG_OUTPUT_DIR}" STREQUAL "")
 endif ()
 
 if ("${UBLOX_SWIG_SRC_DIR}" STREQUAL "")
-    set (UBLOX_SWIG_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/swig_src)
+    set (UBLOX_SWIG_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/swig)
 endif ()
 
 if ("${UBLOX_SWIG_LANGUAGES}" STREQUAL "")
@@ -231,7 +233,6 @@ endif ()
 set (prot_tmp_dir "${CMAKE_BINARY_DIR}/output.tmp")
 set (test_tmp_dir "${CMAKE_BINARY_DIR}/output_test.tmp")
 set (tools_tmp_dir "${CMAKE_BINARY_DIR}/output_tools.tmp")
-set (code_input_dir "${PROJECT_SOURCE_DIR}/src")
 
 if ("${UBLOX_PROT_OUTPUT_DIR}" STREQUAL "")
     set (UBLOX_PROT_OUTPUT_DIR "${CMAKE_BINARY_DIR}/output")
@@ -268,23 +269,16 @@ if (UBLOX_GEN_PROTOCOL)
         OUTPUT ${prot_tmp_dir}
         DEPENDS ${schema_files} ${src_files} rm_prot_tmp_tgt
         COMMAND ${COMMSDSL2COMMS} ${warn_as_error} -V ${UBLOX_VERSION}
-            -o ${prot_tmp_dir} 
-            -c ${code_input_dir} -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
+            -o ${prot_tmp_dir} -c ${PROJECT_SOURCE_DIR}/src/protocol
+            -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
             ${COMMSDSL2COMMS_EXTRA_ARGS} 
-    )
-
-    set (readme_file "${prot_tmp_dir}/README.md")
-    add_custom_command(
-        OUTPUT ${readme_file}
-        DEPENDS ${prot_tmp_dir} 
-        COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/readme.generated ${readme_file}
     )
 
     add_custom_target(${PROT_OUTPUT_TGT} ALL
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${prot_tmp_dir}" -DOUTPUT="${UBLOX_PROT_OUTPUT_DIR}"
             -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"
-        DEPENDS ${prot_tmp_dir} ${readme_file} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
+        DEPENDS ${prot_tmp_dir} ${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake ${schema_files})
 
     if (UBLOX_BUILD_PROTOCOL)
         execute_process(
@@ -345,7 +339,8 @@ if (UBLOX_GEN_TEST)
         OUTPUT ${test_tmp_dir}
         DEPENDS ${schema_files} ${src_files} rm_test_tmp_tgt
         COMMAND ${COMMSDSL2TEST} ${warn_as_error} ${COMMSDSL2TEST_EXTRA_ARGS}
-            -o ${test_tmp_dir} -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
+            -o ${test_tmp_dir} -c ${PROJECT_SOURCE_DIR}/src/test
+            -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
     )
 
     add_custom_target("test_output_tgt" ALL
@@ -405,7 +400,8 @@ if (UBLOX_GEN_TOOLS)
         OUTPUT ${tools_tmp_dir}
         DEPENDS ${schema_files} ${src_files} rm_tools_tmp_tgt
         COMMAND ${COMMSDSL2TOOLS_QT} ${warn_as_error} ${COMMSDSL2TOOLS_QT_EXTRA_ARGS}
-            -o ${tools_tmp_dir} -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
+            -o ${tools_tmp_dir}  -c ${PROJECT_SOURCE_DIR}/src/tools
+            -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
     )
 
     add_custom_target("tools_output_tgt" ALL
@@ -442,6 +438,7 @@ if (UBLOX_GEN_TOOLS)
                 -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}           
                 -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
                 -DCMAKE_PREFIX_PATH=${combined_prefix_path_str}
+                -DOPT_QT_MAJOR_VERSION=${UBLOX_TOOLS_QT_VER}
         )  
     endif ()
 endif ()
@@ -463,7 +460,7 @@ if (UBLOX_GEN_SWIG)
         OUTPUT ${swig_tmp_dir}
         DEPENDS ${schema_files} ${src_files} rm_swig_tmp_tgt
         COMMAND ${COMMSDSL2SWIG} ${warn_as_error} ${COMMSDSL2SWIG_EXTRA_ARGS}
-            -c ${CMAKE_CURRENT_SOURCE_DIR}/swig_src -o ${swig_tmp_dir} 
+            -c ${UBLOX_SWIG_SRC_DIR} -o ${swig_tmp_dir} 
             -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
     )
 
@@ -486,6 +483,8 @@ if (UBLOX_GEN_SWIG)
             COMMAND ${CMAKE_COMMAND} -E touch ${UBLOX_SWIG_OUTPUT_DIR}/dummy.txt
         )
 
+        string (REPLACE ";" "|" combined_languages_str "${UBLOX_SWIG_LANGUAGES}")
+
         set (swig_build_dir ${CMAKE_CURRENT_BINARY_DIR}/swig_tgt_build)
         ExternalProject_Add(
             "swig_tgt"
@@ -501,7 +500,7 @@ if (UBLOX_GEN_SWIG)
                 -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}        
                 -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
                 -DCMAKE_PREFIX_PATH=${combined_prefix_path_str}
-                -DOPT_SWIG_LANGUAGES=python|java|csharp
+                -DOPT_SWIG_LANGUAGES=${combined_languages_str}
             INSTALL_COMMAND
                 ${CMAKE_COMMAND} -E echo "Skipping install"            
         )   
@@ -526,7 +525,8 @@ if (UBLOX_GEN_EMSCRIPTEN)
         OUTPUT ${emscripten_tmp_dir}
         DEPENDS ${schema_files} ${src_files} rm_emscripten_tmp_tgt
         COMMAND ${COMMSDSL2EMSCRIPTEN} ${warn_as_error} ${COMMSDSL2EMSCRIPTEN_EXTRA_ARGS}
-            -o ${emscripten_tmp_dir} -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
+            -o ${emscripten_tmp_dir} -c ${PROJECT_SOURCE_DIR}/src/emscripten
+            -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
     )
 
     add_custom_target("emscripten_output_tgt" ALL
