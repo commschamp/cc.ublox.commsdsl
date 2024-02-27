@@ -400,6 +400,7 @@ if (UBLOX_GEN_TOOLS)
         OUTPUT ${tools_tmp_dir}
         DEPENDS ${schema_files} ${src_files} rm_tools_tmp_tgt
         COMMAND ${COMMSDSL2TOOLS_QT} ${warn_as_error} ${COMMSDSL2TOOLS_QT_EXTRA_ARGS}
+            --protocol "::CC UBLOX:UBX protocol used by the U-blox GNSS Receivers.:cc.UbloxProtocolPlugin"
             -o ${tools_tmp_dir}  -c ${PROJECT_SOURCE_DIR}/src/tools
             -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
     )
