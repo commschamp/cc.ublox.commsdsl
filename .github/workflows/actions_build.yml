@@ -186,7 +186,7 @@ jobs:
         cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
         -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} \
         -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_TOOLS=${{env.BUILD_TOOLS}} \
-        -DUBLOX_GEN_SWIG=ON -DUBLOX_GEN_EMSCRIPTEN=ON -DUBLOX_BUILD_EXAMPLES=ON \
+        -DUBLOX_GEN_SWIG=ON -DUBLOX_GEN_EMSCRIPTEN=ON -DUBLOX_BUILD_EXAMPLES=ON -DUBLOX_TOOLS_QT_VER=${{matrix.qt_ver}} \
         -DUBLOX_SCHEMA_FILES_LIST_FILE=$GITHUB_WORKSPACE/basic_msgs.txt
       env:
         CC: gcc-${{matrix.cc_ver}}
@@ -379,7 +379,7 @@ jobs:
         cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
         -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} \
         -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_TOOLS=${{env.BUILD_TOOLS}} \
-        -DUBLOX_GEN_SWIG=ON -DUBLOX_GEN_EMSCRIPTEN=ON -DUBLOX_BUILD_EXAMPLES=ON \
+        -DUBLOX_GEN_SWIG=ON -DUBLOX_GEN_EMSCRIPTEN=ON -DUBLOX_BUILD_EXAMPLES=ON -DUBLOX_TOOLS_QT_VER=${{matrix.qt_ver}} \
         -DUBLOX_SCHEMA_FILES_LIST_FILE=$GITHUB_WORKSPACE/basic_msgs.txt
       env:
         CC: clang-${{matrix.cc_ver}}
