@@ -19,8 +19,8 @@ configuration:
 
 environment:
     COMMS_BRANCH: v5.2.2
-    COMMSDSL_BRANCH: develop
-    CC_TOOLS_QT_BRANCH: develop
+    COMMSDSL_BRANCH: v6.3
+    CC_TOOLS_QT_BRANCH: v5.1
     matrix:
         - CPP_STD: 11
           QT_MAJOR: 5
