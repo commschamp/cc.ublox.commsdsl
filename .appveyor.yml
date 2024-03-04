@@ -1,7 +1,6 @@
 image:
     - Visual Studio 2022  
     - Visual Studio 2019  
-    - Visual Studio 2017    
 
 
 init:
@@ -19,20 +18,28 @@ configuration:
     - Release
 
 environment:
-    COMMS_BRANCH: v5.2.1
-    COMMSDSL_BRANCH: v6.2.4
-    CC_TOOLS_QT_BRANCH: v4.2.3
+    COMMS_BRANCH: v5.2.2
+    COMMSDSL_BRANCH: v6.3
+    CC_TOOLS_QT_BRANCH: v5.1
     matrix:
         - CPP_STD: 11
+          QT_MAJOR: 5
+          EXTRA_CONFIG: -DUBLOX_BUILD_TOOLS=OFF
         - CPP_STD: 14
+          QT_MAJOR: 5
+          EXTRA_CONFIG: -DUBLOX_BUILD_TOOLS=OFF
         - CPP_STD: 17
+          QT_MAJOR: 5
         - CPP_STD: 20
+          QT_MAJOR: 5          
+        - CPP_STD: 20
+          QT_MAJOR: 6
 
 matrix:
     fast_finish: false
     exclude:
-        - image: Visual Studio 2017
-          CPP_STD: 20                           
+        - platform: x86
+          QT_MAJOR: 6                                  
         
 install:
     - call script\appveyor_install.bat
@@ -45,13 +52,21 @@ install:
     - set COMMON_INSTALL_DIR=%BUILD_DIR%\install
     - set COMMON_BUILD_TYPE=%CONFIGURATION%
     - set COMMON_CXX_STANDARD=%CPP_STD%
+    - set GENERATOR="%CMAKE_GENERATOR%"
+    - set PLATFORM="%CMAKE_PLATFORM%"    
+    - set CC_TOOLS_QT_MAJOR_QT_VERSION=%QT_MAJOR%
     - call script\prepare_externals.bat
 
 build_script:
     - echo ------------------------- Building Project -------------------------
     - cd %BUILD_DIR%
-    - cmake .. -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "NMake Makefiles" -DBOOST_ROOT="%BOOST_DIR%" -DBoost_USE_STATIC_LIBS=ON -DCMAKE_INSTALL_PREFIX="%COMMON_INSTALL_DIR%" -DCMAKE_PREFIX_PATH="%COMMON_INSTALL_DIR%" -DCMAKE_CXX_STANDARD=%CPP_STD% -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_EXAMPLES=ON -DUBLOX_SCHEMA_FILES_LIST_FILE=%APPVEYOR_BUILD_FOLDER%/basic_msgs.txt
-    - cmake --build . --config %CONFIGURATION% --target install
+    - cmake .. -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "%CMAKE_GENERATOR%" %PLATFORM_PARAM% ^
+        -DBOOST_ROOT="%BOOST_DIR%" -DBoost_USE_STATIC_LIBS=ON -DCMAKE_INSTALL_PREFIX="%COMMON_INSTALL_DIR%" ^
+        -DCMAKE_PREFIX_PATH="%COMMON_INSTALL_DIR%" -DCMAKE_CXX_STANDARD=%CPP_STD% ^
+        -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_EXAMPLES=ON ^
+        -DUBLOX_SCHEMA_FILES_LIST_FILE=%APPVEYOR_BUILD_FOLDER%/basic_msgs.txt        
+        -DUBLOX_TOOLS_QT_VER=%QT_MAJOR% %EXTRA_CONFIG%
+    - cmake --build . --config %CONFIGURATION% --target install --parallel %NUMBER_OF_PROCESSORS%
 
 
 

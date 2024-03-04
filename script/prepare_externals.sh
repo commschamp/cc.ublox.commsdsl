@@ -17,6 +17,8 @@
 # COMMON_INSTALL_DIR - (Optional) Common directory to perform installations
 # COMMON_BUILD_TYPE - (Optional) CMake build type
 # COMMON_CXX_STANDARD - (Optional) CMake C++ standard
+# COMMON_CMAKE_GENERATOR - (Optional) CMake generator
+# COMMON_CMAKE_PLATFORM - (Optional) CMake platform
 
 #####################################
 
@@ -85,6 +87,10 @@ CC_TOOLS_QT_INSTALL_DIR=${CC_TOOLS_QT_BUILD_DIR}/install
 if [ -n "${COMMON_INSTALL_DIR}" ]; then
     CC_TOOLS_QT_INSTALL_DIR=${COMMON_INSTALL_DIR}
 fi
+CC_TOOLS_QT_VERSION_OPT=
+if [ -n "${CC_TOOLS_QT_MAJOR_QT_VERSION}" ]; then
+    CC_TOOLS_QT_VERSION_OPT="-DCC_TOOLS_QT_MAJOR_QT_VERSION=${CC_TOOLS_QT_MAJOR_QT_VERSION}"
+fi
 
 procs=$(nproc)
 if [ -n "${procs}" ]; then
@@ -109,7 +115,10 @@ function build_comms() {
 
     echo "Building COMMS library..."
     mkdir -p ${COMMS_BUILD_DIR}
-    cmake -S ${COMMS_SRC_DIR} -B ${COMMS_BUILD_DIR} -DCMAKE_INSTALL_PREFIX=${COMMS_INSTALL_DIR} -DCMAKE_BUILD_TYPE=${COMMON_BUILD_TYPE} -DCMAKE_CXX_STANDARD=${COMMON_CXX_STANDARD}
+    cmake \
+        ${COMMON_CMAKE_GENERATOR:+"-G ${COMMON_CMAKE_GENERATOR}"} ${COMMON_CMAKE_PLATFORM:+"-A ${COMMON_CMAKE_PLATFORM}"} \
+        -S ${COMMS_SRC_DIR} -B ${COMMS_BUILD_DIR} -DCMAKE_INSTALL_PREFIX=${COMMS_INSTALL_DIR} \
+        -DCMAKE_BUILD_TYPE=${COMMON_BUILD_TYPE} -DCMAKE_CXX_STANDARD=${COMMON_CXX_STANDARD}
     cmake --build ${COMMS_BUILD_DIR} --config ${COMMON_BUILD_TYPE} --target install ${procs_param}
 }
 
@@ -129,7 +138,8 @@ function build_commsdsl() {
 
     echo "Building commsdsl ..."
     mkdir -p ${COMMSDSL_BUILD_DIR}
-    CC=${CC_COMMSDSL} CXX=${CXX_COMMSDSL} cmake -S ${COMMSDSL_SRC_DIR} -B ${COMMSDSL_BUILD_DIR} \
+    CC=${CC_COMMSDSL} CXX=${CXX_COMMSDSL} cmake \
+        -S ${COMMSDSL_SRC_DIR} -B ${COMMSDSL_BUILD_DIR} \
         -DCMAKE_INSTALL_PREFIX=${COMMSDSL_INSTALL_DIR} -DCMAKE_BUILD_TYPE=${COMMON_BUILD_TYPE} \
         -DCOMMSDSL_INSTALL_LIBRARY=OFF -DCOMMSDSL_BUILD_COMMSDSL2TEST=ON -DCOMMSDSL_BUILD_COMMSDSL2TOOLS_QT=ON \
         -DCOMMSDSL_BUILD_COMMSDSL2SWIG=ON -DCOMMSDSL_BUILD_COMMSDSL2EMSCRIPTEN=ON
@@ -137,6 +147,13 @@ function build_commsdsl() {
 }
 
 function build_cc_tools_qt() {
+    if [ -n "${COMMON_CXX_STANDARD}" ]; then
+        if [ ${COMMON_CXX_STANDARD} -lt 17 ]; then
+            echo "Skipping build of cc_tools_qt due to old C++ standard"
+            return;
+        fi
+    fi
+        
     if [ -e ${CC_TOOLS_QT_SRC_DIR}/.git ]; then
         echo "Updating cc_tools_qt..."
         cd ${CC_TOOLS_QT_SRC_DIR}
@@ -152,7 +169,11 @@ function build_cc_tools_qt() {
 
     echo "Building cc_tools_qt ..."
     mkdir -p ${CC_TOOLS_QT_BUILD_DIR}
-    cmake -S ${CC_TOOLS_QT_SRC_DIR} -B ${CC_TOOLS_QT_BUILD_DIR} -DCMAKE_INSTALL_PREFIX=${CC_TOOLS_QT_INSTALL_DIR} -DCMAKE_BUILD_TYPE=${COMMON_BUILD_TYPE} -DCC_TOOLS_QT_BUILD_APPS=OFF -DCC_TOOLS_QT_EXTERNAL_COMMS=ON -DCMAKE_PREFIX_PATH=${COMMS_INSTALL_DIR} -DCMAKE_CXX_STANDARD=${COMMON_CXX_STANDARD}
+    cmake \
+        ${COMMON_CMAKE_GENERATOR:+"-G ${COMMON_CMAKE_GENERATOR}"} ${COMMON_CMAKE_PLATFORM:+"-A ${COMMON_CMAKE_PLATFORM}"} \
+        -S ${CC_TOOLS_QT_SRC_DIR} -B ${CC_TOOLS_QT_BUILD_DIR} -DCMAKE_INSTALL_PREFIX=${CC_TOOLS_QT_INSTALL_DIR} \
+        -DCMAKE_BUILD_TYPE=${COMMON_BUILD_TYPE} -DCC_TOOLS_QT_BUILD_APPS=OFF -DCMAKE_PREFIX_PATH=${COMMS_INSTALL_DIR} \
+        -DCMAKE_CXX_STANDARD=${COMMON_CXX_STANDARD} ${CC_TOOLS_QT_VERSION_OPT}
     cmake --build ${CC_TOOLS_QT_BUILD_DIR} --config ${COMMON_BUILD_TYPE} --target install ${procs_param}
 }
 
@@ -161,7 +182,7 @@ export VERBOSE=1
 build_comms
 build_commsdsl
 
-if [ -z "${CC_TOOLS_QT_SKIP}" ]; then
+if [ -z "${CC_TOOLS_QT_SKIP}" -o "${CC_TOOLS_QT_SKIP}" == "0" ]; then
     build_cc_tools_qt
 fi
 
