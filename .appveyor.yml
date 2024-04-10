@@ -18,9 +18,9 @@ configuration:
     - Release
 
 environment:
-    COMMS_BRANCH: v5.2.2
-    COMMSDSL_BRANCH: v6.3
-    CC_TOOLS_QT_BRANCH: v5.1
+    COMMS_TAG: v5.2.3
+    COMMSDSL_TAG: v6.3.2
+    CC_TOOLS_QT_TAG: v5.2.1
     matrix:
         - CPP_STD: 11
           QT_MAJOR: 5
@@ -46,9 +46,9 @@ install:
     - set PATH=%PATH%;%QTDIR%\bin
     - set BUILD_DIR=%APPVEYOR_BUILD_FOLDER%\build.%PLATFORM%.%CONFIGURATION%.%TOOLCHAIN%
     - if exist %BUILD_DIR% rmdir /S /Q %BUILD_DIR%
-    - set COMMS_TAG=%COMMS_BRANCH%
-    - set COMMSDSL_TAG=%COMMSDSL_BRANCH%
-    - set CC_TOOLS_QT_TAG=%CC_TOOLS_QT_BRANCH%
+    - set COMMS_TAG=%COMMS_TAG%
+    - set COMMSDSL_TAG=%COMMSDSL_TAG%
+    - set CC_TOOLS_QT_TAG=%CC_TOOLS_QT_TAG%
     - set COMMON_INSTALL_DIR=%BUILD_DIR%\install
     - set COMMON_BUILD_TYPE=%CONFIGURATION%
     - set COMMON_CXX_STANDARD=%CPP_STD%

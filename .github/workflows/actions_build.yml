@@ -3,9 +3,9 @@ name: Github Actions Build
 on: [push]
 
 env:
-  COMMS_BRANCH: v5.2.2
-  COMMSDSL_BRANCH: v6.3
-  CC_TOOLS_QT_BRANCH: v5.1
+  COMMS_TAG: v5.2.3
+  COMMSDSL_TAG: v6.3.2
+  CC_TOOLS_QT_TAG: v5.2.1
 
 jobs:
   build_gcc_old_ubuntu_20_04:
@@ -47,8 +47,8 @@ jobs:
         COMMON_INSTALL_DIR: ${{runner.workspace}}/build/install
         COMMON_BUILD_TYPE: ${{matrix.type}}
         COMMON_CXX_STANDARD: ${{matrix.cpp}}
-        COMMS_TAG: ${{env.COMMS_BRANCH}}
-        COMMSDSL_TAG: ${{env.COMMSDSL_BRANCH}}
+        COMMS_TAG: ${{env.COMMS_TAG}}
+        COMMSDSL_TAG: ${{env.COMMSDSL_TAG}}
         CC_TOOLS_QT_SKIP: 1
 
     - name: Configure CMake
@@ -115,9 +115,9 @@ jobs:
         COMMON_INSTALL_DIR: ${{runner.workspace}}/build/install
         COMMON_BUILD_TYPE: ${{matrix.type}}
         COMMON_CXX_STANDARD: ${{matrix.cpp}}
-        COMMS_TAG: ${{env.COMMS_BRANCH}}
-        COMMSDSL_TAG: ${{env.COMMSDSL_BRANCH}}
-        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_BRANCH}}
+        COMMS_TAG: ${{env.COMMS_TAG}}
+        COMMSDSL_TAG: ${{env.COMMSDSL_TAG}}
+        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}}
 
     - name: Configure CMake
       shell: bash
@@ -174,9 +174,9 @@ jobs:
         COMMON_INSTALL_DIR: ${{runner.workspace}}/build/install
         COMMON_BUILD_TYPE: ${{matrix.type}}
         COMMON_CXX_STANDARD: ${{matrix.cpp}}
-        COMMS_TAG: ${{env.COMMS_BRANCH}}
-        COMMSDSL_TAG: ${{env.COMMSDSL_BRANCH}}
-        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_BRANCH}}
+        COMMS_TAG: ${{env.COMMS_TAG}}
+        COMMSDSL_TAG: ${{env.COMMSDSL_TAG}}
+        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}}
         CC_TOOLS_QT_MAJOR_QT_VERSION: ${{matrix.qt_ver}}
 
     - name: Configure CMake
@@ -244,9 +244,9 @@ jobs:
         COMMON_INSTALL_DIR: ${{runner.workspace}}/build/install
         COMMON_BUILD_TYPE: ${{matrix.type}}
         COMMON_CXX_STANDARD: ${{matrix.cpp}}
-        COMMS_TAG: ${{env.COMMS_BRANCH}}
-        COMMSDSL_TAG: ${{env.COMMSDSL_BRANCH}}
-        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_BRANCH}}
+        COMMS_TAG: ${{env.COMMS_TAG}}
+        COMMSDSL_TAG: ${{env.COMMSDSL_TAG}}
+        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}}
 
     - name: Configure CMake
       shell: bash
@@ -306,9 +306,9 @@ jobs:
         COMMON_INSTALL_DIR: ${{runner.workspace}}/build/install
         COMMON_BUILD_TYPE: ${{matrix.type}}
         COMMON_CXX_STANDARD: ${{matrix.cpp}}
-        COMMS_TAG: ${{env.COMMS_BRANCH}}
-        COMMSDSL_TAG: ${{env.COMMSDSL_BRANCH}}
-        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_BRANCH}} 
+        COMMS_TAG: ${{env.COMMS_TAG}}
+        COMMSDSL_TAG: ${{env.COMMSDSL_TAG}}
+        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}} 
         CC_TOOLS_QT_SKIP: "${{ matrix.cpp < 17 && '1' || '0' }}"
 
     - name: Configure CMake
@@ -366,9 +366,9 @@ jobs:
         COMMON_INSTALL_DIR: ${{runner.workspace}}/build/install
         COMMON_BUILD_TYPE: ${{matrix.type}}
         COMMON_CXX_STANDARD: ${{matrix.cpp}}
-        COMMS_TAG: ${{env.COMMS_BRANCH}}
-        COMMSDSL_TAG: ${{env.COMMSDSL_BRANCH}}
-        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_BRANCH}} 
+        COMMS_TAG: ${{env.COMMS_TAG}}
+        COMMSDSL_TAG: ${{env.COMMSDSL_TAG}}
+        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}} 
         CC_TOOLS_QT_MAJOR_QT_VERSION: ${{matrix.qt_ver}}
         CC_TOOLS_QT_SKIP: "${{ (matrix.cpp < 17 || (matrix.cpp == 20 && matrix.cc_ver < 15)) && '1' || '0' }}"
 
