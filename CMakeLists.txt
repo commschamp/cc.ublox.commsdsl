@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.5)
+cmake_minimum_required (VERSION 3.10)
 project ("cc.ublox.commsdsl")
 
 option (UBLOX_NO_WARN_AS_ERR "Don't treat compilation warnings as errors." OFF)
