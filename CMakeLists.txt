@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.5)
+cmake_minimum_required (VERSION 3.10)
 project ("cc.ublox.commsdsl")
 
 option (UBLOX_NO_WARN_AS_ERR "Don't treat compilation warnings as errors." OFF)
@@ -32,8 +32,8 @@ option (UBLOX_BUILD_EXAMPLES "Build examples." OFF)
 # COMMSDSL2SWIG_EXTRA_ARGS - Extra arguments to pass to "commsdsl2swig"
 # COMMSDSL2EMSCRIPTEN_EXTRA_ARGS - Extra arguments to pass to "commsdsl2emscripten"
 
-set (UBLOX_VERSION "2.6")
-set (UBLOX_MIN_COMMSDSL_VERSION "6.3")
+set (UBLOX_VERSION "2.7")
+set (UBLOX_MIN_COMMSDSL_VERSION "6.3.2")
 
 set (EXTERNALS_DIR "${PROJECT_SOURCE_DIR}/externals")
 
