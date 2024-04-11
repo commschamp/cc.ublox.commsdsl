@@ -455,6 +455,7 @@ jobs:
           -DCMAKE_PREFIX_PATH="${{runner.workspace}}/build/install;${{env.QTDIR}}" -DBoost_USE_STATIC_LIBS=ON ^
           -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_TOOLS_QT_VER=${{matrix.qt_ver}} ^
           -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_TOOLS=${{env.BUILD_TOOLS}} ^
+          -DUBLOX_BUILD_EXAMPLES=ON ^
           -DUBLOX_SCHEMA_FILES_LIST_FILE=%GITHUB_WORKSPACE%/basic_msgs.txt
       env:
         BUILD_TOOLS: "${{ matrix.cpp >= 17 && matrix.arch == 'x64'  && 'ON' || 'OFF' }}"
@@ -462,7 +463,7 @@ jobs:
     - name: Build Target 
       working-directory: ${{runner.workspace}}/build
       shell: cmd
-      run: cmake --build . --config ${{matrix.type}} --target install
+      run: cmake --build . --config ${{matrix.type}}
       env:
         VERBOSE: 1 
 
