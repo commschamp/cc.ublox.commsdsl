@@ -45,4 +45,9 @@
             </bundle>
         </list>
     </message>
+
+    <message name="RxmMeasxPoll" id="MsgId.RxmMeasx" displayName="RXM-MEASX (Poll)" order="1">
+        <platforms value="+ublox8,ublox9" />
+        <sender value="client" />
+    </message>        
 </schema>
