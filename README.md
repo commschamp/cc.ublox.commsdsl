@@ -44,8 +44,7 @@ the code generators). There are also scripts (
 [script/prepare_externals.sh](script/prepare_externals.sh) for Linux and
 [script/prepare_externals.bat](script/prepare_externals.bat) for Windows)
 which can help in preparation of these dependencies. They are also used
-in configuration of the [github actions](.github/workflows/actions_build.yml) and
-[appveyor](.appveyor.yml).
+in configuration of the [github actions](.github/workflows/actions_build.yml).
 
 The project's cmake configuration [options](CMakeLists.txt) allow building
 bindings to other high level programming languages using [swig](https://www.swig.org/)
