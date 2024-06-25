@@ -10,8 +10,15 @@ files using [CommsDSL](https://github.com/commschamp/CommsDSL-Specification).
 The **commsds2comms** code generator from [commsdsl](https://github.com/commschamp/commsdsl)
 project is used to generate C++11 code of the protocol implementation.
 
-The **generated** CMake project of this protocol definition is hosted and can be
-viewed at [cc.ublox.generated](https://github.com/commschamp/cc.ublox.generated)
+The code generators from the [commsdsl](https://github.com/commschamp/commsdsl)
+repository generate full CMake projects.
+Some of these **generated** projects are hosted as separate
+repositories that can be viewed and used independently.
+
+- [cc.ublox.generated](https://github.com/commschamp/cc.ublox.generated) - Protocol 
+    definition 
+- [cc.ublox_protocol.cc_tools_plugin](https://github.com/commschamp/cc.ublox_protocol.cc_tools_plugin) -
+    Protocol plugin for the [CommsChampion Tools](https://github.com/commschamp/cc_tools_qt).
 
 # Examples
 The [examples](examples) directory contains following example applications:
