@@ -36,7 +36,7 @@ to provide a list of required messages using **UBLOX_SCHEMA_FILES_LIST_FILE**
 cmake parameter.
 
 This project also has external dependencies, it requires an access to
-the [COMMS Library](https://github.com/commschamp/commsdsl) and
+the [COMMS Library](https://github.com/commschamp/comms) and
 code generators from [commsdsl](https://github.com/commschamp/commsdsl) projects.
 These dependencies are expected to be built independenty and access to them provided
 via standard **CMAKE_PREFIX_PATH** and/or **CMAKE_PROGRAM_PATH** (for the binaries of
