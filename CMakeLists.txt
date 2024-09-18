@@ -36,6 +36,12 @@ option (UBLOX_BUILD_EXAMPLES "Build examples." OFF)
 set (UBLOX_VERSION "2.8.1")
 set (UBLOX_MIN_COMMSDSL_VERSION "6.3.4")
 
+if (("${CMAKE_VERSION}" VERSION_GREATER_EQUAL "3.30") AND
+    (NOT DEFINED CMAKE_POLICY_DEFAULT_CMP0167))
+    # Find boost cmake configuration from the boost installation
+    cmake_policy(SET CMP0167 NEW)
+endif ()
+
 set (EXTERNALS_DIR "${PROJECT_SOURCE_DIR}/externals")
 
 set (PROT_OUTPUT_TGT "prot_output_tgt")

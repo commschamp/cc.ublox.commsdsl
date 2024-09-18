@@ -583,7 +583,8 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       run: |
         cmake %GITHUB_WORKSPACE% -A ${{matrix.arch}} -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install ^
-          -DCMAKE_PREFIX_PATH="${{runner.workspace}}/build/install;${{env.QTDIR}}" -DBoost_USE_STATIC_LIBS=ON ^
+          -DCMAKE_PREFIX_PATH="${{runner.workspace}}/build/install;${{env.QTDIR}}" ^
+          -DCMAKE_POLICY_DEFAULT_CMP0167=OLD -DBoost_USE_STATIC_LIBS=ON ^
           -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_TOOLS_QT_VER=${{matrix.qt_ver}} ^
           -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_TOOLS=${{env.BUILD_TOOLS}} ^
           -DUBLOX_BUILD_EXAMPLES=ON ^
@@ -617,7 +618,7 @@ jobs:
       if: matrix.arch == 'x64'
       shell: cmd
       run: |
-        choco install boost-msvc-14.3
+        choco install boost-msvc-14.3 --version=1.85.0
 
     - name: Prepare externals
       shell: cmd
@@ -640,7 +641,8 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       run: |
         cmake %GITHUB_WORKSPACE% -A ${{matrix.arch}} -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install ^
-          -DCMAKE_PREFIX_PATH="${{runner.workspace}}/build/install" -DBoost_USE_STATIC_LIBS=ON ^
+          -DCMAKE_PREFIX_PATH="${{runner.workspace}}/build/install" ^
+          -DCMAKE_POLICY_DEFAULT_CMP0167=OLD -DBoost_USE_STATIC_LIBS=ON ^
           -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_TOOLS_QT_VER=${{matrix.qt_ver}} ^
           -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_BUILD_EXAMPLES=${{env.HAS_BOOST}} ^
           -DUBLOX_SCHEMA_FILES_LIST_FILE=%GITHUB_WORKSPACE%/basic_msgs.txt
