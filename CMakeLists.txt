@@ -34,7 +34,7 @@ option (UBLOX_BUILD_EXAMPLES "Build examples." OFF)
 # COMMSDSL2EMSCRIPTEN_EXTRA_ARGS - Extra arguments to pass to "commsdsl2emscripten"
 
 set (UBLOX_VERSION "2.8.1")
-set (UBLOX_MIN_COMMSDSL_VERSION "6.3.3")
+set (UBLOX_MIN_COMMSDSL_VERSION "6.3.4")
 
 set (EXTERNALS_DIR "${PROJECT_SOURCE_DIR}/externals")
 
