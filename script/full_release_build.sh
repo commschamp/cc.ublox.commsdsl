@@ -6,6 +6,6 @@ if [ -z "${CC}" -o -z "$CXX" ]; then
 fi
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-export COMMON_BUILD_TYPE=Debug
+export COMMON_BUILD_TYPE=Release
 exec ${SCRIPT_DIR}/full_build.sh "$@"
 
