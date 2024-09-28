@@ -3,9 +3,9 @@ name: Github Actions Build
 on: [push]
 
 env:
-  COMMS_TAG: v5.2.5
-  COMMSDSL_TAG: v6.3.3
-  CC_TOOLS_QT_TAG: v5.3.1
+  COMMS_TAG: v5.2.7
+  COMMSDSL_TAG: v6.3.4
+  CC_TOOLS_QT_TAG: v5.3.3
 
 jobs:
   build_gcc_old_ubuntu_20_04:
@@ -148,6 +148,70 @@ jobs:
         cc_ver: [9, 10, 11, 12]
         cpp: [11, 14, 17, 20]
         qt_ver: [5, 6]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Prepare Install
+      run: sudo apt-get update --fix-missing    
+      
+    - name: Install Packages
+      run: |
+        sudo apt install libqt${{matrix.qt_ver}}gui${{matrix.qt_ver}} qtbase5-dev qt6-base-dev libboost-all-dev libxml2-dev gcc-${{matrix.cc_ver}} g++-${{matrix.cc_ver}} \
+        python3 libpython3-dev swig default-jdk default-jre emscripten
+
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{runner.workspace}}/build      
+
+    - name: Prepare externals
+      shell: bash
+      run: $GITHUB_WORKSPACE/script/prepare_externals.sh
+      env:
+        BUILD_DIR: ${{runner.workspace}}/build
+        CC: gcc-${{matrix.cc_ver}}
+        CXX: g++-${{matrix.cc_ver}}
+        EXTERNALS_DIR: ${{runner.workspace}}/externals
+        COMMON_INSTALL_DIR: ${{runner.workspace}}/build/install
+        COMMON_BUILD_TYPE: ${{matrix.type}}
+        COMMON_CXX_STANDARD: ${{matrix.cpp}}
+        COMMS_TAG: ${{env.COMMS_TAG}}
+        COMMSDSL_TAG: ${{env.COMMSDSL_TAG}}
+        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}}
+        CC_TOOLS_QT_MAJOR_QT_VERSION: ${{matrix.qt_ver}}
+
+    - name: Configure CMake
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      run: |
+        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
+        -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} \
+        -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_TOOLS=${{env.BUILD_TOOLS}} \
+        -DUBLOX_GEN_SWIG=ON -DUBLOX_GEN_EMSCRIPTEN=ON -DUBLOX_BUILD_EXAMPLES=ON -DUBLOX_TOOLS_QT_VER=${{matrix.qt_ver}} \
+        -DUBLOX_SCHEMA_FILES_LIST_FILE=$GITHUB_WORKSPACE/basic_msgs.txt
+      env:
+        CC: gcc-${{matrix.cc_ver}}
+        CXX: g++-${{matrix.cc_ver}}
+        BUILD_TOOLS: "${{ matrix.cpp >= 17 && 'ON' || 'OFF' }}"
+
+    - name: Build Target 
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
+      run: cmake --build . --config ${{matrix.type}} --target install
+      env:
+        VERBOSE: 1 
+
+  build_gcc_ubuntu_24_04:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        type: [Debug, Release, MinSizeRel]
+        cc_ver: [13, 14]
+        cpp: [11, 14, 17, 20, 23]
+        qt_ver: [5, 6]    
+        exclude:
+          - cc_ver: 13
+            cpp: 23 
 
     steps:
     - uses: actions/checkout@v4
@@ -393,6 +457,73 @@ jobs:
       env:
         VERBOSE: 1 
 
+  build_clang_ubuntu_24_04:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        type: [Debug, Release, MinSizeRel]
+        cc_ver: [16, 17, 18]
+        cpp: [11, 14, 17, 20, 23]
+        qt_ver: [5, 6]
+        exclude:
+          - cc_ver: 16
+            cpp: 23
+          - cc_ver: 17
+            cpp: 23 
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Prepare Install
+      run: sudo apt-get update --fix-missing    
+      
+    - name: Install Packages
+      run: |
+        sudo apt install libqt${{matrix.qt_ver}}gui${{matrix.qt_ver}} qtbase5-dev qt6-base-dev libboost-all-dev libxml2-dev clang-${{matrix.cc_ver}} \
+        python3 libpython3-dev swig  default-jdk default-jre emscripten
+
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{runner.workspace}}/build      
+
+    - name: Prepare externals
+      shell: bash
+      run: $GITHUB_WORKSPACE/script/prepare_externals.sh
+      env:
+        BUILD_DIR: ${{runner.workspace}}/build
+        CC: clang-${{matrix.cc_ver}}
+        CXX: clang++-${{matrix.cc_ver}}
+        EXTERNALS_DIR: ${{runner.workspace}}/externals
+        COMMON_INSTALL_DIR: ${{runner.workspace}}/build/install
+        COMMON_BUILD_TYPE: ${{matrix.type}}
+        COMMON_CXX_STANDARD: ${{matrix.cpp}}
+        COMMS_TAG: ${{env.COMMS_TAG}}
+        COMMSDSL_TAG: ${{env.COMMSDSL_TAG}}
+        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}} 
+        CC_TOOLS_QT_MAJOR_QT_VERSION: ${{matrix.qt_ver}}
+        CC_TOOLS_QT_SKIP: "${{ (matrix.cpp < 17) && '1' || '0' }}"
+
+    - name: Configure CMake
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      run: |
+        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
+        -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} \
+        -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_TOOLS=${{env.BUILD_TOOLS}} \
+        -DUBLOX_GEN_SWIG=ON -DUBLOX_GEN_EMSCRIPTEN=ON -DUBLOX_BUILD_EXAMPLES=ON -DUBLOX_TOOLS_QT_VER=${{matrix.qt_ver}} \
+        -DUBLOX_SCHEMA_FILES_LIST_FILE=$GITHUB_WORKSPACE/basic_msgs.txt
+      env:
+        CC: clang-${{matrix.cc_ver}}
+        CXX: clang++-${{matrix.cc_ver}}
+        BUILD_TOOLS: "${{ (matrix.cpp < 17) && 'OFF' || 'ON' }}"
+
+    - name: Build Target 
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
+      run: cmake --build . --config ${{matrix.type}} --target install
+      env:
+        VERBOSE: 1 
+
   build_msvc_2019:
     runs-on: windows-2019
     strategy:
@@ -425,9 +556,10 @@ jobs:
         QT_VER: ${{matrix.qt_ver == '5' && '5.15.3' || '6.2.2'}}     
 
     - name: Install Boost
+      if: matrix.arch == 'x64'
       shell: cmd
       run: |
-        choco install boost-msvc-14.2           
+        choco install boost-msvc-14.2 --version=1.85.0        
 
     - name: Prepare externals
       shell: cmd
@@ -452,13 +584,15 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       run: |
         cmake %GITHUB_WORKSPACE% -A ${{matrix.arch}} -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install ^
-          -DCMAKE_PREFIX_PATH="${{runner.workspace}}/build/install;${{env.QTDIR}}" -DBoost_USE_STATIC_LIBS=ON ^
+          -DCMAKE_PREFIX_PATH="${{runner.workspace}}/build/install;${{env.QTDIR}}" ^
+          -DCMAKE_POLICY_DEFAULT_CMP0167=OLD -DBoost_USE_STATIC_LIBS=ON ^
           -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_TOOLS_QT_VER=${{matrix.qt_ver}} ^
           -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_TOOLS=${{env.BUILD_TOOLS}} ^
-          -DUBLOX_BUILD_EXAMPLES=ON ^
+          -DUBLOX_BUILD_EXAMPLES=${{env.HAS_BOOST}} ^
           -DUBLOX_SCHEMA_FILES_LIST_FILE=%GITHUB_WORKSPACE%/basic_msgs.txt
       env:
         BUILD_TOOLS: "${{ matrix.cpp >= 17 && matrix.arch == 'x64'  && 'ON' || 'OFF' }}"
+        HAS_BOOST: "${{ matrix.arch == 'x64' && 'ON' || 'OFF' }}"          
 
     - name: Build Target 
       working-directory: ${{runner.workspace}}/build
@@ -486,7 +620,7 @@ jobs:
       if: matrix.arch == 'x64'
       shell: cmd
       run: |
-        choco install boost-msvc-14.3
+        choco install boost-msvc-14.3 --version=1.85.0
 
     - name: Prepare externals
       shell: cmd
@@ -509,7 +643,8 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       run: |
         cmake %GITHUB_WORKSPACE% -A ${{matrix.arch}} -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install ^
-          -DCMAKE_PREFIX_PATH="${{runner.workspace}}/build/install" -DBoost_USE_STATIC_LIBS=ON ^
+          -DCMAKE_PREFIX_PATH="${{runner.workspace}}/build/install" ^
+          -DCMAKE_POLICY_DEFAULT_CMP0167=OLD -DBoost_USE_STATIC_LIBS=ON ^
           -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_TOOLS_QT_VER=${{matrix.qt_ver}} ^
           -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_BUILD_EXAMPLES=${{env.HAS_BOOST}} ^
           -DUBLOX_SCHEMA_FILES_LIST_FILE=%GITHUB_WORKSPACE%/basic_msgs.txt
