@@ -42,6 +42,10 @@ if (("${CMAKE_VERSION}" VERSION_GREATER_EQUAL "3.30") AND
     cmake_policy(SET CMP0167 NEW)
 endif ()
 
+if ("${CMAKE_CXX_STANDARD}" STREQUAL "")
+    set(CMAKE_CXX_STANDARD 17)
+endif ()
+
 set (EXTERNALS_DIR "${PROJECT_SOURCE_DIR}/externals")
 
 set (PROT_OUTPUT_TGT "prot_output_tgt")
