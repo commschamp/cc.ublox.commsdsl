@@ -33,7 +33,7 @@ option (UBLOX_BUILD_EXAMPLES "Build examples." OFF)
 # COMMSDSL2SWIG_EXTRA_ARGS - Extra arguments to pass to "commsdsl2swig"
 # COMMSDSL2EMSCRIPTEN_EXTRA_ARGS - Extra arguments to pass to "commsdsl2emscripten"
 
-set (UBLOX_VERSION "2.9")
+set (UBLOX_VERSION "2.9.1")
 set (UBLOX_MIN_COMMSDSL_VERSION "6.3.4")
 
 if (("${CMAKE_VERSION}" VERSION_GREATER_EQUAL "3.30") AND
