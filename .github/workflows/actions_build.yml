@@ -1,11 +1,16 @@
 name: Github Actions Build
 
-on: [push]
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '**'
 
 env:
-  COMMS_TAG: v5.2.7
-  COMMSDSL_TAG: v6.3.4
-  CC_TOOLS_QT_TAG: v5.3.3
+  COMMS_TAG: develop
+  COMMSDSL_TAG: develop
+  CC_TOOLS_QT_TAG: develop
 
 jobs:
   build_gcc_old_ubuntu_20_04:
