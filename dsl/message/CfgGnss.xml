@@ -4,7 +4,7 @@
         <int name="msgVer" type="uint8" validValue="0" />
         <int name="numTrkChHw" type="uint8" />
         <int name="numTrkChUse" type="uint8" />
-        <int name="numConfigBlocks" type="uint8" displayReadOnly="true" />
+        <int name="numConfigBlocks" type="uint8" />
         <list name="list" countPrefix="$numConfigBlocks">
             <bundle name="element" displayName="_">
                 <ref field="gnssId" />
@@ -16,7 +16,7 @@
                         <bit name="enable" idx="0" />
                     </set>
                     <int name="sigCfgMask" type="uint8" />
-                    <int reuse="res1" name="reserved" displayHidden="true"/>
+                    <int reuse="res1" name="reserved"/>
                 </bitfield>
             </bundle>
         </list>

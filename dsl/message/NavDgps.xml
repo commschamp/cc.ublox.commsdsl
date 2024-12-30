@@ -5,7 +5,7 @@
         <int name="age" type="int32" units="ms" />
         <int name="baseId" type="int16" />
         <int name="baseHealth" type="int16" />
-        <int name="numCh" type="uint8" displayReadOnly="true" />
+        <int name="numCh" type="uint8" />
         <enum name="status" type="uint8">
             <validValue name="None" val="0" />
             <validValue name="PR_PRR" val="1" displayName="PR + PRR correction" />

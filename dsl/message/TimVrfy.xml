@@ -12,7 +12,7 @@
                 <validValue name="RTC" val="1" />
                 <validValue name="AidIni" val="2" />
             </enum>
-            <int reuse="res1" bitLength="5" name="reserved" displayHidden="true" />
+            <int reuse="res1" bitLength="5" name="reserved" />
         </bitfield>
         <ref field="res1" name="reserved1" />
     </message>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema>
     <message name="RxmImes" id="MsgId.RxmImes" displayName="RXM-IMES" order="0" platforms="+ublox8" sender="server">
-        <int name="numTx" type="uint8" displayReadOnly="true" />
+        <int name="numTx" type="uint8" />
         <int name="version" type="uint8" defaultValidValue="1" />
         <ref field="res2" name="reserved1" />
         <list name="list" countPrefix="$numTx">
@@ -15,7 +15,7 @@
                 <bitfield name="position1_1">
                     <int name="pos1Floor" type="int8" bitLength="8" />
                     <int name="pos1Lat" type="int32" bitLength="23" scaling="180/0x800000" />
-                    <int name="reserved" type="uint8" bitLength="1" displayHidden="true" />
+                    <int name="reserved" type="uint8" bitLength="1" />
                 </bitfield>
                 <bitfield name="position1_2">
                     <int name="pos1Lon" type="int32" bitLength="24" scaling="360/0x1000000" />

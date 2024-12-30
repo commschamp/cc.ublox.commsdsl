@@ -2,7 +2,7 @@
 <schema>
     <message name="MonPatch" id="MsgId.MonPatch" displayName="MON-PATCH" order="0" platforms="+ublox8,ublox9" sender="server">
         <int name="version" type="uint16" defaultValidValue="1"/>
-        <int name="nEntries" type="uint16" displayReadOnly="true" />
+        <int name="nEntries" type="uint16" />
         <list name="list" countPrefix="$nEntries">
             <bundle name="element" displayName="_">
                 <bitfield name="patchInfo">
@@ -15,7 +15,7 @@
                         <validValue name="BBR" val="2" />
                         <validValue name="FileSystem" val="3" />
                     </enum>
-                    <int reuse="res4" bitLength="29" displayHidden="true"/>
+                    <int reuse="res4" bitLength="29"/>
                 </bitfield>
                 <int name="comparatorNumber" type="uint32" />
                 <int name="patchAddress" type="uint32" />

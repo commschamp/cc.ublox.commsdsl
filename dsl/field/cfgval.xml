@@ -756,7 +756,7 @@
             <validValue name="CFG_USBOUTPROT_RTCM3X" val="0x10780004" />
         </enum>
 
-        <int name="CfgValKey" type="uint32" failOnInvalid="true" displayReadOnly="true" displayName="Key" />
+        <int name="CfgValKey" type="uint32" failOnInvalid="true" fixedValue="true" displayName="Key" />
 
         <enum name="CfgValLayer" type="uint8">
             <validValue name="Ram" val="0" displayName="RAM" />
@@ -765,7 +765,7 @@
             <validValue name="Default" val="7" />
         </enum>
 
-        <variant name="CfgValPair" displayIdxReadOnlyHidden="true" forceGen="true">
+        <variant name="CfgValPair" forceGen="true">
             <!-- CFG-BDS -->
             <bundle name="BdsUsePrn1to5" displayName="CFG-BDS-USE_PRN_1_TO_5">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_BDS_USE_PRN_1_TO_5" defaultValue="CfgValKeyId.CFG_BDS_USE_PRN_1_TO_5" />
@@ -3595,7 +3595,7 @@
             </description>
             <members>
                 <ref field="CfgValKeyId" name="Key" />
-                <variant name="Val" displayIdxReadOnlyHidden="true">
+                <variant name="Val">
                     <ref field="CfgValL" name="L" displayName="L" />
                     <ref field="CfgValU1" name="U1" displayName="U1" />
                     <ref field="CfgValU2" name="U2" displayName="U2" />

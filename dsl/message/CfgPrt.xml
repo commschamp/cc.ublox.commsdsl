@@ -32,16 +32,15 @@
     </fields>
 
     <message name="CfgPrtDdc" id="MsgId.CfgPrt" displayName="CFG-PRT (DDC)" order="0">
-        <int name="portId" type="uint8" defaultValidValue="cfgPrtPortId.DDC">
+        <int name="portId" type="uint8" defaultValidValue="cfgPrtPortId.DDC" fixedValue="true">
             <failOnInvalid value="true" />
-            <displayReadOnly value="true" />
         </int>
         <ref field="res1" name="reserved1" />
         <ref field="cfgPrtTxReady" name="txReady" />
         <bitfield name="mode">
-            <int reuse="res1" name="reservedLow" bitLength="1" displayHidden="true" />
+            <int reuse="res1" name="reservedLow" bitLength="1" />
             <int name="slaveAddr" type="uint8" bitLength="7" validRange="[0x7, 0x78]" />
-            <int reuse="res3" name="reservedHigh" bitLength="24" displayHidden="true" />
+            <int reuse="res3" name="reservedHigh" bitLength="24" />
         </bitfield>
         <ref field="res4" name="reserved2" />
         <ref field="cfgPrtInProtoMask" name="inProtoMask" />
@@ -51,21 +50,20 @@
     </message>
 
     <message name="CfgPrtUart" id="MsgId.CfgPrt" displayName="CFG-PRT (UART)" order="1">
-        <int name="portId" type="uint8" defaultValidValue="cfgPrtPortId.UART">
+        <int name="portId" type="uint8" defaultValidValue="cfgPrtPortId.UART" fixedValue="true">
             <failOnInvalid value="true" />
-            <displayReadOnly value="true" />
         </int>
         <ref field="res1" name="reserved1" />
         <ref field="cfgPrtTxReady" name="txReady" />
         <bitfield name="mode">
-            <int reuse="res1" name="reservedLow" bitLength="6" displayHidden="true" />
+            <int reuse="res1" name="reservedLow" bitLength="6" />
             <enum name="charLen" type="uint8" bitLength="2" defaultValue="Bits8">
                 <validValue name="Bits5" val="0" displayName="5 bits" />
                 <validValue name="Bits6" val="1" displayName="6 bits" />
                 <validValue name="Bits7" val="2" displayName="7 bits" />
                 <validValue name="Bits8" val="3" displayName="8 bits" />
             </enum>
-            <int reuse="res1" name="reservedMid" bitLength="1" displayHidden="true" />
+            <int reuse="res1" name="reservedMid" bitLength="1" />
             <enum name="parity" type="uint8" bitLength="3" defaultValue="None">
                 <validValue name="Even" val="0"/>
                 <validValue name="Odd" val="1"/>
@@ -78,7 +76,7 @@
                 <validValue name="Bits_2" val="2" displayName="2 bits" />
                 <validValue name="Bits_0_5" val="3" displayName="0.5 bit" />
             </enum>                    
-            <int reuse="res3" name="reservedHigh" bitLength="18" displayHidden="true" />
+            <int reuse="res3" name="reservedHigh" bitLength="18" />
         </bitfield>
         <int name="baudRate" type="uint32" defaultValue="115200" />
         <ref field="cfgPrtInProtoMask" name="inProtoMask" />
@@ -88,9 +86,8 @@
     </message>
 
     <message name="CfgPrtUsb" id="MsgId.CfgPrt" displayName="CFG-PRT (USB)" order="2">
-        <int name="portId" type="uint8" defaultValidValue="cfgPrtPortId.USB">
+        <int name="portId" type="uint8" defaultValidValue="cfgPrtPortId.USB" fixedValue="true">
             <failOnInvalid value="true" />
-            <displayReadOnly value="true" />
         </int>
         <ref field="res1" name="reserved1" />
         <ref field="cfgPrtTxReady" name="txReady" />
@@ -103,14 +100,13 @@
     </message>
 
     <message name="CfgPrtSpi" id="MsgId.CfgPrt" displayName="CFG-PRT (SPI)" order="3">
-        <int name="portId" type="uint8" defaultValidValue="cfgPrtPortId.SPI">
+        <int name="portId" type="uint8" defaultValidValue="cfgPrtPortId.SPI" fixedValue="true">
             <failOnInvalid value="true" />
-            <displayReadOnly value="true" />
         </int>
         <ref field="res1" name="reserved1" />
         <ref field="cfgPrtTxReady" name="txReady" />
         <bitfield name="mode">
-            <int reuse="res1" name="reservedLow" bitLength="1" displayHidden="true" />
+            <int reuse="res1" name="reservedLow" bitLength="1" />
             <enum name="spiMode" type="uint8" bitLength="2">
                 <validValue name="Mode0" val="0" displayName="Mode 0: CPOL = 0, CPHA = 0" />
                 <validValue name="Mode1" val="1" displayName="Mode 1: CPOL = 0, CPHA = 1" />
@@ -121,7 +117,7 @@
                 <bit name="flowControl" idx="3" />
             </set>
             <int name="ffCnt" type="uint8" bitLength="6" />
-            <int reuse="res3" name="reservedHigh" bitLength="18" displayHidden="true" />
+            <int reuse="res3" name="reservedHigh" bitLength="18" />
         </bitfield>
         <ref field="res4" name="reserved2" />
         <ref field="cfgPrtInProtoMask" name="inProtoMask" />

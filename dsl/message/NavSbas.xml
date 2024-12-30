@@ -27,7 +27,7 @@
         </enum>
         <ref field="sbasSys" name="sys" />
         <ref field="sbasService" name="service" />
-        <int name="cnt" type="uint8" displayReadOnly="true" />
+        <int name="cnt" type="uint8" />
         <ref field="res3" name="reserved1" />
         <list name="list" countPrefix="$cnt" >
             <bundle name="element" displayName="_">

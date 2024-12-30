@@ -3,7 +3,7 @@
     <message name="NavSat" id="MsgId.NavSat" displayName="NAV-SAT" order="0" platforms="+ublox8,ublox9" sender="server">
         <ref field="itow" />
         <int name="version" type="uint8" defaultValidValue="1" />
-        <int name="numSvs" type="uint8" displayReadOnly="true" />
+        <int name="numSvs" type="uint8" />
         <ref field="res2" name="reserved1" />
         <list name="list" countPrefix="$numSvs" >
             <bundle name="element" displayName="_">

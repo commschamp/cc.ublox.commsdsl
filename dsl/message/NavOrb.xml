@@ -3,7 +3,7 @@
     <message name="NavOrb" id="MsgId.NavOrb" displayName="NAV-ORB" order="0" platforms="+ublox8,ublox9" sender="server">
         <ref field="itow" />
         <int name="version" type="uint8" defaultValidValue="1" />
-        <int name="numSv" type="uint8" displayReadOnly="true" />
+        <int name="numSv" type="uint8" />
         <ref field="res2" name="reserved1" />
         <list name="list" countPrefix="$numSv" >
             <bundle name="element" displayName="_">
@@ -21,7 +21,7 @@
                         <validValue name="AboveHorizon" val="2" displayName="Above horizon"/>
                         <validValue name="AboveElevMask" val="3" displayName="Above elevation mask"/>
                     </enum>                        
-                    <int reuse="res1" name="reserved" bitLength="4" displayHidden="true" />
+                    <int reuse="res1" name="reserved" bitLength="4" />
                 </bitfield>
                 <bitfield name="eph">
                     <int name="ephUsability" type="uint8" bitLength="5" />
