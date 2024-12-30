@@ -272,24 +272,16 @@ if (UBLOX_GEN_PROTOCOL)
 
     set (prot_tmp_dir "${CMAKE_BINARY_DIR}/output.tmp")
 
-    add_custom_target(rm_prot_tmp_tgt
+    add_custom_target(${PROT_OUTPUT_TGT} ALL
         COMMAND ${CMAKE_COMMAND} -E remove_directory ${prot_tmp_dir}
-    )
-
-    add_custom_command(
-        OUTPUT ${prot_tmp_dir}
-        DEPENDS ${schema_files} ${src_files} rm_prot_tmp_tgt
         COMMAND ${COMMSDSL2COMMS} ${warn_as_error} -V ${UBLOX_VERSION}
             -o ${prot_tmp_dir} -c ${PROJECT_SOURCE_DIR}/src/protocol
             -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
-            ${COMMSDSL2COMMS_EXTRA_ARGS} 
-    )
-
-    add_custom_target(${PROT_OUTPUT_TGT} ALL
+            ${COMMSDSL2COMMS_EXTRA_ARGS}         
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${prot_tmp_dir}" -DOUTPUT="${UBLOX_PROT_OUTPUT_DIR}"
             -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"
-        DEPENDS ${prot_tmp_dir} ${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake ${schema_files})
+        DEPENDS ${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake ${schema_files})
 
     if (UBLOX_BUILD_PROTOCOL)
         execute_process(
@@ -342,23 +334,15 @@ if (UBLOX_GEN_TEST)
 
     set (test_tmp_dir "${CMAKE_BINARY_DIR}/output_test.tmp")
 
-    add_custom_target(rm_test_tmp_tgt
+    add_custom_target("test_output_tgt" ALL
         COMMAND ${CMAKE_COMMAND} -E remove_directory ${test_tmp_dir}
-    )
-
-    add_custom_command(
-        OUTPUT ${test_tmp_dir}
-        DEPENDS ${schema_files} ${src_files} rm_test_tmp_tgt
         COMMAND ${COMMSDSL2TEST} ${warn_as_error} ${COMMSDSL2TEST_EXTRA_ARGS}
             -o ${test_tmp_dir} -c ${PROJECT_SOURCE_DIR}/src/test
             -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
-    )
-
-    add_custom_target("test_output_tgt" ALL
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${test_tmp_dir}" -DOUTPUT="${UBLOX_TEST_OUTPUT_DIR}"
             -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"        
-        DEPENDS ${test_tmp_dir} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
+        DEPENDS "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
 
     if (UBLOX_BUILD_TEST)
         if ((NOT UBLOX_GEN_PROTOCOL) OR (NOT UBLOX_BUILD_PROTOCOL))
@@ -405,24 +389,16 @@ if (UBLOX_GEN_TOOLS)
 
     set (tools_tmp_dir "${CMAKE_BINARY_DIR}/output_tools.tmp")
 
-    add_custom_target(rm_tools_tmp_tgt
+    add_custom_target("tools_output_tgt" ALL
         COMMAND ${CMAKE_COMMAND} -E remove_directory ${tools_tmp_dir}
-    )
-
-    add_custom_command(
-        OUTPUT ${tools_tmp_dir}
-        DEPENDS ${schema_files} ${src_files} rm_tools_tmp_tgt
         COMMAND ${COMMSDSL2TOOLS_QT} ${warn_as_error} ${COMMSDSL2TOOLS_QT_EXTRA_ARGS}
             --protocol "::CC UBLOX:UBX protocol used by the U-blox GNSS Receivers.:cc.UbloxProtocolPlugin"
             -o ${tools_tmp_dir}  -c ${PROJECT_SOURCE_DIR}/src/tools
             -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
-    )
-
-    add_custom_target("tools_output_tgt" ALL
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${tools_tmp_dir}" -DOUTPUT="${UBLOX_TOOLS_OUTPUT_DIR}"
             -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"        
-        DEPENDS ${tools_tmp_dir} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
+        DEPENDS "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
 
     if (UBLOX_BUILD_TOOLS)
         if ((NOT UBLOX_GEN_PROTOCOL) OR (NOT UBLOX_BUILD_PROTOCOL))
@@ -468,23 +444,15 @@ if (UBLOX_GEN_SWIG)
 
     set (swig_tmp_dir "${CMAKE_BINARY_DIR}/output_swig.tmp")
 
-    add_custom_target(rm_swig_tmp_tgt
+    add_custom_target("swig_output_tgt" ALL
         COMMAND ${CMAKE_COMMAND} -E remove_directory ${swig_tmp_dir}
-    )
-
-    add_custom_command(
-        OUTPUT ${swig_tmp_dir}
-        DEPENDS ${schema_files} ${src_files} rm_swig_tmp_tgt
         COMMAND ${COMMSDSL2SWIG} ${warn_as_error} ${COMMSDSL2SWIG_EXTRA_ARGS}
             -c ${UBLOX_SWIG_SRC_DIR} -o ${swig_tmp_dir} 
             -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
-    )
-
-    add_custom_target("swig_output_tgt" ALL
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${swig_tmp_dir}" -DOUTPUT="${UBLOX_SWIG_OUTPUT_DIR}"
             -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"        
-        DEPENDS ${swig_tmp_dir} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
+        DEPENDS "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
 
     if (UBLOX_BUILD_SWIG)
         if ((NOT UBLOX_GEN_PROTOCOL) OR (NOT UBLOX_BUILD_PROTOCOL))
@@ -535,23 +503,15 @@ if (UBLOX_GEN_EMSCRIPTEN)
 
     set (emscripten_tmp_dir "${CMAKE_BINARY_DIR}/output_emscripten.tmp")
 
-    add_custom_target(rm_emscripten_tmp_tgt
+    add_custom_target("emscripten_output_tgt" ALL
         COMMAND ${CMAKE_COMMAND} -E remove_directory ${emscripten_tmp_dir}
-    )
-
-    add_custom_command(
-        OUTPUT ${emscripten_tmp_dir}
-        DEPENDS ${schema_files} ${src_files} rm_emscripten_tmp_tgt
         COMMAND ${COMMSDSL2EMSCRIPTEN} ${warn_as_error} ${COMMSDSL2EMSCRIPTEN_EXTRA_ARGS}
             -o ${emscripten_tmp_dir} -c ${PROJECT_SOURCE_DIR}/src/emscripten
             -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
-    )
-
-    add_custom_target("emscripten_output_tgt" ALL
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${emscripten_tmp_dir}" -DOUTPUT="${UBLOX_EMSCRIPTEN_OUTPUT_DIR}"
             -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"        
-        DEPENDS ${emscripten_tmp_dir} "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
+        DEPENDS "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
 
     if (UBLOX_BUILD_EMSCRIPTEN)
         if ((NOT UBLOX_GEN_PROTOCOL) OR (NOT UBLOX_BUILD_PROTOCOL))
