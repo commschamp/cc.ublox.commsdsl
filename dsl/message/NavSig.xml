@@ -3,7 +3,7 @@
     <message name="NavSig" id="MsgId.NavSig" displayName="NAV-SIG" order="0" platforms="+ublox9" sender="server">
         <ref field="itow" />
         <int name="version" type="uint8" validValue="0" />
-        <int name="numSigs" type="uint8" displayReadOnly="true" />
+        <int name="numSigs" type="uint8" />
         <ref field="res2" name="reserved0" />
         <list name="list" countPrefix="$numSigs" >
             <bundle name="element" displayName="_">

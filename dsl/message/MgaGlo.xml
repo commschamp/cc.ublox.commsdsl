@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema>
     <message name="MgaGloEph" id="MsgId.MgaGlo" displayName="MGA-GLO-EPH" order="0" platforms="+ublox8,ublox9" sender="client">
-        <int name="type" type="uint8" defaultValidValue="1" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="1" failOnInvalid="true" fixedValue="true" />
         <int name="version" type="uint8" validValue="0" />
         <int name="svid" type="uint8" />
         <ref field="res1" name="reserved1" />
@@ -27,7 +27,7 @@
     </message>
 
     <message name="MgaGloAlm" id="MsgId.MgaGlo" displayName="MGA-GLO-ALM" order="1" platforms="+ublox8,ublox9" sender="client">
-        <int name="type" type="uint8" defaultValidValue="2" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="2" failOnInvalid="true" fixedValue="true" />
         <int name="version" type="uint8" validValue="0" />
         <int name="svid" type="uint8" />
         <ref field="res1" name="reserved1" />
@@ -47,7 +47,7 @@
     </message>
 
     <message name="MgaGloTimeoffset" id="MsgId.MgaGlo" displayName="MGA-GLO-TIMEOFFSET" order="2" platforms="+ublox8,ublox9" sender="client">
-        <int name="type" type="uint8" defaultValidValue="3" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="3" failOnInvalid="true" fixedValue="true" />
         <int name="version" type="uint8" validValue="0" />
         <int name="N" type="uint16" units="days" />
         <int name="tauC" type="int32" units="s" scaling="1/0x8000000" />

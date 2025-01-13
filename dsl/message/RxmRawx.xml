@@ -4,7 +4,7 @@
         <float name="rcvTow" type="double" units="s" />
         <int name="week" type="uint16" units="weeks" />
         <int name="leapS" type="int8" units="s" />
-        <int name="numMeas" type="uint8" displayReadOnly="true" />
+        <int name="numMeas" type="uint8" />
         <set name="recStat" length="1">
             <bit name="leapSec" idx="0" />
             <bit name="clkReset" idx="1" />

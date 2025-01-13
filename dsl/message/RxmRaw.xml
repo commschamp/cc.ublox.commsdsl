@@ -3,7 +3,7 @@
     <message name="RxmRaw" id="MsgId.RxmRaw" displayName="RXM-RAW" order="0" platforms="+ublox6,ublox7" sender="server">
         <int name="rcvTow" type="int32" units="ms" />
         <int name="week" type="int16" units="weeks" />
-        <int name="numSV" type="uint8" displayReadOnly="true" />
+        <int name="numSV" type="uint8" />
         <ref field="res1" name="reserved1" />
         <list name="list" countPrefix="$numSV" >
             <bundle name="element" displayName="_">

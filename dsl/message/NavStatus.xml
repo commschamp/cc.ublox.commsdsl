@@ -28,14 +28,14 @@
                 <validValue name="PowerOptimizedTracking" val="2" displayName="POWER OPTIMIZED TRACKING" />
                 <validValue name="Inactive" val="3" displayName="INACTIVE" />
             </enum>
-            <int reuse="res1" name="res1" bitLength="1" displayHidden="true"/>
+            <int reuse="res1" name="res1" bitLength="1"/>
             <enum name="spoofDetState" type="uint8" bitLength="2">
                 <validValue name="Unknown" val="0" />
                 <validValue name="NoSpoofing" val="1" displayName="No spoofing" />
                 <validValue name="Spoofing" val="2" />
                 <validValue name="MultipleSpoofing" val="3" displayName="Multiple spoofing" />
             </enum>
-            <int reuse="res1" name="res2" bitLength="1"  displayHidden="true" />
+            <int reuse="res1" name="res2" bitLength="1"  />
             <enum name="carrSoln" type="uint8" bitLength="2">
                 <validValue name="NoCarrier" val="0" />
                 <validValue name="Float" val="1" />

@@ -6,7 +6,7 @@
         <int name="ofs" type="uint16" />
         <int name="size" type="uint16" />
         <int name="fileId" type="uint16" />
-        <int name="dataSize" type="uint16" displayReadOnly="true"/>
+        <int name="dataSize" type="uint16"/>
         <int name="id1" type="uint8" />
         <int name="id2" type="uint8" />
         <int name="id3" type="uint32" />
@@ -17,7 +17,7 @@
         <int name="idSize" type="uint8" />        
         <int name="type" type="uint8" />        
         <int name="ofs" type="uint16" />
-        <int name="size" type="uint16" displayReadOnly="true" />
+        <int name="size" type="uint16" />
         <int name="fileId" type="uint16" />
         <list name="data" countPrefix="$size">
             <int name="element" type="uint16" displayName="_" />

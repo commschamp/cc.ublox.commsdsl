@@ -22,11 +22,11 @@
                 <validValue name="OnOff" val="0" displayName="ON/OFF" />
                 <validValue name="Cyclic" val="1" />
             </enum>
-            <int reuse="res2" name="reserved" bitLength="13" displayHidden="true" />
+            <int reuse="res2" name="reserved" bitLength="13" />
         </bitfield>
     </fields>
     <message name="CfgPm2V2" id="MsgId.CfgPm2" displayName="CFG-PM2 (V2)" order="0" platforms="+ublox8">
-        <int name="version" type="uint8" defaultValidValue="2" failOnInvalid="true"  displayReadOnly="true"/>
+        <int name="version" type="uint8" defaultValidValue="2" failOnInvalid="true" fixedValue="true" />
         <ref field="res1" name="reserved1" />
         <int name="maxStartupStateDur" type="uint8" units="s" />
         <ref field="res1" name="reserved2" />
@@ -43,7 +43,7 @@
     </message>
 
     <message name="CfgPm2" id="MsgId.CfgPm2" displayName="CFG-PM2" order="1" platforms="-ublox5,ublox9">
-        <int name="version" type="uint8" defaultValidValue="1" failOnInvalid="true" displayReadOnly="true" />
+        <int name="version" type="uint8" defaultValidValue="1" failOnInvalid="true" />
         <ref field="res1" name="reserved1" />
         <int name="maxStartupStateDur" type="uint8" units="s" />
         <ref field="res1" name="reserved2" />

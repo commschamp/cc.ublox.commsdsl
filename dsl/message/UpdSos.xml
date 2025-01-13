@@ -10,7 +10,7 @@
     </fields>
 
     <message name="UpdSosRestored" id="MsgId.UpdSos" displayName="UPD-SOS (Restored)" order="0" platforms="+ublox8,ublox9" sender="server">
-        <int name="cmd" type="uint8" defaultValidValue="updSosCmd.Restored" failOnInvalid="true" displayReadOnly="true"/>
+        <int name="cmd" type="uint8" defaultValidValue="updSosCmd.Restored" failOnInvalid="true" fixedValue="true" />
         <ref field="res3" name="reserved1" />
         <enum name="response" type="uint8">
             <validValue name="Unknown" val="0" />
@@ -22,7 +22,7 @@
     </message>
 
     <message name="UpdSosAck" id="MsgId.UpdSos" displayName="UPD-SOS (Ack)" order="1" platforms="+ublox8,ublox9" sender="server">
-        <int name="cmd" type="uint8" defaultValidValue="updSosCmd.Ack" failOnInvalid="true" displayReadOnly="true" />
+        <int name="cmd" type="uint8" defaultValidValue="updSosCmd.Ack" failOnInvalid="true" fixedValue="true" />
         <ref field="res3" name="reserved1" />
         <enum name="response" type="uint8">
             <validValue name="NotAcknowledged" val="0" />
@@ -32,12 +32,12 @@
     </message>  
 
     <message name="UpdSosClear" id="MsgId.UpdSos" displayName="UPD-SOS (Clear)" order="2" platforms="+ublox8,ublox9" sender="client">
-        <int name="cmd" type="uint8" defaultValidValue="updSosCmd.Clear" failOnInvalid="true" displayReadOnly="true"/>
+        <int name="cmd" type="uint8" defaultValidValue="updSosCmd.Clear" failOnInvalid="true" fixedValue="true" />
         <ref field="res3" name="reserved1" />
     </message> 
 
     <message name="UpdSosCreate" id="MsgId.UpdSos" displayName="UPD-SOS (Create)" order="3" platforms="+ublox8,ublox9" sender="client">
-        <int name="cmd" type="uint8" defaultValidValue="updSosCmd.Create" failOnInvalid="true" displayReadOnly="true"/>
+        <int name="cmd" type="uint8" defaultValidValue="updSosCmd.Create" failOnInvalid="true" fixedValue="true" />
         <ref field="res3" name="reserved1" />
     </message>              
 

@@ -14,7 +14,7 @@
             <validValue name="NotAvailable" val="0" displayName="Not available" />
             <validValue name="Active" val="1" />
         </enum>
-        <int name="numFences" type="uint8" displayReadOnly="true" />
+        <int name="numFences" type="uint8" />
         <ref field="GeofenceState" name="combState" />
         <list name="list" countPrefix="$numFences" >
             <bundle name="element" displayName="_">

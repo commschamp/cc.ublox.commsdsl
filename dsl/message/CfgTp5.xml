@@ -13,28 +13,28 @@
         <ref field="res2" name="reserved1" />
         <int name="antCableDelay" type="int16" units="ns" />
         <int name="rfGroupDelay" type="int16" units="ns" />
-        <optional name="freq" defaultMode="missing" displayExtModeCtrl="true">
+        <optional name="freq" defaultMode="missing">
             <int name="freq" type="uint32" units="hz" />
         </optional>
-        <optional name="period" defaultMode="exist" displayExtModeCtrl="true">
+        <optional name="period" defaultMode="exist">
             <int name="period" type="uint32" units="us" />
         </optional>
-        <optional name="freqLock" defaultMode="missing" displayExtModeCtrl="true">
+        <optional name="freqLock" defaultMode="missing">
             <int name="freqLock" type="uint32" units="hz" />
         </optional>
-        <optional name="periodLock" defaultMode="exist" displayExtModeCtrl="true">
+        <optional name="periodLock" defaultMode="exist">
             <int name="periodLock" type="uint32" units="us" />
         </optional>        
-        <optional name="pulseLen" defaultMode="missing" displayExtModeCtrl="true">
+        <optional name="pulseLen" defaultMode="missing">
             <int name="pulseLen" type="uint32" units="us" />
         </optional>
-        <optional name="ratio" defaultMode="exist" displayExtModeCtrl="true">
+        <optional name="ratio" defaultMode="exist">
             <int name="ratio" type="uint32" scaling="1/0x100000000" />
         </optional> 
-        <optional name="pulseLenLock" defaultMode="missing" displayExtModeCtrl="true">
+        <optional name="pulseLenLock" defaultMode="missing">
             <int name="pulseLenLock" type="uint32" units="us" />
         </optional>
-        <optional name="ratioLock" defaultMode="exist" displayExtModeCtrl="true">
+        <optional name="ratioLock" defaultMode="exist">
             <int name="ratioLock" type="uint32" scaling="1/0x100000000" />
         </optional>             
         <int name="userConfigDelay" type="int32" units="ns" />    
@@ -56,7 +56,7 @@
                 <validValue name="Galileo" val="4" />
             </enum>
             <int name="syncMode" type="uint8" bitLength="3" />
-            <int reuse="res3" name="reserved" bitLength="18" displayHidden="true" />
+            <int reuse="res3" name="reserved" bitLength="18" />
         </bitfield>
     </message>
 

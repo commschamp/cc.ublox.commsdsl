@@ -2,7 +2,7 @@
 <schema>
     <message name="CfgEsrc" id="MsgId.CfgEsrc" displayName="CFG-ESRC" order="0" platforms="+ublox8">
         <int name="version" type="uint8" validValue="0" />
-        <int name="numSources" type="uint8" displayReadOnly="true"/>
+        <int name="numSources" type="uint8"/>
         <ref field="res2" name="reserved1" />
         <list name="list" countPrefix="$numSources">
             <bundle name="element" displayName="_">

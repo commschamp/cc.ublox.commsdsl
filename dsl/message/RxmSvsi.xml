@@ -4,7 +4,7 @@
         <ref field="itow" />
         <int name="week" type="int16" units="weeks" />
         <int name="numVis" type="uint8" />
-        <int name="numSV" type="uint8" displayReadOnly="true" />
+        <int name="numSV" type="uint8" />
         <list name="list" countPrefix="$numSV">
             <bundle name="element" displayName="_">
                 <int name="svid" type="uint8" />

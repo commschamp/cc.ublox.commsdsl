@@ -13,7 +13,7 @@
             <bit name="qzssSvAvailable" idx="1" />
             <bit name="testMode" idx="2" />
         </set>
-        <int name="cnt" type="uint8" displayReadOnly="true" />
+        <int name="cnt" type="uint8" />
         <list name="list" countPrefix="$cnt" >
             <bundle name="element" displayName="_">
                 <ref field="gnssId" />

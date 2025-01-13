@@ -27,7 +27,7 @@
                 <bit name="diffSoln" idx="1" />
             </set>
             <ref field="psmState" bitLength="3" />
-            <ref field="res1" bitLength="3" name="reserved" displayHidden="true" />
+            <ref field="res1" bitLength="3" name="reserved" />
         </bitfield>
         <int name="flags2" type="uint8" />
         <int name="numSV" type="uint8" />

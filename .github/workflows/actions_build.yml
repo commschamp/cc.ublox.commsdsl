@@ -1,11 +1,18 @@
 name: Github Actions Build
 
-on: [push]
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '**'
 
 env:
-  COMMS_TAG: v5.2.7
-  COMMSDSL_TAG: v6.3.4
-  CC_TOOLS_QT_TAG: v5.3.3
+  COMMS_TAG: v5.3
+  COMMSDSL_TAG: v7.0
+  CC_TOOLS_QT_TAG: v6.0
+  WIN_BOOST_VERSION: "1.87.0"
+  WIN_BOOST_DIR: "C:/local/boost_1_87_0"
 
 jobs:
   build_gcc_old_ubuntu_20_04:
@@ -117,7 +124,7 @@ jobs:
         COMMON_CXX_STANDARD: ${{matrix.cpp}}
         COMMS_TAG: ${{env.COMMS_TAG}}
         COMMSDSL_TAG: ${{env.COMMSDSL_TAG}}
-        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}}
+        CC_TOOLS_QT_SKIP: 1
 
     - name: Configure CMake
       shell: bash
@@ -125,12 +132,11 @@ jobs:
       run: |
         cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
         -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} \
-        -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_TOOLS=${{env.BUILD_TOOLS}} -DUBLOX_BUILD_EXAMPLES=ON \
+        -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_BUILD_EXAMPLES=ON \
         -DUBLOX_SCHEMA_FILES_LIST_FILE=$GITHUB_WORKSPACE/basic_msgs.txt
       env:
         CC: gcc-${{matrix.cc_ver}}
         CXX: g++-${{matrix.cc_ver}}
-        BUILD_TOOLS: "${{ matrix.cpp >= 17 && 'ON' || 'OFF' }}"
 
     - name: Build Target 
       working-directory: ${{runner.workspace}}/build
@@ -310,7 +316,7 @@ jobs:
         COMMON_CXX_STANDARD: ${{matrix.cpp}}
         COMMS_TAG: ${{env.COMMS_TAG}}
         COMMSDSL_TAG: ${{env.COMMSDSL_TAG}}
-        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}}
+        CC_TOOLS_QT_SKIP: 1
 
     - name: Configure CMake
       shell: bash
@@ -319,12 +325,11 @@ jobs:
         cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
         -DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=gold -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install \
         -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON \
-        -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_TOOLS=${{env.BUILD_TOOLS}} -DUBLOX_BUILD_EXAMPLES=ON \
+        -DUBLOX_BUILD_EXAMPLES=ON \
         -DUBLOX_SCHEMA_FILES_LIST_FILE=$GITHUB_WORKSPACE/basic_msgs.txt
       env:
         CC: clang-${{matrix.cc_ver}}
         CXX: clang++-${{matrix.cc_ver}}
-        BUILD_TOOLS: "${{ matrix.cpp >= 17 && 'ON' || 'OFF' }}"
 
     - name: Build Target 
       working-directory: ${{runner.workspace}}/build
@@ -372,8 +377,7 @@ jobs:
         COMMON_CXX_STANDARD: ${{matrix.cpp}}
         COMMS_TAG: ${{env.COMMS_TAG}}
         COMMSDSL_TAG: ${{env.COMMSDSL_TAG}}
-        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}} 
-        CC_TOOLS_QT_SKIP: "${{ matrix.cpp < 17 && '1' || '0' }}"
+        CC_TOOLS_QT_SKIP: 1
 
     - name: Configure CMake
       shell: bash
@@ -381,12 +385,11 @@ jobs:
       run: |
         cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
         -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} \
-        -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_TOOLS=${{env.BUILD_TOOLS}} \
+        -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON \
         -DUBLOX_BUILD_EXAMPLES=ON -DUBLOX_SCHEMA_FILES_LIST_FILE=$GITHUB_WORKSPACE/basic_msgs.txt
       env:
         CC: clang-${{matrix.cc_ver}}
         CXX: clang++-${{matrix.cc_ver}}
-        BUILD_TOOLS: "${{ matrix.cpp == 17 && 'ON' || 'OFF' }}"
 
     - name: Build Target 
       working-directory: ${{runner.workspace}}/build
@@ -529,7 +532,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        type: [Debug, Release, MinSizeRel]
+        type: [Debug, Release]
         arch: [Win32, x64]
         cpp: [11, 14, 17]
         qt_ver: [5, 6]
@@ -559,7 +562,8 @@ jobs:
       if: matrix.arch == 'x64'
       shell: cmd
       run: |
-        choco install boost-msvc-14.2 --version=1.85.0        
+        choco install boost-msvc-14.2 --version=${{env.WIN_BOOST_VERSION}}      
+        echo BOOST_DIR=${{env.WIN_BOOST_DIR}}/lib64-msvc-14.2/cmake >>%GITHUB_ENV%         
 
     - name: Prepare externals
       shell: cmd
@@ -584,8 +588,8 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       run: |
         cmake %GITHUB_WORKSPACE% -A ${{matrix.arch}} -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install ^
-          -DCMAKE_PREFIX_PATH="${{runner.workspace}}/build/install;${{env.QTDIR}}" ^
-          -DCMAKE_POLICY_DEFAULT_CMP0167=OLD -DBoost_USE_STATIC_LIBS=ON ^
+          -DCMAKE_PREFIX_PATH="${{runner.workspace}}/build/install;${{env.QTDIR}};${{env.BOOST_DIR}}" ^
+          -DCMAKE_POLICY_DEFAULT_CMP0167=NEW ^
           -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_TOOLS_QT_VER=${{matrix.qt_ver}} ^
           -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_TOOLS=${{env.BUILD_TOOLS}} ^
           -DUBLOX_BUILD_EXAMPLES=${{env.HAS_BOOST}} ^
@@ -606,7 +610,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        type: [Debug, Release, MinSizeRel]
+        type: [Debug, Release]
         arch: [Win32, x64]
         cpp: [11, 14, 17, 20]
 
@@ -620,7 +624,8 @@ jobs:
       if: matrix.arch == 'x64'
       shell: cmd
       run: |
-        choco install boost-msvc-14.3 --version=1.85.0
+        choco install boost-msvc-14.3 --version=${{env.WIN_BOOST_VERSION}}      
+        echo BOOST_DIR=${{env.WIN_BOOST_DIR}}/lib64-msvc-14.3/cmake >>%GITHUB_ENV%
 
     - name: Prepare externals
       shell: cmd
@@ -644,7 +649,7 @@ jobs:
       run: |
         cmake %GITHUB_WORKSPACE% -A ${{matrix.arch}} -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install ^
           -DCMAKE_PREFIX_PATH="${{runner.workspace}}/build/install" ^
-          -DCMAKE_POLICY_DEFAULT_CMP0167=OLD -DBoost_USE_STATIC_LIBS=ON ^
+          -DCMAKE_POLICY_DEFAULT_CMP0167=NEW ^
           -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_TOOLS_QT_VER=${{matrix.qt_ver}} ^
           -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_BUILD_EXAMPLES=${{env.HAS_BOOST}} ^
           -DUBLOX_SCHEMA_FILES_LIST_FILE=%GITHUB_WORKSPACE%/basic_msgs.txt

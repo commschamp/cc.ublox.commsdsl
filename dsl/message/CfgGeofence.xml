@@ -2,7 +2,7 @@
 <schema>
     <message name="CfgGeofence" id="MsgId.CfgGeofence" displayName="CFG-GEOFENCE" order="0" platforms="+ublox8,ublox9">
         <int name="version" type="uint8" validValue="0" />
-        <int name="numFences" type="uint8" displayReadOnly="true"/>
+        <int name="numFences" type="uint8"/>
         <int name="confLvl" type="uint8" />
         <ref field="res1" name="reserved1" />
         <enum name="pioEnabled" type="uint8" >

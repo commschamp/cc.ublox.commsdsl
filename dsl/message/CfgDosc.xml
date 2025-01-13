@@ -2,7 +2,7 @@
 <schema>
     <message name="CfgDosc" id="MsgId.CfgDosc" displayName="CFG-DOSC" order="0" platforms="+ublox8">
         <int name="version" type="uint8" validValue="0" />
-        <int name="numOsc" type="uint8" displayReadOnly="true"/>
+        <int name="numOsc" type="uint8"/>
         <ref field="res2" name="reserved1" />
         <list name="list" countPrefix="$numOsc">
             <bundle name="element" displayName="_">

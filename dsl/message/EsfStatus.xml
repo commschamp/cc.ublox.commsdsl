@@ -11,7 +11,7 @@
             <validValue name="Disabled" val="3" />
         </enum>
         <ref field="res2" name="reserved2" />
-        <int name="numSens" type="uint8" displayReadOnly="true" />
+        <int name="numSens" type="uint8" />
         <list name="list" countPrefix="$numSens">
             <bundle name="element" displayName="_">
                 <bitfield name="sensStatus1">
@@ -34,7 +34,7 @@
                         <validValue name="EventInput" val="2" />
                         <validValue name="TimeTag" val="3" />
                     </enum>
-                    <int reuse="res1" bitLength="4" name="reserved" displayHidden="true" />
+                    <int reuse="res1" bitLength="4" name="reserved" />
                 </bitfield>
                 <int name="freq" type="uint8" units="hz" />
                 <set name="faults" type="uint8">

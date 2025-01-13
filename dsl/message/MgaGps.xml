@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema>
     <message name="MgaGpsEph" id="MsgId.MgaGps" displayName="MGA-GPS-EPH" order="0" platforms="+ublox8,ublox9" sender="client">
-        <int name="type" type="uint8" defaultValidValue="1" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="1" failOnInvalid="true" fixedValue="true" />
         <int name="version" type="uint8" validValue="0" />
         <int name="svid" type="uint8" />
         <ref field="res1" name="reserved1" />
@@ -35,7 +35,7 @@
     </message>
 
     <message name="MgaGpsAlm" id="MsgId.MgaGps" displayName="MGA-GPS-ALM" order="1" platforms="+ublox8,ublox9" sender="client">
-        <int name="type" type="uint8" defaultValidValue="2" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="2" failOnInvalid="true" fixedValue="true" />
         <int name="version" type="uint8" validValue="0" />
         <int name="svid" type="uint8" />
         <int name="svHealth" type="uint8" />
@@ -54,7 +54,7 @@
     </message>
 
     <message name="MgaGpsHealth" id="MsgId.MgaGps" displayName="MGA-GPS-HEALTH" order="2" platforms="+ublox8,ublox9" sender="client">
-        <int name="type" type="uint8" defaultValidValue="4" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="4" failOnInvalid="true" fixedValue="true" />
         <int name="version" type="uint8" validValue="0" />
         <ref field="res2" name="reserved1" />
         <data name="healthCode" length="32" />
@@ -62,7 +62,7 @@
     </message>
 
     <message name="MgaGpsUtc" id="MsgId.MgaGps" displayName="MGA-GPS-UTC" order="3" platforms="+ublox8,ublox9" sender="client">
-        <int name="type" type="uint8" defaultValidValue="5" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="5" failOnInvalid="true" fixedValue="true" />
         <int name="version" type="uint8" validValue="0" />
         <ref field="res2" name="reserved1" />
         <int name="utcA0" type="int32" units="s" scaling="1/0x40000000" />
@@ -77,7 +77,7 @@
     </message>
 
     <message name="MgaGpsIono" id="MsgId.MgaGps" displayName="MGA-GPS-IONO" order="4" platforms="+ublox8,ublox9" sender="client">
-        <int name="type" type="uint8" defaultValidValue="6" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="6" failOnInvalid="true" fixedValue="true" />
         <int name="version" type="uint8" validValue="0" />
         <ref field="res2" name="reserved1" />
         <int name="ionoAlpha0" type="int8" units="s" scaling="1/0x40000000" />

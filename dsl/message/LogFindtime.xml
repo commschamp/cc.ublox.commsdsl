@@ -2,7 +2,7 @@
 <schema>
     <message name="LogFindtime" id="MsgId.LogFindtime" displayName="LOG-FINDTIME" order="0" platforms="+ublox7,ublox8,ublox9" sender="client">
         <int name="version" type="uint8" validValue="0" />
-        <int name="type" type="uint8" validValue="0" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" validValue="0" failOnInvalid="true" fixedValue="true" />
         <ref field="res2" name="reserved1" />
         <ref field="year" />
         <ref field="month" />
@@ -15,7 +15,7 @@
 
     <message name="LogFindtimeResp" id="MsgId.LogFindtime" displayName="LOG-FINDTIME (Response)" order="1" platforms="+ublox7,ublox8,ublox9" sender="server">
         <int name="version" type="uint8" defaultValidValue="1" />
-        <int name="type" type="uint8" defaultValidValue="1" failOnInvalid="true" displayReadOnly="true" />
+        <int name="type" type="uint8" defaultValidValue="1" failOnInvalid="true" fixedValue="true" />
         <ref field="res2" name="reserved1" />
         <int name="entryNumber" type="uint32" />
     </message>

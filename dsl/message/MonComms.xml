@@ -2,7 +2,7 @@
 <schema>
     <message name="MonComms" id="MsgId.MonComms" displayName="MON-COMMS" order="0" platforms="+ublox9" sender="server">
         <int name="version" type="uint16" validValue="0"/>
-        <int name="nPorts" type="uint16" displayReadOnly="true" />
+        <int name="nPorts" type="uint16" />
         <set name="txErrors" length="1">
             <bit name="mem" idx="0" />
             <bit name="alloc" idx="1" />

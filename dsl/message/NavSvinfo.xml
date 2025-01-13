@@ -2,7 +2,7 @@
 <schema>
     <message name="NavSvinfo" id="MsgId.NavSvinfo" displayName="NAV-SVINFO" order="0" platforms="-ublox9" sender="server">
         <ref field="itow" />
-        <int name="numCh" type="uint8" displayReadOnly="true" />
+        <int name="numCh" type="uint8" />
         <bitfield name="globalFlags" >
             <enum name="chipGen" type="uint8" bitLength="3">
                 <validValue name="Antaris" val="0" />
@@ -11,7 +11,7 @@
                 <validValue name="Ublox7" val="3" displayName="u-blox 7" />
                 <validValue name="Ublox8" val="4" displayName="u-blox 8" />
             </enum>
-            <int reuse="res1" name="reserved" bitLength="5" displayHidden="true" />
+            <int reuse="res1" name="reserved" bitLength="5" />
         </bitfield>
         <ref field="res2" name="reserved1" />
         <list name="list" countPrefix="$numCh" >

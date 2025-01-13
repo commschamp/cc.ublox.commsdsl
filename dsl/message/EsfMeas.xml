@@ -18,10 +18,10 @@
             <bitfield name="element" displayName="_">
                 <int name="dataField" type="uint32" bitLength="24" />
                 <int name="dataType" type="uint8" bitLength="6" />
-                <int reuse="res1" name="reserved" bitLength="2" displayHidden="true" />
+                <int reuse="res1" name="reserved" bitLength="2" />
             </bitfield>
         </list>
-        <optional name="calibTtag" displayExtModeCtrl="true" cond="$flags.bits.calibTtagValid">
+        <optional name="calibTtag" cond="$flags.bits.calibTtagValid">
             <int name="calibTtag" type="uint32" units="ms" />
         </optional>
     </message>

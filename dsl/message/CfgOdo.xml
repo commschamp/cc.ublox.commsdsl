@@ -17,7 +17,7 @@
                 <validValue name="Car" val="3" />
                 <validValue name="Custom" val="4" />
             </enum>
-            <int reuse="res1" bitLength="5" name="reserved" displayHidden="true" />
+            <int reuse="res1" bitLength="5" name="reserved" />
         </bitfield>
         <ref field="res6" name="reserved2" />
         <int name="cogMaxSpeed" type="uint8" units="m/s" scaling="1/10" displayDecimals="1" />

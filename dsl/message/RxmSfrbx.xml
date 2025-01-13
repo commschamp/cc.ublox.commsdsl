@@ -5,7 +5,7 @@
         <int name="svid" type="uint8" />
         <ref field="res1" name="reserved1" />
         <int name="freqId" type="uint8" validRange="[0, 13]" />
-        <int name="numWords" type="uint8" displayReadOnly="true" />
+        <int name="numWords" type="uint8" />
         <int name="chn" type="uint8" description="Introduced in ublox-9" />
         <int name="version" type="uint8" defaultValue="1" validRange="[1, 2]" />
         <ref field="res1" name="reserved3" />
