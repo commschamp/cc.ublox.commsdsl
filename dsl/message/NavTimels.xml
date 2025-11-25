@@ -34,7 +34,7 @@
             <bit name="validTimeToLsEvent" idx="1" />
         </set>
     </message>
-    
+
     <message name="NavTimelsPoll" id="MsgId.NavTimels" displayName="NAV-TIMELS (Poll)" order="1">
         <platforms value="+ublox8,ublox9" />
         <sender value="client" />

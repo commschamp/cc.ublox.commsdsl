@@ -14,7 +14,7 @@
             <int name="element" type="uint32" displayName="_"/>
         </list>
     </message>
-    
+
     <message name="MonMsgppPoll" id="MsgId.MonMsgpp" displayName="MON-MSGPP (Poll)" order="1">
         <sender value="client" />
     </message>

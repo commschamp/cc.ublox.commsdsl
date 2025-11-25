@@ -29,17 +29,17 @@
             <validValue name="Acknowledged" val="1" />
         </enum>
         <ref field="res3" name="reserved2" />
-    </message>  
+    </message>
 
     <message name="UpdSosClear" id="MsgId.UpdSos" displayName="UPD-SOS (Clear)" order="2" platforms="+ublox8,ublox9" sender="client">
         <int name="cmd" type="uint8" defaultValidValue="updSosCmd.Clear" failOnInvalid="true" fixedValue="true" />
         <ref field="res3" name="reserved1" />
-    </message> 
+    </message>
 
     <message name="UpdSosCreate" id="MsgId.UpdSos" displayName="UPD-SOS (Create)" order="3" platforms="+ublox8,ublox9" sender="client">
         <int name="cmd" type="uint8" defaultValidValue="updSosCmd.Create" failOnInvalid="true" fixedValue="true" />
         <ref field="res3" name="reserved1" />
-    </message>              
+    </message>
 
     <message name="UpdSosPoll" id="MsgId.UpdSos" displayName="UPD-SOS (Poll)" order="4">
         <platforms value="+ublox8,ublox9" />

@@ -29,15 +29,15 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Prepare Install
-      run: sudo apt-get update --fix-missing    
-      
+      run: sudo apt-get update --fix-missing
+
     - name: Install Packages
       run: |
         sudo apt install libqt${{matrix.qt_ver}}gui${{matrix.qt_ver}} qtbase5-dev qt6-base-dev libboost-all-dev libxml2-dev gcc-${{matrix.cc_ver}} g++-${{matrix.cc_ver}} \
         python3 libpython3-dev swig default-jdk default-jre emscripten
 
     - name: Create Build Environment
-      run: cmake -E make_directory ${{runner.workspace}}/build      
+      run: cmake -E make_directory ${{runner.workspace}}/build
 
     - name: Prepare externals
       shell: bash
@@ -69,12 +69,12 @@ jobs:
         CXX: g++-${{matrix.cc_ver}}
         BUILD_TOOLS: "${{ matrix.cpp >= 17 && 'ON' || 'OFF' }}"
 
-    - name: Build Target 
+    - name: Build Target
       working-directory: ${{runner.workspace}}/build
       shell: bash
       run: cmake --build . --config ${{matrix.type}} --target install
       env:
-        VERBOSE: 1 
+        VERBOSE: 1
 
   build_gcc_ubuntu_24_04:
     runs-on: ubuntu-24.04
@@ -84,24 +84,24 @@ jobs:
         type: [Debug, Release, MinSizeRel]
         cc_ver: [13, 14]
         cpp: [11, 14, 17, 20, 23]
-        qt_ver: [5, 6]    
+        qt_ver: [5, 6]
         exclude:
           - cc_ver: 13
-            cpp: 23 
+            cpp: 23
 
     steps:
     - uses: actions/checkout@v4
 
     - name: Prepare Install
-      run: sudo apt-get update --fix-missing    
-      
+      run: sudo apt-get update --fix-missing
+
     - name: Install Packages
       run: |
         sudo apt install libqt${{matrix.qt_ver}}gui${{matrix.qt_ver}} qtbase5-dev qt6-base-dev libboost-all-dev libxml2-dev gcc-${{matrix.cc_ver}} g++-${{matrix.cc_ver}} \
         python3 libpython3-dev swig default-jdk default-jre emscripten
 
     - name: Create Build Environment
-      run: cmake -E make_directory ${{runner.workspace}}/build      
+      run: cmake -E make_directory ${{runner.workspace}}/build
 
     - name: Prepare externals
       shell: bash
@@ -133,12 +133,12 @@ jobs:
         CXX: g++-${{matrix.cc_ver}}
         BUILD_TOOLS: "${{ matrix.cpp >= 17 && 'ON' || 'OFF' }}"
 
-    - name: Build Target 
+    - name: Build Target
       working-directory: ${{runner.workspace}}/build
       shell: bash
       run: cmake --build . --config ${{matrix.type}} --target install
       env:
-        VERBOSE: 1 
+        VERBOSE: 1
 
   build_clang_ubuntu_22_04:
     runs-on: ubuntu-22.04
@@ -154,15 +154,15 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Prepare Install
-      run: sudo apt-get update --fix-missing    
-      
+      run: sudo apt-get update --fix-missing
+
     - name: Install Packages
       run: |
         sudo apt install libqt${{matrix.qt_ver}}gui${{matrix.qt_ver}} qtbase5-dev qt6-base-dev libboost-all-dev libxml2-dev clang-${{matrix.cc_ver}} \
         python3 libpython3-dev swig  default-jdk default-jre emscripten
 
     - name: Create Build Environment
-      run: cmake -E make_directory ${{runner.workspace}}/build      
+      run: cmake -E make_directory ${{runner.workspace}}/build
 
     - name: Prepare externals
       shell: bash
@@ -177,7 +177,7 @@ jobs:
         COMMON_CXX_STANDARD: ${{matrix.cpp}}
         COMMS_TAG: ${{env.COMMS_TAG}}
         COMMSDSL_TAG: ${{env.COMMSDSL_TAG}}
-        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}} 
+        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}}
         CC_TOOLS_QT_MAJOR_QT_VERSION: ${{matrix.qt_ver}}
         CC_TOOLS_QT_SKIP: "${{ (matrix.cpp < 17 || (matrix.cpp == 20 && matrix.cc_ver < 15)) && '1' || '0' }}"
 
@@ -195,12 +195,12 @@ jobs:
         CXX: clang++-${{matrix.cc_ver}}
         BUILD_TOOLS: "${{ (matrix.cpp < 17 || (matrix.cpp == 20 && matrix.cc_ver < 15)) && 'OFF' || 'ON' }}"
 
-    - name: Build Target 
+    - name: Build Target
       working-directory: ${{runner.workspace}}/build
       shell: bash
       run: cmake --build . --config ${{matrix.type}} --target install
       env:
-        VERBOSE: 1 
+        VERBOSE: 1
 
   build_clang_ubuntu_24_04:
     runs-on: ubuntu-24.04
@@ -215,21 +215,21 @@ jobs:
           - cc_ver: 16
             cpp: 23
           - cc_ver: 17
-            cpp: 23 
+            cpp: 23
 
     steps:
     - uses: actions/checkout@v4
 
     - name: Prepare Install
-      run: sudo apt-get update --fix-missing    
-      
+      run: sudo apt-get update --fix-missing
+
     - name: Install Packages
       run: |
         sudo apt install libqt${{matrix.qt_ver}}gui${{matrix.qt_ver}} qtbase5-dev qt6-base-dev libboost-all-dev libxml2-dev clang-${{matrix.cc_ver}} \
         python3 libpython3-dev swig  default-jdk default-jre emscripten
 
     - name: Create Build Environment
-      run: cmake -E make_directory ${{runner.workspace}}/build      
+      run: cmake -E make_directory ${{runner.workspace}}/build
 
     - name: Prepare externals
       shell: bash
@@ -244,7 +244,7 @@ jobs:
         COMMON_CXX_STANDARD: ${{matrix.cpp}}
         COMMS_TAG: ${{env.COMMS_TAG}}
         COMMSDSL_TAG: ${{env.COMMSDSL_TAG}}
-        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}} 
+        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}}
         CC_TOOLS_QT_MAJOR_QT_VERSION: ${{matrix.qt_ver}}
         CC_TOOLS_QT_SKIP: "${{ (matrix.cpp < 17) && '1' || '0' }}"
 
@@ -262,12 +262,12 @@ jobs:
         CXX: clang++-${{matrix.cc_ver}}
         BUILD_TOOLS: "${{ (matrix.cpp < 17) && 'OFF' || 'ON' }}"
 
-    - name: Build Target 
+    - name: Build Target
       working-directory: ${{runner.workspace}}/build
       shell: bash
       run: cmake --build . --config ${{matrix.type}} --target install
       env:
-        VERBOSE: 1 
+        VERBOSE: 1
 
   build_msvc_2019:
     runs-on: windows-2019
@@ -280,13 +280,13 @@ jobs:
         qt_ver: [5, 6]
         exclude:
           - arch: Win32
-            qt_ver: 6           
+            qt_ver: 6
 
     steps:
     - uses: actions/checkout@v4
 
     - name: Create Build Environment
-      run: cmake -E make_directory ${{runner.workspace}}/build   
+      run: cmake -E make_directory ${{runner.workspace}}/build
 
     - name: Install Qt
       if: ${{matrix.cpp >= 17 && matrix.arch == 'x64'}}
@@ -298,14 +298,14 @@ jobs:
         echo QT_VER=${{env.QT_VER}} >>%GITHUB_ENV%
         echo QTDIR=${{runner.workspace}}/qt/qt-${{env.QT_VER}}-dynamic-msvc2019-x86_64 >>%GITHUB_ENV%
       env:
-        QT_VER: ${{matrix.qt_ver == '5' && '5.15.3' || '6.2.2'}}     
+        QT_VER: ${{matrix.qt_ver == '5' && '5.15.3' || '6.2.2'}}
 
     - name: Install Boost
       if: matrix.arch == 'x64'
       shell: cmd
       run: |
-        choco install boost-msvc-14.2 --version=${{env.WIN_BOOST_VERSION}}      
-        echo BOOST_DIR=${{env.WIN_BOOST_DIR}}/lib64-msvc-14.2/cmake >>%GITHUB_ENV%         
+        choco install boost-msvc-14.2 --version=${{env.WIN_BOOST_VERSION}}
+        echo BOOST_DIR=${{env.WIN_BOOST_DIR}}/lib64-msvc-14.2/cmake >>%GITHUB_ENV%
 
     - name: Prepare externals
       shell: cmd
@@ -321,7 +321,7 @@ jobs:
         COMMS_TAG: ${{env.COMMS_TAG}}
         COMMSDSL_TAG: ${{env.COMMSDSL_TAG}}
         COMMSDSL_PLATFORM: 'x64'
-        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}} 
+        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}}
         CC_TOOLS_QT_MAJOR_QT_VERSION: ${{matrix.qt_ver}}
         CC_TOOLS_QT_SKIP: ${{matrix.arch == 'Win32' && '1' || '0'}}
 
@@ -338,14 +338,14 @@ jobs:
           -DUBLOX_SCHEMA_FILES_LIST_FILE=%GITHUB_WORKSPACE%/basic_msgs.txt
       env:
         BUILD_TOOLS: "${{ matrix.cpp >= 17 && matrix.arch == 'x64'  && 'ON' || 'OFF' }}"
-        HAS_BOOST: "${{ matrix.arch == 'x64' && 'ON' || 'OFF' }}"          
+        HAS_BOOST: "${{ matrix.arch == 'x64' && 'ON' || 'OFF' }}"
 
-    - name: Build Target 
+    - name: Build Target
       working-directory: ${{runner.workspace}}/build
       shell: cmd
       run: cmake --build . --config ${{matrix.type}}
       env:
-        VERBOSE: 1 
+        VERBOSE: 1
 
   build_msvc_2022:
     runs-on: windows-2022
@@ -360,13 +360,13 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Create Build Environment
-      run: cmake -E make_directory ${{runner.workspace}}/build   
+      run: cmake -E make_directory ${{runner.workspace}}/build
 
     - name: Install Boost
       if: matrix.arch == 'x64'
       shell: cmd
       run: |
-        choco install boost-msvc-14.3 --version=${{env.WIN_BOOST_VERSION}}      
+        choco install boost-msvc-14.3 --version=${{env.WIN_BOOST_VERSION}}
         echo BOOST_DIR=${{env.WIN_BOOST_DIR}}/lib64-msvc-14.3/cmake >>%GITHUB_ENV%
 
     - name: Prepare externals
@@ -396,11 +396,11 @@ jobs:
           -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_BUILD_EXAMPLES=${{env.HAS_BOOST}} ^
           -DUBLOX_SCHEMA_FILES_LIST_FILE=%GITHUB_WORKSPACE%/basic_msgs.txt
       env:
-        HAS_BOOST: "${{ matrix.arch == 'x64' && 'ON' || 'OFF' }}"          
+        HAS_BOOST: "${{ matrix.arch == 'x64' && 'ON' || 'OFF' }}"
 
-    - name: Build Target 
+    - name: Build Target
       working-directory: ${{runner.workspace}}/build
       shell: cmd
       run: cmake --build . --config ${{matrix.type}}
       env:
-        VERBOSE: 1         
+        VERBOSE: 1

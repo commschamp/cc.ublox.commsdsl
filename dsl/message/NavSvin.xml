@@ -18,7 +18,7 @@
         <int name="active" type="uint8" />
         <ref field="res2" name="reserved3" />
     </message>
-    
+
     <message name="NavSvinPoll" id="MsgId.NavSvin" displayName="NAV-SVIN (Poll)" order="1">
         <platforms value="+ublox8,ublox9" />
         <sender value="client" />

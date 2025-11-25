@@ -40,7 +40,7 @@ if (UBLOX_USE_CCACHE)
 
     if (NOT "${UBLOX_CCACHE_EXECUTABLE}" STREQUAL "")
         list (APPEND extra_opts CCACHE_EXECTUABLE "${UBLOX_CCACHE_EXECUTABLE}")
-    endif ()    
+    endif ()
 endif()
 
 cc_compile(${extra_opts})

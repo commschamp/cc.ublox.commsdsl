@@ -20,6 +20,6 @@
             <bit name="extint0" idx="5" />
             <bit name="extint1" idx="6" />
             <bit name="spics" idx="7" />
-        </set>        
-    </message>    
+        </set>
+    </message>
 </schema>

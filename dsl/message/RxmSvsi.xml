@@ -30,5 +30,5 @@
     <message name="RxmSvsiPoll" id="MsgId.RxmSvsi" displayName="RXM-SVSI (Poll)" order="1">
         <platforms value="-ublox9" />
         <sender value="client" />
-    </message>    
+    </message>
 </schema>

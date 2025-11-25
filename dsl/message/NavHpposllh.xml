@@ -18,7 +18,7 @@
         <int name="hAcc" type="uint32" units="mm" scaling="1/10" displayDecimals="1"/>
         <int name="vAcc" type="uint32" units="mm" scaling="1/10" displayDecimals="1"/>
     </message>
-    
+
     <message name="NavHpposllhPoll" id="MsgId.NavHpposllh" displayName="NAV-HPPOSLLH (Poll)" order="1" >
         <platforms value="+ublox8,ublox9" />
         <sender value="client" />

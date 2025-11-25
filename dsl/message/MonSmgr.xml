@@ -6,7 +6,7 @@
             <validValue name="Ongoing" val="1" />
             <validValue name="Steered" val="2" />
             <validValue name="Idle" val="4" />
-        </enum>        
+        </enum>
     </fields>
     <message name="MonSmgr" id="MsgId.MonSmgr" displayName="MON-SMGR" order="0" platforms="+ublox8" sender="server">
         <int name="version" type="uint8" validValue="0"/>
@@ -48,7 +48,7 @@
             <bit name="extInt1FeedBack" idx="2" />
         </set>
     </message>
-    
+
     <message name="MonSmgrPoll" id="MsgId.MonSmgr" displayName="MON-SMGR (Poll)" order="1">
         <platforms value="+ublox8" />
         <sender value="client" />

@@ -68,10 +68,10 @@ if exist %COMMS_SRC_DIR%/.git (
     echo "Updating COMMS library..."
     cd "%COMMS_SRC_DIR%"
     git fetch --all
-    git checkout .    
+    git checkout .
     git checkout %COMMS_TAG%
     git pull --all
-    if %errorlevel% neq 0 exit /b %errorlevel%    
+    if %errorlevel% neq 0 exit /b %errorlevel%
 ) else (
     echo "Cloning COMMS library..."
     git clone -b %COMMS_TAG% %COMMS_REPO% %COMMS_SRC_DIR%

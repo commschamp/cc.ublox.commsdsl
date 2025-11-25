@@ -24,7 +24,7 @@
         <int name="numSV" type="uint8" />
         <ref field="res4" name="reserved2" />
     </message>
-    
+
     <message name="NavSolPoll" id="MsgId.NavSol" displayName="NAV-SOL (Poll)" order="1">
         <sender value="client" />
         <platforms value="-ublox9" />

@@ -12,7 +12,7 @@
         </list>
 
     </message>
-    
+
     <message name="MonRxbufPoll" id="MsgId.MonRxbuf" displayName="MON-RXBUF (Poll)" order="1">
         <sender value="client" />
     </message>

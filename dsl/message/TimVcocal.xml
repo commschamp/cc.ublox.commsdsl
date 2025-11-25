@@ -29,11 +29,11 @@
         <int name="raw0" type="uint16" />
         <int name="raw1" type="uint16" />
         <int name="maxStepSize" type="uint16" />
-    </message>   
+    </message>
 
     <message name="TimVcocalStop" id="MsgId.TimVcocal" displayName="TIM-VCOCAL (Stop)" order="2" platforms="+ublox8" sender="client">
         <int name="type" type="uint8" validValue="0" failOnInvalid="true" fixedValue="true" />
-    </message>        
+    </message>
 
     <message name="TimVcocalPoll" id="MsgId.TimVcocal" displayName="TIM-VCOCAL (Poll)" order="3" platforms="+ublox8" sender="client" />
 

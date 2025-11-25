@@ -17,7 +17,7 @@
             </bundle>
         </list>
     </message>
-    
+
     <message name="RxmRawPoll" id="MsgId.RxmRaw" displayName="RXM-RAW (Poll)" order="1">
         <platforms value="+ublox6,ublox7" />
         <sender value="client" />

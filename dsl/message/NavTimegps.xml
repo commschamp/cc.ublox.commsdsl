@@ -12,7 +12,7 @@
         </set>
         <int name="tAcc" type="uint32" units="ns" />
     </message>
-    
+
     <message name="NavTimegpsPoll" id="MsgId.NavTimegps" displayName="NAV-TIMEGPS (Poll)" order="1">
         <sender value="client" />
         <platforms value="-ublox9" />

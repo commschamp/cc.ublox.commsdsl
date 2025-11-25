@@ -11,7 +11,7 @@
         <int name="accPitch" type="uint32" scaling="1/100000" units="deg" displayDecimals="5" />
         <int name="accHeading" type="uint32" scaling="1/100000" units="deg" displayDecimals="5" />
     </message>
-    
+
     <message name="NavAttPoll" id="MsgId.NavAtt" displayName="NAV-ATT (Poll)" order="1">
         <platforms value="+ublox8" />
         <sender value="client" />

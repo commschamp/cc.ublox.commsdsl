@@ -22,10 +22,10 @@
 namespace cc_ublox
 {
 
-namespace simple_pos    
+namespace simple_pos
 {
 
-class Session 
+class Session
 {
     using InMessage =
         cc_ublox::Message<

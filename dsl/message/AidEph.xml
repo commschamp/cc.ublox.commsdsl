@@ -8,10 +8,10 @@
     <message name="AidEphPollSv" id="MsgId.AidEph" displayName="AID-EPH (Poll SV)" order="1" sender="client">
         <platforms value="-ublox9" />
         <copyFieldsFrom value="RxmEphPollSv" />
-    </message>       
+    </message>
 
     <message name="AidEphPoll" id="MsgId.AidEph" displayName="AID-EPH (Poll)" order="2">
         <platforms value="-ublox9" />
         <sender value="client" />
-    </message>    
+    </message>
 </schema>

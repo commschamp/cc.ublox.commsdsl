@@ -65,7 +65,7 @@
             <validValue name="CFG_GEOFENCE_FENCE4_RAD" val="0x40240053" />
 
             <!-- CFG-HW -->
-            <validValue name="CFG_HW_ANT_CFG_VOLTCTRL" val="0x10a3002e" />            
+            <validValue name="CFG_HW_ANT_CFG_VOLTCTRL" val="0x10a3002e" />
             <validValue name="CFG_HW_ANT_CFG_SHORTDET" val="0x10a3002f" />
             <validValue name="CFG_HW_ANT_CFG_SHORTDET_POL" val="0x10a30030" />
             <validValue name="CFG_HW_ANT_CFG_OPENDET" val="0x10a30031" />
@@ -81,22 +81,22 @@
             <validValue name="CFG_HW_ANT_SUP_OPEN_THR" val="0x20a30056" />
 
             <!-- CFG-I2C -->
-            <validValue name="CFG_I2C_ADDRESS" val="0x20510001" />             
+            <validValue name="CFG_I2C_ADDRESS" val="0x20510001" />
             <validValue name="CFG_I2C_EXTENDEDTIMEOUT" val="0x10510002" />
             <validValue name="CFG_I2C_ENABLED" val="0x20510003" />
 
             <!-- CFG-I2CINPROT -->
-            <validValue name="CFG_I2CINPROT_UBX" val="0x10710001" />             
+            <validValue name="CFG_I2CINPROT_UBX" val="0x10710001" />
             <validValue name="CFG_I2CINPROT_NMEA" val="0x10710002" />
             <validValue name="CFG_I2CINPROT_RTCM3X" val="0x10710004" />
 
             <!-- CFG-I2COUTPROT -->
-            <validValue name="CFG_I2COUTPROT_UBX" val="0x10720001" />             
+            <validValue name="CFG_I2COUTPROT_UBX" val="0x10720001" />
             <validValue name="CFG_I2COUTPROT_NMEA" val="0x10720002" />
             <validValue name="CFG_I2COUTPROT_RTCM3X" val="0x10720004" />
 
             <!-- CFG-INFMSG -->
-            <validValue name="CFG_INFMSG_UBX_I2C" val="0x20920001" />             
+            <validValue name="CFG_INFMSG_UBX_I2C" val="0x20920001" />
             <validValue name="CFG_INFMSG_UBX_UART1" val="0x20920002" />
             <validValue name="CFG_INFMSG_UBX_UART2" val="0x20920003" />
             <validValue name="CFG_INFMSG_UBX_USB" val="0x20920004" />
@@ -783,12 +783,12 @@
                     <validValue name="L9999" val="4" />
                     <validValue name="L999999" val="5" />
                 </enum>
-            </bundle>  
-            
+            </bundle>
+
             <bundle name="GeofenceUsePio" displayName="CFG-GEOFENCE-USE_PIO">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_USE_PIO" defaultValue="CfgValKeyId.CFG_GEOFENCE_USE_PIO" />
                 <ref field="CfgValL" name="Val" />
-            </bundle>              
+            </bundle>
 
             <bundle name="GeofencePinpol" displayName="CFG-GEOFENCE-PINPOL">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_PINPOL" defaultValue="CfgValKeyId.CFG_GEOFENCE_PINPOL" />
@@ -796,87 +796,87 @@
                     <validValue name="LOW_IN" val="0" />
                     <validValue name="LOW_OUT" val="1" />
                 </enum>
-            </bundle>  
+            </bundle>
 
             <bundle name="GeofenceUseFence1" displayName="CFG-GEOFENCE-USE_FENCE1">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_USE_FENCE1" defaultValue="CfgValKeyId.CFG_GEOFENCE_USE_FENCE1" />
                 <ref field="CfgValL" name="Val" />
-            </bundle>              
+            </bundle>
 
             <bundle name="GeofenceFence1Lat" displayName="CFG-GEOFENCE-FENCE1_LAT">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE1_LAT" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE1_LAT" />
                 <ref field="lat" name="Val" />
-            </bundle>              
+            </bundle>
 
             <bundle name="GeofenceFence1Lon" displayName="CFG-GEOFENCE-FENCE1_LON">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE1_LON" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE1_LON" />
                 <ref field="lon" name="Val" />
-            </bundle>              
+            </bundle>
 
             <bundle name="GeofenceFence1Rad" displayName="CFG-GEOFENCE-FENCE1_RAD">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE1_RAD" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE1_RAD" />
                 <ref field="GeofenceRadius" name="Val" />
-            </bundle>              
+            </bundle>
 
             <bundle name="GeofenceUseFence2" displayName="CFG-GEOFENCE-USE_FENCE2">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_USE_FENCE2" defaultValue="CfgValKeyId.CFG_GEOFENCE_USE_FENCE2" />
                 <ref field="CfgValL" name="Val" />
-            </bundle>              
+            </bundle>
 
             <bundle name="GeofenceFence2Lat" displayName="CFG-GEOFENCE-FENCE2_LAT">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE2_LAT" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE2_LAT" />
                 <ref field="lat" name="Val" />
-            </bundle>              
+            </bundle>
 
             <bundle name="GeofenceFence2Lon" displayName="CFG-GEOFENCE-FENCE2_LON">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE2_LON" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE2_LON" />
                 <ref field="lon" name="Val" />
-            </bundle>              
+            </bundle>
 
             <bundle name="GeofenceFence2Rad" displayName="CFG-GEOFENCE-FENCE2_RAD">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE2_RAD" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE2_RAD" />
                 <ref field="GeofenceRadius" name="Val" />
-            </bundle>              
+            </bundle>
 
             <bundle name="GeofenceUseFence3" displayName="CFG-GEOFENCE-USE_FENCE3">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_USE_FENCE3" defaultValue="CfgValKeyId.CFG_GEOFENCE_USE_FENCE3" />
                 <ref field="CfgValL" name="Val" />
-            </bundle>              
+            </bundle>
 
             <bundle name="GeofenceFence3Lat" displayName="CFG-GEOFENCE-FENCE3_LAT">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE3_LAT" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE3_LAT" />
                 <ref field="lat" name="Val" />
-            </bundle>              
+            </bundle>
 
             <bundle name="GeofenceFence3Lon" displayName="CFG-GEOFENCE-FENCE3_LON">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE3_LON" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE3_LON" />
                 <ref field="lon" name="Val" />
-            </bundle>              
+            </bundle>
 
             <bundle name="GeofenceFence3Rad" displayName="CFG-GEOFENCE-FENCE3_RAD">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE3_RAD" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE3_RAD" />
                 <ref field="GeofenceRadius" name="Val" />
-            </bundle>              
+            </bundle>
 
             <bundle name="GeofenceUseFence4" displayName="CFG-GEOFENCE-USE_FENCE4">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_USE_FENCE4" defaultValue="CfgValKeyId.CFG_GEOFENCE_USE_FENCE4" />
                 <ref field="CfgValL" name="Val" />
-            </bundle>              
+            </bundle>
 
             <bundle name="GeofenceFence4Lat" displayName="CFG-GEOFENCE-FENCE4_LAT">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE4_LAT" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE4_LAT" />
                 <ref field="lat" name="Val" />
-            </bundle>              
+            </bundle>
 
             <bundle name="GeofenceFence4Lon" displayName="CFG-GEOFENCE-FENCE4_LON">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE4_LON" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE4_LON" />
                 <ref field="lon" name="Val" />
-            </bundle>              
+            </bundle>
 
             <bundle name="GeofenceFence4Rad" displayName="CFG-GEOFENCE-FENCE4_RAD">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_GEOFENCE_FENCE4_RAD" defaultValue="CfgValKeyId.CFG_GEOFENCE_FENCE4_RAD" />
                 <ref field="GeofenceRadius" name="Val" />
-            </bundle>  
+            </bundle>
 
             <!-- CFG-HW -->
             <bundle name="HwAntCfgValctrl" displayName="CFG-HW-ANT_CFG_VOLTCTRL">
@@ -887,52 +887,52 @@
             <bundle name="HwAntCfgShortdet" displayName="CFG-HW-ANT_CFG_SHORTDET">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_CFG_SHORTDET" defaultValue="CfgValKeyId.CFG_HW_ANT_CFG_SHORTDET" />
                 <ref field="CfgValL" name="Val" />
-            </bundle>    
+            </bundle>
 
             <bundle name="HwAntCfgShortdetPol" displayName="CFG-HW-ANT_CFG_SHORTDET_POL">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_CFG_SHORTDET_POL" defaultValue="CfgValKeyId.CFG_HW_ANT_CFG_SHORTDET_POL" />
                 <ref field="CfgValL" name="Val" />
-            </bundle>    
+            </bundle>
 
             <bundle name="HwAntCfgOpendet" displayName="CFG-HW-ANT_CFG_OPENDET">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_CFG_OPENDET" defaultValue="CfgValKeyId.CFG_HW_ANT_CFG_OPENDET" />
                 <ref field="CfgValL" name="Val" />
-            </bundle>       
+            </bundle>
 
             <bundle name="HwAntCfgOpendetPol" displayName="CFG-HW-ANT_CFG_OPENDET_POL">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_CFG_OPENDET_POL" defaultValue="CfgValKeyId.CFG_HW_ANT_CFG_OPENDET_POL" />
                 <ref field="CfgValL" name="Val" />
-            </bundle>  
+            </bundle>
 
             <bundle name="HwAntCfgPwrdown" displayName="CFG-HW-ANT_CFG_PWRDOWN">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_CFG_PWRDOWN" defaultValue="CfgValKeyId.CFG_HW_ANT_CFG_PWRDOWN" />
                 <ref field="CfgValL" name="Val" />
-            </bundle>   
+            </bundle>
 
             <bundle name="HwAntCfgPwrdownPol" displayName="CFG-HW-ANT_CFG_PWRDOWN_POL">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_CFG_PWRDOWN_POL" defaultValue="CfgValKeyId.CFG_HW_ANT_CFG_PWRDOWN_POL" />
                 <ref field="CfgValL" name="Val" />
-            </bundle>  
+            </bundle>
 
             <bundle name="HwAntCfgRecover" displayName="CFG-HW-ANT_CFG_RECOVER">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_CFG_RECOVER" defaultValue="CfgValKeyId.CFG_HW_ANT_CFG_RECOVER" />
                 <ref field="CfgValL" name="Val" />
-            </bundle>  
+            </bundle>
 
             <bundle name="HwAntSupSwitchPin" displayName="CFG-HW-ANT_SUP_SWITCH_PIN">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_SUP_SWITCH_PIN" defaultValue="CfgValKeyId.CFG_HW_ANT_SUP_SWITCH_PIN" />
                 <ref field="CfgValU1" name="Val" />
-            </bundle> 
+            </bundle>
 
             <bundle name="HwAntSupShortPin" displayName="CFG-HW-ANT_SUP_SHORT_PIN">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_SUP_SHORT_PIN" defaultValue="CfgValKeyId.CFG_HW_ANT_SUP_SHORT_PIN" />
                 <ref field="CfgValU1" name="Val" />
-            </bundle>   
+            </bundle>
 
             <bundle name="HwAntSupOpenPin" displayName="CFG-HW-ANT_SUP_OPEN_PIN">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_SUP_OPEN_PIN" defaultValue="CfgValKeyId.CFG_HW_ANT_SUP_OPEN_PIN" />
                 <ref field="CfgValU1" name="Val" />
-            </bundle>   
+            </bundle>
 
             <bundle name="HwAntSupEngine" displayName="CFG-HW-ANT_SUP_ENGINE">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_SUP_ENGINE" defaultValue="CfgValKeyId.CFG_HW_ANT_SUP_ENGINE" />
@@ -940,17 +940,17 @@
                     <validValue name="EXT" val="0" />
                     <validValue name="MADC" val="1" />
                 </enum>
-            </bundle>   
+            </bundle>
 
             <bundle name="HwAntSupShortThr" displayName="CFG-HW-ANT_SUP_SHORT_THR">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_SUP_SHORT_THR" defaultValue="CfgValKeyId.CFG_HW_ANT_SUP_SHORT_THR" />
                 <ref field="CfgValU1" name="Val" />
-            </bundle>    
+            </bundle>
 
             <bundle name="HwAntSupOpenThr" displayName="CFG-HW-ANT_SUP_OPEN_THR">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_HW_ANT_SUP_OPEN_THR" defaultValue="CfgValKeyId.CFG_HW_ANT_SUP_OPEN_THR" />
                 <ref field="CfgValU1" name="Val" />
-            </bundle>                                                                                            
+            </bundle>
 
             <!-- CFG-I2C -->
             <bundle name="I2cAddress" displayName="CFG-I2C-ADDRESS">
@@ -961,7 +961,7 @@
             <bundle name="I2cExtendedtimeout" displayName="CFG-I2C-EXTENDEDTIMEOUT">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_I2C_EXTENDEDTIMEOUT" defaultValue="CfgValKeyId.CFG_I2C_EXTENDEDTIMEOUT" />
                 <ref field="CfgValL" name="Val" />
-            </bundle>   
+            </bundle>
 
             <bundle name="I2cEnabled" displayName="CFG-I2C-ENABLED">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_I2C_ENABLED" defaultValue="CfgValKeyId.CFG_I2C_ENABLED" />
@@ -3486,7 +3486,7 @@
             <bundle name="Uart2outprotRtcm3x" displayName="CFG-UART2OUTPROT-RTCM3X">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_UART2OUTPROT_RTCM3X" defaultValue="CfgValKeyId.CFG_UART2OUTPROT_RTCM3X" />
                 <ref field="CfgValL" name="Val" />
-            </bundle>            
+            </bundle>
 
             <!-- CFG-USB -->
             <bundle name="UsbEnabled" displayName="CFG-USB-ENABLED">
@@ -3584,13 +3584,13 @@
             <bundle name="UsboutprotRtcm3x" displayName="CFG-USBOUTPROT-RTCM3X">
                 <int reuse="CfgValKey" name="Key" validValue="CfgValKeyId.CFG_USBOUTPROT_RTCM3X" defaultValue="CfgValKeyId.CFG_USBOUTPROT_RTCM3X" />
                 <ref field="CfgValL" name="Val" />
-            </bundle>            
+            </bundle>
         </variant>
 
         <bundle name="CfgValPairSimple" readOverride="replace" refreshOverride="replace">
             <description>
-                The CfgValPair definition may be too extensive and too complex for some 
-                applications. This field may be a simpler replacement. 
+                The CfgValPair definition may be too extensive and too complex for some
+                applications. This field may be a simpler replacement.
                 It also requires custom various custom operations.
             </description>
             <members>

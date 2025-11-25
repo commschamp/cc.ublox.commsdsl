@@ -18,7 +18,7 @@
 namespace cc_ublox
 {
 
-namespace simple_pos    
+namespace simple_pos
 {
 
 Session::Session(common::boost_wrap::io& io, const std::string& dev)
@@ -93,7 +93,7 @@ void Session::processInputData()
     if (!m_inData.empty()) {
         auto consumed = comms::processAllWithDispatch(&m_inData[0], m_inData.size(), m_frame, *this);
         m_inData.erase(m_inData.begin(), m_inData.begin() + consumed);
-    }    
+    }
 }
 
 void Session::sendPosPoll()

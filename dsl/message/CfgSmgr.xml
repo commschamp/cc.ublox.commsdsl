@@ -37,7 +37,7 @@
             </enum>
             <set name="bitsHigh" bitLength="16" displayName="_">
                 <bit name="disableOffset" idx="0" />
-            </set>            
+            </set>
         </bitfield>
     </message>
 

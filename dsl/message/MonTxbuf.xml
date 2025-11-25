@@ -21,7 +21,7 @@
         </bitfield>
         <ref field="res1" name="reserved1" />
     </message>
-    
+
     <message name="MonTxbufPoll" id="MsgId.MonTxbuf" displayName="MON-TXBUF (Poll)" order="1">
         <sender value="client" />
     </message>

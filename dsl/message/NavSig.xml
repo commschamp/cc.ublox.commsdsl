@@ -30,14 +30,14 @@
                     <validValue name="RTCM3_OSR" val="4" />
                     <validValue name="RTCM3_SSR" val="5" />
                     <validValue name="QZSS_SLAS" val="6" />
-                </enum>    
+                </enum>
                 <enum name="ionoModel" type="uint8">
                     <validValue name="NoModel" val="0"/>
                     <validValue name="KlobucharGPS" val="1" />
                     <validValue name="SBAS" val="2" />
                     <validValue name="KlobucharBeiDou" val="3" />
                     <validValue name="IonoDelay" val="8" />
-                </enum>                 
+                </enum>
                 <bitfield name="sigFlags">
                     <enum name="health" type="uint8" bitLength="2">
                         <validValue name="Unknown" val="0" />
@@ -58,7 +58,7 @@
             </bundle>
         </list>
     </message>
-    
+
     <message name="NavSigPoll" id="MsgId.NavSig" displayName="NAV-SIG (Poll)" order="1">
         <platforms value="+ublox9" />
         <sender value="client" />

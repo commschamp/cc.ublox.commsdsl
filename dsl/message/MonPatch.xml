@@ -23,7 +23,7 @@
             </bundle>
         </list>
     </message>
-    
+
     <message name="MonPatchPoll" id="MsgId.MonPatch" displayName="MON-PATCH (Poll)" order="1">
         <platforms value="+ublox8,ublox9" />
         <sender value="client" />

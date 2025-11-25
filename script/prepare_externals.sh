@@ -157,7 +157,7 @@ function build_cc_tools_qt() {
             return;
         fi
     fi
-        
+
     if [ -e ${CC_TOOLS_QT_SRC_DIR}/.git ]; then
         echo "Updating cc_tools_qt..."
         cd ${CC_TOOLS_QT_SRC_DIR}
@@ -191,6 +191,4 @@ build_commsdsl
 if [ -z "${CC_TOOLS_QT_SKIP}" -o "${CC_TOOLS_QT_SKIP}" == "0" ]; then
     build_cc_tools_qt
 fi
-
-
 

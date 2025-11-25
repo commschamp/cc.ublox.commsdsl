@@ -11,7 +11,7 @@
     <message name="CfgMsgCurrent" id="MsgId.CfgMsg" displayName="CFG-MSG (Current)" order="1">
         <ref field="MsgId" />
         <int name="rate" type="uint8" />
-    </message>    
+    </message>
 
     <message name="CfgMsgPoll" id="MsgId.CfgMsg" displayName="CFG-MSG (Poll)" order="2" sender="client">
         <ref field="MsgId" />

@@ -23,7 +23,7 @@
         <int name="simultaneous" type="uint8" />
         <ref field="res3" name="reserved1" />
     </message>
-    
+
     <message name="MonGnssPoll" id="MsgId.MonGnss" displayName="MON-GNSS (Poll)" order="1">
         <platforms value="+ublox8,ublox9" />
         <sender value="client" />

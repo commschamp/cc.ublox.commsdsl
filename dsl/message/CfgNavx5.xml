@@ -9,7 +9,7 @@
             <bit name="ackAid" idx="10" />
             <bit name="ppp" idx="13" />
             <bit name="aop" idx="14" />
-        </set>   
+        </set>
         <set name="CfgNavx5Mask2" length="4" displayName="mask2">
             <bit name="adr" idx="6" />
             <bit name="sigAttenComp" idx="7" />
@@ -17,15 +17,15 @@
         <int name="CfgNavx5SigAttenCompMode" type="uint8" displayName="sigAttenCompMode">
             <special name="Disabled" val="0" />
             <special name="Automatic" val="255" />
-        </int>    
+        </int>
         <set name="CfgNavx5AopCfg" length="1" displayName="aopCfg">
             <bit name="useAOP" idx="0" />
         </set>
         <int name="CfgNavx5AopOrbMaxErr" type="uint16" units="m" validRange="[5, 1000]" displayName="aopOrbMaxErr">
             <special name="Reset" val="0" />
-        </int>        
+        </int>
     </fields>
-    
+
     <message name="CfgNavx5V3" id="MsgId.CfgNavx5" displayName="CFG-NAVX5" order="0" platforms="+ublox8">
         <int name="version" type="uint16" defaultValidValue="3" failOnInvalid="true" fixedValue="true" />
         <ref field="CfgNavx5Mask1" name="mask1" />
@@ -64,10 +64,10 @@
         <int name="minCNO" type="uint8" />
         <ref field="res1" name="reserved2" />
         <int name="iniFix3D" type="uint8" />
-        <ref field="res2" name="reserved3" /> 
+        <ref field="res2" name="reserved3" />
         <int name="ackAiding" type="uint8" />
-        <int name="wknRollover" type="uint16" />       
-        <ref field="CfgNavx5SigAttenCompMode" name="sigAttenCompMode" />     
+        <int name="wknRollover" type="uint16" />
+        <ref field="CfgNavx5SigAttenCompMode" name="sigAttenCompMode" />
         <ref field="res1" name="reserved4" />
         <ref field="res2" name="reserved5" />
         <ref field="res2" name="reserved6" />
@@ -77,7 +77,7 @@
         <ref field="CfgNavx5AopOrbMaxErr" name="aopOrbMaxErr" />
         <ref field="res4" name="reserved8" />
         <ref field="res3" name="reserved9" />
-        <int name="useAdr" type="uint8" />                 
+        <int name="useAdr" type="uint8" />
     </message>
 
     <message name="CfgNavx5" id="MsgId.CfgNavx5" displayName="CFG-NAVX5" order="2" platforms="-ublox9">

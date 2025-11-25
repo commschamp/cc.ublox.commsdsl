@@ -42,7 +42,7 @@
                         <validValue name="Almanac" val="2"/>
                         <validValue name="AssistNowOffline" val="3" displayName="AssistNow Offline"/>
                         <validValue name="AssistNowAutonomous" val="4" displayName="AssistNow Autonomous"/>
-                    </enum>                        
+                    </enum>
                     <set name="bitsHigh" bitLength="21" displayName="_">
                         <bit name="ephAvail" idx="0" />
                         <bit name="almAvail" idx="1" />
@@ -58,7 +58,7 @@
             </bundle>
         </list>
     </message>
-    
+
     <message name="NavSatPoll" id="MsgId.NavSat" displayName="NAV-SAT (Poll)" order="1">
         <platforms value="+ublox8,ublox9" />
         <sender value="client" />

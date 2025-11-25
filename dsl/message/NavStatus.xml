@@ -45,7 +45,7 @@
         <int name="ttff" type="uint32" units="ms" />
         <int name="msss" type="uint32" units="ms" />
     </message>
-    
+
     <message name="NavStatusPoll" id="MsgId.NavStatus" displayName="NAV-STATUS (Poll)" order="1">
         <sender value="client" />
     </message>
