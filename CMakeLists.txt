@@ -34,7 +34,7 @@ option (UBLOX_BUILD_EXAMPLES "Build examples." OFF)
 # COMMSDSL2EMSCRIPTEN_EXTRA_ARGS - Extra arguments to pass to "commsdsl2emscripten"
 
 set (UBLOX_VERSION "3.0.4")
-set (UBLOX_MIN_COMMSDSL_VERSION "7.1")
+set (UBLOX_MIN_COMMSDSL_VERSION "7.3")
 
 if (("${CMAKE_VERSION}" VERSION_GREATER_EQUAL "3.30") AND
     (NOT DEFINED CMAKE_POLICY_DEFAULT_CMP0167))
@@ -391,7 +391,7 @@ if (UBLOX_GEN_TOOLS)
 
     add_custom_target("tools_output_tgt" ALL
         COMMAND ${CMAKE_COMMAND} -E remove_directory ${tools_tmp_dir}
-        COMMAND ${COMMSDSL2TOOLS_QT} ${warn_as_error} ${COMMSDSL2TOOLS_QT_EXTRA_ARGS}
+        COMMAND ${COMMSDSL2TOOLS_QT} ${warn_as_error} -V ${UBLOX_VERSION} ${COMMSDSL2TOOLS_QT_EXTRA_ARGS}
             --protocol "::CC UBLOX:UBX protocol used by the U-blox GNSS Receivers.:cc.UbloxProtocolPlugin"
             -o ${tools_tmp_dir}  -c ${PROJECT_SOURCE_DIR}/src/tools
             -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
@@ -446,7 +446,7 @@ if (UBLOX_GEN_SWIG)
 
     add_custom_target("swig_output_tgt" ALL
         COMMAND ${CMAKE_COMMAND} -E remove_directory ${swig_tmp_dir}
-        COMMAND ${COMMSDSL2SWIG} ${warn_as_error} ${COMMSDSL2SWIG_EXTRA_ARGS}
+        COMMAND ${COMMSDSL2SWIG} ${warn_as_error} -V ${UBLOX_VERSION} ${COMMSDSL2SWIG_EXTRA_ARGS}
             -c ${UBLOX_SWIG_SRC_DIR} -o ${swig_tmp_dir} 
             -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
         COMMAND ${CMAKE_COMMAND}
@@ -505,7 +505,7 @@ if (UBLOX_GEN_EMSCRIPTEN)
 
     add_custom_target("emscripten_output_tgt" ALL
         COMMAND ${CMAKE_COMMAND} -E remove_directory ${emscripten_tmp_dir}
-        COMMAND ${COMMSDSL2EMSCRIPTEN} ${warn_as_error} ${COMMSDSL2EMSCRIPTEN_EXTRA_ARGS}
+        COMMAND ${COMMSDSL2EMSCRIPTEN} ${warn_as_error} -V ${UBLOX_VERSION} ${COMMSDSL2EMSCRIPTEN_EXTRA_ARGS}
             -o ${emscripten_tmp_dir} -c ${PROJECT_SOURCE_DIR}/src/emscripten
             -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
         COMMAND ${CMAKE_COMMAND}
