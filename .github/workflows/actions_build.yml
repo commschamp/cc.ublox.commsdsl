@@ -16,7 +16,6 @@ env:
 
 jobs:
   build_gcc_ubuntu_24_04:
-    if: false
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
@@ -92,7 +91,6 @@ jobs:
         VERBOSE: 1
 
   build_clang_ubuntu_22_04:
-    if: false
     runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
@@ -156,7 +154,6 @@ jobs:
         VERBOSE: 1
 
   build_clang_ubuntu_24_04:
-    if: false
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
