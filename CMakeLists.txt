@@ -344,7 +344,7 @@ if (UBLOX_GEN_TEST)
 
     add_custom_target("test_output_tgt" ALL
         COMMAND ${CMAKE_COMMAND} -E remove_directory ${test_tmp_dir}
-        COMMAND ${COMMSDSL2TEST} ${warn_as_error} ${COMMSDSL2TEST_EXTRA_ARGS}
+        COMMAND ${COMMSDSL2TEST} ${warn_as_error} -V ${UBLOX_VERSION} ${COMMSDSL2TEST_EXTRA_ARGS}
             -o ${test_tmp_dir} -c ${PROJECT_SOURCE_DIR}/src/test
             -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
         COMMAND ${CMAKE_COMMAND}
