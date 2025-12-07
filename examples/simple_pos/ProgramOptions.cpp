@@ -16,7 +16,7 @@ namespace cc_ublox
 {
 
 namespace simple_pos
-{    
+{
 
 namespace
 {
@@ -31,7 +31,6 @@ const std::string DefaultDevStr("COM1");
 #else
 const std::string DefaultDevStr("/dev/ttyACM0");
 #endif
-
 
 po::options_description createDescription()
 {

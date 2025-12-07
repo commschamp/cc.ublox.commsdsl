@@ -51,7 +51,7 @@
         <int name="pullH" type="uint32" />
         <int name="pullL" type="uint32" />
     </message>
-    
+
     <message name="MonHwPoll" id="MsgId.MonHw" displayName="MON-HW (Poll)" order="1">
         <sender value="client" />
     </message>

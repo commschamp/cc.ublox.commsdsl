@@ -40,7 +40,7 @@
         <enum name="cfgNmeaGsvTalkerId" type="uint8">
             <validValue name="GnssSpecific" val="0" displayName="GNSS Specific"/>
             <validValue name="Main" val="1" />
-        </enum>        
+        </enum>
     </fields>
     <message name="CfgNmeaV1" id="MsgId.CfgNmea" displayName="CFG-NMEA (V1)" order="0" platforms="+ublox8,ublox9">
         <ref field="cfgNmeaFilter" name="filter" />
@@ -56,7 +56,7 @@
         <ref field="res6" name="reserved1" />
     </message>
 
-    <message name="CfgNmeaV0" id="MsgId.CfgNmea" displayName="CFG-NMEA (V0)" order="1" platforms="+ublox7,ublox8">    
+    <message name="CfgNmeaV0" id="MsgId.CfgNmea" displayName="CFG-NMEA (V0)" order="1" platforms="+ublox7,ublox8">
         <ref field="cfgNmeaFilter" name="filter" />
         <ref field="NmeaVersion" name="nmeaVersion" />
         <ref field="cfgNmeaNumSV" name="numSV" />
@@ -68,7 +68,7 @@
         <int name="version" type="uint8" validValue="0" failOnInvalid="true" fixedValue="true" />
     </message>
 
-    <message name="CfgNmea" id="MsgId.CfgNmea" displayName="CFG-NMEA" order="2" platforms="-ublox9">    
+    <message name="CfgNmea" id="MsgId.CfgNmea" displayName="CFG-NMEA" order="2" platforms="-ublox9">
         <ref field="cfgNmeaFilter" name="filter" />
         <ref field="NmeaVersion" name="nmeaVersion" />
         <ref field="cfgNmeaNumSV" name="numSV" />

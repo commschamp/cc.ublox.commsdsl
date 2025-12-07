@@ -68,10 +68,10 @@ if exist %COMMS_SRC_DIR%/.git (
     echo "Updating COMMS library..."
     cd "%COMMS_SRC_DIR%"
     git fetch --all
-    git checkout .    
+    git checkout .
     git checkout %COMMS_TAG%
     git pull --all
-    if %errorlevel% neq 0 exit /b %errorlevel%    
+    if %errorlevel% neq 0 exit /b %errorlevel%
 ) else (
     echo "Cloning COMMS library..."
     git clone -b %COMMS_TAG% %COMMS_REPO% %COMMS_SRC_DIR%
@@ -107,7 +107,8 @@ mkdir "%COMMSDSL_BUILD_DIR%"
 cd %COMMSDSL_BUILD_DIR%
 cmake %GENERATOR_PARAM% %COMMSDSL_PLATFORM_PARAM% -S %COMMSDSL_SRC_DIR% -B %COMMSDSL_BUILD_DIR% ^
     -DCMAKE_INSTALL_PREFIX=%COMMSDSL_INSTALL_DIR% -DCMAKE_BUILD_TYPE=%COMMON_BUILD_TYPE% ^
-    -DCOMMSDSL_INSTALL_LIBRARY=OFF -DCOMMSDSL_BUILD_COMMSDSL2TEST=ON -DCOMMSDSL_BUILD_COMMSDSL2TOOLS_QT=ON
+    -DCOMMSDSL_INSTALL_LIBRARY=OFF -DCOMMSDSL_BUILD_COMMSDSL2TEST=ON -DCOMMSDSL_BUILD_COMMSDSL2TOOLS_QT=ON ^
+    -DCOMMSDSL_BUILD_COMMSDSL2LATEX=ON -DCOMMSDSL_BUILD_COMMSDSL2C=ON
 if %errorlevel% neq 0 exit /b %errorlevel%
 cmake --build %COMMSDSL_BUILD_DIR% --config %COMMON_BUILD_TYPE% --target install
 if %errorlevel% neq 0 exit /b %errorlevel%

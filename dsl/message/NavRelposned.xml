@@ -30,7 +30,7 @@
                 <bit name="isMoving" idx="0" />
                 <bit name="refPosMiss" idx="1" />
                 <bit name="refObsMiss" idx="2" />
-            </set>            
+            </set>
         </bitfield>
     </message>
 
@@ -73,11 +73,11 @@
                     <bit name="refPosMiss" idx="1" />
                     <bit name="refObsMiss" idx="2" />
                     <bit name="relPosHeadingValid" idx="3" />
-                </set>            
+                </set>
             </bitfield>
         </fields>
-    </message>    
-    
+    </message>
+
     <message name="NavRelposnedPoll" id="MsgId.NavRelposned" displayName="NAV-RELPOSNED (Poll)" order="100">
         <platforms value="+ublox8,ublox9" />
         <sender value="client" />

@@ -17,7 +17,7 @@
             </bundle>
         </list>
     </message>
-    
+
     <message name="MonSpanPoll" id="MsgId.MonSpan" displayName="MON-SPAN (Poll)" order="1">
         <platforms value="+ublox9" />
         <sender value="client" />

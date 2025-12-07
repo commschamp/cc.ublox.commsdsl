@@ -4,19 +4,19 @@
         <optional name="ecefX" defaultMode="exist">
             <int name="ecefX" type="int32" units="cm" />
         </optional>
-        <optional name="lat" defaultMode="missing">        
+        <optional name="lat" defaultMode="missing">
             <int name="lat" type="int32" units="deg" scaling="1/10000000" displayDecimals="7"/>
         </optional>
         <optional name="ecefY" defaultMode="exist">
             <int name="ecefY" type="int32" units="cm" />
         </optional>
-        <optional name="lon" defaultMode="missing">        
+        <optional name="lon" defaultMode="missing">
             <int name="lon" type="int32" units="deg" scaling="1/10000000" displayDecimals="7"/>
         </optional>
         <optional name="ecefZ" defaultMode="exist">
             <int name="ecefZ" type="int32" units="cm" />
         </optional>
-        <optional name="alt" defaultMode="missing">        
+        <optional name="alt" defaultMode="missing">
             <int name="alt" type="int32" units="cm"/>
         </optional>
         <int name="posAcc" type="uint32" units="cm" />

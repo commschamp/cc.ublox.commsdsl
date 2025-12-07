@@ -17,7 +17,7 @@
                 <bit name="utc" idx="0" />
                 <bit name="time" idx="1" />
                 <bit name="newRisingEdge" idx="2" />
-            </set>            
+            </set>
         </bitfield>
         <int name="count" type="uint16" />
         <int name="wnR" type="uint16" />

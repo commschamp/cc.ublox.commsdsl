@@ -13,7 +13,7 @@
         </set>
         <int name="tAcc" type="uint32" units="ns" />
     </message>
-    
+
     <message name="NavTimegalPoll" id="MsgId.NavTimegal" displayName="NAV-TIMEGAL (Poll)" order="1">
         <platforms value="+ublox8,ublox9" />
         <sender value="client" />

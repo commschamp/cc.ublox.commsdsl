@@ -22,8 +22,8 @@
         <ref field="res2" name="reserved1" />
         <ref field="res4" name="reserved2" />
         <ref field="res4" name="reserved3" />
-    </message>    
-    
+    </message>
+
     <message name="NavAopstatusPoll" id="MsgId.NavAopstatus" displayName="NAV-AOPSTATUS (Poll)" order="2">
         <platforms value="-ublox5" />
         <sender value="client" />

@@ -20,7 +20,7 @@
                         <validValue name="BelowHorizon" val="1" displayName="Below horizon"/>
                         <validValue name="AboveHorizon" val="2" displayName="Above horizon"/>
                         <validValue name="AboveElevMask" val="3" displayName="Above elevation mask"/>
-                    </enum>                        
+                    </enum>
                     <int reuse="res1" name="reserved" bitLength="4" />
                 </bitfield>
                 <bitfield name="eph">
@@ -38,7 +38,7 @@
                         <validValue name="GNSS" val="1" displayName="GNSS transmission" />
                         <validValue name="ExternalAiding" val="2" displayName="External aiding" />
                     </enum>
-                </bitfield>     
+                </bitfield>
                 <bitfield name="otherOrb">
                     <int name="anoAopUsability" type="uint8" bitLength="5" />
                     <enum name="type" type="uint8" bitLength="3">
@@ -46,11 +46,11 @@
                         <validValue name="OfflineData" val="1" displayName="Offline data" />
                         <validValue name="AutonomousData" val="2" displayName="Autonomous data" />
                     </enum>
-                </bitfield>                                      
+                </bitfield>
             </bundle>
         </list>
     </message>
-    
+
     <message name="NavOrbPoll" id="MsgId.NavOrb" displayName="NAV-ORB (Poll)" order="1">
         <platforms value="+ublox8,ublox9" />
         <sender value="client" />

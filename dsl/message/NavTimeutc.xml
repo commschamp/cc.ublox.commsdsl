@@ -29,7 +29,7 @@
             </enum>
         </bitfield>
     </message>
-    
+
     <message name="NavTimeutcPoll" id="MsgId.NavTimeutc" displayName="NAV-TIMEUTC (Poll)" order="1">
         <sender value="client" />
     </message>

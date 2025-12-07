@@ -10,7 +10,7 @@
         <ref field="dop" name="nDOP" />
         <ref field="dop" name="eDOP" />
     </message>
-    
+
     <message name="NavDopPoll" id="MsgId.NavDop" displayName="NAV-DOP (Poll)" order="1">
         <sender value="client" />
     </message>

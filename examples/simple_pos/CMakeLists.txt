@@ -25,4 +25,4 @@ add_dependencies(${name} ${PROT_OUTPUT_TGT})
 
 install(TARGETS ${name}
     RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR}
-)    
+)

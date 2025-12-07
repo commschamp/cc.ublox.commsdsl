@@ -7,7 +7,7 @@
             <string name="extension" length="30" />
         </list>
     </message>
-    
+
     <message name="MonVerPoll" id="MsgId.MonVer" displayName="MON-VER (Poll)" order="1">
         <sender value="client" />
     </message>

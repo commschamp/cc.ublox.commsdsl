@@ -26,7 +26,7 @@
             </bundle>
         </list>
     </message>
-    
+
     <message name="MonRfPoll" id="MsgId.MonRf" displayName="MON-RF (Poll)" order="1">
         <platforms value="+ublox9" />
         <sender value="client" />

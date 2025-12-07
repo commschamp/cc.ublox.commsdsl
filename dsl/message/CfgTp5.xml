@@ -24,20 +24,20 @@
         </optional>
         <optional name="periodLock" defaultMode="exist">
             <int name="periodLock" type="uint32" units="us" />
-        </optional>        
+        </optional>
         <optional name="pulseLen" defaultMode="missing">
             <int name="pulseLen" type="uint32" units="us" />
         </optional>
         <optional name="ratio" defaultMode="exist">
             <int name="ratio" type="uint32" scaling="1/0x100000000" />
-        </optional> 
+        </optional>
         <optional name="pulseLenLock" defaultMode="missing">
             <int name="pulseLenLock" type="uint32" units="us" />
         </optional>
         <optional name="ratioLock" defaultMode="exist">
             <int name="ratioLock" type="uint32" scaling="1/0x100000000" />
-        </optional>             
-        <int name="userConfigDelay" type="int32" units="ns" />    
+        </optional>
+        <int name="userConfigDelay" type="int32" units="ns" />
         <bitfield name="flags">
             <set name="bits" bitLength="7">
                 <bit name="active" idx="0" />
@@ -62,7 +62,7 @@
 
     <message name="CfgTp5PollSelect" id="MsgId.CfgTp5" displayName="CFG-TP5 (Poll Select)" order="1" platforms="-ublox5" sender="client">
         <ref field="cfgTp5TpIdx" name="tpIdx" />
-    </message>    
+    </message>
 
     <message name="CfgTp5Poll" id="MsgId.CfgTp5" displayName="CFG-TP5 (Poll)" order="2">
         <platforms value="-ublox5" />

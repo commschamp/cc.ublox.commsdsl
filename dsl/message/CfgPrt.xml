@@ -69,13 +69,13 @@
                 <validValue name="Odd" val="1"/>
                 <validValue name="None" val="4"/>
                 <validValue name="None2" val="5" displayName="None (2)"/>
-            </enum>    
+            </enum>
             <enum name="nStopBits" type="uint8" bitLength="2">
                 <validValue name="Bits_1" val="0" displayName="1 bit"/>
                 <validValue name="Bits_1_5" val="1" displayName="1.5 bits"/>
                 <validValue name="Bits_2" val="2" displayName="2 bits" />
                 <validValue name="Bits_0_5" val="3" displayName="0.5 bit" />
-            </enum>                    
+            </enum>
             <int reuse="res3" name="reservedHigh" bitLength="18" />
         </bitfield>
         <int name="baudRate" type="uint32" defaultValue="115200" />
@@ -128,7 +128,7 @@
 
     <message name="CfgPrtPortPoll" id="MsgId.CfgPrt" displayName="CFG-PRT (Port Poll)" order="4" sender="client">
         <ref field="cfgPrtPortId" name="portId" />
-    </message>    
+    </message>
 
     <message name="CfgPrtPoll" id="MsgId.CfgPrt" displayName="CFG-PRT (Poll)" order="5" sender="client" />
 </schema>

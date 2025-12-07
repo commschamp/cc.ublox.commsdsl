@@ -37,7 +37,7 @@
             </bundle>
         </list>
     </message>
-    
+
     <message name="MonCommsPoll" id="MsgId.MonComms" displayName="MON-PATCH (Poll)" order="1">
         <platforms value="+ublox9" />
         <sender value="client" />

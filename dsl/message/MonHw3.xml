@@ -41,7 +41,7 @@
             </bundle>
         </list>
     </message>
-    
+
     <message name="MonHw3Poll" id="MsgId.MonHw3" displayName="MON-HW3 (Poll)" order="1">
         <platforms value="+ublox9" />
         <sender value="client" />

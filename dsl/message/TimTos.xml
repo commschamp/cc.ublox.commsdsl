@@ -27,7 +27,7 @@
                 <bit name="raim" idx="0" />
                 <bit name="cohPulse" idx="1" />
                 <bit name="lockedPulse" idx="2" />
-            </set>            
+            </set>
         </bitfield>
         <ref field="year" />
         <ref field="month" />

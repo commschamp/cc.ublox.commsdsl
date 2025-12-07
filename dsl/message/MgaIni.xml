@@ -46,7 +46,7 @@
         <int name="tAccS" type="uint16" units="s" />
         <ref field="res2" name="reserved2" />
         <int name="tAccNs" type="uint32" units="ns" />
-    </message>    
+    </message>
 
     <message name="MgaIniTimeGnss" id="MsgId.MgaIni" displayName="MGA-BDS-TIME_GNSS" order="3" platforms="+ublox8,ublox9" sender="client">
         <int name="type" type="uint8" defaultValidValue="0x11" failOnInvalid="true" fixedValue="true" />
@@ -70,7 +70,7 @@
         <int name="tAccS" type="uint16" units="s" />
         <ref field="res2" name="reserved2" />
         <int name="tAccNs" type="uint32" units="ns" />
-    </message>      
+    </message>
 
     <message name="MgaIniClkd" id="MsgId.MgaIni" displayName="MGA-BDS-CLKD" order="4" platforms="+ublox8,ublox9" sender="client">
         <int name="type" type="uint8" defaultValidValue="0x20" failOnInvalid="true" fixedValue="true" />
@@ -78,7 +78,7 @@
         <ref field="res2" name="reserved1" />
         <int name="clkD" type="int32" />
         <int name="clkDAcc" type="uint32" />
-    </message>   
+    </message>
 
     <message name="MgaIniFreq" id="MsgId.MgaIni" displayName="MGA-BDS-FREQ" order="5" platforms="+ublox8,ublox9" sender="client">
         <int name="type" type="uint8" defaultValidValue="0x21" failOnInvalid="true" fixedValue="true" />
@@ -92,10 +92,10 @@
             <set name="bits" bitLength="4" displayName="_">
                 <bit name="fall" idx="0" />
             </set>
-        </bitfield>    
+        </bitfield>
         <int name="freq" type="int32" units="hz" scaling="1/100" />
-        <int name="freqAcc" type="uint32" />    
-    </message>     
+        <int name="freqAcc" type="uint32" />
+    </message>
 
     <message name="MgaIniEop" id="MsgId.MgaIni" displayName="MGA-BDS-EOP" order="6" platforms="+ublox8,ublox9" sender="client">
         <int name="type" type="uint8" defaultValidValue="0x30" failOnInvalid="true" fixedValue="true" />
@@ -106,12 +106,12 @@
         <int name="xpP0" type="int32" scaling="1/0x40000000" />
         <int name="xpP1" type="int32" scaling="1/0x40000000" />
         <int name="ypP0" type="int32" scaling="1/0x40000000" />
-        <int name="ypP1" type="int32" scaling="1/0x40000000" />        
-        <int name="dUT1" type="int32" units="s" scaling="1/0x2000000" />        
-        <int name="ddUT1" type="int32" scaling="1/0x40000000" />        
+        <int name="ypP1" type="int32" scaling="1/0x40000000" />
+        <int name="dUT1" type="int32" units="s" scaling="1/0x2000000" />
+        <int name="ddUT1" type="int32" scaling="1/0x40000000" />
         <list name="reserved2" count="10">
             <ref field="res4" name="element" displayName="_" />
         </list>
-    </message>               
+    </message>
 
 </schema>

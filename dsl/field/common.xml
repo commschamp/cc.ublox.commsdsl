@@ -18,10 +18,10 @@
         </int>
         <int name="res6" type="uint64" length="6" validValue="0">
             <description>Reserved field with 6 bytes length</description>
-        </int>        
+        </int>
         <int name="res7" type="uint64" length="7" validValue="0">
             <description>Reserved field with 7 bytes length</description>
-        </int>        
+        </int>
         <int name="res8" type="uint64" validValue="0">
             <description>Reserved field with 8 bytes length</description>
         </int>
@@ -40,8 +40,8 @@
             <description value="Longitude" />
         </int>
         <int reuse="lon" name="lat" description="Latitude" />
-        <int name="latHP" type="int8" units="deg" scaling="1/1000000000" displayDecimals="9" />    
-        <int name="lonHP" type="int8" units="deg" scaling="1/1000000000" displayDecimals="9" />    
+        <int name="latHP" type="int8" units="deg" scaling="1/1000000000" displayDecimals="9" />
+        <int name="lonHP" type="int8" units="deg" scaling="1/1000000000" displayDecimals="9" />
         <int name="height" type="int32" units="mm" >
             <description value="Height above ellipsoid" />
         </int>
@@ -86,7 +86,7 @@
             <bit name="NOTICE" idx="2" />
             <bit name="TEST" idx="3" />
             <bit name="DEBUG" idx="4" />
-        </set> 
+        </set>
         <enum name="NmeaVersion" type="uint8">
             <validValue name="V411" val="0x4b" displayName="v4.11" />
             <validValue name="V41" val="0x41" displayName="v4.1" />

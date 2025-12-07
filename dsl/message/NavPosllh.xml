@@ -9,7 +9,7 @@
         <ref field="hAcc" />
         <ref field="vAcc" />
     </message>
-    
+
     <message name="NavPosllhPoll" id="MsgId.NavPosllh" displayName="NAV-POSLLH (Poll)" order="1">
         <sender value="client" />
     </message>

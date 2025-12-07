@@ -50,8 +50,6 @@ void post(io& i, TFunc&& func)
 
 } // namespace boost_wrap
 
-
 } // namespace common
-
 
 } // namespace cc_ublox

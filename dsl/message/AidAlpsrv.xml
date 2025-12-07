@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema>
     <message name="AidAlpsrv" id="MsgId.AidAlpsrv" displayName="AID-ALPSRV" order="0" platforms="-ublox8,ublox9">
-        <int name="idSize" type="uint8" />        
-        <int name="type" type="uint8" />        
+        <int name="idSize" type="uint8" />
+        <int name="type" type="uint8" />
         <int name="ofs" type="uint16" />
         <int name="size" type="uint16" />
         <int name="fileId" type="uint16" />
@@ -14,13 +14,13 @@
     </message>
 
     <message name="AidAlpsrvToServer" id="MsgId.AidAlpsrv" displayName="AID-ALPSRV (To Server)" order="1" platforms="-ublox8,ublox9" sender="server">
-        <int name="idSize" type="uint8" />        
-        <int name="type" type="uint8" />        
+        <int name="idSize" type="uint8" />
+        <int name="type" type="uint8" />
         <int name="ofs" type="uint16" />
         <int name="size" type="uint16" />
         <int name="fileId" type="uint16" />
         <list name="data" countPrefix="$size">
             <int name="element" type="uint16" displayName="_" />
         </list>
-    </message>       
+    </message>
 </schema>

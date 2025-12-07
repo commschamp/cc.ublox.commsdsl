@@ -5,7 +5,7 @@
     <platform name="ublox7" />
     <platform name="ublox8" />
     <platform name="ublox9" />
-    
+
     <fields>
         <enum name="MsgId" type="uint16" semanticType="messageId" hexAssign="true" endian="big">
             <validValue name="NavPosecef" val="0x0101" displayName="NAV-POSECEF" />
@@ -169,11 +169,11 @@
             <validValue name="HnrPvt" val="0x2800" displayName="HNR-PVT" />
         </enum>
     </fields>
-    
+
     <frame name="UbloxFrame">
         <sync name="Sync">
             <field>
-                <int name="Sync" type="uint16" defaultValidValue="0x62b5" displayName="SYNC"/> 
+                <int name="Sync" type="uint16" defaultValidValue="0x62b5" displayName="SYNC"/>
             </field>
         </sync>
         <id name="Id">
@@ -183,7 +183,7 @@
         </id>
         <size name="Length">
             <field>
-                <int name="LENGTH" type="uint16" /> 
+                <int name="LENGTH" type="uint16" />
             </field>
         </size>
         <payload name="Payload" />
@@ -192,5 +192,5 @@
                 <int name="Checksum" type="uint16" displayName="CK" />
             </field>
         </checksum>
-    </frame>       
+    </frame>
 </schema>

@@ -12,7 +12,6 @@
 #include "Session.h"
 #include "ProgramOptions.h"
 
-
 int main(int argc, const char* argv[])
 {
     try {

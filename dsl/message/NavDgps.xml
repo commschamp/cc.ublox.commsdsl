@@ -26,7 +26,7 @@
             </bundle>
         </list>
     </message>
-    
+
     <message name="NavDgpsPoll" id="MsgId.NavDgps" displayName="NAV-DGPS (Poll)" order="1">
         <platforms value="-ublox5,ublox9" />
         <sender value="client" />

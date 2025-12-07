@@ -22,7 +22,7 @@
                     <set name="flags" bitLength="8">
                         <bit name="pos1Valid" idx="0" />
                     </set>
-                </bitfield>         
+                </bitfield>
                 <bitfield name="position2_1">
                     <int name="pos2Floor" type="int16" bitLength="9" />
                     <int name="pos2Alt" type="int16" bitLength="12" />
@@ -35,7 +35,7 @@
                     <set name="bits" bitLength="9" displayName="_">
                         <bit name="pos2Valid" idx="0" />
                     </set>
-                </bitfield> 
+                </bitfield>
                 <int name="lat" type="int32" units="deg" scaling="180/0x1000000" />
                 <int name="lon" type="int32" units="deg" scaling="360/0x2000000" />
                 <bitfield name="shortIdFrame">
@@ -58,5 +58,5 @@
     <message name="RxmImesPoll" id="MsgId.RxmImes" displayName="RXM-IMES (Poll)" order="1">
         <platforms value="+ublox8" />
         <sender value="client" />
-    </message>    
+    </message>
 </schema>

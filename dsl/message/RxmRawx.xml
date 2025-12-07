@@ -39,5 +39,5 @@
     <message name="RxmRawxPoll" id="MsgId.RxmRawx" displayName="RXM-RAWX (Poll)" order="1">
         <platforms value="+ublox8,ublox9" />
         <sender value="client" />
-    </message>    
+    </message>
 </schema>

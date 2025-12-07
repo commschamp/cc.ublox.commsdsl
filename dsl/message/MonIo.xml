@@ -15,7 +15,7 @@
             </bundle>
         </list>
     </message>
-    
+
     <message name="MonIoPoll" id="MsgId.MonIo" displayName="MON-IO (Poll)" order="1">
         <sender value="client" />
     </message>

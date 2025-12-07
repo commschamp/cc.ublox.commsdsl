@@ -54,7 +54,7 @@
         <ref field="dop" name="pDop" />
         <set name="flags3" length="1">
             <bit name="invalidLlh" idx="0" />
-        </set>        
+        </set>
         <ref field="res1" name="reserved2" />
         <ref field="res4" name="reserved3" />
     </message>
@@ -69,7 +69,7 @@
             <int name="magAcc" type="uint16" units="deg" scaling="1/100" displayDecimals="2" />
         </fields>
     </message>
-    
+
     <message name="NavPvtPoll" id="MsgId.NavPvt" displayName="NAV-PVT (Poll)" order="100">
         <platforms value="+ublox7,ublox8,ublox9" />
         <sender value="client" />

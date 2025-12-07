@@ -24,7 +24,7 @@
             </bundle>
         </list>
     </message>
-    
+
     <message name="NavSlasPoll" id="MsgId.NavSlas" displayName="NAV-SLAS (Poll)" order="1">
         <platforms value="+ublox9" />
         <sender value="client" />

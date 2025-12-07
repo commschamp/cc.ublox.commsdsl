@@ -12,7 +12,7 @@
         </set>
         <string name="vendorString" length="32" />
         <string name="productString" length="32" />
-        <string name="serialNumber" length="32" /> 
+        <string name="serialNumber" length="32" />
     </message>
 
     <message name="CfgUsbPoll" id="MsgId.CfgUsb" displayName="CFG-USB (Poll)" order="1">

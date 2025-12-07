@@ -17,7 +17,7 @@
         <int name="postStatus" type="uint32" />
         <ref field="res4" name="reserved3" />
     </message>
-    
+
     <message name="MonHw2Poll" id="MsgId.MonHw2" displayName="MON-HW2 (Poll)" order="1">
         <platforms value="-ublox5" />
         <sender value="client" />

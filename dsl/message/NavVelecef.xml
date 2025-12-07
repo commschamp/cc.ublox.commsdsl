@@ -7,7 +7,7 @@
         <ref field="ecefVZ" />
         <ref field="sAcc" />
     </message>
-    
+
     <message name="NavVelecefPoll" id="MsgId.NavVelecef" displayName="NAV-VELECEF (Poll)" order="1">
         <sender value="client" />
     </message>

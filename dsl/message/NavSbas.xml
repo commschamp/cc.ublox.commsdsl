@@ -8,14 +8,14 @@
             <validValue name="MSAS" val="2" />
             <validValue name="GAGAN" val="3" />
             <validValue name="GPS" val="16" />
-        </enum>   
+        </enum>
         <set name="sbasService" length="1">
             <bit name="Ranging" idx="0" />
             <bit name="Corrections" idx="1" />
             <bit name="Integrity" idx="2" />
             <bit name="Testmode" idx="3" />
             <bit name="Bad" idx="4" />
-        </set>        
+        </set>
     </fields>
     <message name="NavSbas" id="MsgId.NavSbas" displayName="NAV-SBAS" order="0" sender="server">
         <ref field="itow" />
@@ -43,7 +43,7 @@
             </bundle>
         </list>
     </message>
-    
+
     <message name="NavSbasPoll" id="MsgId.NavSbas" displayName="NAV-SBAS (Poll)" order="1">
         <sender value="client" />
     </message>

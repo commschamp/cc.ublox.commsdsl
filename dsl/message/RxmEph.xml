@@ -10,10 +10,10 @@
                 </list>
                 <list name="sf2d" count="8">
                     <int name="element" type="uint32" />
-                </list>     
+                </list>
                 <list name="sf3d" count="8">
                     <int name="element" type="uint32" />
-                </list>                           
+                </list>
             </bundle>
         </optional>
     </message>
@@ -24,10 +24,10 @@
         <fields>
             <int name="svid" type="uint8" />
         </fields>
-    </message>       
+    </message>
 
     <message name="RxmEphPoll" id="MsgId.RxmEph" displayName="RXM-EPH (Poll)" order="2">
         <platforms value="+ublox6,ublox7" />
         <sender value="client" />
-    </message>    
+    </message>
 </schema>

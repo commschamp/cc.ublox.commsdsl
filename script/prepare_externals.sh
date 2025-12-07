@@ -146,7 +146,8 @@ function build_commsdsl() {
         ${COMMON_USE_CCACHE:+"-DCOMMSDSL_USE_CCACHE=${COMMON_USE_CCACHE}"} \
         ${COMMON_CCACHE_EXECUTABLE:+"-DCOMMSDSL_CCACHE_EXECUTABLE=${COMMON_CCACHE_EXECUTABLE}"} \
         -DCOMMSDSL_INSTALL_LIBRARY=OFF -DCOMMSDSL_BUILD_COMMSDSL2TEST=ON -DCOMMSDSL_BUILD_COMMSDSL2TOOLS_QT=ON \
-        -DCOMMSDSL_BUILD_COMMSDSL2SWIG=ON -DCOMMSDSL_BUILD_COMMSDSL2EMSCRIPTEN=ON
+        -DCOMMSDSL_BUILD_COMMSDSL2SWIG=ON -DCOMMSDSL_BUILD_COMMSDSL2EMSCRIPTEN=ON \
+        -DCOMMSDSL_BUILD_COMMSDSL2LATEX=ON -DCOMMSDSL_BUILD_COMMSDSL2C=ON
     cmake --build ${COMMSDSL_BUILD_DIR} --config ${COMMON_BUILD_TYPE} --target install ${procs_param}
 }
 
@@ -157,7 +158,7 @@ function build_cc_tools_qt() {
             return;
         fi
     fi
-        
+
     if [ -e ${CC_TOOLS_QT_SRC_DIR}/.git ]; then
         echo "Updating cc_tools_qt..."
         cd ${CC_TOOLS_QT_SRC_DIR}
@@ -180,6 +181,7 @@ function build_cc_tools_qt() {
         ${COMMON_CCACHE_EXECUTABLE:+"-DCC_TOOLS_QT_CCACHE_EXECUTABLE=${COMMON_CCACHE_EXECUTABLE}"} \
         -DCMAKE_BUILD_TYPE=${COMMON_BUILD_TYPE} -DCC_TOOLS_QT_BUILD_APPS=OFF -DCMAKE_PREFIX_PATH=${COMMS_INSTALL_DIR} \
         -DCMAKE_CXX_STANDARD=${COMMON_CXX_STANDARD} ${CC_TOOLS_QT_VERSION_OPT}
+
     cmake --build ${CC_TOOLS_QT_BUILD_DIR} --config ${COMMON_BUILD_TYPE} --target install ${procs_param}
 }
 
@@ -191,6 +193,4 @@ build_commsdsl
 if [ -z "${CC_TOOLS_QT_SKIP}" -o "${CC_TOOLS_QT_SKIP}" == "0" ]; then
     build_cc_tools_qt
 fi
-
-
 

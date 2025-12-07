@@ -57,7 +57,7 @@
         <int name="version" type="uint8" validValue="0" />
         <ref field="res2" name="reserved1" />
         <list name="healthCode" count="30">
-            <int name="element" type="uint16" displayName="_" /> 
+            <int name="element" type="uint16" displayName="_" />
         </list>
         <ref field="res4" name="reserved2" />
     </message>

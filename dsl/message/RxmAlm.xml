@@ -16,10 +16,10 @@
         <fields>
             <int name="svid" type="uint8" />
         </fields>
-    </message>       
+    </message>
 
     <message name="RxmAlmPoll" id="MsgId.RxmAlm" displayName="RXM-ALM (Poll)" order="2">
         <platforms value="+ublox6,ublox7" />
         <sender value="client" />
-    </message>    
+    </message>
 </schema>

@@ -45,7 +45,7 @@
             </bundle>
         </list>
     </message>
-    
+
     <message name="NavSvinfoPoll" id="MsgId.NavSvinfo" displayName="NAV-SVINFO (Poll)" order="1">
         <platforms value="-ublox9" />
         <sender value="client" />
