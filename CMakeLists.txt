@@ -41,8 +41,8 @@ option (UBLOX_BUILD_EXAMPLES "Build examples." OFF)
 # COMMSDSL2C_EXTRA_ARGS - Extra arguments to pass to "commsdsl2c"
 # COMMSDSL2LATEX_EXTRA_ARGS - Extra arguments to pass to "commsdsl2latex"
 
-set (UBLOX_VERSION "3.0.4")
-set (UBLOX_MIN_COMMSDSL_VERSION "7.3")
+set (UBLOX_VERSION "3.0.5")
+set (UBLOX_MIN_COMMSDSL_VERSION "8.0")
 
 if (("${CMAKE_VERSION}" VERSION_GREATER_EQUAL "3.30") AND
     (NOT DEFINED CMAKE_POLICY_DEFAULT_CMP0167))
@@ -272,7 +272,7 @@ endif ()
 
 include (ExternalProject)
 if (UBLOX_GEN_PROTOCOL)
-    find_program(COMMSDSL2COMMS commsdsl2comms PATH_SUFFIXES bin REQUIRED)        
+    find_program(COMMSDSL2COMMS commsdsl2comms PATH_SUFFIXES bin REQUIRED)
     execute_process(COMMAND "${COMMSDSL2COMMS}" --version OUTPUT_VARIABLE commsdsl2comms_version)
     if ("${commsdsl2comms_version}" VERSION_LESS "${UBLOX_MIN_COMMSDSL_VERSION}")
         message (FATAL_ERROR "Version of commsdsl2comms is too old, required minimum is v${UBLOX_MIN_COMMSDSL_VERSION}.")
@@ -284,8 +284,8 @@ if (UBLOX_GEN_PROTOCOL)
         COMMAND ${CMAKE_COMMAND} -E remove_directory ${prot_tmp_dir}
         COMMAND ${COMMSDSL2COMMS} ${warn_as_error} -V ${UBLOX_VERSION}
             -o ${prot_tmp_dir} -c ${PROJECT_SOURCE_DIR}/src/protocol
-            -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
-            ${COMMSDSL2COMMS_EXTRA_ARGS}         
+            -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE}
+            ${COMMSDSL2COMMS_EXTRA_ARGS}
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${prot_tmp_dir}" -DOUTPUT="${UBLOX_PROT_OUTPUT_DIR}"
             -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"
@@ -294,7 +294,7 @@ if (UBLOX_GEN_PROTOCOL)
     if (UBLOX_BUILD_PROTOCOL)
         execute_process(
             COMMAND ${CMAKE_COMMAND} -E make_directory ${UBLOX_PROT_OUTPUT_DIR}
-        )  
+        )
 
         execute_process(
             COMMAND ${CMAKE_COMMAND} -E touch ${UBLOX_PROT_OUTPUT_DIR}/dummy.txt
@@ -312,7 +312,7 @@ if (UBLOX_GEN_PROTOCOL)
                 -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
                 -DCMAKE_GENERATOR=${CMAKE_GENERATOR} -DCMAKE_GENERATOR_PLATFORM=${CMAKE_GENERATOR_PLATFORM}
                 -DCMAKE_GENERATOR_TOOLSET=${CMAKE_GENERATOR_TOOLSET} -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
-                -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}           
+                -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}
                 -DOPT_REQUIRE_COMMS_LIB=OFF -DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}
                 -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
         )
@@ -320,7 +320,7 @@ if (UBLOX_GEN_PROTOCOL)
         find_package(Doxygen)
         if (UBLOX_BUILD_PROT_DOC AND DOXYGEN_FOUND)
             ExternalProject_Add_Step(
-                "prot_tgt" 
+                "prot_tgt"
                 "doc"
                 COMMAND ${CMAKE_COMMAND} --build ${prot_build_dir} --target doc_cc_ublox
                 DEPENDEES "build"
@@ -328,17 +328,17 @@ if (UBLOX_GEN_PROTOCOL)
             )
         endif ()
     endif ()
-endif ()  
+endif ()
 
 set (combined_prefix_path ${CMAKE_INSTALL_PREFIX} ${CMAKE_PREFIX_PATH})
 string (REPLACE ";" "|" combined_prefix_path_str "${combined_prefix_path}")
 
 if (UBLOX_GEN_TEST)
-    find_program(COMMSDSL2TEST commsdsl2test PATH_SUFFIXES bin REQUIRED)        
+    find_program(COMMSDSL2TEST commsdsl2test PATH_SUFFIXES bin REQUIRED)
     execute_process(COMMAND "${COMMSDSL2TEST}" --version OUTPUT_VARIABLE commsdsl2test_version)
     if ("${commsdsl2test_version}" VERSION_LESS "${UBLOX_MIN_COMMSDSL_VERSION}")
         message (FATAL_ERROR "Version of commsdsl2test is too old, required minimum is v${UBLOX_MIN_COMMSDSL_VERSION}.")
-    endif ()    
+    endif ()
 
     set (test_tmp_dir "${CMAKE_BINARY_DIR}/output_test.tmp")
 
@@ -346,17 +346,17 @@ if (UBLOX_GEN_TEST)
         COMMAND ${CMAKE_COMMAND} -E remove_directory ${test_tmp_dir}
         COMMAND ${COMMSDSL2TEST} ${warn_as_error} -V ${UBLOX_VERSION} ${COMMSDSL2TEST_EXTRA_ARGS}
             -o ${test_tmp_dir} -c ${PROJECT_SOURCE_DIR}/src/test
-            -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
+            -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE}
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${test_tmp_dir}" -DOUTPUT="${UBLOX_TEST_OUTPUT_DIR}"
-            -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"        
+            -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"
         DEPENDS "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
 
     if (UBLOX_BUILD_TEST)
         if ((NOT UBLOX_GEN_PROTOCOL) OR (NOT UBLOX_BUILD_PROTOCOL))
             message (FATAL_ERROR "UBLOX_GEN_PROTOCOL and UBLOX_BUILD_PROTOCOL are required for UBLOX_BUILD_TEST")
         endif ()
-            
+
         execute_process(
             COMMAND ${CMAKE_COMMAND} -E make_directory ${UBLOX_TEST_OUTPUT_DIR}
         )
@@ -377,23 +377,23 @@ if (UBLOX_GEN_TEST)
                 -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
                 -DCMAKE_GENERATOR=${CMAKE_GENERATOR} -DCMAKE_GENERATOR_PLATFORM=${CMAKE_GENERATOR_PLATFORM}
                 -DCMAKE_GENERATOR_TOOLSET=${CMAKE_GENERATOR_TOOLSET} -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
-                -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}           
+                -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}
                 -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} -DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}
                 -DCMAKE_PREFIX_PATH=${combined_prefix_path_str}
                 -DOPT_TEST_OPTIONS=cc_ublox::options::AllMessagesDynMemMsgFactoryDefaultOptions
                 -DOPT_USE_CCACHE=${UBLOX_USE_CCACHE}
-                -DOPT_CCACHE_EXECUTABLE=${UBLOX_CCACHE_EXECUTABLE}  
-        )   
+                -DOPT_CCACHE_EXECUTABLE=${UBLOX_CCACHE_EXECUTABLE}
+        )
     endif ()
 endif ()
 
 
 if (UBLOX_GEN_TOOLS)
-    find_program(COMMSDSL2TOOLS_QT commsdsl2tools_qt PATH_SUFFIXES bin REQUIRED)    
+    find_program(COMMSDSL2TOOLS_QT commsdsl2tools_qt PATH_SUFFIXES bin REQUIRED)
     execute_process(COMMAND "${COMMSDSL2TOOLS_QT}" --version OUTPUT_VARIABLE commsdsl2tools_qt_version)
     if ("${commsdsl2tools_qt_version}" VERSION_LESS "${UBLOX_MIN_COMMSDSL_VERSION}")
         message (FATAL_ERROR "Version of commsdsl2tools_qt is too old, required minimum is v${UBLOX_MIN_COMMSDSL_VERSION}.")
-    endif ()    
+    endif ()
 
     set (tools_tmp_dir "${CMAKE_BINARY_DIR}/output_tools.tmp")
 
@@ -402,20 +402,20 @@ if (UBLOX_GEN_TOOLS)
         COMMAND ${COMMSDSL2TOOLS_QT} ${warn_as_error} -V ${UBLOX_VERSION} ${COMMSDSL2TOOLS_QT_EXTRA_ARGS}
             --protocol "::CC UBLOX:UBX protocol used by the U-blox GNSS Receivers.:cc.UbloxProtocolPlugin"
             -o ${tools_tmp_dir}  -c ${PROJECT_SOURCE_DIR}/src/tools
-            -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
+            -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE}
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${tools_tmp_dir}" -DOUTPUT="${UBLOX_TOOLS_OUTPUT_DIR}"
-            -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"        
+            -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"
         DEPENDS "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
 
     if (UBLOX_BUILD_TOOLS)
         if ((NOT UBLOX_GEN_PROTOCOL) OR (NOT UBLOX_BUILD_PROTOCOL))
             message (FATAL_ERROR "UBLOX_GEN_PROTOCOL and UBLOX_BUILD_PROTOCOL are required for UBLOX_BUILD_TOOLS")
         endif ()
-            
+
         execute_process(
             COMMAND ${CMAKE_COMMAND} -E make_directory ${UBLOX_TOOLS_OUTPUT_DIR}
-        )    
+        )
 
         execute_process(
             COMMAND ${CMAKE_COMMAND} -E touch ${UBLOX_TOOLS_OUTPUT_DIR}/dummy.txt
@@ -433,33 +433,33 @@ if (UBLOX_GEN_TOOLS)
                 -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
                 -DCMAKE_GENERATOR=${CMAKE_GENERATOR} -DCMAKE_GENERATOR_PLATFORM=${CMAKE_GENERATOR_PLATFORM}
                 -DCMAKE_GENERATOR_TOOLSET=${CMAKE_GENERATOR_TOOLSET} -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
-                -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}           
+                -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}
                 -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} -DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}
                 -DCMAKE_PREFIX_PATH=${combined_prefix_path_str}
                 -DOPT_QT_MAJOR_VERSION=${UBLOX_TOOLS_QT_VER}
                 -DOPT_USE_CCACHE=${UBLOX_USE_CCACHE}
-                -DOPT_CCACHE_EXECUTABLE=${UBLOX_CCACHE_EXECUTABLE}  
-        )  
+                -DOPT_CCACHE_EXECUTABLE=${UBLOX_CCACHE_EXECUTABLE}
+        )
     endif ()
 endif ()
 
 if (UBLOX_GEN_SWIG)
-    find_program(COMMSDSL2SWIG commsdsl2swig PATH_SUFFIXES bin REQUIRED)    
+    find_program(COMMSDSL2SWIG commsdsl2swig PATH_SUFFIXES bin REQUIRED)
     execute_process(COMMAND "${COMMSDSL2SWIG}" --version OUTPUT_VARIABLE commsdsl2swig_version)
     if ("${commsdsl2swig_version}" VERSION_LESS "${UBLOX_MIN_COMMSDSL_VERSION}")
         message (FATAL_ERROR "Version of commsdsl2swig is too old, required minimum is v${UBLOX_MIN_COMMSDSL_VERSION}.")
-    endif ()      
+    endif ()
 
     set (swig_tmp_dir "${CMAKE_BINARY_DIR}/output_swig.tmp")
 
     add_custom_target("swig_output_tgt" ALL
         COMMAND ${CMAKE_COMMAND} -E remove_directory ${swig_tmp_dir}
         COMMAND ${COMMSDSL2SWIG} ${warn_as_error} -V ${UBLOX_VERSION} ${COMMSDSL2SWIG_EXTRA_ARGS}
-            -c ${UBLOX_SWIG_SRC_DIR} -o ${swig_tmp_dir} 
-            -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
+            -c ${UBLOX_SWIG_SRC_DIR} -o ${swig_tmp_dir}
+            -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE}
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${swig_tmp_dir}" -DOUTPUT="${UBLOX_SWIG_OUTPUT_DIR}"
-            -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"        
+            -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"
         DEPENDS "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
 
     if (UBLOX_BUILD_SWIG)
@@ -469,7 +469,7 @@ if (UBLOX_GEN_SWIG)
 
         execute_process(
             COMMAND ${CMAKE_COMMAND} -E make_directory ${UBLOX_SWIG_OUTPUT_DIR}
-        )    
+        )
 
         execute_process(
             COMMAND ${CMAKE_COMMAND} -E touch ${UBLOX_SWIG_OUTPUT_DIR}/dummy.txt
@@ -489,25 +489,25 @@ if (UBLOX_GEN_SWIG)
                 -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
                 -DCMAKE_GENERATOR=${CMAKE_GENERATOR} -DCMAKE_GENERATOR_PLATFORM=${CMAKE_GENERATOR_PLATFORM}
                 -DCMAKE_GENERATOR_TOOLSET=${CMAKE_GENERATOR_TOOLSET} -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
-                -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}        
+                -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}
                 -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} -DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}
                 -DCMAKE_PREFIX_PATH=${combined_prefix_path_str}
                 -DOPT_SWIG_LANGUAGES=${combined_languages_str}
                 -DOPT_USE_CCACHE=${UBLOX_USE_CCACHE}
-                -DOPT_CCACHE_EXECUTABLE=${UBLOX_CCACHE_EXECUTABLE}  
+                -DOPT_CCACHE_EXECUTABLE=${UBLOX_CCACHE_EXECUTABLE}
             INSTALL_COMMAND
-                ${CMAKE_COMMAND} -E echo "Skipping install"            
-        )   
+                ${CMAKE_COMMAND} -E echo "Skipping install"
+        )
     endif ()
 endif ()
 
 if (UBLOX_GEN_EMSCRIPTEN)
-    find_program(COMMSDSL2EMSCRIPTEN commsdsl2emscripten PATH_SUFFIXES bin REQUIRED)    
-    find_program(EMCMAKE_EXECUTABLE emcmake REQUIRED)    
+    find_program(COMMSDSL2EMSCRIPTEN commsdsl2emscripten PATH_SUFFIXES bin REQUIRED)
+    find_program(EMCMAKE_EXECUTABLE emcmake REQUIRED)
     execute_process(COMMAND "${COMMSDSL2EMSCRIPTEN}" --version OUTPUT_VARIABLE commsdsl2emscripten_version)
     if ("${commsdsl2emscripten_version}" VERSION_LESS "${UBLOX_MIN_COMMSDSL_VERSION}")
         message (FATAL_ERROR "Version of commsdsl2emscripten is too old, required minimum is v${UBLOX_MIN_COMMSDSL_VERSION}.")
-    endif ()    
+    endif ()
 
     set (emscripten_tmp_dir "${CMAKE_BINARY_DIR}/output_emscripten.tmp")
 
@@ -515,20 +515,20 @@ if (UBLOX_GEN_EMSCRIPTEN)
         COMMAND ${CMAKE_COMMAND} -E remove_directory ${emscripten_tmp_dir}
         COMMAND ${COMMSDSL2EMSCRIPTEN} ${warn_as_error} -V ${UBLOX_VERSION} ${COMMSDSL2EMSCRIPTEN_EXTRA_ARGS}
             -o ${emscripten_tmp_dir} -c ${PROJECT_SOURCE_DIR}/src/emscripten
-            -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
+            -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE}
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${emscripten_tmp_dir}" -DOUTPUT="${UBLOX_EMSCRIPTEN_OUTPUT_DIR}"
-            -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"        
+            -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"
         DEPENDS "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_files})
 
     if (UBLOX_BUILD_EMSCRIPTEN)
         if ((NOT UBLOX_GEN_PROTOCOL) OR (NOT UBLOX_BUILD_PROTOCOL))
             message (FATAL_ERROR "UBLOX_GEN_PROTOCOL and UBLOX_BUILD_PROTOCOL are required for UBLOX_BUILD_EMSCRIPTEN")
         endif ()
-            
+
         execute_process(
             COMMAND ${CMAKE_COMMAND} -E make_directory ${UBLOX_EMSCRIPTEN_OUTPUT_DIR}
-        )    
+        )
 
         execute_process(
             COMMAND ${CMAKE_COMMAND} -E touch ${UBLOX_EMSCRIPTEN_OUTPUT_DIR}/dummy.txt
@@ -538,7 +538,7 @@ if (UBLOX_GEN_EMSCRIPTEN)
         get_target_property(comms_include_dirs cc::comms INTERFACE_INCLUDE_DIRECTORIES)
         set (prot_include_dir "${CMAKE_INSTALL_PREFIX}/include")
         set (extra_includes_path ${prot_include_dir} ${comms_include_dirs})
-        string (REPLACE ";" "|" extra_includes_path_str "${extra_includes_path}")    
+        string (REPLACE ";" "|" extra_includes_path_str "${extra_includes_path}")
 
 
         set (emscripten_build_dir ${CMAKE_CURRENT_BINARY_DIR}/emscripten_tgt_build)
@@ -552,43 +552,43 @@ if (UBLOX_GEN_EMSCRIPTEN)
             LIST_SEPARATOR |
             CMAKE_ARGS
                 -DCMAKE_GENERATOR=${CMAKE_GENERATOR} -DCMAKE_GENERATOR_PLATFORM=${CMAKE_GENERATOR_PLATFORM}
-                -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} 
+                -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
                 -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} -DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}
                 -DOPT_MODULARIZE=ON
                 -DOPT_EXTRA_INCLUDE_DIRS=${extra_includes_path_str}
                 -DOPT_USE_CCACHE=${UBLOX_USE_CCACHE}
-                -DOPT_CCACHE_EXECUTABLE=${UBLOX_CCACHE_EXECUTABLE}  
-        )   
+                -DOPT_CCACHE_EXECUTABLE=${UBLOX_CCACHE_EXECUTABLE}
+        )
     endif ()
 endif ()
 
 if (UBLOX_GEN_C)
-    find_program(COMMSDSL2C commsdsl2c PATH_SUFFIXES bin REQUIRED)    
+    find_program(COMMSDSL2C commsdsl2c PATH_SUFFIXES bin REQUIRED)
     execute_process(COMMAND "${COMMSDSL2C}" --version OUTPUT_VARIABLE commsdsl2c_version)
     if ("${commsdsl2c_version}" VERSION_LESS "${UBLOX_MIN_COMMSDSL_VERSION}")
         message (FATAL_ERROR "Version of commsdsl2c is too old, required minimum is v${UBLOX_MIN_COMMSDSL_VERSION}.")
-    endif ()    
+    endif ()
 
     set (c_tmp_dir "${CMAKE_BINARY_DIR}/output_c.tmp")
 
     add_custom_target("c_output_tgt" ALL
         COMMAND ${CMAKE_COMMAND} -E remove_directory ${c_tmp_dir}
         COMMAND ${COMMSDSL2C} ${warn_as_error} -V ${UBLOX_VERSION} ${COMMSDSL2C_EXTRA_ARGS}
-            -o ${c_tmp_dir} -c ${PROJECT_SOURCE_DIR}/src/c 
-            -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE} 
+            -o ${c_tmp_dir} -c ${PROJECT_SOURCE_DIR}/src/c
+            -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE}
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${c_tmp_dir}" -DOUTPUT="${UBLOX_C_OUTPUT_DIR}"
-            -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"        
+            -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"
         DEPENDS "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_file})
 
     if (UBLOX_BUILD_C)
         if ((NOT UBLOX_GEN_PROTOCOL) OR (NOT UBLOX_BUILD_PROTOCOL))
             message (FATAL_ERROR "UBLOX_GEN_PROTOCOL and UBLOX_BUILD_PROTOCOL are required for UBLOX_BUILD_C")
         endif ()
-            
+
         execute_process(
             COMMAND ${CMAKE_COMMAND} -E make_directory ${UBLOX_C_OUTPUT_DIR}
-        )    
+        )
 
         execute_process(
             COMMAND ${CMAKE_COMMAND} -E touch ${UBLOX_C_OUTPUT_DIR}/dummy.txt
@@ -606,32 +606,32 @@ if (UBLOX_GEN_C)
                 -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
                 -DCMAKE_GENERATOR=${CMAKE_GENERATOR} -DCMAKE_GENERATOR_PLATFORM=${CMAKE_GENERATOR_PLATFORM}
                 -DCMAKE_GENERATOR_TOOLSET=${CMAKE_GENERATOR_TOOLSET} -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
-                -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}           
+                -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}
                 -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} -DCMAKE_PREFIX_PATH=${combined_prefix_path_str}
                 -DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}
                 -DOPT_USE_CCACHE=${UBLOX_USE_CCACHE}
                 -DOPT_CCACHE_EXECUTABLE=${UBLOX_CCACHE_EXECUTABLE}
-        )  
-        
+        )
+
         find_package(Doxygen)
         if (UBLOX_BUILD_PROT_DOC AND DOXYGEN_FOUND)
             ExternalProject_Add_Step(
-                "c_tgt" 
+                "c_tgt"
                 "doc"
                 COMMAND ${CMAKE_COMMAND} --build ${c_build_dir} --target doc_cc_ublox_c
                 DEPENDEES "build"
                 DEPENDERS "install"
             )
-        endif ()        
+        endif ()
     endif ()
 endif ()
 
 if (UBLOX_GEN_LATEX)
-    find_program(COMMSDSL2LATEX commsdsl2latex PATH_SUFFIXES bin REQUIRED)    
+    find_program(COMMSDSL2LATEX commsdsl2latex PATH_SUFFIXES bin REQUIRED)
     execute_process(COMMAND "${COMMSDSL2LATEX}" --version OUTPUT_VARIABLE commsdsl2latex_version)
     if ("${commsdsl2latex_version}" VERSION_LESS "${UBLOX_MIN_COMMSDSL_VERSION}")
         message (FATAL_ERROR "Version of commsdsl2latex is too old, required minimum is v${UBLOX_MIN_COMMSDSL_VERSION}.")
-    endif ()    
+    endif ()
 
     set (latex_tmp_dir "${CMAKE_BINARY_DIR}/output_latex.tmp")
 
@@ -642,13 +642,13 @@ if (UBLOX_GEN_LATEX)
             -p ${PROJECT_SOURCE_DIR} -i ${UBLOX_SCHEMA_FILES_LIST_FILE}
         COMMAND ${CMAKE_COMMAND}
             -DGENERATED="${latex_tmp_dir}" -DOUTPUT="${UBLOX_LATEX_OUTPUT_DIR}"
-            -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"        
+            -P "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake"
         DEPENDS "${CMAKE_CURRENT_LIST_DIR}/CopyGenerated.cmake" ${schema_file})
 
     if (UBLOX_BUILD_LATEX)
         execute_process(
             COMMAND ${CMAKE_COMMAND} -E make_directory ${UBLOX_LATEX_OUTPUT_DIR}
-        )    
+        )
 
         execute_process(
             COMMAND ${CMAKE_COMMAND} -E touch ${UBLOX_LATEX_OUTPUT_DIR}/dummy.txt
@@ -663,13 +663,13 @@ if (UBLOX_GEN_LATEX)
             BINARY_DIR ${latex_build_dir}
             LIST_SEPARATOR |
             CMAKE_ARGS
-                -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} 
+                -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
                 -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} -DCMAKE_PREFIX_PATH=${combined_prefix_path_str}
             BUILD_COMMAND
                 ${CMAKE_COMMAND} --build ${latex_build_dir} --config ${CMAKE_BUILD_TYPE} --target all_artifacts
             INSTALL_COMMAND
                 ${CMAKE_COMMAND} -E echo "No install for documentation build"
-        )  
+        )
     endif ()
 endif ()
 
