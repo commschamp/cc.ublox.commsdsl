@@ -12,6 +12,7 @@
                 <int name="sigId" type="uint8" />
                 <int name="freqId" type="uint8" validRange="[0, 13]" />
                 <int name="prRes" type="int16" units="m" scaling="1/10" displayDecimals="1" />
+                <int name="cno" type="uint8" />
                 <enum name="qualityInd" type="uint8">
                     <validValue name="NoSignal" val="0" displayName="no signal"/>
                     <validValue name="Searching" val="1" displayName="searching"/>
