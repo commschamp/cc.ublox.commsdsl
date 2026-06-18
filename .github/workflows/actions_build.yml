@@ -238,9 +238,6 @@ jobs:
         arch: [Win32, x64]
         cpp: [11, 14, 17, 20]
         qt_ver: [5, 6]
-        exclude:
-          - arch: Win32
-            qt_ver: 6
 
     steps:
     - uses: actions/checkout@v4
@@ -248,17 +245,12 @@ jobs:
     - name: Create Build Environment
       run: cmake -E make_directory ${{runner.workspace}}/build
 
-    - name: Install Qt
+    - name: Install Qt (sets QT_ROOT_DIR)
       if: ${{matrix.cpp >= 17 && matrix.arch == 'x64'}}
-      shell: cmd
-      run: |
-        choco install curl
-        curl -L https://github.com/martinrotter/qt-minimalistic-builds/releases/download/${{env.QT_VER}}/qt-${{env.QT_VER}}-dynamic-msvc2019-x86_64.7z -o ${{runner.workspace}}/qt.7z
-        7z x ${{runner.workspace}}/qt.7z -o${{runner.workspace}}/qt
-        echo QT_VER=${{env.QT_VER}} >>%GITHUB_ENV%
-        echo QTDIR=${{runner.workspace}}/qt/qt-${{env.QT_VER}}-dynamic-msvc2019-x86_64 >>%GITHUB_ENV%
-      env:
-        QT_VER: ${{matrix.qt_ver == '5' && '5.15.3' || '6.2.2'}}
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: ${{ matrix.qt_ver == 5 && '5.15.*' || '6.8.*' }}
+        cache: true
 
     - name: Install Boost
       if: matrix.arch == 'x64'
@@ -270,6 +262,7 @@ jobs:
     - name: Prepare externals
       shell: cmd
       run: |
+        set QTDIR=%QT_ROOT_DIR%
         %GITHUB_WORKSPACE%\script\prepare_externals.bat
       env:
         BUILD_DIR: ${{runner.workspace}}/build
@@ -283,14 +276,14 @@ jobs:
         COMMSDSL_PLATFORM: 'x64'
         CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}}
         CC_TOOLS_QT_MAJOR_QT_VERSION: ${{matrix.qt_ver}}
-        CC_TOOLS_QT_SKIP: ${{matrix.arch == 'Win32' && '1' || '0'}}
+        CC_TOOLS_QT_SKIP: ${{ matrix.cpp >= 17 && matrix.arch == 'x64' && (matrix.qt_ver == 6 || matrix.cpp < 20) && '0' || '1' }}
 
     - name: Configure CMake
       shell: cmd
       working-directory: ${{runner.workspace}}/build
       run: |
         cmake %GITHUB_WORKSPACE% -A ${{matrix.arch}} -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install ^
-          -DCMAKE_PREFIX_PATH="${{runner.workspace}}/build/install;${{env.QTDIR}};${{env.BOOST_DIR}}" ^
+          -DCMAKE_PREFIX_PATH="${{runner.workspace}}/build/install;${{env.QT_ROOT_DIR}};${{env.BOOST_DIR}}" ^
           -DCMAKE_POLICY_DEFAULT_CMP0167=NEW ^
           -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_TOOLS_QT_VER=${{matrix.qt_ver}} ^
           -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_TOOLS=${{env.BUILD_TOOLS}} ^
@@ -298,8 +291,8 @@ jobs:
           -DUBLOX_BUILD_EXAMPLES=${{env.HAS_BOOST}} ^
           -DUBLOX_SCHEMA_FILES_LIST_FILE=%GITHUB_WORKSPACE%/basic_msgs.txt
       env:
-        BUILD_TOOLS: "${{ matrix.cpp >= 17 && matrix.arch == 'x64'  && 'ON' || 'OFF' }}"
         HAS_BOOST: "${{ matrix.arch == 'x64' && 'ON' || 'OFF' }}"
+        BUILD_TOOLS: "${{ matrix.cpp >= 17 && matrix.arch == 'x64' && (matrix.qt_ver == 6 || matrix.cpp < 20) && 'ON' || 'OFF' }}"
 
     - name: Build Target
       working-directory: ${{runner.workspace}}/build
@@ -308,7 +301,7 @@ jobs:
       env:
         VERBOSE: 1
 
-  build_msvc_2025:
+  build_msvc_2026:
     runs-on: windows-2025
     strategy:
       fail-fast: false
@@ -317,9 +310,6 @@ jobs:
         arch: [Win32, x64]
         cpp: [11, 14, 17, 20, 23]
         qt_ver: [5, 6]
-        exclude:
-          - arch: Win32
-            qt_ver: 6
 
     steps:
     - uses: actions/checkout@v4
@@ -327,17 +317,12 @@ jobs:
     - name: Create Build Environment
       run: cmake -E make_directory ${{runner.workspace}}/build
 
-    - name: Install Qt
+    - name: Install Qt (sets QT_ROOT_DIR)
       if: ${{matrix.cpp >= 17 && matrix.arch == 'x64'}}
-      shell: cmd
-      run: |
-        choco install curl
-        curl -L https://github.com/martinrotter/qt-minimalistic-builds/releases/download/${{env.QT_VER}}/qt-${{env.QT_VER}}-dynamic-msvc2019-x86_64.7z -o ${{runner.workspace}}/qt.7z
-        7z x ${{runner.workspace}}/qt.7z -o${{runner.workspace}}/qt
-        echo QT_VER=${{env.QT_VER}} >>%GITHUB_ENV%
-        echo QTDIR=${{runner.workspace}}/qt/qt-${{env.QT_VER}}-dynamic-msvc2019-x86_64 >>%GITHUB_ENV%
-      env:
-        QT_VER: ${{matrix.qt_ver == '5' && '5.15.3' || '6.2.2'}}
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: ${{ matrix.qt_ver == 5 && '5.15.*' || '6.8.*' }}
+        cache: true
 
     - name: Install Boost
       if: matrix.arch == 'x64'
@@ -349,6 +334,7 @@ jobs:
     - name: Prepare externals
       shell: cmd
       run: |
+        set QTDIR=%QT_ROOT_DIR%
         %GITHUB_WORKSPACE%\script\prepare_externals.bat
       env:
         BUILD_DIR: ${{runner.workspace}}/build
@@ -362,14 +348,14 @@ jobs:
         COMMSDSL_PLATFORM: 'x64'
         CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}}
         CC_TOOLS_QT_MAJOR_QT_VERSION: ${{matrix.qt_ver}}
-        CC_TOOLS_QT_SKIP: ${{matrix.arch == 'Win32' && '1' || '0'}}
+        CC_TOOLS_QT_SKIP: ${{ matrix.cpp >= 17 && matrix.arch == 'x64' && (matrix.qt_ver == 6 || matrix.cpp < 20) && '0' || '1' }}
 
     - name: Configure CMake
       shell: cmd
       working-directory: ${{runner.workspace}}/build
       run: |
         cmake %GITHUB_WORKSPACE% -A ${{matrix.arch}} -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install ^
-          -DCMAKE_PREFIX_PATH="${{runner.workspace}}/build/install;${{env.QTDIR}};${{env.BOOST_DIR}}" ^
+          -DCMAKE_PREFIX_PATH="${{runner.workspace}}/build/install;${{env.QT_ROOT_DIR}};${{env.BOOST_DIR}}" ^
           -DCMAKE_POLICY_DEFAULT_CMP0167=NEW ^
           -DCMAKE_CXX_STANDARD=${{matrix.cpp}} -DUBLOX_TOOLS_QT_VER=${{matrix.qt_ver}} ^
           -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_TOOLS=${{env.BUILD_TOOLS}} ^
@@ -378,7 +364,7 @@ jobs:
           -DUBLOX_SCHEMA_FILES_LIST_FILE=%GITHUB_WORKSPACE%/basic_msgs.txt
       env:
         HAS_BOOST: "${{ matrix.arch == 'x64' && 'ON' || 'OFF' }}"
-        BUILD_TOOLS: "${{ matrix.cpp >= 17 && matrix.arch == 'x64'  && 'ON' || 'OFF' }}"
+        BUILD_TOOLS: "${{ matrix.cpp >= 17 && matrix.arch == 'x64' && (matrix.qt_ver == 6 || matrix.cpp < 20) && 'ON' || 'OFF' }}"
 
     - name: Build Target
       working-directory: ${{runner.workspace}}/build
