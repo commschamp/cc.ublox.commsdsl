@@ -8,7 +8,7 @@ set (src
 
 add_executable(${name} ${src})
 target_include_directories(${name} PRIVATE "${UBLOX_PROT_OUTPUT_DIR}/include")
-target_link_libraries(${name} cc::comms Boost::boost Boost::program_options Boost::system)
+target_link_libraries(${name} cc::comms Boost::boost Boost::program_options)
 
 foreach (c ${extra_boost_components})
     target_link_libraries(${name} Boost::${c})

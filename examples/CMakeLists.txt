@@ -21,7 +21,7 @@ if (WIN32)
 endif ()
 
 find_package(Boost REQUIRED
-    COMPONENTS program_options system ${extra_boost_components})
+    COMPONENTS program_options ${extra_boost_components})
 
 find_package(Threads REQUIRED)
 
