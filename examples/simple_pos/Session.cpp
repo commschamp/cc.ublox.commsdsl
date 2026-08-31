@@ -104,7 +104,7 @@ void Session::sendPosPoll()
     using OutNavPosllhPoll = cc_ublox::message::NavPosllhPoll<OutMessage>;
     sendMessage(OutNavPosllhPoll());
 
-    m_pollTimer.expires_from_now(std::chrono::seconds(1));
+    m_pollTimer.expires_after(std::chrono::seconds(1));
     m_pollTimer.async_wait(
         [this](const boost::system::error_code& ec) {
             if (ec == boost::asio::error::operation_aborted) {
