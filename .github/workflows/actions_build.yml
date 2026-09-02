@@ -8,9 +8,9 @@ on:
       - '**'
 
 env:
-  COMMS_TAG: v5.5.2
-  COMMSDSL_TAG: v8.1
-  CC_TOOLS_QT_TAG: v6.0.8
+  COMMS_TAG: v5.5.3
+  COMMSDSL_TAG: v8.1.1
+  CC_TOOLS_QT_TAG: v6.0.9
   WIN_BOOST_VERSION: "1.87.0"
   WIN_BOOST_DIR: "C:/local/boost_1_87_0"
 
@@ -21,20 +21,9 @@ jobs:
       fail-fast: false
       matrix:
         type: [Debug, Release, MinSizeRel]
-        cc_ver: [9, 10, 11, 12, 13, 14]
-        cpp: [11, 14, 17, 20, 23]
+        cc_ver: [9, 10, 11, 12, 13]
+        cpp: [11, 14, 17, 20]
         qt_ver: [5, 6]
-        exclude:
-          - cc_ver: 9
-            cpp: 23
-          - cc_ver: 10
-            cpp: 23
-          - cc_ver: 11
-            cpp: 23
-          - cc_ver: 12
-            cpp: 23
-          - cc_ver: 13
-            cpp: 23
 
     steps:
     - uses: actions/checkout@v4
@@ -90,15 +79,84 @@ jobs:
       env:
         VERBOSE: 1
 
-  build_clang_ubuntu_22_04:
-    runs-on: ubuntu-22.04
+  build_gcc_ubuntu_26_04:
+    runs-on: ubuntu-26.04
     strategy:
       fail-fast: false
       matrix:
         type: [Debug, Release, MinSizeRel]
-        cc_ver: [12, 13]
-        cpp: [11, 14, 17]
+        cc_ver: [14, 15]
+        cpp: [11, 14, 17, 20, 23]
+        qt_ver: [6]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Prepare Install
+      run: sudo apt-get update --fix-missing
+
+    - name: Install Packages
+      run: |
+        sudo apt install qt${{matrix.qt_ver}}-base-dev libboost-all-dev libxml2-dev gcc-${{matrix.cc_ver}} g++-${{matrix.cc_ver}} \
+        python3 libpython3-dev swig default-jdk default-jre emscripten \
+        texlive-base texlive-latex-base texlive-latex-recommended texlive-plain-generic tex4ht
+
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{runner.workspace}}/build
+
+    - name: Prepare externals
+      shell: bash
+      run: $GITHUB_WORKSPACE/script/prepare_externals.sh
+      env:
+        BUILD_DIR: ${{runner.workspace}}/build
+        CC: gcc-${{matrix.cc_ver}}
+        CXX: g++-${{matrix.cc_ver}}
+        EXTERNALS_DIR: ${{runner.workspace}}/externals
+        COMMON_INSTALL_DIR: ${{runner.workspace}}/build/install
+        COMMON_BUILD_TYPE: ${{matrix.type}}
+        COMMON_CXX_STANDARD: ${{matrix.cpp}}
+        COMMS_TAG: ${{env.COMMS_TAG}}
+        COMMSDSL_TAG: ${{env.COMMSDSL_TAG}}
+        CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}}
+        CC_TOOLS_QT_MAJOR_QT_VERSION: ${{matrix.qt_ver}}
+
+    - name: Configure CMake
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      run: |
+        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
+        -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} \
+        -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_TOOLS=${{env.BUILD_TOOLS}} \
+        -DUBLOX_GEN_SWIG=ON -DUBLOX_GEN_EMSCRIPTEN=ON  -DUBLOX_GEN_C=ON -DUBLOX_GEN_LATEX=ON -DUBLOX_BUILD_LATEX=${{env.BUILD_LATEX}} \
+        -DUBLOX_BUILD_EXAMPLES=ON -DUBLOX_TOOLS_QT_VER=${{matrix.qt_ver}} \
+        -DUBLOX_SCHEMA_FILES_LIST_FILE=$GITHUB_WORKSPACE/basic_msgs.txt
+      env:
+        CC: gcc-${{matrix.cc_ver}}
+        CXX: g++-${{matrix.cc_ver}}
+        BUILD_TOOLS: "${{ matrix.cpp >= 17 && 'ON' || 'OFF' }}"
+        BUILD_LATEX: "${{ matrix.type == 'Debug' && matrix.cpp == 17 && matrix.cc_ver == 14 && 'ON' || 'OFF' }}"
+
+    - name: Build Target
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
+      run: cmake --build . --config ${{matrix.type}} --target install
+      env:
+        VERBOSE: 1
+
+  build_clang_ubuntu_24_04:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        type: [Debug, Release, MinSizeRel]
+        cc_ver: [14, 15, 16]
+        cpp: [11, 14, 17, 20]
         qt_ver: [5, 6]
+        exclude:
+          - cc_ver: 14
+            cpp: 20
+          - cc_ver: 15
+            cpp: 20
 
     steps:
     - uses: actions/checkout@v4
@@ -129,7 +187,7 @@ jobs:
         COMMSDSL_TAG: ${{env.COMMSDSL_TAG}}
         CC_TOOLS_QT_TAG: ${{env.CC_TOOLS_QT_TAG}}
         CC_TOOLS_QT_MAJOR_QT_VERSION: ${{matrix.qt_ver}}
-        CC_TOOLS_QT_SKIP: "${{ (matrix.cpp < 17 || (matrix.cpp == 20 && matrix.cc_ver < 15)) && '1' || '0' }}"
+        CC_TOOLS_QT_SKIP: "${{ (matrix.cpp < 17) && '1' || '0' }}"
 
     - name: Configure CMake
       shell: bash
@@ -138,13 +196,13 @@ jobs:
         cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=${{matrix.type}} -DCMAKE_INSTALL_PREFIX=install \
         -DCMAKE_PREFIX_PATH=${{runner.workspace}}/build/install -DCMAKE_CXX_STANDARD=${{matrix.cpp}} \
         -DUBLOX_GEN_PROTOCOL=ON -DUBLOX_GEN_TEST=ON -DUBLOX_GEN_TOOLS=ON -DUBLOX_BUILD_TOOLS=${{env.BUILD_TOOLS}} \
-        -DUBLOX_GEN_SWIG=ON -DUBLOX_GEN_EMSCRIPTEN=ON  -DUBLOX_GEN_C=ON -DUBLOX_GEN_LATEX=ON -DUBLOX_BUILD_LATEX=OFF \
+        -DUBLOX_GEN_SWIG=ON -DUBLOX_GEN_EMSCRIPTEN=ON -DUBLOX_GEN_C=ON -DUBLOX_GEN_LATEX=ON -DUBLOX_BUILD_LATEX=OFF \
         -DUBLOX_BUILD_EXAMPLES=ON -DUBLOX_TOOLS_QT_VER=${{matrix.qt_ver}} \
         -DUBLOX_SCHEMA_FILES_LIST_FILE=$GITHUB_WORKSPACE/basic_msgs.txt
       env:
         CC: clang-${{matrix.cc_ver}}
         CXX: clang++-${{matrix.cc_ver}}
-        BUILD_TOOLS: "${{ (matrix.cpp < 17 || (matrix.cpp == 20 && matrix.cc_ver < 15)) && 'OFF' || 'ON' }}"
+        BUILD_TOOLS: "${{ (matrix.cpp < 17) && 'OFF' || 'ON' }}"
 
     - name: Build Target
       working-directory: ${{runner.workspace}}/build
@@ -153,26 +211,16 @@ jobs:
       env:
         VERBOSE: 1
 
-  build_clang_ubuntu_24_04:
-    runs-on: ubuntu-24.04
+  build_clang_ubuntu_26_04:
+    runs-on: ubuntu-26.04
     strategy:
       fail-fast: false
       matrix:
         type: [Debug, Release, MinSizeRel]
-        cc_ver: [14, 15, 16, 17, 18, 19]
+        cc_ver: [17, 18, 19, 20, 21, 22]
         cpp: [11, 14, 17, 20, 23]
-        qt_ver: [5, 6]
+        qt_ver: [6]
         exclude:
-          - cc_ver: 14
-            cpp: 20
-          - cc_ver: 14
-            cpp: 23
-          - cc_ver: 15
-            cpp: 20
-          - cc_ver: 15
-            cpp: 23
-          - cc_ver: 16
-            cpp: 23
           - cc_ver: 17
             cpp: 23
 
@@ -184,7 +232,7 @@ jobs:
 
     - name: Install Packages
       run: |
-        sudo apt install libqt${{matrix.qt_ver}}gui${{matrix.qt_ver}} qtbase5-dev qt6-base-dev libboost-all-dev libxml2-dev clang-${{matrix.cc_ver}} \
+        sudo apt install qt${{matrix.qt_ver}}-base-dev libboost-all-dev libxml2-dev clang-${{matrix.cc_ver}} \
         python3 libpython3-dev swig  default-jdk default-jre emscripten
 
     - name: Create Build Environment

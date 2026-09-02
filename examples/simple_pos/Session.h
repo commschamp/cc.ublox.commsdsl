@@ -72,7 +72,7 @@ private:
 
     common::boost_wrap::io& m_io;
     SerialPort m_serial;
-    boost::asio::deadline_timer m_pollTimer;
+    boost::asio::steady_timer m_pollTimer;
     std::string m_device;
     boost::array<std::uint8_t, 512> m_inputBuf;
     std::vector<std::uint8_t> m_inData;

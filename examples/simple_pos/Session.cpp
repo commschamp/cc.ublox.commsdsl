@@ -7,13 +7,16 @@
 
 #include "Session.h"
 
-#include <iostream>
-#include <cassert>
-
 #include "cc_ublox/message/CfgPrtUsb.h"
 #include "cc_ublox/message/NavPosllhPoll.h"
+
 #include "comms/units.h"
 #include "comms/process.h"
+
+#include <cassert>
+#include <chrono>
+#include <iostream>
+
 
 namespace cc_ublox
 {
@@ -101,7 +104,7 @@ void Session::sendPosPoll()
     using OutNavPosllhPoll = cc_ublox::message::NavPosllhPoll<OutMessage>;
     sendMessage(OutNavPosllhPoll());
 
-    m_pollTimer.expires_from_now(boost::posix_time::seconds(1));
+    m_pollTimer.expires_after(std::chrono::seconds(1));
     m_pollTimer.async_wait(
         [this](const boost::system::error_code& ec) {
             if (ec == boost::asio::error::operation_aborted) {
